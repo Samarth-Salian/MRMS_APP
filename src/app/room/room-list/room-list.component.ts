@@ -39,10 +39,6 @@ export class RoomListComponent implements OnInit {
     }
 ]
   constructor() { }
-  isShowDiv = true;
-  toggleDisplayDiv(){
-    this.isShowDiv = !this.isShowDiv;
-  }
   ngOnInit(): void {
   }
 

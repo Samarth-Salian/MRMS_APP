@@ -1,0 +1,14 @@
+.google_icon{
+    width: 30px;
+    padding: 10px;
+}
+.mainContainer{
+    margin: 32% 0%;
+}
+.appName, .googleButtonDiv{
+    text-align: center;
+}
+.googleBtn{
+    border-radius: 30px;
+    width: 80%;
+}

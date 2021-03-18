@@ -1,2 +1,6 @@
-<p>signin works!</p>
-<a mat-raised-button href="/my-meetings">Signin with Google</a>
+<div class="mainContainer">
+    <h2 class="appName">Welcome to {{appName}}</h2>
+    <div class="googleButtonDiv">
+        <a mat-raised-button [routerLink]="['/my-meetings']" class="googleBtn"><img class="google_icon" src="../assets/google_logo1600.png">Sign in with Google</a>
+    </div>
+</div>

@@ -1,3 +1,41 @@
-<p>room-list works!</p>
-<a mat-raised-button href="/meeting-details">Select a room</a>
-<a mat-raised-button href="/room-details">Room Details</a>
+<div class="listContainer" *ngFor="let test  of test let i = index">
+    <!-- <a href="/meeting-details"> -->
+        <div class="firstRow">
+            <div class="roomNoClass">{{test.name}}</div>
+            <div class="seats">Seats {{test.seats}}</div>
+        </div>
+        <div class="secondRow">
+            <div>
+                <span>Room Details</span>
+            </div>
+            <ul>
+                <li>Phone No: {{test.phoneNo}}</li>
+                <li>Floor: {{test.floor}}</li>
+                <li>Building Id: {{test.buildingId}}</li>
+            </ul>
+        </div>
+        <div class="thirdRow" [hidden]="isShowDiv">
+            <div class="featuresDiv">
+                <img class="features {{test.voipAvailable ? '' : 'disableFeature'}}" src="../assets/2052-512.png">
+            </div>
+            <div class="featuresDiv">
+                <img class="features {{test.videoAvailable ? '' : 'disableFeature'}}" src="../assets/camcorder-512.png">
+            </div>
+            <div class="featuresDiv">
+                <img class="features {{test.lanAvailable ? '' : 'disableFeature'}}" src="../assets/ethernet_on1600.png">
+            </div>
+            <div class="featuresDiv">
+                <img class="features {{test.whiteBoardAvailable ? '' : 'disableFeature'}}" src="../assets/43338.png">
+            </div>
+        </div>
+        <div>
+            <button class="moreDetailsIcon" (click)="toggleDisplayDiv()" id={{i}}>
+                <span class="material-icons" *ngIf="isShowDiv">keyboard_arrow_down</span>
+                <span class="material-icons" *ngIf="!isShowDiv">keyboard_arrow_up</span>
+            </button>
+        </div>
+    <!-- </a> -->
+    <!-- <a mat-raised-button href="/meeting-details">Select a room</a> -->
+</div>
+
+<!-- <a mat-raised-button href="/room-details">Room Details</a> -->

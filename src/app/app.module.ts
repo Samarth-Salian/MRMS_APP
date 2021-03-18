@@ -22,6 +22,7 @@ import { RoomDetailsComponent } from './room/room-details/room-details.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -49,10 +50,11 @@ import { ToastrModule } from 'ngx-toastr';
     MatSidenavModule,
     MatListModule,
     NgxMaterialTimepickerModule,
+    HttpClientModule,
     MatCardModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,9 @@
 .example-spacer {
     flex: 1 1 auto;
 }
-
+.textAlign{
+    text-align: center;
+}
 .menu-spacer {
     flex: 1 1 auto;
   }

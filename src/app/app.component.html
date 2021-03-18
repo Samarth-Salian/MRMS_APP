@@ -1,29 +1,35 @@
 <div style="height: 80vh;">
-<mat-toolbar>
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>{{ title }}</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+  <mat-toolbar>
+    <button *ngIf = "displayHeading ; else showBackButton"mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <ng-template #showBackButton>
+      <mat-icon>arrow_back</mat-icon>
+    </ng-template>
+    <span  *ngIf = "!displayHeading ; else displayScreenName" [ngClass]="'textAlign'" >{{ screenName }}</span>
+    <ng-template #displayScreenName>
+      {{ title }}
+    </ng-template>
+    <span class="example-spacer"></span>
+    <button *ngIf = displayHeading mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button *ngIf = displayHeading mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
 
-<mat-sidenav-container style="height: 50vh;">
-  <mat-sidenav #sidenav>
-    <mat-nav-list>
-      <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-      <a href="/location-list" mat-list-item>Locations</a>
-      <a href="/room-list" mat-list-item>Meeting Rooms</a>
-      <a href="/user-list" mat-list-item>Users</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-sidenav-container style="height: 50vh;">
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <a href="/location-list" mat-list-item>Locations</a>
+        <a href="/room-list" mat-list-item>Meeting Rooms</a>
+        <a href="/user-list" mat-list-item>Users</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

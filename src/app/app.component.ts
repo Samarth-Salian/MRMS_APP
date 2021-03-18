@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Meeting-App';
+  displayHeading = true;
+  screenName;
+  routerPath:string = window.location.href.split("/",4)[3];
+  constructor(){
+        if(this.routerPath === "meeting-details"){
+            this.displayHeading = false;
+            this.screenName = this.routerPath;
+        }
+    }
+  
+  ngOnInit() {
+  }
 }

@@ -1,0 +1,48 @@
+.roomNoClass, .seats{
+    display: inline-block;
+}
+.roomNoClass{
+    width: 50%;
+}
+.seats{
+    float: right;
+}
+.listContainer{
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 10px;
+    padding: 10px 10px;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 2px 3px 3px #ddd;
+}
+.featuresDiv{
+    display: inline-block;
+}
+.features{
+    width: 20px;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 40px;
+    margin-right: 10px;
+}
+.disableFeature{
+    opacity: 0.2;
+}
+.hide{
+    display: none;
+}
+.moreDetailsIcon{
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background: #fff;
+    left: 45%;
+}
+.material-icons{
+    position: absolute;
+    left: -1px;
+    top: -1px;
+}

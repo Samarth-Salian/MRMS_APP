@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'meeting-app';
+  title = 'Meeting-App';
   displayHeading = true;
   screenName;
   routerPath:string = window.location.href.split("/",4)[3];

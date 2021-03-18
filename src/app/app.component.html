@@ -18,18 +18,17 @@
       <mat-icon>share</mat-icon>
     </button>
   </mat-toolbar>
-
-  <mat-sidenav-container style="height: 50vh;">
-    <mat-sidenav #sidenav>
-      <mat-nav-list>
-        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-        <a href="/location-list" mat-list-item>Locations</a>
-        <a href="/room-list" mat-list-item>Meeting Rooms</a>
-        <a href="/user-list" mat-list-item>Users</a>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<mat-sidenav-container style="height: 70vh;">
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+      <a href="/location-list" mat-list-item>Locations</a>
+      <a href="/room-list" mat-list-item>Meeting Rooms</a>
+      <a href="/user-list" mat-list-item>Users</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 </div>

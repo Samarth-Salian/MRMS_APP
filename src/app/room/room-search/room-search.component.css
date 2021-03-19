@@ -150,3 +150,67 @@ border-radius: 50%;
 
 
 
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.roomSearchContainer{
+  padding: 5%;
+}
+.searchField{
+  height: 51px;
+  font-size: 18px;
+  font-family: 'Roboto';
+  border: none;
+  border-bottom: 3px solid #d4d4d4;
+  background-color: rgba(0,0,0,.04);
+}
+.datePickerDiv{
+  width: 100%;
+  /* background-color: #fff; */
+}
+.fromTimeInput, .toTimeInput, .attendeeInput{
+  width: 100%;
+  height: 51px;
+  border: none;
+  border-bottom: 3px solid #c5c5c5;
+  background-color: rgba(0,0,0,.04);
+}
+.fromTimeDiv, .toTimeDiv, .attendeesSection, .locationDiv{
+  padding-bottom: 18px;
+}
+.fromTimeDiv, .toTimeDiv{
+  display: inline-block;
+  width: 48%;
+}
+.toTimeDiv{
+  margin-left: 10px;
+}
+.labelCss{
+  font-family: 'Roboto';
+  font-size: 18px;
+   font-weight: 500;
+}
+.fromTimeInput, .toTimeInput, .attendeeInput{
+  font-size: 18px;
+  padding: 10px;
+}
+.sliderBtn{
+  padding-top: 15px;
+}
+.sliderContainer{
+  margin-bottom: 40px;
+}
+.searchBtn{
+  width: 100%;
+    height: 51px;
+    border-radius: 100px;
+}
+.feature{
+  width: 83%;
+}

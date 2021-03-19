@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ThemePalette} from '@angular/material/core';
 import { $ } from 'protractor';
 
 
@@ -8,7 +9,7 @@ import { $ } from 'protractor';
   styleUrls: ['./room-search.component.css']
 })
 export class RoomSearchComponent implements OnInit {
-
+  color: ThemePalette = 'primary';
   selected: any;
 
   locations = ['Select', 'Building 1', 'Building 2', 'Building 3'];

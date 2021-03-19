@@ -5,5 +5,13 @@
     <mat-card-content>
         <span>{{user.emailId}}</span>
     </mat-card-content>
+    <mat-card-actions>
+        <div *ngIf="user.adminRole">
+            <button mat-button (click)="getUserMsg()">Downgrade to User</button>
+        </div>
+        <div *ngIf="!user.adminRole">
+            <button mat-button (click)="getAdminMsg()">Upgrade to Admin</button>
+        </div>
+      </mat-card-actions>
 </mat-card>
 

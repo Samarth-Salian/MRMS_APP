@@ -10,11 +10,11 @@ import { Router } from '@angular/router';
 
 })
 export class MeetingListComponent implements OnInit {
-  meetingListJson: any;
+  meetings: any;
   constructor(public http: HttpClient,private router: Router) {
     this.getjson().subscribe(data => {
-      this.meetingListJson = data;
-      this.meetingListJson.forEach(function(e:any){
+      this.meetings = data;
+      this.meetings.forEach(function(e:any){
         let fromSlot : any= e.slotFrom/4 < 1 ? 12+e.slotFrom/4:e.slotFrom/4;
         let toSlot : any = e.slotTo/4 < 1 ? 12+e.slotTo/4:e.slotTo/4;
         let minutesObj :any = {
@@ -27,17 +27,17 @@ export class MeetingListComponent implements OnInit {
         e.fromTime = parseInt(fromSlot.split(':')[0]) <= 12 ? fromSlot+' AM' : parseInt(fromSlot.split(':')[0]) - 12+':'+fromSlot.split(':')[1]+' PM';
         e.toTime = parseInt(toSlot.split(':')[0]) <= 12 ? toSlot+' AM' : parseInt(toSlot.split(':')[0]) - 12+':'+toSlot.split(':')[1]+' PM';
       })
-      console.log(this.meetingListJson)
+      console.log(this.meetings)
     })
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   public getjson(): Observable<any> {
     return this.http.get("assets/meetingList.json").pipe()
   }
   public fnNavigateToMeeting(params:any): any {
     let meetingObj = {};
-    this.meetingListJson.forEach(function(e:any){
+    this.meetings.forEach(function(e:any){
       if(e.name === params.currentTarget.children[0].children[0].children[1].innerText){
         meetingObj = e;
       }});

@@ -1,2 +1,9 @@
-<p>location-list works!</p>
+<mat-card class="listContainer" *ngFor="let location of locations">
+    <mat-card-header>
+        <mat-card-title>{{location.buildingName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <span>{{location.city}},{{location.country}}</span>
+    </mat-card-content>
+</mat-card>
 <a mat-raised-button href="/location-details">Location Details</a>

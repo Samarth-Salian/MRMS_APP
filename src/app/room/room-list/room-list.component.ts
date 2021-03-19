@@ -42,6 +42,7 @@ export class RoomListComponent implements OnInit {
     }
   ]
   constructor(private titleChange: AppComponent, private router: Router) {
+    
     this.titleChange.setTitle();
   }
   ngOnInit(): void {

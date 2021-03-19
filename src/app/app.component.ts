@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   displayHeading = true;
   screenName;
   routerPath:string = window.location.href.split("/",4)[3];
-  constructor(){
+  constructor(private location: Location){
         if(this.routerPath === "meeting-details" || this.routerPath === "room-list" || this.routerPath === "room-search"){
             this.displayHeading = false;
             this.screenName = this.routerPath.replace("-"," ");
@@ -18,5 +19,19 @@ export class AppComponent {
     }
   
   ngOnInit() {
+  }
+  setTitle = () => {
+    const route = window.location.href.split("/", 4)[3];
+    const sidebarRequired = ["my-meetings", "signin"];
+    if (sidebarRequired.includes(route)) {
+      this.displayHeading = true;
+      this.title = 'Meeting-App';
+    } else {
+      this.displayHeading = false;
+      this.title = route;
+    }
+  }
+  goBack = () => {
+    this.location.back();
   }
 }

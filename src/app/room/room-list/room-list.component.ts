@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-room-list',
@@ -38,7 +39,9 @@ export class RoomListComponent implements OnInit {
         "__v": 0
     }
 ]
-  constructor() { }
+constructor(private titleChange: AppComponent) {
+  this.titleChange.setTitle();
+}
   ngOnInit(): void {
   }
 

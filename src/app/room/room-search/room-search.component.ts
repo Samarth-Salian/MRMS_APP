@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { $ } from 'protractor';
-
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-room-search',
@@ -13,7 +13,9 @@ export class RoomSearchComponent implements OnInit {
   selected: any;
   locations = ['Select', 'Building A', 'Building B', 'Building C'];
 
-  constructor() { }
+  constructor(private titleChange: AppComponent) {
+    this.titleChange.setTitle();
+  }
 
   ngOnInit(): void {
 

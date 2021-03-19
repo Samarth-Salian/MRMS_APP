@@ -4,12 +4,9 @@
       <mat-icon>menu</mat-icon>
     </button>
     <ng-template #showBackButton>
-      <mat-icon>arrow_back</mat-icon>
+      <mat-icon (click)= "goBack()">arrow_back</mat-icon>
     </ng-template>
-    <span  *ngIf = "!displayHeading ; else displayScreenName" [ngClass]="'textAlign'" >{{ screenName }}</span>
-    <ng-template #displayScreenName>
-      {{ title }}
-    </ng-template>
+    <span [ngClass]="'textAlign'" >{{ title }}</span>
     <span class="example-spacer"></span>
     <button *ngIf = displayHeading mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>

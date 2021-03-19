@@ -1,1 +1,7 @@
-<p>meeting-list works!</p>
+<mat-card (click)="fnNavigateToMeeting($event)" class="example-card listContainer" *ngFor="let meeting of meetingListJson">
+    <mat-card-header>
+        <mat-card-title>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-title>
+        <mat-card-subtitle>{{meeting.name}} </mat-card-subtitle>
+    </mat-card-header>
+   
+</mat-card>

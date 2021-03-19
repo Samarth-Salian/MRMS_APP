@@ -1,7 +1,6 @@
-<mat-card class="example-card listContainer" *ngFor="let meeting of tempjson">
+<mat-card (click)="fnNavigateToMeeting($event)" class="example-card listContainer" *ngFor="let meeting of meetings">
     <mat-card-header>
-        <mat-card-title>{{meeting.slotFrom}}</mat-card-title>
+        <mat-card-title>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-title>
         <mat-card-subtitle>{{meeting.name}} </mat-card-subtitle>
-    </mat-card-header>
-   
+    </mat-card-header>  
 </mat-card>

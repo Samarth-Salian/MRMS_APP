@@ -12,42 +12,47 @@ import { UserListComponent } from './user/user-list/user-list.component';
 
 const routes: Routes = [
 
-    {
-      path:"",
-      component: SigninComponent
-    },
-    {
-      path:"my-meetings",
-      component: MyMeetingsComponent
-    },
-    {
-      path:"room-search",
-      component: RoomSearchComponent
-    },
-    {
-      path:"room-list",
-      component: RoomListComponent
-    },
-    {
-      path:"meeting-details",
-      component: MeetingDetailsComponent
-    },
-    {
-      path:"location-list",
-      component: LocationListComponent
-    },    
-    {
-      path:"location-details",
-      component: LocationDetailsComponent
-    }, 
-    {
-      path:"room-details",
-      component: RoomDetailsComponent
-    },
-    {
-      path:"user-list",
-      component: UserListComponent
-    },
+  {
+    path: "signin",
+    component: SigninComponent
+  },
+  {
+    path: "my-meetings",
+    component: MyMeetingsComponent
+  },
+  {
+    path: "room-search",
+    component: RoomSearchComponent
+  },
+  {
+    path: "room-list",
+    component: RoomListComponent
+  },
+  {
+    path: "meeting-details",
+    component: MeetingDetailsComponent
+  },
+  {
+    path: "location-list",
+    component: LocationListComponent
+  },
+  {
+    path: "location-details",
+    component: LocationDetailsComponent
+  },
+  {
+    path: "room-details",
+    component: RoomDetailsComponent
+  },
+  {
+    path: "user-list",
+    component: UserListComponent
+  },
+  {
+    path: '',
+    redirectTo: '/signin',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { $ } from 'protractor';
-
 @Component({
   selector: 'app-meeting-list',
   templateUrl: './meeting-list.component.html',
@@ -12,7 +10,6 @@ import { $ } from 'protractor';
 
 })
 export class MeetingListComponent implements OnInit {
-
   meetingListJson: any;
   constructor(public http: HttpClient,private router: Router) {
     this.getjson().subscribe(data => {
@@ -34,9 +31,7 @@ export class MeetingListComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
   public getjson(): Observable<any> {
     return this.http.get("assets/meetingList.json").pipe()
   }
@@ -48,7 +43,5 @@ export class MeetingListComponent implements OnInit {
       }});
     this.router.navigateByUrl('/meeting-details',{state: {data:meetingObj}});
   }
-
-
 }
 

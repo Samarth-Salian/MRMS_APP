@@ -24,6 +24,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,11 @@ import { ToastrModule } from 'ngx-toastr';
     NgxMaterialTimepickerModule,
     HttpClientModule,
     MatCardModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule, MatRippleModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

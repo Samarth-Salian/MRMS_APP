@@ -35,13 +35,8 @@ export class MeetingListComponent implements OnInit {
   public getjson(): Observable<any> {
     return this.http.get("assets/meetingList.json").pipe()
   }
-  public fnNavigateToMeeting(params:any): any {
-    let meetingObj = {};
-    this.meetings.forEach(function(e:any){
-      if(e.name === params.currentTarget.children[0].children[0].children[1].innerText){
-        meetingObj = e;
-      }});
-    this.router.navigateByUrl('/meeting-details',{state: {data:meetingObj}});
+  public fnNavigateToMeeting(selectedMeeting: any): any {
+    this.router.navigateByUrl('/meeting-details',{state: {data:selectedMeeting}});
   }
 }
 

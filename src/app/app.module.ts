@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    NgxMaterialTimepickerModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    ToastrModule.forRoot()
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

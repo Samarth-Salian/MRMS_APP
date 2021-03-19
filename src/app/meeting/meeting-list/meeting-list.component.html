@@ -1,7 +1,6 @@
-<mat-card class="listContainer" *ngFor="let meeting of meetings" routerLink="/room-search"
-    routerLinkActive="active">
+<mat-card (click)="fnNavigateToMeeting($event)" class="example-card listContainer" *ngFor="let meeting of meetings">
     <mat-card-header>
-        <mat-card-title>{{convertTime(meeting.slotFrom) +" to "+convertTime(meeting.slotTo)}}</mat-card-title>
+        <mat-card-title>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-title>
         <mat-card-subtitle>{{meeting.name}} </mat-card-subtitle>
-    </mat-card-header>
+    </mat-card-header>  
 </mat-card>

@@ -1,2 +1,78 @@
-<p>room-search works!</p>
-<a mat-raised-button href="/room-list">Search</a>
+<div class="wrapper">
+  <form formname="searchRoomForm">
+    <label for="location"><b>Locaton :</b></label>
+    <br>
+
+    <select type="dropdown" id="buldingnames" class="form-control">
+
+      <option class="form-control" *ngFor="let loc of locations" value="loc">
+        {{loc}}
+      </option>
+
+    </select>
+    <br>
+
+    <div class="form-outline">
+      <label for="date"><b>Date :</b></label>
+      <br>
+      <input type="date" id="dateId" class="form-control" />
+      <br>
+    </div>
+    <div class="form-outline">
+      <div class="w3-row-padding" style="margin:0 -16px;">
+        <div class="w3-half w3-margin-bottom">
+          <label for="appt"><b>From time:</b></label>
+          <br>
+          <input [ngxTimepicker]="ft">
+          <ngx-material-timepicker #ft [defaultTime]="'09:00 am'"></ngx-material-timepicker>
+        </div>
+        <div class="w3-half">
+          <label for="appt"><b>To time:</b></label>
+          <br>
+          <input [ngxTimepicker]="tt">
+          <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+    <label for="quantity"><b>Attendees :</b></label>
+    <br>
+    <input type="number" id="attendees" class="form-control" min="1" max="20" />
+
+    <br>
+    <b>LAN</b><label class="lanswitch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <br>
+
+
+    <b>Conference Phone</b><label class="videoswitch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <br>
+
+
+    <b>Video</b><label class="phoneswitch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <br>
+
+
+    <b>White Board</b><label class="boardswitch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <br>
+
+
+    <a mat-raised-button href="/room-list">Search</a>
+
+
+
+  </form>
+</div>

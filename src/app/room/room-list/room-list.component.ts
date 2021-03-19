@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./room-list.component.css']
 })
 export class RoomListComponent implements OnInit {
-  test = [
+  roomDetails = [
     {
         "_id": "6051bbae78b0bb34a04fd90b",
         "name": "Room D",

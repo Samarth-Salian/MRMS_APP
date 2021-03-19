@@ -1,30 +1,28 @@
-<!-- <a mat-raised-button href="/room-details">Room Details</a> -->
-
-<mat-card class="example-card listContainer" *ngFor="let test  of test let i = index">
+<mat-card class="example-card listContainer" *ngFor="let roomDetails of roomDetails let i = index" [routerLink]="['/meeting-details']">
     <mat-card-header>
-        <mat-card-title>{{test.name}}</mat-card-title>
-        <mat-card-subtitle>Seats: {{test.seats}}</mat-card-subtitle>
+        <mat-card-title>{{roomDetails.name}}</mat-card-title>
+        <mat-card-subtitle>Seats: {{roomDetails.seats}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <div>
             <span>Room Details</span>
         </div>
         <ul class="featureList">
-            <li>Phone No: <a href="tel:{{test.phoneNo}}">{{test.phoneNo}}</a></li>
-            <li>Floor: {{test.floor}}</li>
-            <li>Building Id: {{test.buildingId}}</li>
+            <li>Phone No: <a href="tel:{{roomDetails.phoneNo}}">{{roomDetails.phoneNo}}</a></li>
+            <li>Floor: {{roomDetails.floor}}</li>
+            <li>Building Id: {{roomDetails.buildingId}}</li>
         </ul>
     </mat-card-content>
     <div class="featuresDiv">
-        <img class="features {{test.voipAvailable ? '' : 'disableFeature'}}" src="../assets/2052-512.png">
+        <img class="features {{roomDetails.voipAvailable ? '' : 'disableFeature'}}" src="../assets/2052-512.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{test.videoAvailable ? '' : 'disableFeature'}}" src="../assets/camcorder-512.png">
+        <img class="features {{roomDetails.videoAvailable ? '' : 'disableFeature'}}" src="../assets/camcorder-512.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{test.lanAvailable ? '' : 'disableFeature'}}" src="../assets/ethernet_on1600.png">
+        <img class="features {{roomDetails.lanAvailable ? '' : 'disableFeature'}}" src="../assets/ethernet_on1600.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{test.whiteBoardAvailable ? '' : 'disableFeature'}}" src="../assets/43338.png">
+        <img class="features {{roomDetails.whiteBoardAvailable ? '' : 'disableFeature'}}" src="../assets/43338.png">
     </div>
 </mat-card>

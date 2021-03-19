@@ -11,9 +11,9 @@ export class AppComponent {
   screenName;
   routerPath:string = window.location.href.split("/",4)[3];
   constructor(){
-        if(this.routerPath === "meeting-details"){
+        if(this.routerPath === "meeting-details" || this.routerPath === "room-list" || this.routerPath === "room-search"){
             this.displayHeading = false;
-            this.screenName = this.routerPath;
+            this.screenName = this.routerPath.replace("-"," ");
         }
     }
   

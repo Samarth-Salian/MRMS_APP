@@ -1,0 +1,28 @@
+
+
+.feature{
+  width: 83%;
+}
+
+.labelCss{
+  font-family: 'Roboto';
+  font-size: 18px;
+   font-weight: 500;
+}
+
+.wrapper {
+  display: flex; 
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
+}
+.center {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.locationDetailsForm{
+  width : 100%
+}
+

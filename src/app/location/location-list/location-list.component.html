@@ -1,4 +1,4 @@
-<mat-card class="listContainer" *ngFor="let location of locations">
+<mat-card (click)="fnNavigateToLocation(location)" class="listContainer" *ngFor="let location of locations">
     <mat-card-header>
         <mat-card-title>{{location.buildingName}}</mat-card-title>
     </mat-card-header>
@@ -6,4 +6,6 @@
         <span>{{location.city}},{{location.country}}</span>
     </mat-card-content>
 </mat-card>
-<a mat-raised-button href="/location-details">Location Details</a>
+<div class="container">
+    <a routerLink="/location-details" routerLinkActive="active" ><button class="btn"><i class="fa fa-plus fa-xs"></i></button></a>  
+ </div>

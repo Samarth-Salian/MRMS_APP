@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { FormControl } from '@angular/forms';
+import { MeetingListComponent } from './../meeting/meeting-list/meeting-list.component';
 
 @Component({
   selector: 'app-calender',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalenderComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  date1 : any;
+  transformedDate: any;
+  constructor(public datepipe: DatePipe) {
   }
+  onCalendarChange(event: any) {
+    this.transformedDate = this.datepipe.transform(event.value, 'yyyy-MM-dd')
+  }
+  ngOnInit(): void {
+    let currentDate = new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate();
+   // this.fnTaskGlobalSearch(currentDate,currentDate);
+  }
+
 
 }

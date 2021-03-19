@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -7,6 +8,7 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./room-list.component.css']
 })
 export class RoomListComponent implements OnInit {
+  roomDetails:any=history.state.data;
   roomDetails = [
     {
         "_id": "6051bbae78b0bb34a04fd90b",
@@ -39,10 +41,20 @@ export class RoomListComponent implements OnInit {
         "__v": 0
     }
 ]
-constructor(private titleChange: AppComponent) {
-  this.titleChange.setTitle();
-}
+  constructor(private titleChange: AppComponent,private router: Router) {
+    this.titleChange.setTitle();
+  }
   ngOnInit(): void {
   }
-
+  public fnNavigateToMeetingDetails(params:any): any {
+  if(typeof(this.roomDetails)!=="undefined"){
+  params.date = this.roomDetails.date;
+  params.fromTime = this.roomDetails.fromTime;
+  params.toTime = this.roomDetails.toTime;
+  params.attendees = this.roomDetails.attendees;
+  params.Location = this.roomDetails.location;
+  params.roomId = params._id;
+  }
+   this.router.navigateByUrl('/meeting-details',{state: {data:params}});
+  }
 }

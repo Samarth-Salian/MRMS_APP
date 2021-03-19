@@ -24,8 +24,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { DatePipe } from '@angular/common'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
@@ -57,12 +60,15 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
     HttpClientModule,
     MatCardModule,
     ToastrModule.forRoot(),
+    FormsModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
     MatSlideToggleModule,
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule, MatRippleModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

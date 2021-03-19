@@ -1,11 +1,11 @@
 <div class="wrapper">
-  <form formname="searchRoomForm">
+  <form #searchForm = "ngForm"(ngSubmit) = "fnNavigateToRoomList(searchForm.value)" formname="searchRoomForm">
     <label for="location"><b>Locaton :</b></label>
     <br>
 
-    <select type="dropdown" id="buldingnames" class="form-control">
+    <select type="dropdown" id="buldingnames" class="form-control" name = "building" ngModel>
 
-      <option class="form-control" *ngFor="let loc of locations" value="loc">
+      <option class="form-control" *ngFor="let loc of locations" value={{loc}}>
         {{loc}}
       </option>
 
@@ -15,7 +15,7 @@
     <div class="form-outline">
       <label for="date"><b>Date :</b></label>
       <br>
-      <input type="date" id="dateId" class="form-control" />
+      <input type="date" id="dateId" class="form-control" name = "date" ngModel/>
       <br>
     </div>
     <div class="form-outline">
@@ -23,13 +23,13 @@
         <div class="w3-half w3-margin-bottom">
           <label for="appt"><b>From time:</b></label>
           <br>
-          <input [ngxTimepicker]="ft">
+          <input [ngxTimepicker]="ft" id="fromTime" name = "fromSlot" ngModel>
           <ngx-material-timepicker #ft [defaultTime]="'09:00 am'"></ngx-material-timepicker>
         </div>
         <div class="w3-half">
           <label for="appt"><b>To time:</b></label>
           <br>
-          <input [ngxTimepicker]="tt">
+          <input [ngxTimepicker]="tt" id="toTime" name = "toSlot" ngModel>
           <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker>
           <br>
         </div>
@@ -39,7 +39,7 @@
 
     <label for="quantity"><b>Attendees :</b></label>
     <br>
-    <input type="number" id="attendees" class="form-control" min="1" max="20" />
+    <input type="number" id="attendees" class="form-control" min="1" max="20" name = "attendee" ngModel/>
 
     <br>
     <b>LAN</b><label class="lanswitch">
@@ -68,9 +68,8 @@
       <span class="slider round"></span>
     </label>
     <br>
-
-
-    <a mat-raised-button href="/room-list">Search</a>
+    <button type="submit" mat-raised-button class="btn">Search</button>
+    
 
 
 

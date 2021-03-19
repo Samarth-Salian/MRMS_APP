@@ -2,7 +2,7 @@
   <form>
     <div class="form-group mt-3">
       <label for="title">Meeting Title:</label>
-      <input type="text" class="form-control" id="usr" value = {{meetingTitle}}>
+      <input type="text" class="form-control" id="usr" name = "Title" [(ngModel)]="meetingTitle">
     </div>
 
     <div class="form-group mt-2">
@@ -21,11 +21,11 @@
 
     <div class="form-group">
       <label for="title">Attendies:</label>
-      <input type="number" class="form-control" id="myNumber">
+      <input type="number" class="form-control" id="myNumber" name = "attendees" [(ngModel)]="meetingAttendees">
     </div>
 
     <div class="form-group center">
-      <a mat-raised-button routerLink="/my-meetings" (click)="getSubmitMsg()">Submit Meeting</a>
+      <a mat-raised-button (click)="getSubmitMsg()">Submit Meeting</a>
     </div> 
     
   </form>

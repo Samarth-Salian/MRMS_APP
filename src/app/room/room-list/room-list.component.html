@@ -1,6 +1,6 @@
 <!-- <a mat-raised-button href="/room-details">Room Details</a> -->
 
-<mat-card class="example-card listContainer" *ngFor="let test  of test let i = index">
+<mat-card (click)="fnNavigateToMeetingDetails(test)" class="example-card listContainer" *ngFor="let test  of test let i = index">
     <mat-card-header>
         <mat-card-title>{{test.name}}</mat-card-title>
         <mat-card-subtitle>Seats: {{test.seats}}</mat-card-subtitle>

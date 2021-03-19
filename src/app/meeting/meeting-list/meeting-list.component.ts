@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -7,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-meeting-list',
   templateUrl: './meeting-list.component.html',
   styleUrls: ['./meeting-list.component.css']
-
 })
 export class MeetingListComponent implements OnInit {
   meetings: any;
@@ -27,13 +25,16 @@ export class MeetingListComponent implements OnInit {
         e.fromTime = parseInt(fromSlot.split(':')[0]) <= 12 ? fromSlot+' AM' : parseInt(fromSlot.split(':')[0]) - 12+':'+fromSlot.split(':')[1]+' PM';
         e.toTime = parseInt(toSlot.split(':')[0]) <= 12 ? toSlot+' AM' : parseInt(toSlot.split(':')[0]) - 12+':'+toSlot.split(':')[1]+' PM';
       })
-      console.log(this.meetings)
+      if (typeof (history.state.data) !== "undefined") {
+        this.meetings.unshift(history.state.data);
+      }
+      console.log(this.meetings);
     })
   }
 
   ngOnInit(): void { }
   public getjson(): Observable<any> {
-    return this.http.get("assets/meetingList.json").pipe()
+    return this.http.get("assets/meetingList.json").pipe();
   }
   public fnNavigateToMeeting(params:any): any {
     let meetingObj = {};
@@ -43,5 +44,18 @@ export class MeetingListComponent implements OnInit {
       }});
     this.router.navigateByUrl('/meeting-details',{state: {data:meetingObj}});
   }
+  public fnTaskGlobalSearch = function (searchText: any, data: any) {
+    let results = [];
+    let toSearch = searchText;
+    let key;
+    for (var i = 0; i < data.length; i++) {
+      for(key in data[i]){
+        if (data[i][key].toString().indexOf(toSearch) != -1) {
+          results.push(data[i]);
+        }
+      }
+    }
+    console.log(results[0]);
+  };
 }
 

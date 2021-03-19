@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ThemePalette } from '@angular/material/core';
 import { $ } from 'protractor';
-
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-room-search',
@@ -9,14 +10,14 @@ import { $ } from 'protractor';
   styleUrls: ['./room-search.component.css']
 })
 export class RoomSearchComponent implements OnInit {
-
+  color: ThemePalette = 'primary';
   selected: any;
-  locations = ['Select', 'Building 1', 'Building 2', 'Building 3'];
-  constructor(private router: Router) { }
-
+  locations = ['Select', 'Building A', 'Building B', 'Building C'];
+  constructor(private titleChange: AppComponent, private router: Router) {
+    this.titleChange.setTitle();
+  }
 
   ngOnInit(): void {
-
   }
   onOptionsSelected() {
     console.log(this.selected)
@@ -31,6 +32,5 @@ export class RoomSearchComponent implements OnInit {
     roomDetailsObj.attendees = params.attendee;
     this.router.navigateByUrl('/room-list', { state: { data: roomDetailsObj } });
   }
-
 }
 

@@ -11,6 +11,7 @@ export class SigninComponent implements OnInit {
   appName = "";
   constructor(public appComponent: AppComponent) {
     this.appName = this.appComponent.title;
+    this.appComponent.setTitle();
    }
 
   ngOnInit(): void {

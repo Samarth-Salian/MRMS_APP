@@ -4,12 +4,9 @@
       <mat-icon>menu</mat-icon>
     </button>
     <ng-template #showBackButton>
-      <mat-icon>arrow_back</mat-icon>
+      <mat-icon (click)= "goBack()">arrow_back</mat-icon>
     </ng-template>
-    <span  *ngIf = "!displayHeading ; else displayScreenName" [ngClass]="'textAlign'" >{{ screenName }}</span>
-    <ng-template #displayScreenName>
-      {{ title }}
-    </ng-template>
+    <span [ngClass]="'textAlign'" >{{ title }}</span>
     <span class="example-spacer"></span>
     <button *ngIf = displayHeading mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
@@ -22,9 +19,9 @@
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-      <a href="/location-list" mat-list-item>Locations</a>
-      <a href="/room-list" mat-list-item>Meeting Rooms</a>
-      <a href="/user-list" mat-list-item>Users</a>
+      <a [routerLink]="['/location-list']" mat-list-item>Locations</a>
+      <a [routerLink]="['/room-list']" mat-list-item>Meeting Rooms</a>
+      <a [routerLink]="['/user-list']" mat-list-item>Users</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

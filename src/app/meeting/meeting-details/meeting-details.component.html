@@ -14,6 +14,7 @@
       <label for="title">Room:</label>
       <p>{{meetingRoom}}</p>
     </div>
+    
     <div class="form-group">
       <label for="title">Meeting Date & Time:</label>
       <p>{{meetingSchedule}}</p>
@@ -23,11 +24,9 @@
       <label for="title">Attendies:</label>
       <input type="number" class="form-control" id="myNumber" name = "attendees" [(ngModel)]="meetingAttendees">
     </div>
-
-    <div class="form-group center">
-      <a mat-raised-button (click)="getSubmitMsg()">Submit Meeting</a>
+    <div class="center">
+      <button mat-raised-button class="searchBtn" color="primary" routerLink="/my-meetings" (click)="getSubmitMsg()">Submit Meeting</button>
     </div> 
-    
   </form>
 
 </div>

@@ -25,10 +25,12 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 import { DatePipe } from '@angular/common'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -59,10 +61,12 @@ import { DatePipe } from '@angular/common'
     MatCardModule,
     ToastrModule.forRoot(),
     FormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule, MatRippleModule
   ],
   providers: [HttpClientModule,DatePipe],
   bootstrap: [AppComponent]

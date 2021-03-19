@@ -1,1 +1,17 @@
-<p>user-list works!</p>
+<mat-card class="listContainer" *ngFor="let user of users">
+    <mat-card-header>
+        <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <span>{{user.emailId}}</span>
+    </mat-card-content>
+    <mat-card-actions>
+        <div *ngIf="user.adminRole">
+            <button mat-button (click)="getUserMsg()">Downgrade to User</button>
+        </div>
+        <div *ngIf="!user.adminRole">
+            <button mat-button (click)="getAdminMsg()">Upgrade to Admin</button>
+        </div>
+      </mat-card-actions>
+</mat-card>
+

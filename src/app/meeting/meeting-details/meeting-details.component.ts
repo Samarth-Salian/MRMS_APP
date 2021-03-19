@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MeetingService } from '../../services/meeting.service'
 import { Router } from '@angular/router';
+import { MeetingService } from '../../services/meeting.service';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-meeting-details',
@@ -14,7 +15,8 @@ export class MeetingDetailsComponent implements OnInit {
   meetingSchedule: string = "";
   meetingAttendees:any;
   meetingObj: any = history.state.data;
-  constructor(public meetingService: MeetingService,private router: Router) {
+  constructor(public meetingService: MeetingService, private titleChange:AppComponent,private router: Router) {
+    this.titleChange.setTitle();
     if (typeof (history.state.data) !== "undefined") {
       this.meetingTitle = this.meetingObj.name;
       this.meetingLocation = this.meetingObj.Location;

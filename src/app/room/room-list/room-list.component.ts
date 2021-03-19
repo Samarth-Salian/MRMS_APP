@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-room-list',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class RoomListComponent implements OnInit {
   roomDetails:any=history.state.data;
-  test = [
+  roomDetails = [
     {
         "_id": "6051bbae78b0bb34a04fd90b",
         "name": "Room D",
@@ -40,7 +41,9 @@ export class RoomListComponent implements OnInit {
         "__v": 0
     }
 ]
-  constructor(private router: Router) { }
+  constructor(private titleChange: AppComponent,private router: Router) {
+    this.titleChange.setTitle();
+  }
   ngOnInit(): void {
   }
   public fnNavigateToMeetingDetails(params:any): any {
@@ -54,5 +57,4 @@ export class RoomListComponent implements OnInit {
   }
    this.router.navigateByUrl('/meeting-details',{state: {data:params}});
   }
-
 }

@@ -1,6 +1,8 @@
 <div class="wrapper">
   <form formname="searchRoomForm">
-    <label for="location"><b>Locaton :</b></label>
+
+    <div class="form-group">
+    <label for="location" style="padding-right: 300px"><b>Locaton :</b></label>
     <br>
 
     <select type="dropdown" id="buldingnames" class="form-control">
@@ -10,30 +12,21 @@
       </option>
 
     </select>
-    <br>
-
-    <div class="form-outline">
-      <label for="date"><b>Date :</b></label>
-      <br>
-      <input type="date" id="dateId" class="form-control" />
-      <br>
     </div>
-    <div class="form-outline">
-      <div class="w3-row-padding" style="margin:0 -16px;">
-        <div class="w3-half w3-margin-bottom">
+
+    <div class="form-group">
+      <label for="date"><b>Date :</b></label>
+      <input type="date" id="dateId" class="form-control" />
+    </div>
+    <div class="form-group">
           <label for="appt"><b>From time:</b></label>
           <br>
-          <input [ngxTimepicker]="ft">
+          <input [ngxTimepicker]="ft" class="form-control">
           <ngx-material-timepicker #ft [defaultTime]="'09:00 am'"></ngx-material-timepicker>
-        </div>
-        <div class="w3-half">
+       
           <label for="appt"><b>To time:</b></label>
-          <br>
-          <input [ngxTimepicker]="tt">
+          <input [ngxTimepicker]="tt" class="form-control">
           <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker>
-          <br>
-        </div>
-      </div>
     </div>
 
 

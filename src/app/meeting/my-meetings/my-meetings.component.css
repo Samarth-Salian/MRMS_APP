@@ -1,25 +1,32 @@
+.container {
+  width: 60px;
+  position: fixed;
+  bottom: 48px;
+  right: 48px;
+  margin-left: 0px;
+  margin-top: 0px;
+}
 
-  .container{
-    width:60px;
-    position:fixed;
-    bottom:48px;
-    right:48px;
-    margin-left: 0px;
-    margin-top: 0px;
-
-  }
-  .btn {
-  position:fixed;
+.btn {
+  position: fixed;
   width: 48px;
   height: 48px;
-  bottom:0px;
-	right:30px;
-	background-color:rgb(13, 16, 43);
-	color:#FFF;
-	border-radius:30px;
-	text-align:center;
+  bottom: 0px;
+  right: 30px;
+  background-color: rgb(13, 16, 43);
+  color: #FFF;
+  border-radius: 30px;
+  text-align: center;
 }
-.datePickerDiv{
+
+.datePickerDiv {
   width: 100%;
   /* background-color: #fff; */
+}
+
+.fab-bottom-right {
+  position: fixed;
+  left: auto;
+  bottom: 5%;
+  right: 10%;
 }

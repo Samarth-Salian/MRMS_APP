@@ -4,7 +4,9 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<app-meeting-list></app-meeting-list>  
-<div class="container">
-    <a routerLink="/room-search" routerLinkActive="active" ><button class="btn"><i class="fa fa-plus fa-xs"></i></button></a>  
- </div>
+<app-meeting-list></app-meeting-list>
+<button mat-fab class="fab-bottom-right" routerLink="/room-search" routerLinkActive="active" color="primary">
+    <mat-icon>
+        <i class="material-icons md-48">add</i>
+    </mat-icon>
+ </button>

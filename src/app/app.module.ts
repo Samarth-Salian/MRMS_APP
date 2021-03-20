@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,13 +24,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatInputModule} from '@angular/material/input';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
     MatInputModule,
     MatNativeDateModule, MatRippleModule
   ],
-  providers: [HttpClientModule,DatePipe],
+  providers: [HttpClientModule, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

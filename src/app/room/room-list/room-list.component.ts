@@ -13,10 +13,12 @@ import { AppComponent } from '../../app.component';
 export class RoomListComponent {
   roomDetails: Room = history.state.data;
   rooms: Room[] = [];
+  conditionalFabIcon:boolean;
 
   constructor(private titleChange: AppComponent, private router: Router, public http: HttpClient) {
 
     this.titleChange.setTitle();
+    this.conditionalFabIcon = this.titleChange.showFabIcon
     this.getjson().subscribe(data => {
       this.rooms = data;
     })

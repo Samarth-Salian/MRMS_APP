@@ -9,6 +9,7 @@ import { Location } from '@angular/common'
 export class AppComponent {
   title = 'Meeting-App';
   displayHeading = true;
+  showFabIcon = true;
   screenName;
   routerPath:string = window.location.href.split("/",4)[3];
   constructor(private location: Location){

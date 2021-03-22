@@ -18,6 +18,7 @@ export class RoomSearchComponent implements OnInit {
 
   constructor(private titleChange: AppComponent, private router: Router) {
     this.titleChange.setTitle();
+    this.titleChange.showFabIcon = false;
     this.roomSearch = new Room();
   }
 

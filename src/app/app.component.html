@@ -19,9 +19,9 @@
   <mat-sidenav #sidenav>
     <mat-nav-list>
       <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-      <a [routerLink]="['/location-list']" mat-list-item>Locations</a>
-      <a [routerLink]="['/room-list']" mat-list-item>Meeting Rooms</a>
-      <a [routerLink]="['/user-list']" mat-list-item>Users</a>
+      <a (click)="sidenav.toggle()" [routerLink]="['/location-list']" mat-list-item>Locations</a>
+      <a (click)="sidenav.toggle()" [routerLink]="['/room-list']" mat-list-item>Meeting Rooms</a>
+      <a (click)="sidenav.toggle()" [routerLink]="['/user-list']" mat-list-item>Users</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

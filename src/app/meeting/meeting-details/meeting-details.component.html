@@ -1,26 +1,26 @@
 <div class="container">
   <form>
     <mat-form-field class="example-full-width">
-      <mat-label>Meeting Title :</mat-label>
+      <mat-label>Meeting Title </mat-label>
       <input matInput name="title" [(ngModel)]="meeting.name">
     </mat-form-field>
 
     <div class="form-group mt-2">
-      <label for="title">Location:</label>
+      <label for="title">Location</label>
       <p>{{meeting.location}}</p>
     </div>
 
     <div class="form-group">
-      <label for="title">Room:</label>
+      <label for="title">Room</label>
       <p>{{meeting.room}}</p>
     </div>
 
     <div class="form-group">
-      <label for="title">Meeting Date & Time:</label>
+      <label for="title">Meeting Date & Time</label>
       <p>{{meetingSchedule}}</p>
     </div>
     <mat-form-field class="example-full-width">
-      <mat-label>Attendies :</mat-label>
+      <mat-label>Attendies </mat-label>
       <input matInput type="number" name="seats" [(ngModel)]="meeting.seats">
     </mat-form-field>
 

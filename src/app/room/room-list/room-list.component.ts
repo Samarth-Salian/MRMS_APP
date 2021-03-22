@@ -13,7 +13,7 @@ import { AppComponent } from '../../app.component';
 export class RoomListComponent {
   roomDetails: Room = history.state.data;
   rooms: Room[] = [];
-  conditionalFabIcon:boolean;
+  conditionalFabIcon: boolean;
 
   constructor(private titleChange: AppComponent, private router: Router, public http: HttpClient) {
 
@@ -28,7 +28,15 @@ export class RoomListComponent {
   }
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
-    this.router.navigateByUrl('/room-details', { state: { data: selectedRoom , flow : "createMeeting" } });
+
+    Object.defineProperty(selectedRoom, 'roomCreationDetails', {
+      value: this.roomDetails,
+      writable: false,
+      enumerable: true,
+      configurable: true
+    });
+    this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
+
   }
 
 }

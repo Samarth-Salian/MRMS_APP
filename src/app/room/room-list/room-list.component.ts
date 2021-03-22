@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Meeting } from 'src/app/models/meeting';
-import { Room } from 'src/app/models/room';
+import { Room } from '../../models/room';
 import { AppComponent } from '../../app.component';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { Meeting } from 'src/app/models/meeting';
+import { Meeting } from '../../models/meeting';
 @Component({
   selector: 'app-meeting-list',
   templateUrl: './meeting-list.component.html',

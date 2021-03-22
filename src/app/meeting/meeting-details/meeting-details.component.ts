@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MeetingService } from '../../services/meeting.service';
 import { AppComponent } from '../../app.component';
-import { Room } from 'src/app/models/room';
-import { Meeting } from 'src/app/models/meeting';
+import { Room } from '../../models/room';
+import { Meeting } from '../../models/meeting';
 
 @Component({
   selector: 'app-meeting-details',

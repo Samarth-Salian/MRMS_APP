@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MeetingService } from '../../services/meeting.service';
 import { AppComponent } from '../../app.component';
-import { Room } from 'src/app/models/room';
+import { Room } from '../../models/room';
+import { Meeting } from '../../models/meeting';
 
 @Component({
   selector: 'app-meeting-details',
@@ -10,38 +11,53 @@ import { Room } from 'src/app/models/room';
   styleUrls: ['./meeting-details.component.css']
 })
 export class MeetingDetailsComponent implements OnInit {
-  meetingTitle: string = "";
-  meetingLocation: string = "";
-  meetingRoom: string = "";
   meetingSchedule: string = "";
-  meetingAttendees: any;
-  selectedRoom: Room = history.state.data;
+  meeting: Meeting;
+  selectedMeeting: Meeting;
+  selectedRoom: Room;
+  submitMsg: string = "Meeting details submitted successfully";
   constructor(public meetingService: MeetingService, private titleChange: AppComponent, private router: Router) {
     this.titleChange.setTitle();
+    this.meeting = new Meeting();
+    this.selectedMeeting = new Meeting();
+    this.selectedRoom = new Room();
+    console.log(history.state);
     if (typeof (history.state.data) !== "undefined") {
-
-      this.meetingLocation = this.selectedRoom.location;
-      this.meetingRoom = this.selectedRoom.name;
-      if (typeof (this.selectedRoom.date) !== "undefined") {
-        this.meetingSchedule = this.selectedRoom.date + ' ' + this.selectedRoom.fromTime + ' ' + this.selectedRoom.toTime;
+      if (history.state.flow === "createMeeting") {
+        this.selectedRoom = history.state.data;
+        if (typeof (history.state.data.roomCreationDetails._date) !== "undefined") {
+          this.meetingSchedule = history.state.data.roomCreationDetails._date + " " + history.state.data.roomCreationDetails._fromTime + " " + history.state.data.roomCreationDetails._toTime;
+        }
+        this.meeting.location = history.state.data.roomCreationDetails._location;
+        this.meeting.room = this.selectedRoom.name;
+        this.meeting.fromTime = this.selectedRoom.fromTime;
+        this.meeting.toTime = this.selectedRoom.toTime;
+        this.meeting.date = this.selectedRoom.date
+        // this.meeting.seats = this.selectedRoom.seats;
+      } else if (history.state.flow === "editMeeting") {
+        this.selectedMeeting = history.state.data;
+        if (typeof (history.state.data.roomCreationDetails._date) !== "undefined") {
+          this.meetingSchedule = history.state.data.roomCreationDetails._date + " " + history.state.data.roomCreationDetails._fromTime + " " + history.state.data.roomCreationDetails._toTime;
+        }
+        this.meeting.name = this.selectedMeeting.name;
+        this.meeting.location = this.selectedMeeting.location;
+        this.meeting.room = this.selectedMeeting.room;
+        this.meeting.seats = this.selectedMeeting.seats;
+        this.meeting.fromTime = this.selectedMeeting.fromTime;
+        this.meeting.toTime = this.selectedMeeting.toTime;
+        this.meeting.date = this.selectedMeeting.date
+      } else {
+        //TODO handle exception
       }
-      this.meetingAttendees = this.selectedRoom.seats;
+    } else {
+      //TODO handle undefined
     }
   }
-  submitMsg: String = "Meeting details submitted successfully";
   ngOnInit(): void {
 
   }
   getSubmitMsg() {
-    let newMeetingObj: any = {};
-    newMeetingObj.Location = this.meetingLocation;
-    newMeetingObj._id = this.meetingRoom;
-    newMeetingObj.attendees = this.meetingAttendees;
-    newMeetingObj.name = this.meetingTitle;
-    newMeetingObj.fromTime = this.selectedRoom.fromTime;
-    newMeetingObj.toTime = this.selectedRoom.toTime;
-    this.meetingService.showSuccess(this.submitMsg);
-    this.router.navigateByUrl('/my-meetings', { state: { data: newMeetingObj } });
+    this.meetingService.fnShowMessage(this.submitMsg, '');
+    this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
   }
-
 }

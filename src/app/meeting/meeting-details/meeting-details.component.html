@@ -1,32 +1,33 @@
 <div class="container">
   <form>
-    <div class="form-group mt-3">
-      <label for="title">Meeting Title:</label>
-      <input type="text" class="form-control" id="usr" name = "Title" [(ngModel)]="meetingTitle">
-    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Meeting Title </mat-label>
+      <input matInput name="title" [(ngModel)]="meeting.name">
+    </mat-form-field>
 
     <div class="form-group mt-2">
-      <label for="title">Location:</label>
-      <p>{{meetingLocation}}</p>
+      <label for="title">Location</label>
+      <p>{{meeting.location}}</p>
     </div>
 
     <div class="form-group">
-      <label for="title">Room:</label>
-      <p>{{meetingRoom}}</p>
+      <label for="title">Room</label>
+      <p>{{meeting.room}}</p>
     </div>
-    
+
     <div class="form-group">
-      <label for="title">Meeting Date & Time:</label>
+      <label for="title">Meeting Date & Time</label>
       <p>{{meetingSchedule}}</p>
     </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Attendies </mat-label>
+      <input matInput type="number" name="seats" [(ngModel)]="meeting.seats">
+    </mat-form-field>
 
-    <div class="form-group">
-      <label for="title">Attendies:</label>
-      <input type="number" class="form-control" id="myNumber" name = "attendees" [(ngModel)]="meetingAttendees">
-    </div>
     <div class="center">
-      <button mat-raised-button class="searchBtn" color="primary" routerLink="/my-meetings" (click)="getSubmitMsg()">Submit Meeting</button>
-    </div> 
+      <button mat-raised-button class="searchBtn" color="primary" routerLink="/my-meetings"
+        (click)="getSubmitMsg()">Submit Meeting</button>
+    </div>
   </form>
 
 </div>

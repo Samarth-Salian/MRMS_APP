@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Room } from 'src/app/models/room';
+import { Room } from '../../models/room';
 import { AppComponent } from '../../app.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { AppComponent } from '../../app.component';
 export class RoomListComponent {
   roomDetails: Room = history.state.data;
   rooms: Room[] = [];
-  conditionalFabIcon:boolean;
+  conditionalFabIcon: boolean;
 
   constructor(private titleChange: AppComponent, private router: Router, public http: HttpClient) {
 
@@ -27,8 +27,14 @@ export class RoomListComponent {
     return this.http.get("assets/roomList.json").pipe();
   }
 
-  public fnNavigateToMeetingDetails(selectedRoom: Room): any {
-    this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom } });
+  public fnNavigateToMeetingDetails(selectedRoom: Room): void {
+    Object.defineProperty(selectedRoom, 'roomCreationDetails', {
+      value: this.roomDetails,
+      writable: false,
+      enumerable: true,
+      configurable: true
+    });
+    this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
   }
 
 }

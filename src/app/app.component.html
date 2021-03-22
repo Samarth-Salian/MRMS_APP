@@ -19,7 +19,6 @@
   <mat-sidenav-container>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
         <a (click)="sidenav.toggle()" [routerLink]="['/location-list']" mat-list-item>Locations</a>
         <a (click)="sidenav.toggle();fnNavigateRoomList();" mat-list-item>Meeting Rooms</a>
         <a (click)="sidenav.toggle()" [routerLink]="['/user-list']" mat-list-item>Users</a>

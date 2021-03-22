@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MeetingService } from '../../services/meeting.service';
 import { AppComponent } from '../../app.component';
 import { Room } from 'src/app/models/room';
+import { Meeting } from 'src/app/models/meeting';
 
 @Component({
   selector: 'app-meeting-details',
@@ -15,10 +16,22 @@ export class MeetingDetailsComponent implements OnInit {
   meetingRoom: string = "";
   meetingSchedule: string = "";
   meetingAttendees: any;
-  selectedRoom: Room = history.state.data;
+  meeting: Meeting;
+  selectedMeeting: Meeting;
+  selectedRoom: Room;
   constructor(public meetingService: MeetingService, private titleChange: AppComponent, private router: Router) {
     this.titleChange.setTitle();
+    this.meeting = new Meeting();
+    this.selectedMeeting = new Meeting();
+    this.selectedRoom = new Room();
     if (typeof (history.state.data) !== "undefined") {
+      if (history.state.data.flow = "createMeeting") {
+        this.selectedRoom=history.state.data;
+      } else if (history.state.data.flow = "editMeeting") {
+        this.selectedMeeting=history.state.data;
+      } else {
+        //TODO handle exception
+      }
 
       this.meetingLocation = this.selectedRoom.location;
       this.meetingRoom = this.selectedRoom.name;
@@ -26,6 +39,8 @@ export class MeetingDetailsComponent implements OnInit {
         this.meetingSchedule = this.selectedRoom.date + ' ' + this.selectedRoom.fromTime + ' ' + this.selectedRoom.toTime;
       }
       this.meetingAttendees = this.selectedRoom.seats;
+    } else {
+      //TODO handled undefined
     }
   }
   submitMsg: String = "Meeting details submitted successfully";

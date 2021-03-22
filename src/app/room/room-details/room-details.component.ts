@@ -34,6 +34,7 @@ export class RoomDetailsComponent implements OnInit {
     }
   }
 
+  
   ngOnInit(): void {
   }
   getSubmitMsg() {

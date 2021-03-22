@@ -32,7 +32,6 @@ export class RoomSearchComponent implements OnInit {
   public fnNavigateToRoomList() {
     console.log(this.roomSearch);
     this.roomSearch.date = (<Moment><unknown>this.roomSearch.date).format('DD-MM-YYYY');
-    console.log(`after ${JSON.stringify(this.roomSearch)}`);
     this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
   }
 }

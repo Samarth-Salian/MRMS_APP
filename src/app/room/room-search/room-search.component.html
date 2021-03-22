@@ -20,14 +20,14 @@
         <div class="w3-row-padding">
             <div class="w3-half w3-margin-bottom fromTimeDiv">
                 <mat-form-field class="example-full-width">
-                    <mat-label>From :</mat-label>
+                    <mat-label>From </mat-label>
                     <input matInput [ngxTimepicker]="ft" [(ngModel)]="roomSearch.fromTime" name="fromSlot">
                     <ngx-material-timepicker #ft [defaultTime]="'09:00 am'"></ngx-material-timepicker>
                 </mat-form-field>
             </div>
             <div class="w3-half toTimeDiv">
                 <mat-form-field class="example-full-width">
-                    <mat-label>To :</mat-label>
+                    <mat-label>To </mat-label>
                     <input matInput [ngxTimepicker]="tt" [(ngModel)]="roomSearch.toTime" name="toSlot">
                     <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker>
 
@@ -41,7 +41,7 @@
         </div>
     </div>
     <mat-form-field class="example-full-width">
-        <mat-label>Seats :</mat-label>
+        <mat-label>Seats </mat-label>
         <input matInput type="number" min="1" max="20" [(ngModel)]="roomSearch.seats" name="seats">
     </mat-form-field>
 

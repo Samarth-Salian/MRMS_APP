@@ -31,6 +31,20 @@ import { DatePipe } from '@angular/common'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD-MM-YYYY',
+  },
+  display: {
+    dateInput: 'DD-MM-YYYY',
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  },
+};
 
 @NgModule({
   declarations: [
@@ -66,9 +80,13 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
     MatSlideToggleModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule, MatRippleModule
+    MatNativeDateModule,
+    MatRippleModule,
+    MomentDateModule
   ],
-  providers: [HttpClientModule, DatePipe],
+  providers: [HttpClientModule,
+    DatePipe,
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

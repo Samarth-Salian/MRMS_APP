@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
-import { DatePipe } from '@angular/common';
 import { AppComponent } from '../../app.component';
-import { Room } from 'src/app/room';
+import { Room } from 'src/app/models/room';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-room-search',
@@ -16,7 +16,7 @@ export class RoomSearchComponent implements OnInit {
   locations = ['Select', 'Building A', 'Building B', 'Building C'];
   roomSearch: Room;
 
-  constructor(private titleChange: AppComponent, private router: Router, public datepipe: DatePipe) {
+  constructor(private titleChange: AppComponent, private router: Router) {
     this.titleChange.setTitle();
     this.roomSearch = new Room();
   }
@@ -29,6 +29,9 @@ export class RoomSearchComponent implements OnInit {
   }
 
   public fnNavigateToRoomList() {
+    console.log(this.roomSearch);
+    this.roomSearch.date = (<Moment><unknown>this.roomSearch.date).format('DD-MM-YYYY');
+    console.log(`after ${JSON.stringify(this.roomSearch)}`);
     this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
   }
 }

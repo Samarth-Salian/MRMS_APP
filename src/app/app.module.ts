@@ -33,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -82,7 +83,8 @@ export const MY_DATE_FORMATS = {
     MatInputModule,
     MatNativeDateModule,
     MatRippleModule,
-    MomentDateModule
+    MomentDateModule,
+    MatSelectModule
   ],
   providers: [HttpClientModule,
     DatePipe,

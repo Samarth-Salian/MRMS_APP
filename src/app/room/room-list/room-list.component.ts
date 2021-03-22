@@ -28,7 +28,7 @@ export class RoomListComponent {
   }
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
-    this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom , flow : "createMeeting" } });
+    this.router.navigateByUrl('/room-details', { state: { data: selectedRoom , flow : "createMeeting" } });
   }
 
 }

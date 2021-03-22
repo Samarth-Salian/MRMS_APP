@@ -29,14 +29,15 @@
 .disableFeature{
     opacity: 0.2;
 }
-.material-icons{
-    position: absolute;
-    left: -1px;
-    top: -1px;
-}
 .mat-card-header-text{
     margin: 0px 0px !important;
 }
 .featureList{
     padding: 0px 0px 0px 24px;
 }
+.fab-bottom-right {
+    position: fixed;
+    left: auto;
+    bottom: 5%;
+    right: 10%;
+  }

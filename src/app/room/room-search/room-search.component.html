@@ -19,28 +19,32 @@
     <div class="form-outline">
         <div class="w3-row-padding">
             <div class="w3-half w3-margin-bottom fromTimeDiv">
-                <div>
-                    <label for="appt" class="labelCss">From</label>
-                </div>
-                <input [ngxTimepicker]="ft" class="fromTimeInput" [(ngModel)]="roomSearch.fromTime" name="fromSlot">
-                <ngx-material-timepicker #ft [defaultTime]="'09:00 am'"></ngx-material-timepicker>
+                <mat-form-field class="example-full-width">
+                    <mat-label>From :</mat-label>
+                    <input matInput [ngxTimepicker]="ft" [(ngModel)]="roomSearch.fromTime" name="fromSlot">
+                    <ngx-material-timepicker #ft [defaultTime]="'09:00 am'"></ngx-material-timepicker>
+                </mat-form-field>
             </div>
             <div class="w3-half toTimeDiv">
-                <div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>To :</mat-label>
+                    <input matInput [ngxTimepicker]="tt" [(ngModel)]="roomSearch.toTime" name="toSlot">
+                    <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker>
+
+                </mat-form-field>
+                <!-- <div>
                     <label for="appt" class="labelCss">To</label>
                 </div>
                 <input [ngxTimepicker]="tt" class="toTimeInput" [(ngModel)]="roomSearch.toTime" name="toSlot">
-                <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker>
+                <ngx-material-timepicker #tt [defaultTime]="'10:00 am'"></ngx-material-timepicker> -->
             </div>
         </div>
     </div>
-    <div class="example-full-width seatSection">
-        <div>
-            <label class="labelCss">Seats</label>
-        </div>
-        <input type="number" placeholder="" class="seatsInput" min="1" max="20" [(ngModel)]="roomSearch.seats"
-            name="seats">
-    </div>
+    <mat-form-field class="example-full-width">
+        <mat-label>Seats :</mat-label>
+        <input matInput type="number" min="1" max="20" [(ngModel)]="roomSearch.seats" name="seats">
+    </mat-form-field>
+
     <div class="sliderContainer">
         <div>
             <label for="" class="labelCss">Select Features</label>

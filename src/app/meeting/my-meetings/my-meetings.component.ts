@@ -10,6 +10,7 @@ export class MyMeetingsComponent implements OnInit {
 
   constructor(private titleChange:AppComponent) {
     this.titleChange.setTitle();
+    this.titleChange.showFabIcon = true;
    }
 
   ngOnInit(): void {

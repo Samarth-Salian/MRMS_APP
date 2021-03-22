@@ -1,17 +1,20 @@
 <div class="wrapper">
     <form class="locationDetailsForm">
-        <label for="fname">Building Name :</label>
-        <div class="form-group">
-            <input type="text" id="buildingName" class="form-control" value={{buildingName}}>
-        </div>        
-        <label for="">city:</label>
-        <div class="form-group">
-            <input type="text" class="form-control" id="city" value={{city}}>
-        </div>
-        <label for="">country :</label>
-        <div class="form-group">
-            <input type="text" class="form-control" id="country" value={{country}}>
-        </div>
+        <mat-form-field class="example-full-width">
+            <mat-label>Building Name :</mat-label>
+            <input matInput value={{buildingName}}>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>city :</mat-label>
+            <input matInput value={{city}}>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>city :</mat-label>
+            <input matInput value={{city}}>
+        </mat-form-field>
+
         <div class="form-group center">
             <a mat-raised-button routerLink="/location-list" (click)="getSubmitMsg()">Submit</a>
         </div>

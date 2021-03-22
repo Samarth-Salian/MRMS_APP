@@ -1,4 +1,5 @@
-<mat-card (click)="fnNavigateToMeetingDetails(room)" class="example-card listContainer" *ngFor="let room of rooms let i = index">
+<mat-card (click)="fnNavigateToMeetingDetails(room)" class="example-card listContainer"
+    *ngFor="let room of rooms let i = index">
     <mat-card-header>
         <mat-card-title>{{room.name}}</mat-card-title>
         <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
@@ -26,3 +27,8 @@
         <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" src="../assets/43338.png">
     </div>
 </mat-card>
+<button *ngIf = "conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-search" routerLinkActive="active" color="primary">
+    <mat-icon>
+        <i class="material-icons md-48">add</i>
+    </mat-icon>
+</button>

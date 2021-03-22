@@ -12,6 +12,7 @@ label {
     height: 51px;
     border-radius: 100px;
  }
- input, input:focus {
-    background-color: rgba(0,0,0,.04);
- }
+ 
+ .example-full-width {
+    width: 100%;
+   }

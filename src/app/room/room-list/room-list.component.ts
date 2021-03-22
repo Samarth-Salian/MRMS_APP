@@ -28,17 +28,18 @@ export class RoomListComponent {
   }
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
-
-    Object.defineProperty(selectedRoom, 'roomCreationDetails', {
-      value: this.roomDetails,
-      writable: false,
-      enumerable: true,
-      configurable: true
-    });
-    this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
-
+    if (history.state.data === "Root Menu") {
+      this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: "creatRoom" } });
+    } else {
+      Object.defineProperty(selectedRoom, 'roomCreationDetails', {
+        value: this.roomDetails,
+        writable: false,
+        enumerable: true,
+        configurable: true
+      });
+      this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
+    }
   }
-
 }
 
 

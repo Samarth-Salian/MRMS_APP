@@ -28,6 +28,7 @@ export class RoomListComponent {
   }
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
+
     Object.defineProperty(selectedRoom, 'roomCreationDetails', {
       value: this.roomDetails,
       writable: false,
@@ -35,9 +36,12 @@ export class RoomListComponent {
       configurable: true
     });
     this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
+
   }
 
 }
+
+
 
 
 

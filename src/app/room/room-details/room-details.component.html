@@ -1,1 +1,47 @@
-<p>room-details works!</p>
+<form #searchForm="ngForm" class="roomSearchContainer">
+    <mat-form-field class="fromInputDiv">
+        <mat-label>Room</mat-label>
+        <input matInput type="text" value={{name}}>
+    </mat-form-field>
+
+    <mat-form-field class="fromInputDiv">
+        <mat-label>Choose a Locaton</mat-label>
+        <input matInput type="text" value={{location}}>
+
+    </mat-form-field>
+    <mat-form-field class="fromInputDiv">
+        <mat-label>Seats</mat-label>
+        <input matInput type="number" min="1" max="20" name="seats" value={{seats}}>
+    </mat-form-field>
+
+
+    <div class="sliderContainer">
+        <div>
+            <label for="" class="labelCss">Select Features</label>
+        </div>
+        <div class="sliderBtn">
+            <label class="feature labelCss">LAN</label>
+            <mat-slide-toggle [color]="color" name="lan" [checked]="lanAvailable"></mat-slide-toggle>
+
+        </div>
+        <div class="sliderBtn">
+            <label class="feature labelCss">Conference Phone</label>
+            <mat-slide-toggle [color]="color" name="phone" [checked]="voipAvailable"></mat-slide-toggle>
+
+        </div>
+        <div class="sliderBtn">
+            <label class="feature labelCss">Video</label>
+            <mat-slide-toggle [color]="color" name="video" [checked]="videoAvailable"></mat-slide-toggle>
+
+        </div>
+        <div class="sliderBtn">
+            <label class="feature labelCss">White Board</label>
+            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="whiteBoardAvailable"></mat-slide-toggle>
+
+        </div>
+    </div>
+
+    <button mat-raised-button class="searchBtn" color="primary" routerLink="/room-list"
+        (click)="getSubmitMsg()">Submit</button>
+
+</form>

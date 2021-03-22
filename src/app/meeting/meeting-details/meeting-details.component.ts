@@ -33,16 +33,16 @@ export class MeetingDetailsComponent implements OnInit {
         this.meeting.fromTime = this.selectedRoom.fromTime;
         this.meeting.toTime = this.selectedRoom.toTime;
         this.meeting.date = this.selectedRoom.date
-        // this.meeting.seats = this.selectedRoom.seats;
+        this.meeting.seats = history.state.data.roomCreationDetails._seats;
       } else if (history.state.flow === "editMeeting") {
         this.selectedMeeting = history.state.data;
-        if (typeof (history.state.data.roomCreationDetails._date) !== "undefined") {
-          this.meetingSchedule = history.state.data.roomCreationDetails._date + " " + history.state.data.roomCreationDetails._fromTime + " " + history.state.data.roomCreationDetails._toTime;
+        if (typeof (this.selectedMeeting.date) !== "undefined") {
+          this.meetingSchedule = this.selectedMeeting.date + " " + this.selectedMeeting.fromTime + " " + this.selectedMeeting.toTime;
         }
         this.meeting.name = this.selectedMeeting.name;
         this.meeting.location = this.selectedMeeting.location;
-        this.meeting.room = this.selectedMeeting.room;
-        this.meeting.seats = this.selectedMeeting.seats;
+        this.meeting.room = history.state.data.roomName;
+        this.meeting.seats = history.state.data.attendees;
         this.meeting.fromTime = this.selectedMeeting.fromTime;
         this.meeting.toTime = this.selectedMeeting.toTime;
         this.meeting.date = this.selectedMeeting.date

@@ -16,3 +16,6 @@ label {
  .example-full-width {
     width: 100%;
    }
+.container{
+    padding: 5%;
+}

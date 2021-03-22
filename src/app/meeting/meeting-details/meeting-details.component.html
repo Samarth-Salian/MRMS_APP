@@ -2,17 +2,17 @@
   <form>
     <div class="form-group mt-3">
       <label for="title">Meeting Title:</label>
-      <input type="text" class="form-control" id="usr" name = "Title" [(ngModel)]="meetingTitle">
+      <input type="text" class="form-control" id="usr" name = "Title" [(ngModel)]="meeting.name">
     </div>
 
     <div class="form-group mt-2">
       <label for="title">Location:</label>
-      <p>{{meetingLocation}}</p>
+      <p>{{meeting.location}}</p>
     </div>
 
     <div class="form-group">
       <label for="title">Room:</label>
-      <p>{{meetingRoom}}</p>
+      <p>{{meeting.room}}</p>
     </div>
     
     <div class="form-group">
@@ -21,8 +21,8 @@
     </div>
 
     <div class="form-group">
-      <label for="title">Attendies:</label>
-      <input type="number" class="form-control" id="myNumber" name = "attendees" [(ngModel)]="meetingAttendees">
+      <label for="title">Seats:</label>
+      <input type="number" class="form-control" id="myNumber" name = "seats" [(ngModel)]="meeting.seats">
     </div>
     <div class="center">
       <button mat-raised-button class="searchBtn" color="primary" routerLink="/my-meetings" (click)="getSubmitMsg()">Submit Meeting</button>

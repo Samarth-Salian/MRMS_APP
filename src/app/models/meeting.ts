@@ -9,7 +9,8 @@ export class Meeting {
     private _toTime: string = "";
     private _roomId : string = "";
     private _userId : string = "";
-    private _attendees : number = 0;
+    private _seats : number = 0;
+    private _room : string= "";
 
     public get name(): string {
         return this._name;
@@ -83,12 +84,19 @@ export class Meeting {
         this._userId = userId;
     }
 
-    public get attendees(): number {
-        return this._attendees;
+    public get seats(): number {
+        return this._seats;
     }
 
-    public set attendees(attendees: number) {
-        this._attendees = attendees;
+    public set seats(seats: number) {
+        this._seats = seats;
     }
    
+    public get room(): string {
+        return this._room;
+    }
+
+    public set room(room: string) {
+        this._room = room;
+    }
 }

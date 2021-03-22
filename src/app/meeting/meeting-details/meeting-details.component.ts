@@ -11,11 +11,8 @@ import { Meeting } from 'src/app/models/meeting';
   styleUrls: ['./meeting-details.component.css']
 })
 export class MeetingDetailsComponent implements OnInit {
-  meetingTitle: string = "";
-  meetingLocation: string = "";
-  meetingRoom: string = "";
+
   meetingSchedule: string = "";
-  meetingAttendees: any;
   meeting: Meeting;
   selectedMeeting: Meeting;
   selectedRoom: Room;
@@ -24,23 +21,37 @@ export class MeetingDetailsComponent implements OnInit {
     this.meeting = new Meeting();
     this.selectedMeeting = new Meeting();
     this.selectedRoom = new Room();
+    console.log(history.state);
     if (typeof (history.state.data) !== "undefined") {
-      if (history.state.data.flow = "createMeeting") {
-        this.selectedRoom=history.state.data;
-      } else if (history.state.data.flow = "editMeeting") {
-        this.selectedMeeting=history.state.data;
+      if (history.state.flow === "createMeeting") {
+        this.selectedRoom = history.state.data;
+        if (typeof (this.selectedRoom.date) !== "undefined") {
+          this.meetingSchedule = this.selectedRoom.date + ' ' + this.selectedRoom.fromTime + ' ' + this.selectedRoom.toTime;
+        }
+        this.meeting.location = this.selectedRoom.location;
+        this.meeting.room = this.selectedRoom.name;
+        this.meeting.fromTime = this.selectedRoom.fromTime;
+        this.meeting.toTime = this.selectedRoom.toTime;
+        this.meeting.date = this.selectedRoom.date
+       // this.meeting.seats = this.selectedRoom.seats;
+      } else if (history.state.flow === "editMeeting") {
+        this.selectedMeeting = history.state.data;
+        if (typeof (this.selectedMeeting.date) !== "undefined") {
+          this.meetingSchedule = this.selectedMeeting.date + ' ' + this.selectedMeeting.fromTime + ' ' + this.selectedMeeting.toTime;
+        }
+        this.meeting.name = this.selectedMeeting.name;
+        this.meeting.location = this.selectedMeeting.location;
+        this.meeting.room = this.selectedMeeting.room;
+        this.meeting.seats = this.selectedMeeting.seats;
+        this.meeting.fromTime = this.selectedMeeting.fromTime;
+        this.meeting.toTime = this.selectedMeeting.toTime;
+        this.meeting.date = this.selectedMeeting.date
       } else {
         //TODO handle exception
       }
 
-      this.meetingLocation = this.selectedRoom.location;
-      this.meetingRoom = this.selectedRoom.name;
-      if (typeof (this.selectedRoom.date) !== "undefined") {
-        this.meetingSchedule = this.selectedRoom.date + ' ' + this.selectedRoom.fromTime + ' ' + this.selectedRoom.toTime;
-      }
-      this.meetingAttendees = this.selectedRoom.seats;
     } else {
-      //TODO handled undefined
+      //TODO handle undefined
     }
   }
   submitMsg: String = "Meeting details submitted successfully";
@@ -48,15 +59,8 @@ export class MeetingDetailsComponent implements OnInit {
 
   }
   getSubmitMsg() {
-    let newMeetingObj: any = {};
-    newMeetingObj.Location = this.meetingLocation;
-    newMeetingObj._id = this.meetingRoom;
-    newMeetingObj.attendees = this.meetingAttendees;
-    newMeetingObj.name = this.meetingTitle;
-    newMeetingObj.fromTime = this.selectedRoom.fromTime;
-    newMeetingObj.toTime = this.selectedRoom.toTime;
     this.meetingService.showSuccess(this.submitMsg);
-    this.router.navigateByUrl('/my-meetings', { state: { data: newMeetingObj } });
+    this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
   }
 
 }

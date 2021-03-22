@@ -15,7 +15,7 @@
     {
         "_id": "6051bbdc78b0bb34a04fd90c",
         "name": "Room A",
-        "location":"Building A",
+        "location":"Building C",
         "seats": 12,
         "phoneNo": "+919012781224",
         "floor": "1",

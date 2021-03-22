@@ -3,6 +3,7 @@
         <mat-label>Room</mat-label>
         <input matInput type="text" value={{name}}>
     </mat-form-field>
+
     <mat-form-field class="fromInputDiv">
         <mat-label>Choose a Locaton</mat-label>
         <input matInput type="text" value={{location}}>
@@ -20,17 +21,17 @@
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">LAN</label>
-            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="lanAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="lan" [checked]="lanAvailable"></mat-slide-toggle>
 
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">Conference Phone</label>
-            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="voipAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="phone" [checked]="voipAvailable"></mat-slide-toggle>
 
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">Video</label>
-            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="videoAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="video" [checked]="videoAvailable"></mat-slide-toggle>
 
         </div>
         <div class="sliderBtn">
@@ -39,7 +40,7 @@
 
         </div>
     </div>
-    
+
     <button mat-raised-button class="searchBtn" color="primary" routerLink="/room-list"
         (click)="getSubmitMsg()">Submit</button>
 

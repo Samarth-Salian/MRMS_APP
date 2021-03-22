@@ -33,7 +33,6 @@ export class RoomDetailsComponent implements OnInit {
 
     }
   }
-
   
   ngOnInit(): void {
   }

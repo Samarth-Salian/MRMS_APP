@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { UserServices } from '../../services/user.service'
+import { UserServices } from '../../services/user.service';
 import { AppComponent } from '../../app.component';
 import { ActivatedRoute } from '@angular/router';
 import { SnackbarService } from '../../services/snackbar.service';
@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
     this.titleChange.showFabIcon = false;
     this.getjson().subscribe(data => {
       this.users = data;
-    })
+    });
   }
 
   ngOnInit(): void {

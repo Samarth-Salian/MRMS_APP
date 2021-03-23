@@ -1,18 +1,23 @@
 <form #searchForm="ngForm" class="roomSearchContainer">
     <mat-form-field class="fromInputDiv">
         <mat-label>Room</mat-label>
-        <input matInput type="text" value={{name}}>
+        <input matInput type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required>
     </mat-form-field>
-
+    <span *ngIf="name.invalid && name.touched" [ngStyle]="{'color':'red'}">Enter Room
+    </span>
     <mat-form-field class="fromInputDiv">
-        <mat-label>Choose a Locaton</mat-label>
-        <input matInput type="text" value={{location}}>
-
-    </mat-form-field>
+        <mat-label>Choose a Location</mat-label>
+        <input matInput type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
+        </mat-form-field>
+    <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
+        Name</span>
     <mat-form-field class="fromInputDiv">
         <mat-label>Seats</mat-label>
-        <input matInput type="number" min="1" max="20" name="seats" value={{seats}}>
+        <input matInput type="number" min="1" max="20" name="seats" [(ngModel)]="roomDetails.seats" name="seats"
+            #seats="ngModel" required>
     </mat-form-field>
+    <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats
+    </span>
 
 
     <div class="sliderContainer">

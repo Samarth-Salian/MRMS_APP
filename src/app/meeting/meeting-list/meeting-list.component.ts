@@ -12,8 +12,6 @@ export class MeetingListComponent implements OnInit {
   meetings: Meeting[] = [];
 
   constructor(public http: HttpClient, private router: Router) {
-    console.log("mnbvcxz")
-    loc;
     this.getjson().subscribe((data) => {
       this.meetings = data;
       this.meetings.forEach((e: Meeting) => {
@@ -32,7 +30,6 @@ export class MeetingListComponent implements OnInit {
       if (typeof (history.state.data) !== 'undefined') {
         this.meetings.unshift(history.state.data);
       }
-      console.log(this.meetings);
     });
   }
 
@@ -46,17 +43,16 @@ export class MeetingListComponent implements OnInit {
     this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } });
   }
 
-  public fnTaskGlobalSearch = function (searchText: any, data: any) {
+  public fnTaskGlobalSearch(searchText: any, data: any) {
     const results = [];
     const toSearch = searchText;
     let key;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i += 1) {
       for (key in data[i]) {
-        if (data[i][key].toString().indexOf(toSearch) != -1) {
+        if (data[i][key].toString().indexOf(toSearch) !== -1) {
           results.push(data[i]);
         }
       }
     }
-    console.log(results[0]);
-  };
+  }
 }

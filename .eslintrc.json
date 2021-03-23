@@ -16,5 +16,10 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "linebreak-style": 0,
+        "radix": [
+            "error",
+            "as-needed"
+        ]
     }
 }

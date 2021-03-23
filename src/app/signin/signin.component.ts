@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -11,8 +10,8 @@ export class SigninComponent implements OnInit {
   appName = "";
   constructor(public appComponent: AppComponent) {
     this.appName = this.appComponent.title;
-    this.appComponent.setTitle();
-   }
+    this.appComponent.setTitle("");
+  }
 
   ngOnInit(): void {
   }

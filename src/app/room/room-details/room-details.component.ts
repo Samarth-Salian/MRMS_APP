@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ToastrService } from 'ngx-toastr';
+import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../../app.component'
 
 @Component({
   selector: 'app-room-details',
@@ -21,7 +23,9 @@ export class RoomDetailsComponent implements OnInit {
 
   color: ThemePalette = 'primary';
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService, private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.setTitle(this.titleChange.title);
     if (typeof (history.state.data) !== "undefined") {
       this.name = this.selectRoomdetails.name;
       this.location = this.selectRoomdetails.location;

@@ -17,7 +17,7 @@ export class LocationListComponent implements OnInit {
     this.titleChange.showFabIcon = false;
     this.getjson().subscribe(data => {
       this.locations = data;
-    })
+    });
   }
   ngOnInit(): void {
   }

@@ -1,16 +1,16 @@
 export class Meeting {
-    public _id : string = "";
-    private _name : string = "";
-    private _date : string = "";
-    private _location : string = "";
-    private _slotFrom : number = -1;
-    private _slotTo : number = -1;
-    private _fromTime: string = "";
-    private _toTime: string = "";
-    private _roomId : string = "";
-    private _userId : string = "";
-    private _seats : number = 0;
-    private _room : string= "";
+    public _id: string = '';
+    private _name: string = '';
+    private _date: string = '';
+    private _location: string = '';
+    private _slotFrom: number = -1;
+    private _slotTo: number = -1;
+    private _fromTime: string = '';
+    private _toTime: string = '';
+    private _roomId: string = '';
+    private _userId: string = '';
+    private _seats: number = 0;
+    private _room: string = "";
 
     public get name(): string {
         return this._name;
@@ -91,7 +91,7 @@ export class Meeting {
     public set seats(seats: number) {
         this._seats = seats;
     }
-   
+
     public get room(): string {
         return this._room;
     }

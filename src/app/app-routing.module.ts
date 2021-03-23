@@ -13,46 +13,46 @@ import { UserListComponent } from './user/user-list/user-list.component';
 const routes: Routes = [
 
   {
-    path: "signin",
+    path: 'signin',
     component: SigninComponent
   },
   {
-    path: "my-meetings",
+    path: 'my-meetings',
     component: MyMeetingsComponent,
     data: { title: 'Meetinglist' }
   },
   {
-    path: "room-search",
+    path: 'room-search',
     component: RoomSearchComponent,
     data: { title: 'Search Room' }
   },
   {
-    path: "room-list",
+    path: 'room-list',
     component: RoomListComponent,
     data: { title: 'Roomlist' }
   },
   {
-    path: "meeting-details",
+    path: 'meeting-details',
     component: MeetingDetailsComponent,
     data: { title: 'Edit Meeting' }
   },
   {
-    path: "location-list",
+    path: 'location-list',
     component: LocationListComponent,
     data: { title: 'Locationlist' }
   },
   {
-    path: "location-details",
+    path: 'location-details',
     component: LocationDetailsComponent,
     data: { title: 'Location Details' }
   },
   {
-    path: "room-details",
+    path: 'room-details',
     component: RoomDetailsComponent,
     data: { title: 'Room Details' }
   },
   {
-    path: "user-list",
+    path: 'user-list',
     component: UserListComponent,
     data: { title: 'Userslist' }
   },

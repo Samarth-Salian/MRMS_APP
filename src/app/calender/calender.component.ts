@@ -10,16 +10,16 @@ import { MeetingListComponent } from './../meeting/meeting-list/meeting-list.com
 })
 export class CalenderComponent implements OnInit {
 
-  date1 : any;
+  date1: any;
   transformedDate: any;
   constructor(public datepipe: DatePipe) {
   }
-  onCalendarChange(event: any) {
-    this.transformedDate = this.datepipe.transform(event.value, 'yyyy-MM-dd')
+  onCalendarChange(event: any): void {
+    this.transformedDate = this.datepipe.transform(event.value, 'yyyy-MM-dd');
   }
   ngOnInit(): void {
-    let currentDate = new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate();
-   // this.fnTaskGlobalSearch(currentDate,currentDate);
+    const currentDate = new Date().getFullYear() + ' - ' + (new Date().getMonth() + 1) + ' - ' + new Date().getDate();
+    // this.fnTaskGlobalSearch(currentDate,currentDate);
   }
 
 

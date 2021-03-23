@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component'
+import { Router } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-room-details',
@@ -19,11 +20,10 @@ export class RoomDetailsComponent implements OnInit {
   videoAvailable: boolean = false;
   whiteBoardAvailable: boolean = false;
   selectRoomdetails: any = history.state.data;
-
-
   color: ThemePalette = 'primary';
+  roomLaunchFlag: string = "Root Menu";
 
-  constructor(private toastr: ToastrService, private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private snackBar: SnackbarService, private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.title = this.activatedRoute.snapshot.data['title'];
     this.titleChange.setTitle(this.titleChange.title);
     if (typeof (history.state.data) !== "undefined") {
@@ -34,13 +34,14 @@ export class RoomDetailsComponent implements OnInit {
       this.voipAvailable = this.selectRoomdetails.voipAvailable;
       this.videoAvailable = this.selectRoomdetails.videoAvailable;
       this.whiteBoardAvailable = this.selectRoomdetails.whiteBoardAvailable;
-
     }
   }
-  
+
   ngOnInit(): void {
   }
+
   getSubmitMsg() {
-    this.toastr.success("Room details submitted successfully");
+    this.snackBar.openSnackBar("Room details submitted successfully", '');
+    this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
   }
 }

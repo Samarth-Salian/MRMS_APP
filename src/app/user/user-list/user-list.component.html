@@ -1,6 +1,9 @@
 <mat-card class="listContainer" *ngFor="let user of users">
     <mat-card-header>
-        <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+        <div mat-card-avatar>
+            <img class="avatarImage" src="{{user.image}}">
+        </div>
+        <mat-card-title class="avatarName">{{user.firstName}} {{user.lastName}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <span>{{user.emailId}}</span>

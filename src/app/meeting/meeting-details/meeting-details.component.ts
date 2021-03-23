@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MeetingService } from '../../services/meeting.service';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
 import { Meeting } from '../../models/meeting';
 import { ActivatedRoute } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-meeting-details',
@@ -17,7 +17,7 @@ export class MeetingDetailsComponent implements OnInit {
   selectedMeeting: Meeting;
   selectedRoom: Room;
   submitMsg: string = "Meeting details submitted successfully";
-  constructor(public meetingService: MeetingService, private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router) {
+  constructor(public snackBar: SnackbarService, private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data['title'];
     this.titleChange.setTitle(this.titleChange.title);
     this.meeting = new Meeting();
@@ -59,7 +59,7 @@ export class MeetingDetailsComponent implements OnInit {
 
   }
   getSubmitMsg() {
-    this.meetingService.fnShowMessage(this.submitMsg, '');
+    this.snackBar.openSnackBar(this.submitMsg, '');
     this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
   }
 }

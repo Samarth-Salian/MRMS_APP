@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../../app.component'
 import { Router } from '@angular/router';
 import { SnackbarService } from '../../services/snackbar.service';
 
@@ -21,7 +23,9 @@ export class RoomDetailsComponent implements OnInit {
   color: ThemePalette = 'primary';
   roomLaunchFlag: string = "Root Menu";
 
-  constructor(private router: Router, private snackBar: SnackbarService) {
+  constructor(private router: Router, private snackBar: SnackbarService, private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.setTitle(this.titleChange.title);
     if (typeof (history.state.data) !== "undefined") {
       this.name = this.selectRoomdetails.name;
       this.location = this.selectRoomdetails.location;

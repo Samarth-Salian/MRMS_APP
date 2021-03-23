@@ -20,14 +20,15 @@
         <div class="fromTimeDiv">
             <mat-form-field class="fromInputDiv">
                 <mat-label>From</mat-label>
-                <input matInput [ngxTimepicker]="fromtime" [(ngModel)]="roomSearch.fromTime" name="fromSlot">
+                <input matInput [ngxTimepicker]="fromtime" [(ngModel)]="roomSearch.fromTime" name="fromSlot"
+                    [min]="roomSearch.fromTime">
                 <ngx-material-timepicker #fromtime></ngx-material-timepicker>
             </mat-form-field>
         </div>
         <div class="toTimeDiv">
             <mat-form-field class="fromInputDiv">
                 <mat-label>To</mat-label>
-                <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot">
+                <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot" [min]="roomSearch.toTime">
                 <ngx-material-timepicker #totime></ngx-material-timepicker>
 
             </mat-form-field>

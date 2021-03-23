@@ -1,0 +1,234 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 20px;
+  }
+  
+  .header {
+    overflow: hidden;
+    background-color: #ece9e9;
+    padding: 20px 10px;
+  }
+  
+  .header a {
+    float: left;
+    color: black;
+    text-align: right;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    box-align: center;
+    font-weight: bold;
+  }
+  
+  .header a:hover {
+    background-color: rgb(247, 244, 244);
+    color: black;
+  }
+  
+  .nav li {
+    display: inline-block;
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  .lanswitch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-left: 100px;
+    padding-left: 40px;
+  }
+  
+  .lanswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .phoneswitch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-left: 90px;
+    ;
+    padding-left: 40px;
+  }
+  
+  .phoneswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .videoswitch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-left: 10px;
+    padding-left: 40px;
+  }
+  
+  .videoswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .boardswitch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    margin-left: 50px;
+    padding-left: 40px;
+  }
+  
+  .boardswitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 6px;
+    width: 6px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked+.slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .roomSearchContainer {
+    padding: 5%;
+  }
+  
+  .searchField {
+    height: 51px;
+    font-size: 18px;
+    font-family: 'Roboto';
+    border: none;
+    border-bottom: 3px solid #d4d4d4;
+    background-color: rgba(0, 0, 0, .04);
+  }
+  
+  .datePickerDiv {
+    width: 100%;
+    /* background-color: #fff; */
+  }
+  
+  .fromTimeInput, .toTimeInput, .seatsInput {
+    width: 100%;
+    height: 51px;
+    border: none;
+    border-bottom: 3px solid #c5c5c5;
+    background-color: rgba(0, 0, 0, .04);
+  }
+  
+  .fromTimeDiv, .toTimeDiv, .seatsSection, .locationDiv {
+    padding-bottom: 18px;
+  }
+  
+  .fromTimeDiv, .toTimeDiv {
+    display: inline-block;
+    width: 48%;
+  }
+  
+  .toTimeDiv {
+    margin-left: 10px;
+  }
+  
+  .labelCss {
+    font-family: 'Roboto';
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  .fromTimeInput, .toTimeInput, .seatsInput {
+    font-size: 18px;
+    padding: 10px;
+  }
+  
+  .sliderBtn {
+    padding-top: 15px;
+  }
+  
+  .sliderContainer {
+    margin-bottom: 40px;
+  }
+  
+  .searchBtn {
+    width: 100%;
+    height: 51px;
+    border-radius: 100px;
+  }
+  
+  .feature {
+    width: 83%;
+  }
+  
+  .fromInputDiv {
+    width: 100%;
+  }
+
+  

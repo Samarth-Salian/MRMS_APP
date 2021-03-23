@@ -185,7 +185,7 @@ input:checked+.slider:before {
   background-color: rgba(0, 0, 0, .04);
 }
 
-.fromTimeDiv, .toTimeDiv, .seatsSection, .locationDiv {
+.seatsSection, .locationDiv {
   padding-bottom: 18px;
 }
 

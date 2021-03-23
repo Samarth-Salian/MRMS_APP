@@ -27,8 +27,9 @@
         <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" src="../assets/43338.png">
     </div>
 </mat-card>
-<button *ngIf = "conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-search" routerLinkActive="active" color="primary">
+<button *ngIf = "conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-details" routerLinkActive="active" color="primary">
     <mat-icon>
         <i class="material-icons md-48">add</i>
     </mat-icon>
 </button>
+

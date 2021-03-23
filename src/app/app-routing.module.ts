@@ -18,35 +18,43 @@ const routes: Routes = [
   },
   {
     path: "my-meetings",
-    component: MyMeetingsComponent
+    component: MyMeetingsComponent,
+    data: { title: 'Meetinglist' }
   },
   {
     path: "room-search",
-    component: RoomSearchComponent
+    component: RoomSearchComponent,
+    data: { title: 'Search Room' }
   },
   {
     path: "room-list",
-    component: RoomListComponent
+    component: RoomListComponent,
+    data: { title: 'Roomlist' }
   },
   {
     path: "meeting-details",
-    component: MeetingDetailsComponent
+    component: MeetingDetailsComponent,
+    data: { title: 'Edit Meeting' }
   },
   {
     path: "location-list",
-    component: LocationListComponent
+    component: LocationListComponent,
+    data: { title: 'Locationlist' }
   },
   {
     path: "location-details",
-    component: LocationDetailsComponent
+    component: LocationDetailsComponent,
+    data: { title: 'Location Details' }
   },
   {
     path: "room-details",
-    component: RoomDetailsComponent
+    component: RoomDetailsComponent,
+    data: { title: 'Room Details' }
   },
   {
     path: "user-list",
-    component: UserListComponent
+    component: UserListComponent,
+    data: { title: 'Userslist' }
   },
   {
     path: '',

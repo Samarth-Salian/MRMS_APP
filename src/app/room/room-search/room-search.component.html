@@ -1,8 +1,8 @@
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer">
     <mat-form-field class="fromInputDiv">
         <mat-label>Choose a Locaton</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let location of locations" [value]="roomSearch.location">
+        <mat-select [(value)]="roomSearch.location">
+            <mat-option *ngFor="let location of locations" [value]="location">
                 {{location}}
             </mat-option>
         </mat-select>
@@ -15,23 +15,23 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <div class="form-outline">
-        <div class="w3-row-padding">
-            <div class="w3-half w3-margin-bottom fromTimeDiv">
-                <mat-form-field class="fromInputDiv">
-                    <mat-label>From</mat-label>
-                    <input matInput [ngxTimepicker]="fromtime" [(ngModel)]="roomSearch.fromTime" name="fromSlot">
-                    <ngx-material-timepicker #fromtime ></ngx-material-timepicker>
-                </mat-form-field>
-            </div>
-            <div class="w3-half toTimeDiv">
-                <mat-form-field class="fromInputDiv">
-                    <mat-label>To</mat-label>
-                    <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot">
-                    <ngx-material-timepicker #totime ></ngx-material-timepicker>
 
-                </mat-form-field>
-            </div>
+    <div class="form-outline">
+        <div class="fromTimeDiv">
+            <mat-form-field class="fromInputDiv">
+                <mat-label>From</mat-label>
+                <input matInput [ngxTimepicker]="fromtime" [(ngModel)]="roomSearch.fromTime" name="fromSlot"
+                    [min]="roomSearch.fromTime">
+                <ngx-material-timepicker #fromtime></ngx-material-timepicker>
+            </mat-form-field>
+        </div>
+        <div class="toTimeDiv">
+            <mat-form-field class="fromInputDiv">
+                <mat-label>To</mat-label>
+                <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot" [min]="roomSearch.toTime">
+                <ngx-material-timepicker #totime></ngx-material-timepicker>
+
+            </mat-form-field>
         </div>
     </div>
     <mat-form-field class="fromInputDiv">

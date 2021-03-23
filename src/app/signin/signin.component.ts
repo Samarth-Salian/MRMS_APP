@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -8,11 +7,12 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  appName = "";
+  appName = '';
   constructor(public appComponent: AppComponent) {
     this.appName = this.appComponent.title;
-    this.appComponent.setTitle();
-   }
+    this.appComponent.setTitle('');
+    this.appComponent.backButtonScreenName = 'signin';
+  }
 
   ngOnInit(): void {
   }

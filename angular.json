@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/meeting-app",
+            "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -32,8 +32,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -64,6 +63,21 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "en": {
+              "localize": [
+                "en"
+              ]
+            },
+            "hi": {
+              "localize": [
+                "hi"
+              ]
+            },
+            "ka": {
+              "localize": [
+                "ka"
+              ]
             }
           }
         },
@@ -75,6 +89,15 @@
           "configurations": {
             "production": {
               "browserTarget": "meeting-app:build:production"
+            },
+            "en": {
+              "browserTarget": "meeting-app:build:en"
+            },
+            "hi": {
+              "browserTarget": "meeting-app:build:hi"
+            },
+            "ka": {
+              "browserTarget": "meeting-app:build:ka"
             }
           }
         },
@@ -130,6 +153,17 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {}
+        }
+      },
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "hi": {
+            "translation": "src/localize/messages.hi.xlf"
+          },
+          "ka": {
+            "translation": "src/localize/messages.ka.xlf"
+          }
         }
       }
     }

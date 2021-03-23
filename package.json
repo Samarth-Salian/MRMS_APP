@@ -1,6 +1,9 @@
 {
-  "name": "meeting-app",
-  "version": "0.0.0",
+  "name": "org.apache.cordova.newapp",
+  "displayName": "myApp",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -36,7 +39,6 @@
     "cordova": "^10.0.0",
     "moment": "^2.29.1",
     "ngx-material-timepicker": "^5.5.3",
-    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "zone.js": "~0.11.3"
   },
@@ -44,6 +46,7 @@
     "@angular-devkit/build-angular": "~0.1102.4",
     "@angular/cli": "~11.2.4",
     "@angular/compiler-cli": "~11.1.1",
+    "@angular/localize": "^11.1.2",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
@@ -54,6 +57,10 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "husky": "^4.3.8",
+    "cordova-android": "^9.0.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-geolocation": "^4.1.0",
+    "cordova-plugin-splashscreen": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",
@@ -69,5 +76,20 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "cordova": {
+    "platforms": [
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-splashscreen": {}
+    }
+    ]
   }
 }

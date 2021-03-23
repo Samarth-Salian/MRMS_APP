@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MeetingService } from '../../services/meeting.service';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
 import { Meeting } from '../../models/meeting';
+import { ActivatedRoute } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-meeting-details',
@@ -16,8 +17,9 @@ export class MeetingDetailsComponent implements OnInit {
   selectedMeeting: Meeting;
   selectedRoom: Room;
   submitMsg: string = "Meeting details submitted successfully";
-  constructor(public meetingService: MeetingService, private titleChange: AppComponent, private router: Router) {
-    this.titleChange.setTitle();
+  constructor(public snackBar: SnackbarService, private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router) {
+    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.setTitle(this.titleChange.title);
     this.meeting = new Meeting();
     this.selectedMeeting = new Meeting();
     this.selectedRoom = new Room();
@@ -33,16 +35,16 @@ export class MeetingDetailsComponent implements OnInit {
         this.meeting.fromTime = this.selectedRoom.fromTime;
         this.meeting.toTime = this.selectedRoom.toTime;
         this.meeting.date = this.selectedRoom.date
-        // this.meeting.seats = this.selectedRoom.seats;
+        this.meeting.seats = history.state.data.roomCreationDetails._seats;
       } else if (history.state.flow === "editMeeting") {
         this.selectedMeeting = history.state.data;
-        if (typeof (history.state.data.roomCreationDetails._date) !== "undefined") {
-          this.meetingSchedule = history.state.data.roomCreationDetails._date + " " + history.state.data.roomCreationDetails._fromTime + " " + history.state.data.roomCreationDetails._toTime;
+        if (typeof (this.selectedMeeting.date) !== "undefined") {
+          this.meetingSchedule = this.selectedMeeting.date + " " + this.selectedMeeting.fromTime + " " + this.selectedMeeting.toTime;
         }
         this.meeting.name = this.selectedMeeting.name;
         this.meeting.location = this.selectedMeeting.location;
-        this.meeting.room = this.selectedMeeting.room;
-        this.meeting.seats = this.selectedMeeting.seats;
+        this.meeting.room = history.state.data.roomName;
+        this.meeting.seats = history.state.data.attendees;
         this.meeting.fromTime = this.selectedMeeting.fromTime;
         this.meeting.toTime = this.selectedMeeting.toTime;
         this.meeting.date = this.selectedMeeting.date
@@ -57,7 +59,7 @@ export class MeetingDetailsComponent implements OnInit {
 
   }
   getSubmitMsg() {
-    this.meetingService.fnShowMessage(this.submitMsg, '');
+    this.snackBar.openSnackBar(this.submitMsg, '');
     this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
   }
 }

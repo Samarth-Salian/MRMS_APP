@@ -13,6 +13,7 @@ export class MeetingListComponent implements OnInit {
 
   constructor(public http: HttpClient, private router: Router) {
     console.log("mnbvcxz")
+    loc;
     this.getjson().subscribe((data) => {
       this.meetings = data;
       this.meetings.forEach((e: Meeting) => {

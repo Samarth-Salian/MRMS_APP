@@ -41,6 +41,9 @@
     "angular-cli-ghpages": "^1.0.0-rc.1",
     "codelyzer": "^6.0.0",
     "cordova-android": "^9.0.0",
+    "cordova-browser": "^6.0.0",
+    "cordova-plugin-geolocation": "^4.1.0",
+    "cordova-plugin-splashscreen": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",
@@ -60,7 +63,12 @@
   "license": "Apache-2.0",
   "cordova": {
     "platforms": [
-      "android"
-    ]
+      "android",
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-splashscreen": {}
+    }
   }
 }

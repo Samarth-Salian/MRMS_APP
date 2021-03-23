@@ -14,7 +14,7 @@ export class MeetingListComponent implements OnInit {
     this.getjson().subscribe(data => {
       this.meetings = data;
       this.meetings.forEach(function (e: Meeting) {
-        let fromSlot: any = e.slotFrom / 4 < 1 ? 12 + e.slotFrom / 4 : e.slotFrom / 4;
+        let fromSlot: any = e.slotFrom / 4 < 1 ? 12 + e.slotFrom / 4 : e.slotFrom / 4
         let toSlot: any = e.slotTo / 4 < 1 ? 12 + e.slotTo / 4 : e.slotTo / 4;
         let minutesObj: any = {
           "25": 15,

@@ -12,7 +12,7 @@ export class MeetingListComponent implements OnInit {
   meetings: Meeting[] = [];
 
   constructor(public http: HttpClient, private router: Router) {
-    console.log("qwerty")
+    console.log("asdfgh")
     this.getjson().subscribe((data) => {
       this.meetings = data;
       this.meetings.forEach((e: Meeting) => {

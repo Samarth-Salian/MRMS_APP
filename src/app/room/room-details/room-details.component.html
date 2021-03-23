@@ -8,7 +8,7 @@
     <mat-form-field class="fromInputDiv">
         <mat-label>Choose a Location</mat-label>
         <input matInput type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
-        </mat-form-field>
+    </mat-form-field>
     <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
         Name</span>
     <mat-form-field class="fromInputDiv">
@@ -26,22 +26,23 @@
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">LAN</label>
-            <mat-slide-toggle [color]="color" name="lan" [checked]="lanAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="lan" [checked]="roomDetails.lanAvailable"></mat-slide-toggle>
 
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">Conference Phone</label>
-            <mat-slide-toggle [color]="color" name="phone" [checked]="voipAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="phone" [checked]="roomDetails.voipAvailable"></mat-slide-toggle>
 
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">Video</label>
-            <mat-slide-toggle [color]="color" name="video" [checked]="videoAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="video" [checked]="roomDetails.videoAvailable"></mat-slide-toggle>
 
         </div>
         <div class="sliderBtn">
             <label class="feature labelCss">White Board</label>
-            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="whiteBoardAvailable"></mat-slide-toggle>
+            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="roomDetails.whiteBoardAvailable">
+            </mat-slide-toggle>
 
         </div>
     </div>

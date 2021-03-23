@@ -36,7 +36,7 @@ export class MeetingListComponent implements OnInit {
   ngOnInit(): void { }
 
   public getjson(): Observable<any> {
-    return this.http.get("assets/meetingList.json").pipe();
+    return this.http.get("assets/meetingList.json").pipe()
   }
 
   public fnNavigateToMeeting(selectedMeeting: Meeting): any {

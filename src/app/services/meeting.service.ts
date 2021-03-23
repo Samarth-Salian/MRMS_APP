@@ -9,14 +9,14 @@ export class MeetingService {
 
   constructor(private toastr: ToastrService, public snackBar: MatSnackBar) { }
 
-  showSuccess(message: any) {
-    this.toastr.success(message)
+  showSuccess(message: any): void {
+    this.toastr.success(message);
   }
 
-  showError(message: any, title: any) {
-    this.toastr.error(message, title)
+  showError(message: any, title: any): void {
+    this.toastr.error(message, title);
   }
-  fnShowMessage(message: string, action: string) {
+  fnShowMessage(message: string, action: string): void {
     this.snackBar.open(message, action, {
       duration: 2000,
     });

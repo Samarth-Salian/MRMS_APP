@@ -7,13 +7,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./location-details.component.css']
 })
 export class LocationDetailsComponent implements OnInit {
-  buildingName: string = "";
-  city: string = "";
-  country: string = "";
+  buildingName = '';
+  city = '';
+  country = '';
   selectedLocation: any = history.state.data;
-  
   constructor(private toastr: ToastrService) {
-    if (typeof (history.state.data) !== "undefined") {
+    if (typeof (history.state.data) !== 'undefined') {
       this.buildingName = this.selectedLocation.buildingName;
       this.city = this.selectedLocation.city;
       this.country = this.selectedLocation.country;
@@ -21,7 +20,7 @@ export class LocationDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  getSubmitMsg() {
-    this.toastr.success("location details submitted successfully");
+  getSubmitMsg(): void {
+    this.toastr.success('location details submitted successfully');
   }
 }

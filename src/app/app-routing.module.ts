@@ -13,39 +13,39 @@ import { UserListComponent } from './user/user-list/user-list.component';
 const routes: Routes = [
 
   {
-    path: "signin",
+    path: 'signin',
     component: SigninComponent
   },
   {
-    path: "my-meetings",
+    path: 'my-meetings',
     component: MyMeetingsComponent
   },
   {
-    path: "room-search",
+    path: 'room-search',
     component: RoomSearchComponent
   },
   {
-    path: "room-list",
+    path: 'room-list',
     component: RoomListComponent
   },
   {
-    path: "meeting-details",
+    path: 'meeting-details',
     component: MeetingDetailsComponent
   },
   {
-    path: "location-list",
+    path: 'location-list',
     component: LocationListComponent
   },
   {
-    path: "location-details",
+    path: 'location-details',
     component: LocationDetailsComponent
   },
   {
-    path: "room-details",
+    path: 'room-details',
     component: RoomDetailsComponent
   },
   {
-    path: "user-list",
+    path: 'user-list',
     component: UserListComponent
   },
   {

@@ -8,11 +8,11 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-  appName = "";
+  appName = '';
   constructor(public appComponent: AppComponent) {
     this.appName = this.appComponent.title;
     this.appComponent.setTitle();
-   }
+  }
 
   ngOnInit(): void {
   }

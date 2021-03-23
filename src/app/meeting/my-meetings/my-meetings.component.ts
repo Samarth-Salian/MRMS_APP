@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppComponent} from '../../app.component'
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-my-meetings',
@@ -8,10 +8,10 @@ import {AppComponent} from '../../app.component'
 })
 export class MyMeetingsComponent implements OnInit {
 
-  constructor(private titleChange:AppComponent) {
+  constructor(private titleChange: AppComponent) {
     this.titleChange.setTitle();
     this.titleChange.showFabIcon = true;
-   }
+  }
 
   ngOnInit(): void {
   }

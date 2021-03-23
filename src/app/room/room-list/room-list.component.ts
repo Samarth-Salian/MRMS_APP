@@ -18,18 +18,18 @@ export class RoomListComponent {
   constructor(private titleChange: AppComponent, private router: Router, public http: HttpClient) {
 
     this.titleChange.setTitle();
-    this.conditionalFabIcon = this.titleChange.showFabIcon
+    this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.getjson().subscribe(data => {
       this.rooms = data;
-    })
+    });
   }
   public getjson(): Observable<any> {
-    return this.http.get("assets/roomList.json").pipe();
+    return this.http.get('assets/roomList.json').pipe();
   }
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
-    if (history.state.data === "Root Menu") {
-      this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: "creatRoom" } });
+    if (history.state.data === 'Root Menu') {
+      this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } });
     } else {
       Object.defineProperty(selectedRoom, 'roomCreationDetails', {
         value: this.roomDetails,
@@ -37,7 +37,7 @@ export class RoomListComponent {
         enumerable: true,
         configurable: true
       });
-      this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
+      this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } });
     }
   }
 }

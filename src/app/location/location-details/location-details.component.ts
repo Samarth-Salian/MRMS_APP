@@ -1,6 +1,6 @@
-
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { SnackbarService } from '../../services/snackbar.service';
+
 @Component({
   selector: 'app-location-details',
   templateUrl: './location-details.component.html',
@@ -11,8 +11,8 @@ export class LocationDetailsComponent implements OnInit {
   city: string = "";
   country: string = "";
   selectedLocation: any = history.state.data;
-  
-  constructor(private toastr: ToastrService) {
+
+  constructor(private snackBar: SnackbarService) {
     if (typeof (history.state.data) !== "undefined") {
       this.buildingName = this.selectedLocation.buildingName;
       this.city = this.selectedLocation.city;
@@ -22,6 +22,6 @@ export class LocationDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
   getSubmitMsg() {
-    this.toastr.success("location details submitted successfully");
+    this.snackBar.openSnackBar("Location details submitted successfully", '');
   }
 }

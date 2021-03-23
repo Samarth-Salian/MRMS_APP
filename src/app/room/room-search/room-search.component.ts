@@ -6,6 +6,7 @@ import { Room } from 'src/app/models/room';
 import { Moment } from 'moment';
 import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-room-search',
@@ -21,8 +22,10 @@ export class RoomSearchComponent implements OnInit {
   toTime = "";
   minDate = new Date();
   todayDate = new FormControl(new Date());
-  constructor(private titleChange: AppComponent, private router: Router) {
-    this.titleChange.setTitle();
+  constructor(private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router) {
+    this.titleChange.roomListBackButton = false;
+    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
     this.roomSearch = new Room();
     this.formatDate();
@@ -70,9 +73,9 @@ export class RoomSearchComponent implements OnInit {
     this.toTime = toDate;
   }
   formatDateAndTime(updatedMinutes: Date) {
-    let normalizeHour = updatedMinutes.getHours() >= 13 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours()
+    let normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours()
     let finalTime = ("0" + updatedMinutes.getMinutes()).slice(-2);
-    return updatedMinutes.getHours() >= 13 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM'
+    return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM'
   }
 }
 

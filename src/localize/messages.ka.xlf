@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="5592083557831215796" datatype="html">
+        <source>Welcome to <x id="INTERPOLATION" equiv-text="{{appName}}"/></source>
+        <target><x id="INTERPOLATION" equiv-text="{{appName}}"/> ಗೆ ಸ್ವಾಗತ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signin/signin.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2526545874263015051" datatype="html">
+        <source><x id="START_LINK" ctype="x-a" equiv-text="&lt;a mat-raised-button [routerLink]=&quot;[&apos;/my-meetings&apos;]&quot; class=&quot;googleBtn&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img class=&quot;google_icon&quot; src=&quot;../assets/google_logo1600.png&quot;&gt;"/>Sign in with Google<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <target><x id="START_LINK" ctype="x-a" equiv-text="&lt;a mat-raised-button [routerLink]=&quot;[&apos;/my-meetings&apos;]&quot; class=&quot;googleBtn&quot;&gt;"/><x id="TAG_IMG" ctype="image" equiv-text="&lt;img class=&quot;google_icon&quot; src=&quot;../assets/google_logo1600.png&quot;&gt;"/>ಗೂಗಲ್ ನೊಂದಿಗೆ ಸೈನ್-ಇನ್ ಮಾಡಿ<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/signin/signin.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

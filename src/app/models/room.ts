@@ -1,19 +1,19 @@
 export class Room {
-    private _name: string = '';
-    private _location: string = '';
-    private _date: string = '';
-    private _fromTime: string = '';
-    private _toTime: string = '';
+    private _name: string ="";
+    private _location: string = "";
+    private _date: string = "";
+    private _fromTime: string = "";
+    private _toTime: string = "";
     private _seats: number = 0;
-    private _phoneNo: string = '';
-    private _floor: number = -99;
-    private _buildingId: string = '';
+    private _phoneNo : string = "";
+    private _floor : number = -99;
+    private _buildingId : string ="";
     private _voipAvailable: boolean = false;
     private _videoAvailable: boolean = false;
     private _lanAvailable: boolean = false;
     private _whiteBoardAvailable: boolean = false;
-
-
+    
+  
     constructor() { }
 
     public get name(): string {
@@ -71,7 +71,7 @@ export class Room {
     public set phoneNo(phoneNo: string) {
         this._phoneNo = phoneNo;
     }
-
+    
     public get floor(): number {
         return this._floor;
     }
@@ -118,6 +118,6 @@ export class Room {
 
     public set whiteBoardAvailable(whiteBoardAvailable: boolean) {
         this._whiteBoardAvailable = whiteBoardAvailable;
-    }
+    }   
 
 }

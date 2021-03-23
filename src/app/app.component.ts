@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  backButtonScreenName: string = '';
+  roomListBackButton: boolean = true;
   title = 'Meeting-App';
   displayHeading = true;
   showFabIcon = true;
@@ -22,18 +24,31 @@ export class AppComponent {
 
   OnInit(): void {
   }
-  setTitle = (title: string) => {
-    const sidebarRequired = ['my-meetings', 'signin'];
-    if (title === '') {
+  setTitle = (param: string) => {
+    if (param === '') {
       this.displayHeading = true;
       this.title = 'Meeting-App';
     } else {
       this.displayHeading = false;
-      this.title = title;
+      this.title = param;
     }
   }
   goBack = () => {
-    this.location.back();
+    const path = window.location.href.split("/", 4)[3];
+    const sidebarRequired = ['room-details', 'room-list'];
+    if (sidebarRequired.includes(path) && this.roomListBackButton) {
+      if (path === 'room-details') {
+        this.router.navigateByUrl('/room-list');
+      } else {
+        if (this.backButtonScreenName === 'signin') {
+          this.router.navigateByUrl('/signin');
+        } else {
+          this.router.navigateByUrl('/my-meetings');
+        }
+      }
+    } else {
+      this.location.back();
+    }
   }
   fnNavigateRoomList(): void {
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });

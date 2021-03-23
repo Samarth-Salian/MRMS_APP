@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <form class="locationDetailsForm" #LocationDetailsForm="ngForm">
+    <form class="locationDetailsForm" #LocationDetailsForm="ngForm" novalidate>
         <mat-form-field class="example-full-width">
             <mat-label>Building Name :</mat-label>
             <input matInput name="BuildingName" #BuildingName="ngModel" required [(ngModel)]="buildingName">
@@ -19,7 +19,8 @@
         <span *ngIf="CountryName.invalid && CountryName.touched" [ngStyle]="{'color':'red'}">Enter Country Name</span>
 
         <div class="center">
-            <button mat-raised-button class="searchBtn" color="primary" routerLink="/location-list"
+            <button [disabled]="!LocationDetailsForm.valid" mat-raised-button class="searchBtn" color="primary"
+                routerLink="/location-list"
                 (click)="getSubmitMsg()">Submit</button>
         </div>
     </form>

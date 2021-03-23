@@ -1,4 +1,4 @@
-<form #searchForm="ngForm" class="roomSearchContainer">
+<form #searchForm="ngForm" class="roomSearchContainer" novalidate>
     <mat-form-field class="fromInputDiv">
         <mat-label>Room</mat-label>
         <input matInput type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required>
@@ -19,7 +19,6 @@
     <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats
     </span>
 
-
     <div class="sliderContainer">
         <div>
             <label for="" class="labelCss">Select Features</label>
@@ -27,25 +26,25 @@
         <div class="sliderBtn">
             <label class="feature labelCss">LAN</label>
             <mat-slide-toggle [color]="color" name="lan" [checked]="roomDetails.lanAvailable"></mat-slide-toggle>
-
         </div>
+
         <div class="sliderBtn">
             <label class="feature labelCss">Conference Phone</label>
             <mat-slide-toggle [color]="color" name="phone" [checked]="roomDetails.voipAvailable"></mat-slide-toggle>
-
         </div>
+
         <div class="sliderBtn">
             <label class="feature labelCss">Video</label>
             <mat-slide-toggle [color]="color" name="video" [checked]="roomDetails.videoAvailable"></mat-slide-toggle>
-
         </div>
+
         <div class="sliderBtn">
             <label class="feature labelCss">White Board</label>
             <mat-slide-toggle [color]="color" name="whiteboard" [checked]="roomDetails.whiteBoardAvailable">
             </mat-slide-toggle>
-
         </div>
     </div>
 
-    <button mat-raised-button class="searchBtn" color="primary" (click)="getSubmitMsg()">Submit</button>
+    <button [disabled]="!searchForm.valid" mat-raised-button class="searchBtn" color="primary"
+        (click)="getSubmitMsg()">Submit</button>
 </form>

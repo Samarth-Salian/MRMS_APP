@@ -28,7 +28,11 @@ export class RoomDetailsComponent implements OnInit {
   }
 
   getSubmitMsg() {
-    this.snackBar.openSnackBar("Room details submitted successfully", '');
-    this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
+    if (this.roomDetails.seats <= 0) {
+      this.snackBar.openSnackBar('Seats should be more than 0', '');
+    } else {
+      this.snackBar.openSnackBar("Room details submitted successfully", '');
+      this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
+    }
   }
 }

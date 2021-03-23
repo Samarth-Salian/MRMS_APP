@@ -11,6 +11,7 @@ export class SigninComponent implements OnInit {
   constructor(public appComponent: AppComponent) {
     this.appName = this.appComponent.title;
     this.appComponent.setTitle("");
+    this.appComponent.backButtonScreenName = 'signin';
   }
 
   ngOnInit(): void {

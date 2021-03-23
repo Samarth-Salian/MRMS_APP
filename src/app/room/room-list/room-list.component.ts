@@ -19,7 +19,7 @@ export class RoomListComponent {
   constructor(private titleChange: AppComponent, private router: Router, private activatedRoute: ActivatedRoute, public http: HttpClient) {
     this.titleChange.title = this.activatedRoute.snapshot.data['title'];
     this.titleChange.setTitle(this.titleChange.title);
-    this.conditionalFabIcon = this.titleChange.showFabIcon
+    this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.getjson().subscribe(data => {
       this.rooms = data;
     })

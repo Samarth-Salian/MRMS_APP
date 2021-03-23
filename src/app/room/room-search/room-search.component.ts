@@ -23,6 +23,7 @@ export class RoomSearchComponent implements OnInit {
   minDate = new Date();
   todayDate = new FormControl(new Date());
   constructor(private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router) {
+    this.titleChange.roomListBackButton = false;
     this.titleChange.title = this.activatedRoute.snapshot.data['title'];
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;

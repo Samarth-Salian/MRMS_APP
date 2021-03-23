@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppComponent} from '../../app.component'
+import {AppComponent} from '../../app.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,11 +8,10 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./my-meetings.component.css']
 })
 export class MyMeetingsComponent implements OnInit {
-
   constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.roomListBackButton = true;
-    this.titleChange.title = this.activatedRoute.snapshot.data[""];
-    this.titleChange.setTitle("");
+    this.titleChange.title = this.activatedRoute.snapshot.data[''];
+    this.titleChange.setTitle('');
     this.titleChange.showFabIcon = true;
     this.titleChange.backButtonScreenName = 'meeting';
    }

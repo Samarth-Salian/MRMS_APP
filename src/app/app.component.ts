@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common'
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -13,19 +13,19 @@ export class AppComponent {
   displayHeading = true;
   showFabIcon = true;
   screenName;
-  roomLaunchFlag = "Root Menu";
-  routerPath: string = window.location.href.split("/", 4)[3];
+  roomLaunchFlag = 'Root Menu';
+  routerPath: string = window.location.href.split('/', 4)[3];
   constructor(private location: Location, private router: Router) {
-    if (this.routerPath === "meeting-details" || this.routerPath === "room-list" || this.routerPath === "room-search") {
+    if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
       this.displayHeading = false;
-      this.screenName = this.routerPath.replace("-", " ");
+      this.screenName = this.routerPath.replace('-', ' ');
     }
   }
 
-  ngOnInit() {
+  OnInit(): void {
   }
   setTitle = (param: string) => {
-    if (param === "") {
+    if (param === '') {
       this.displayHeading = true;
       this.title = 'Meeting-App';
     } else {
@@ -50,7 +50,7 @@ export class AppComponent {
       this.location.back();
     }
   }
-  fnNavigateRoomList() {
+  fnNavigateRoomList(): void {
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
   }
 }

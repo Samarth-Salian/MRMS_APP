@@ -1,22 +1,26 @@
 <div class="wrapper">
-    <form class="locationDetailsForm">
+    <form class="locationDetailsForm" #LocationDetailsForm="ngForm">
         <mat-form-field class="example-full-width">
             <mat-label>Building Name :</mat-label>
-            <input matInput value={{buildingName}}>
+            <input matInput name="BuildingName" #BuildingName="ngModel" required [(ngModel)]="buildingName">
         </mat-form-field>
+        <span *ngIf="BuildingName.invalid && BuildingName.touched" [ngStyle]="{'color':'red'}">Enter Building Name</span>
 
         <mat-form-field class="example-full-width">
             <mat-label>City </mat-label>
-            <input matInput value={{city}}>
+            <input matInput name="CityName" #CityName="ngModel" required [(ngModel)]="city">
         </mat-form-field>
+        <span *ngIf="CityName.invalid && CityName.touched" [ngStyle]="{'color':'red'}">Enter City Name</span>
 
         <mat-form-field class="example-full-width">
             <mat-label>Country </mat-label>
-            <input matInput value={{country}}>
+            <input matInput name="CountryName" #CountryName="ngModel" required [(ngModel)]="country">
         </mat-form-field>
+        <span *ngIf="CountryName.invalid && CountryName.touched" [ngStyle]="{'color':'red'}">Enter Country Name</span>
+
         <div class="center">
             <button mat-raised-button class="searchBtn" color="primary" routerLink="/location-list"
-                (click)="getSubmitMsg()">Submit Meeting</button>
+                (click)="getSubmitMsg()">Submit</button>
         </div>
     </form>
 </div>

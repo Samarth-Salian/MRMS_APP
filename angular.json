@@ -63,6 +63,21 @@
                   "maximumError": "4kb"
                 }
               ]
+            },
+            "en": {
+              "localize": [
+                "en"
+              ]
+            },
+            "hi": {
+              "localize": [
+                "hi"
+              ]
+            },
+            "ka": {
+              "localize": [
+                "ka"
+              ]
             }
           }
         },
@@ -74,6 +89,15 @@
           "configurations": {
             "production": {
               "browserTarget": "meeting-app:build:production"
+            },
+            "en": {
+              "browserTarget": "meeting-app:build:en"
+            },
+            "hi": {
+              "browserTarget": "meeting-app:build:hi"
+            },
+            "ka": {
+              "browserTarget": "meeting-app:build:ka"
             }
           }
         },
@@ -129,6 +153,17 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {}
+        }
+      },
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "hi": {
+            "translation": "src/localize/messages.hi.xlf"
+          },
+          "ka": {
+            "translation": "src/localize/messages.ka.xlf"
+          }
         }
       }
     }

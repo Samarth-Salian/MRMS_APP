@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
+import {AppComponent} from '../../app.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-my-meetings',
@@ -7,9 +8,9 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./my-meetings.component.css']
 })
 export class MyMeetingsComponent implements OnInit {
-
-  constructor(private titleChange: AppComponent) {
-    this.titleChange.setTitle();
+  constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+    this.titleChange.title = this.activatedRoute.snapshot.data[''];
+    this.titleChange.setTitle('');
     this.titleChange.showFabIcon = true;
   }
 

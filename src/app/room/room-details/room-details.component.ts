@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { ToastrService } from 'ngx-toastr';
 import { Room } from 'src/app/models/room';
+import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../../app.component';
+import { Router } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-room-details',
@@ -10,10 +13,12 @@ import { Room } from 'src/app/models/room';
 })
 export class RoomDetailsComponent implements OnInit {
   roomDetails: Room = history.state.data;
-
   color: ThemePalette = 'primary';
+  roomLaunchFlag: string = 'Root Menu';
 
-  constructor(private toastr: ToastrService) {
+  constructor(private router: Router, private snackBar: SnackbarService, private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.setTitle(this.titleChange.title);
     if (typeof (history.state.data) === 'undefined') {
       this.roomDetails = new Room();
     }
@@ -21,7 +26,8 @@ export class RoomDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getSubmitMsg(): void {
-    this.toastr.success('Room details submitted successfully');
+  getSubmitMsg() {
+    this.snackBar.openSnackBar('Room details submitted successfully', '');
+    this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
   }
 }

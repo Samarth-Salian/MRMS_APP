@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AppComponent } from '../../app.component';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-location-list',
   templateUrl: './location-list.component.html',
@@ -9,10 +11,13 @@ import { Router } from '@angular/router';
 })
 export class LocationListComponent implements OnInit {
   locations: any;
-  constructor(public http: HttpClient, private router: Router) {
+  constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute, public http: HttpClient, private router: Router) {
+    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.setTitle(this.titleChange.title);
+    this.titleChange.showFabIcon = false;
     this.getjson().subscribe(data => {
       this.locations = data;
-    });
+    })
   }
   ngOnInit(): void {
   }

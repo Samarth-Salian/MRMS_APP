@@ -22,15 +22,14 @@ export class AppComponent {
 
   OnInit(): void {
   }
-  setTitle = () => {
-    const route = window.location.href.split('/', 4)[3];
+  setTitle = (title: string) => {
     const sidebarRequired = ['my-meetings', 'signin'];
-    if (sidebarRequired.includes(route)) {
+    if (title === '') {
       this.displayHeading = true;
       this.title = 'Meeting-App';
     } else {
       this.displayHeading = false;
-      this.title = route;
+      this.title = title;
     }
   }
   goBack = () => {

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -75,7 +74,6 @@ export const MY_DATE_FORMATS = {
     NgxMaterialTimepickerModule,
     HttpClientModule,
     MatCardModule,
-    ToastrModule.forRoot(),
     FormsModule,
     MatFormFieldModule,
     ReactiveFormsModule,

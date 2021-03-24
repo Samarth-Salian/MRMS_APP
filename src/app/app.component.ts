@@ -64,8 +64,8 @@ export class AppComponent {
     const sidebarRequired = ['room-details', 'room-list'];
     if (sidebarRequired.includes(path) && this.roomListBackButton) {
       if (path === 'room-details') {
-        this.router.navigateByUrl('/room-list');
-      } else {
+        this.router.navigateByUrl('/room-list', { state: { data: 'Root Menu' } });
+      }else {
         if (this.backButtonScreenName === 'signin') {
           this.router.navigateByUrl('/signin');
         } else {

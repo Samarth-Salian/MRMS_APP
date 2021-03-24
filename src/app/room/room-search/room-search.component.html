@@ -1,7 +1,7 @@
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
     <mat-form-field class="fromInputDiv">
         <mat-label>Choose a Locaton</mat-label>
-        <mat-select [(value)]="roomSearch.location">
+        <mat-select [(ngModel)]="roomSearch.location" name="locations">
             <mat-option *ngFor="let location of locations" [value]="location">
                 {{location}}
             </mat-option>
@@ -29,8 +29,8 @@
         <div class="toTimeDiv">
             <mat-form-field class="fromInputDiv">
                 <mat-label>To</mat-label>
-                <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot" [min]="roomSearch.toTime"
-                    #toSlot="ngModel" required>
+                <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot"
+                    [min]="roomSearch.toTime" #toSlot="ngModel" required>
                 <ngx-material-timepicker #totime></ngx-material-timepicker>
 
             </mat-form-field>
@@ -39,7 +39,8 @@
     </div>
     <mat-form-field class="fromInputDiv">
         <mat-label>Seats</mat-label>
-        <input matInput type="number" min="1" max="20" [(ngModel)]="roomSearch.seats" name="seats" #seats="ngModel" required>
+        <input matInput type="number" min="1" max="20" [(ngModel)]="roomSearch.seats" name="seats" #seats="ngModel"
+            required>
     </mat-form-field>
     <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
     <div class="sliderContainer">

@@ -1,18 +1,19 @@
 <div class="wrapper">
     <form class="locationDetailsForm" #LocationDetailsForm="ngForm" novalidate>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="detailsDiv">
             <mat-label>Building Name :</mat-label>
             <input matInput name="BuildingName" #BuildingName="ngModel" required [(ngModel)]="buildingName">
         </mat-form-field>
-        <span *ngIf="BuildingName.invalid && BuildingName.touched" [ngStyle]="{'color':'red'}">Enter Building Name</span>
+        <span *ngIf="BuildingName.invalid && BuildingName.touched" [ngStyle]="{'color':'red'}">Enter Building
+            Name</span>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="detailsDiv">
             <mat-label>City </mat-label>
             <input matInput name="CityName" #CityName="ngModel" required [(ngModel)]="city">
         </mat-form-field>
         <span *ngIf="CityName.invalid && CityName.touched" [ngStyle]="{'color':'red'}">Enter City Name</span>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="detailsDiv">
             <mat-label>Country </mat-label>
             <input matInput name="CountryName" #CountryName="ngModel" required [(ngModel)]="country">
         </mat-form-field>
@@ -20,8 +21,7 @@
 
         <div class="center">
             <button [disabled]="!LocationDetailsForm.valid" mat-raised-button class="searchBtn" color="primary"
-                routerLink="/location-list"
-                (click)="getSubmitMsg()">Submit</button>
+                routerLink="/location-list" (click)="getSubmitMsg()">Submit</button>
         </div>
     </form>
 </div>

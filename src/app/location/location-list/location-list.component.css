@@ -17,18 +17,6 @@
   margin-top: 0px;
 }
 
-.btn {
-  position: fixed;
-  width: 48px;
-  height: 48px;
-  bottom: 0px;
-  right: 30px;
-  background-color: rgb(13, 16, 43);
-  color: #FFF;
-  border-radius: 30px;
-  text-align: center;
-}
-
 .fab-bottom-right {
   position: fixed;
   left: auto;

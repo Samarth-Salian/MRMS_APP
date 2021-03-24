@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
 
   constructor(public http: HttpClient, public snackBar: SnackbarService,
     private activatedRoute: ActivatedRoute, private titleChange: AppComponent) {
-    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
     this.getjson().subscribe(data => {

@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
-import { AppComponent } from '../../app.component';
-import { Room } from 'src/app/models/room';
-import { Moment } from 'moment';
-import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
-import { ActivatedRoute } from '@angular/router';
+import { Room } from 'src/app/models/room';
+import { FormControl } from '@angular/forms';
+import { AppComponent } from '../../app.component';
 import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
@@ -34,7 +32,7 @@ export class RoomSearchComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private titleChange: AppComponent,
     private router: Router, private snackBar: SnackbarService) {
     this.titleChange.roomListBackButton = false;
-    this.titleChange.title = this.activatedRoute.snapshot.data['title'];
+    this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
     this.roomSearch = new Room();
@@ -50,19 +48,12 @@ export class RoomSearchComponent implements OnInit {
   ngAfterViewInit() {
   }
 
-  onOptionsSelected() {
-    console.log(this.selected);
-  }
-
   public fnNavigateToRoomList() {
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
-      console.log(this.roomSearch);
-      console.log(`after ${JSON.stringify(this.roomSearch)}`);
       this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
     }
-  }
 
   onCalendarChange(pthis: any) {
     this.roomSearch.date = pthis.targetElement.value;
@@ -70,7 +61,9 @@ export class RoomSearchComponent implements OnInit {
 
   formatDate() {
     const minutes = new Date().getMinutes();
+
     let updatedMinutes: Date = new Date();
+
     if (minutes >= 0 && minutes < 15) {
       const rMin = 15 - minutes;
       updatedMinutes = new Date(new Date().setMinutes(minutes + rMin));
@@ -92,8 +85,7 @@ export class RoomSearchComponent implements OnInit {
   }
 
   formatDateAndTime(updatedMinutes: Date) {
-    const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours()
-      - 12 : updatedMinutes.getHours();
+    const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
     const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
     return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
   }

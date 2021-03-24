@@ -1,45 +1,63 @@
-.google_icon{
+.google_icon {
     width: 35px;
     padding-right: 10px;
 }
-.mainContainer{
+
+.mainContainer {
     margin: 32% 0%;
 }
-.appName, .googleButtonDiv{
+
+.appName {
     text-align: center;
 }
-.googleBtn{
+
+.googleBtn {
     border-radius: 30px;
     width: 80%;
 }
+
 .formFieldClass {
     width: 100%;
 }
-.profileContainer{
-    margin: 32% 5%;
+
+.profileContainer {
+    margin-top: 60px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
-.mainForm{
+
+.mainForm {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-
 }
-.profileImage{
+
+.profileImage {
     height: 80px;
     width: 80px;
     border-radius: 50%;
-    margin: 8px 117px 26px;
 }
+
 .row {
     display: flex;
-  }
-.column {    
+}
+
+.column {
     text-align-last: center;
 }
+
 .column-right {
     width: 50%;
     text-align-last: center;
 }
-.googleButtonDiv{
-    margin-top: 10px;
+
+.profileImageContainer {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.submitButton {
+    width: 100%;
+    height: 51px;
+    border-radius: 100px;
 }

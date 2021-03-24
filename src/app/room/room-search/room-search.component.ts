@@ -52,9 +52,8 @@ export class RoomSearchComponent implements OnInit {
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
-    this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
+      this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
     }
-  }
 
   onCalendarChange(pthis: any) {
     this.roomSearch.date = pthis.targetElement.value;
@@ -62,7 +61,9 @@ export class RoomSearchComponent implements OnInit {
 
   formatDate() {
     const minutes = new Date().getMinutes();
-    var updatedMinutes: Date = new Date();
+
+    let updatedMinutes: Date = new Date();
+
     if (minutes >= 0 && minutes < 15) {
       const rMin = 15 - minutes;
       updatedMinutes = new Date(new Date().setMinutes(minutes + rMin));

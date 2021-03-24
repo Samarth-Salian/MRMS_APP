@@ -1,4 +1,5 @@
 export class Room {
+
     private _name: string = '';
 
     private _location: string = '';

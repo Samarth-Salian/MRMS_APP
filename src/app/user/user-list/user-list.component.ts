@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+import { AppComponent } from '../../app.component';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-user-list',

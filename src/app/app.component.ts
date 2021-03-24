@@ -4,17 +4,25 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   backButtonScreenName: string = '';
+
   roomListBackButton: boolean = true;
+
   title = 'Meeting-App';
+
   displayHeading = true;
+
   showFabIcon = true;
+
   screenName;
+
   roomLaunchFlag = 'Root Menu';
+
   routerPath: string = window.location.href.split('/', 4)[3];
+
   constructor(private location: Location, private router: Router) {
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
       this.displayHeading = false;
@@ -24,6 +32,7 @@ export class AppComponent {
 
   OnInit(): void {
   }
+
   setTitle = (param: string) => {
     if (param === '') {
       this.displayHeading = true;
@@ -33,6 +42,7 @@ export class AppComponent {
       this.title = param;
     }
   }
+
   goBack = () => {
     const path = window.location.href.split("/", 4)[3];
     const sidebarRequired = ['room-details', 'room-list'];
@@ -50,6 +60,7 @@ export class AppComponent {
       this.location.back();
     }
   }
+
   fnNavigateRoomList(): void {
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
   }

@@ -25,12 +25,12 @@ export class RoomListComponent {
     })
   }
   public getjson(): Observable<any> {
-    return this.http.get("assets/roomList.json").pipe();
+    return this.http.get('assets/roomList.json').pipe();
   }
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
-    if (history.state.data === "Root Menu") {
-      this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: "creatRoom" } });
+    if (history.state.data === 'Root Menu') {
+      this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } });
     } else {
       Object.defineProperty(selectedRoom, 'roomCreationDetails', {
         value: this.roomDetails,
@@ -38,7 +38,7 @@ export class RoomListComponent {
         enumerable: true,
         configurable: true
       });
-      this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: "createMeeting" } });
+      this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } });
     }
   }
 }

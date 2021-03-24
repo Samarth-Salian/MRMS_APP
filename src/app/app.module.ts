@@ -26,7 +26,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
@@ -43,7 +43,7 @@ export const MY_DATE_FORMATS = {
     dateInput: 'DD-MM-YYYY',
     monthYearLabel: 'MMMM YYYY',
     dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
+    monthYearA11yLabel: 'MMMM YYYY',
   },
 };
 
@@ -60,7 +60,7 @@ export const MY_DATE_FORMATS = {
     LocationListComponent,
     LocationDetailsComponent,
     MeetingDetailsComponent,
-    RoomDetailsComponent
+    RoomDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,11 +84,11 @@ export const MY_DATE_FORMATS = {
     MatRippleModule,
     MomentDateModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [HttpClientModule,
     DatePipe,
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

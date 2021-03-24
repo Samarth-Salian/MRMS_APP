@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
@@ -24,7 +24,7 @@ export class LocationListComponent implements OnInit {
   ngOnInit(): void {
   }
   public getjson(): Observable<any> {
-    return this.http.get("assets/locationList.json").pipe();
+    return this.http.get('assets/locationList.json').pipe();
   }
   public fnNavigateToLocation(selectedLocation: any): any {
     this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } });

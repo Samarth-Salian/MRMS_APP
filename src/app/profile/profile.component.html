@@ -1,0 +1,40 @@
+<div class="profileContainer">
+    <form class="mainForm">
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="formFieldClass">
+                    <input matInput disabled>
+                    {{"Balakrishna"}}
+                </mat-form-field>
+            </div>
+            <div class="column-right">
+                <mat-form-field class="formFieldClass">
+                    <input matInput disabled>
+                    {{"Amalakanti"}}
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="formFieldClass">
+            <img class="profileImage" alt="profilePic" src='{{user?.image}}'>
+        </div>
+        <mat-form-field class="formFieldClass">
+            <mat-label>EmailId</mat-label>
+            <input matInput disabled value='amalakanti.balakrishna@u-exceed.com'>
+        </mat-form-field>
+        <mat-form-field class="formFieldClass">
+            <mat-label>Phone </mat-label>
+            <input matInput value="1234567890">
+        </mat-form-field>
+        <mat-form-field class="formFieldClass">
+            <mat-label>Choose a Locaton</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let location of locations" [value]="location">
+                    {{location}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="googleButtonDiv">
+            <a mat-raised-button (click)="clickUpdate()" class="googleBtn">Update</a>
+        </div>
+    </form>
+</div>

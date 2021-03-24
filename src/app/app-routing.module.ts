@@ -9,10 +9,9 @@ import { RoomListComponent } from './room/room-list/room-list.component';
 import { RoomSearchComponent } from './room/room-search/room-search.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserListComponent } from './user/user-list/user-list.component';
-import { ProfileComponent } from '../app/profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-
   {
     path: 'signin',
     component: SigninComponent,
@@ -20,57 +19,57 @@ const routes: Routes = [
   {
     path: 'my-meetings',
     component: MyMeetingsComponent,
-    data: { title: 'Meetinglist' }
+    data: { title: 'Meetinglist' },
   },
   {
     path: 'room-search',
     component: RoomSearchComponent,
-    data: { title: 'Search Room' }
+    data: { title: 'Search Room' },
   },
   {
     path: 'room-list',
     component: RoomListComponent,
-    data: { title: 'Roomlist' }
+    data: { title: 'Roomlist' },
   },
   {
     path: 'meeting-details',
     component: MeetingDetailsComponent,
-    data: { title: 'Edit Meeting' }
+    data: { title: 'Edit Meeting' },
   },
   {
     path: 'location-list',
     component: LocationListComponent,
-    data: { title: 'Locationlist' }
+    data: { title: 'Locationlist' },
   },
   {
     path: 'location-details',
     component: LocationDetailsComponent,
-    data: { title: 'Location Details' }
+    data: { title: 'Location Details' },
   },
   {
     path: 'room-details',
     component: RoomDetailsComponent,
-    data: { title: 'Room Details' }
+    data: { title: 'Room Details' },
   },
   {
     path: 'user-list',
     component: UserListComponent,
-    data: { title: 'Userslist' }
+    data: { title: 'Userslist' },
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    data: { title: 'User Profile' }
+    data: { title: 'User Profile' },
   },
   {
     path: '',
     redirectTo: '/signin',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

@@ -24,6 +24,7 @@ export class LocationListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   public getjson(): Observable<any> {
     return this.http.get('assets/locationList.json').pipe();
   }

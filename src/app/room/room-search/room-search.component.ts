@@ -52,7 +52,7 @@ export class RoomSearchComponent implements OnInit {
       this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
     }
   }
-  
+
   onCalendarChange(pthis: any) {
     this.roomSearch.date = pthis.targetElement.value;
   }

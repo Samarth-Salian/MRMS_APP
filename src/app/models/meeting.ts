@@ -1,5 +1,4 @@
 export class Meeting {
-
     public _id: string = '';
 
     private _name: string = '';

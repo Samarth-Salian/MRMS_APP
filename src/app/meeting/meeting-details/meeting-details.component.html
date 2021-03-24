@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #meetingForm="ngForm" novalidate>
     <mat-form-field class="example-full-width">
       <mat-label>Meeting Title </mat-label>
       <input matInput name="title" #title="ngModel" required [(ngModel)]="meeting.name">
@@ -26,7 +26,7 @@
     </mat-form-field>
     <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
     <div class="center">
-      <button mat-raised-button class="searchBtn" color="primary" routerLink="/my-meetings"
+      <button [disabled]="!meetingForm.valid" mat-raised-button class="searchBtn" color="primary"
         (click)="getSubmitMsg()">Submit Meeting</button>
     </div>
   </form>

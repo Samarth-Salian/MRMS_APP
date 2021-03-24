@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   user: any;
   appName = '';
@@ -21,9 +21,6 @@ export class ProfileComponent implements OnInit {
     this.getjson().subscribe(data => {
       this.user = data[0];
     });
-  }
-
-  ngOnInit(): void {
   }
   public getjson(): Observable<any> {
     return this.http.get("assets/userList.json").pipe()

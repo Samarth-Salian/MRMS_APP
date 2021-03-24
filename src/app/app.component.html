@@ -10,7 +10,7 @@
     <span class="example-spacer"></span>
     <mat-card-header>
       <div *ngIf="showProfileImage" mat-card-avatar>
-        <img [routerLink]="['/profile']" class="UserImage" src='{{user?.image}}'>
+        <img [routerLink]="['/profile']" alt="profilePic" class="UserImage" src='{{user?.image}}'>
       </div>
     </mat-card-header>
     <button *ngIf=displayHeading mat-icon-button class="example-icon favorite-icon"

@@ -7,6 +7,7 @@ import { Moment } from 'moment';
 import { FormControl } from '@angular/forms';
 import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
+import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-room-search',
@@ -22,7 +23,7 @@ export class RoomSearchComponent implements OnInit {
   toTime = "";
   minDate = new Date();
   todayDate = new FormControl(new Date());
-  constructor(private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private titleChange: AppComponent, private router: Router, private snackBar: SnackbarService) {
     this.titleChange.roomListBackButton = false;
     this.titleChange.title = this.activatedRoute.snapshot.data['title'];
     this.titleChange.setTitle(this.titleChange.title);
@@ -43,9 +44,13 @@ export class RoomSearchComponent implements OnInit {
   }
 
   public fnNavigateToRoomList() {
+    if (this.roomSearch.seats <= 0) {
+      this.snackBar.openSnackBar('Seats should be more than 0', '');
+    } else {
     console.log(this.roomSearch);
     console.log(`after ${JSON.stringify(this.roomSearch)}`);
     this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
+    }
   }
   onCalendarChange(pthis: any) {
     this.roomSearch.date = pthis.targetElement.value;

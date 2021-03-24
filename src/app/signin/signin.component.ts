@@ -9,6 +9,7 @@ import { AppComponent } from '../app.component';
 export class SigninComponent implements OnInit {
   appName = '';
   constructor(public appComponent: AppComponent) {
+    this.appComponent.showProfileImage = false;
     this.appName = this.appComponent.title;
     this.appComponent.setTitle('');
     this.appComponent.backButtonScreenName = 'signin';

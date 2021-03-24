@@ -9,12 +9,13 @@ import { RoomListComponent } from './room/room-list/room-list.component';
 import { RoomSearchComponent } from './room/room-search/room-search.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { ProfileComponent } from '../app/profile/profile.component';
 
 const routes: Routes = [
 
   {
     path: 'signin',
-    component: SigninComponent
+    component: SigninComponent,
   },
   {
     path: 'my-meetings',
@@ -55,6 +56,11 @@ const routes: Routes = [
     path: 'user-list',
     component: UserListComponent,
     data: { title: 'Userslist' }
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: { title: 'User Profile' }
   },
   {
     path: '',

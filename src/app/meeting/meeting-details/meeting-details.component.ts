@@ -59,7 +59,11 @@ export class MeetingDetailsComponent implements OnInit {
 
   }
   getSubmitMsg() {
+    if (this.meeting.seats <= 0) {
+      this.snackBar.openSnackBar('Seats should be more than 0', '');
+    } else {
     this.snackBar.openSnackBar(this.submitMsg, '');
     this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
+    }
   }
 }

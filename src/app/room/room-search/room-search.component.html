@@ -1,4 +1,4 @@
-<form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer">
+<form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
     <mat-form-field class="fromInputDiv">
         <mat-label>Choose a Locaton</mat-label>
         <mat-select [(ngModel)]="roomSearch.location" name="locations">
@@ -15,7 +15,6 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
 
     <div class="form-outline">
         <div class="fromTimeDiv">
@@ -66,5 +65,5 @@
             </mat-slide-toggle>
         </div>
     </div>
-    <button type="submit" mat-raised-button class="searchBtn" color="primary">Search</button>
+    <button [disabled]="!searchForm.valid" type="submit" mat-raised-button class="searchBtn" color="primary">Search</button>
 </form>

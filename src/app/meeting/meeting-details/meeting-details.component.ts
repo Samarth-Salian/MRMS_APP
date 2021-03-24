@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
 import { Meeting } from '../../models/meeting';
-
 import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
@@ -34,7 +33,7 @@ export class MeetingDetailsComponent implements OnInit {
       if (history.state.flow === 'createMeeting') {
         this.selectedRoom = history.state.data;
         if (typeof (history.state.data.roomCreationDetails._date) !== 'undefined') {
-          this.meetingSchedule = history.state.data.roomCreationDetails._date + " " + history.state.data.roomCreationDetails._fromTime + " " + history.state.data.roomCreationDetails._toTime;
+          this.meetingSchedule = history.state.data.roomCreationDetails._date + ' ' + history.state.data.roomCreationDetails._fromTime + ' ' + history.state.data.roomCreationDetails._toTime;
         }
         this.meeting.location = history.state.data.roomCreationDetails._location;
         this.meeting.room = this.selectedRoom.name;

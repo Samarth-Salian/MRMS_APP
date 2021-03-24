@@ -14,7 +14,14 @@ mat-sidenav-container{
     text-align: center;
     margin-left: 10px;
 }
-
+.UserImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0px 20px 16px;
+    padding: 0;
+    line-height: 40px;
+}
 .menu-spacer {
     flex: 1 1 auto;
 }

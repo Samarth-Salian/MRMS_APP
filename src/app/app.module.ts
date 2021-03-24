@@ -34,6 +34,7 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProfileComponent } from './profile/profile.component';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -60,7 +61,8 @@ export const MY_DATE_FORMATS = {
     LocationListComponent,
     LocationDetailsComponent,
     MeetingDetailsComponent,
-    RoomDetailsComponent
+    RoomDetailsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

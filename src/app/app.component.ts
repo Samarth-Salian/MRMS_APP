@@ -17,14 +17,16 @@ export class AppComponent {
 
   roomListBackButton: boolean = true;
 
-  title = ' Meeting-App ';
+  title = 'Meeting-App';
 
   displayHeading = true;
 
   showFabIcon = true;
 
   screenName;
+
   roomLaunchFlag = 'Root Menu';
+
   routerPath: string = window.location.href.split('/', 4)[3];
   constructor(public http: HttpClient, private location: Location, private router: Router) {
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
@@ -38,6 +40,7 @@ export class AppComponent {
 
   OnInit(): void {
   }
+
   setTitle = (param: string) => {
 
     if (param === '') {
@@ -59,6 +62,7 @@ export class AppComponent {
 
     return this.http.get('assets/userList.json').pipe();
   }
+
   goBack = () => {
 
     this.showProfileImage = true;
@@ -86,6 +90,7 @@ export class AppComponent {
       this.location.back();
     }
   }
+
   fnNavigateRoomList(): void {
 
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });

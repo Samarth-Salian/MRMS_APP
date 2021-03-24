@@ -28,6 +28,7 @@ export class AppComponent {
   roomLaunchFlag = 'Root Menu';
 
   routerPath: string = window.location.href.split('/', 4)[3];
+
   constructor(public http: HttpClient, private location: Location, private router: Router) {
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
       this.displayHeading = false;
@@ -42,49 +43,34 @@ export class AppComponent {
   }
 
   setTitle = (param: string) => {
-
     if (param === '') {
-
       this.displayHeading = true;
       this.title = 'Meeting-App';
-
-    }
-
-    else {
-
+    } else {
       this.displayHeading = false;
       this.title = param;
-
     }
-
   }
-  public getjson(): Observable<any> {
 
+  public getjson(): Observable<any> {
     return this.http.get('assets/userList.json').pipe();
   }
 
   goBack = () => {
-
     this.showProfileImage = true;
 
-    const path = window.location.href.split("/", 4)[3];
+    const path = window.location.href.split('/', 4)[3];
 
     const sidebarRequired = ['room-details', 'room-list'];
     if (sidebarRequired.includes(path) && this.roomListBackButton) {
       if (path === 'room-details') {
         this.router.navigateByUrl('/room-list', { state: { data: 'Root Menu' } });
-      }
-
-      else {
-
+      }else {
         if (this.backButtonScreenName === 'signin') {
           this.router.navigateByUrl('/signin');
-        }
-
-        else {
+        } else {
           this.router.navigateByUrl('/my-meetings');
         }
-
       }
     } else {
       this.location.back();
@@ -92,8 +78,6 @@ export class AppComponent {
   }
 
   fnNavigateRoomList(): void {
-
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
-
   }
 }

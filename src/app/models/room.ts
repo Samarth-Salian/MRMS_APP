@@ -1,5 +1,4 @@
 export class Room {
-
     private _name: string = '';
 
     private _location: string = '';
@@ -129,5 +128,4 @@ export class Room {
     public set whiteBoardAvailable(whiteBoardAvailable: boolean) {
       this._whiteBoardAvailable = whiteBoardAvailable;
     }
-
 }

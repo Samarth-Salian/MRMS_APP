@@ -45,9 +45,6 @@ export class RoomSearchComponent implements OnInit {
     this.roomSearch.toTime = this.toTime;
   }
 
-  ngAfterViewInit() {
-  }
-
   public fnNavigateToRoomList() {
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');

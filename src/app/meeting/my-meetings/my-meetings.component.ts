@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../../app.component';
 import { ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-my-meetings',
@@ -19,5 +19,4 @@ export class MyMeetingsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

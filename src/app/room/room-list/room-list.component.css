@@ -1,13 +1,8 @@
-.roomNoClass, .seats{
-    display: inline-block;
-}
-.roomNoClass{
-    width: 50%;
-}
-.seats{
+.seats {
     float: right;
 }
-.listContainer{
+
+.listContainer {
     width: 90%;
     margin: 0px auto;
     margin-top: 10px;
@@ -16,28 +11,34 @@
     border-bottom: 1px solid #aaa;
     box-shadow: 2px 3px 3px #ddd;
 }
-.featuresDiv{
+
+.featuresDiv {
     display: inline-block;
 }
-.features{
+
+.features {
     width: 30px;
     border: 1px solid;
     padding: 5px;
     border-radius: 40px;
     margin-right: 10px;
 }
-.disableFeature{
+
+.disableFeature {
     opacity: 0.2;
 }
-.mat-card-header-text{
+
+.mat-card-header-text {
     margin: 0px 0px !important;
 }
-.featureList{
+
+.featureList {
     padding: 0px 0px 0px 24px;
 }
+
 .fab-bottom-right {
     position: fixed;
     left: auto;
     bottom: 5%;
     right: 10%;
-  }
+}

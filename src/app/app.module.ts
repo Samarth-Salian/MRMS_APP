@@ -34,6 +34,11 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -84,7 +89,14 @@ export const MY_DATE_FORMATS = {
     MatRippleModule,
     MomentDateModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:3000'],
+        disallowedRoutes: ['http://localhost:3000/auth/login'],
+      },
+    }),
   ],
   providers: [HttpClientModule,
     DatePipe,

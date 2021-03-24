@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,26 +11,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   showProfileImage: boolean = true;
-
   user: any;
-
   backButtonScreenName: string = '';
-
   roomListBackButton: boolean = true;
-
   title = 'Meeting-App';
-
   displayHeading = true;
-
   showFabIcon = true;
-
   screenName;
-
   roomLaunchFlag = 'Root Menu';
-
   routerPath: string = window.location.href.split('/', 4)[3];
-
-  constructor(public http: HttpClient, private location: Location, private router: Router) {
+  constructor(public http: HttpClient, private location: Location, private router: Router, private translate: TranslateService) {
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
       this.displayHeading = false;
       this.screenName = this.routerPath.replace('-', ' ');
@@ -79,5 +70,12 @@ export class AppComponent {
 
   fnNavigateRoomList(): void {
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
+  }
+  ngAfterViewInit() {
+    this.translate.setDefaultLang('en');
+  }
+  useLanguage(language: string): void {
+    //change of language at run time
+    this.translate.use(language);
   }
 }

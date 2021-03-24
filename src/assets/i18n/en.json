@@ -1,0 +1,6 @@
+{
+    "signin": {
+        "title": "Welcome to {{appName}}",
+        "googleSignin": "Sign in with Google"
+    }
+}

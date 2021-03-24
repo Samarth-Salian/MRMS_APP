@@ -34,6 +34,8 @@ import { LocationDetailsComponent } from './location/location-details/location-d
 import { MeetingDetailsComponent } from './meeting/meeting-details/meeting-details.component';
 import { RoomDetailsComponent } from './room/room-details/room-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -97,6 +99,13 @@ export const MY_DATE_FORMATS = {
         disallowedRoutes: ['http://localhost:3000/auth/login'],
       },
     }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [HttpClientModule,
     DatePipe,
@@ -104,3 +113,6 @@ export const MY_DATE_FORMATS = {
   bootstrap: [AppComponent],
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

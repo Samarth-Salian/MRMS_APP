@@ -13,7 +13,7 @@ export class ProfileComponent {
 
   user: any;
   appName = '';
-  locations = ['Select', 'Building A', 'Building B', 'Building C'];
+  locations = ['Select', 'Building A, Bangalore', 'Building B, Bangalore', 'Building C, Bangalore'];
   constructor(public http: HttpClient, private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.title = this.activatedRoute.snapshot.data['title'];
     this.titleChange.setTitle(this.titleChange.title);

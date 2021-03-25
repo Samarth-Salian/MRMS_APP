@@ -75,6 +75,7 @@ export class AppComponent {
   }
 
   fnNavigateRoomList(): void {
+    this.showFabIcon = true;
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
   }
 }

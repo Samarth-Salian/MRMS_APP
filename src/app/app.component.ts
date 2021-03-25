@@ -39,9 +39,6 @@ export class AppComponent {
     });
   }
 
-  OnInit(): void {
-  }
-
   setTitle = (param: string) => {
     if (param === '') {
       this.displayHeading = true;
@@ -65,7 +62,7 @@ export class AppComponent {
     if (sidebarRequired.includes(path) && this.roomListBackButton) {
       if (path === 'room-details') {
         this.router.navigateByUrl('/room-list', { state: { data: 'Root Menu' } });
-      }else {
+      } else {
         if (this.backButtonScreenName === 'signin') {
           this.router.navigateByUrl('/signin');
         } else {

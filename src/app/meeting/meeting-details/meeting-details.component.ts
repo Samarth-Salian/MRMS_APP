@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
@@ -10,7 +10,7 @@ import { SnackbarService } from '../../services/snackbar.service';
   templateUrl: './meeting-details.component.html',
   styleUrls: ['./meeting-details.component.css'],
 })
-export class MeetingDetailsComponent implements OnInit {
+export class MeetingDetailsComponent {
   meetingSchedule: string = '';
 
   meeting: Meeting;
@@ -53,16 +53,8 @@ export class MeetingDetailsComponent implements OnInit {
         this.meeting.fromTime = this.selectedMeeting.fromTime;
         this.meeting.toTime = this.selectedMeeting.toTime;
         this.meeting.date = this.selectedMeeting.date;
-      } else {
-        //  TODO handle exception
       }
-    } else {
-      //  TODO handle undefined
     }
-  }
-
-  ngOnInit(): void {
-
   }
 
   getSubmitMsg() {

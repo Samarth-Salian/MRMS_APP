@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 
@@ -7,7 +7,7 @@ import { AppComponent } from '../../app.component';
   templateUrl: './my-meetings.component.html',
   styleUrls: ['./my-meetings.component.css'],
 })
-export class MyMeetingsComponent implements OnInit {
+export class MyMeetingsComponent {
   constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.roomListBackButton = true;
     this.titleChange.title = this.activatedRoute.snapshot.data[''];
@@ -15,8 +15,5 @@ export class MyMeetingsComponent implements OnInit {
     this.titleChange.setTitle('');
     this.titleChange.showFabIcon = true;
     this.titleChange.backButtonScreenName = 'meeting';
-  }
-
-  ngOnInit(): void {
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Meeting } from '../../models/meeting';
   templateUrl: './meeting-list.component.html',
   styleUrls: ['./meeting-list.component.css'],
 })
-export class MeetingListComponent implements OnInit {
+export class MeetingListComponent {
   meetings: Meeting[] = [];
 
   constructor(public http: HttpClient, private router: Router) {
@@ -33,8 +33,6 @@ export class MeetingListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
-
   public getjson(): Observable<any> {
     return this.http.get('assets/meetingList.json').pipe();
   }
@@ -44,13 +42,13 @@ export class MeetingListComponent implements OnInit {
   }
 
   public fnTaskGlobalSearch(searchText: any, data: any) {
-    const results = [];
+    let results = [];
     const toSearch = searchText;
     let key;
-    for (let i = 0; i < data.length; i += 1) {
-      for (key in data[i]) {
-        if (data[i][key].toString().indexOf(toSearch) !== -1) {
-          results.push(data[i]);
+    for (let item of data) {
+      for (key in item) {
+        if (item[key].toString().indexOf(toSearch) !== -1) {
+          results.push(item);
         }
       }
     }

@@ -100,5 +100,8 @@
     "plugins": {
       "cordova-sqlite-storage": {}
     }
-  }
+  },
+  "eslintIgnore": [
+    "*spec.ts"
+  ]
 }

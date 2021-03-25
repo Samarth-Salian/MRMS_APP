@@ -15,21 +15,22 @@
         </ul>
     </mat-card-content>
     <div class="featuresDiv">
-        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" src="../assets/2052-512.png">
+        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="CallIcn" src="../assets/2052-512.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" src="../assets/camcorder-512.png">
+        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="VideoIcn" src="../assets/camcorder-512.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" src="../assets/ethernet_on1600.png">
+        <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="EthernetIcn"
+            src="../assets/ethernet_on1600.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" src="../assets/43338.png">
+        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="ScrIcn" src="../assets/43338.png">
     </div>
 </mat-card>
 <button *ngIf = "conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-details" routerLinkActive="active" color="primary">
     <mat-icon>
-        <i class="material-icons md-48">add</i>
+        <em class="material-icons md-48">add</em>
     </mat-icon>
 </button>
 

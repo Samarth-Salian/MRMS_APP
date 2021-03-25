@@ -1,0 +1,32 @@
+[
+    {
+        "_id": "6051bdb0bb6f3c5264bc334b",
+        "displayName": "Samarth Salian",
+        "emailId": "samarth.salian@i-exceed.com",
+        "firstName": "Samarth",
+        "lastName": "Salian",
+        "image": "https://lh5.googleusercontent.com/-ojcLcc4RD7U/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmd0DAduFnw1ddKMeuu6wiRrq0vgw/s96-c/photo.jpg",
+        "googleId": "103943155856668731107",
+        "adminRole": false,
+        "createdAt": "2021-03-17T08:28:32.971Z",
+        "updatedAt": "2021-03-17T08:28:32.971Z",
+        "__v": 0,
+        "phoneNum": "9673423856",
+        "location": "Building A, Bangalore"
+    },
+    {
+        "_id": "6051bdbcbb6f3c5264bc334c",
+        "displayName": "Samarth Salian",
+        "emailId": "sam3ks@gmail.com",
+        "firstName": "Samarth",
+        "lastName": "Salian",
+        "image": "https://lh5.googleusercontent.com/-TRQkKyf54C4/AAAAAAAAAAI/AAAAAAAADs4/AMZuuclFCJ6gZ0h5xZD9H26AOmQvAMWdLw/s96-c/photo.jpg",
+        "googleId": "109042502870086856509",
+        "adminRole": false,
+        "createdAt": "2021-03-17T08:28:44.412Z",
+        "updatedAt": "2021-03-17T08:28:44.412Z",
+        "__v": 0,
+        "phoneNum": "9567543934",
+        "location": "Building C, Bangalore"
+    }
+]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Room } from 'src/app/models/room';
@@ -11,7 +11,7 @@ import { SnackbarService } from '../../services/snackbar.service';
   templateUrl: './room-details.component.html',
   styleUrls: ['./room-details.component.css'],
 })
-export class RoomDetailsComponent implements OnInit {
+export class RoomDetailsComponent {
   roomDetails: Room = history.state.data;
 
   color: ThemePalette = 'primary';
@@ -25,9 +25,6 @@ export class RoomDetailsComponent implements OnInit {
     if (typeof (history.state.data) === 'undefined') {
       this.roomDetails = new Room();
     }
-  }
-
-  ngOnInit(): void {
   }
 
   getSubmitMsg() {

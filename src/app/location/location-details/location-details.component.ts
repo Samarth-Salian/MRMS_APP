@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { SnackbarService } from '../../services/snackbar.service';
@@ -8,7 +8,7 @@ import { SnackbarService } from '../../services/snackbar.service';
   templateUrl: './location-details.component.html',
   styleUrls: ['./location-details.component.css'],
 })
-export class LocationDetailsComponent implements OnInit {
+export class LocationDetailsComponent {
   buildingName: string = '';
 
   city: string = '';
@@ -26,9 +26,6 @@ export class LocationDetailsComponent implements OnInit {
       this.city = this.selectedLocation.city;
       this.country = this.selectedLocation.country;
     }
-  }
-
-  ngOnInit(): void {
   }
 
   getSubmitMsg() {

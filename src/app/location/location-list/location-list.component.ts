@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { AppComponent } from '../../app.component';
   templateUrl: './location-list.component.html',
   styleUrls: ['./location-list.component.css'],
 })
-export class LocationListComponent implements OnInit {
+export class LocationListComponent {
   locations: any;
 
   constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute,
@@ -20,9 +20,6 @@ export class LocationListComponent implements OnInit {
     this.getjson().subscribe(data => {
       this.locations = data;
     });
-  }
-
-  ngOnInit(): void {
   }
 
   public getjson(): Observable<any> {

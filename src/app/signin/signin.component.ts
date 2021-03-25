@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { AppComponent } from '../app.component';
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent {
   appName = '';
 
   constructor(public appComponent: AppComponent) {
@@ -14,8 +14,5 @@ export class SigninComponent implements OnInit {
     this.appName = this.appComponent.title;
     this.appComponent.setTitle('');
     this.appComponent.backButtonScreenName = 'signin';
-  }
-
-  ngOnInit(): void {
   }
 }

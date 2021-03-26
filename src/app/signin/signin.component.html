@@ -1,6 +1,7 @@
 <div class="mainContainer">
     <h2 i18n class="appName">Welcome to {{appName}}</h2>
     <div i18n class="googleButtonDiv">
-        <a mat-raised-button [routerLink]="['/my-meetings']" class="googleBtn"><img class="google_icon" src="../assets/google_logo1600.png">Sign in with Google</a>
+        <a mat-raised-button (click)="signInWithGoogle()" class="googleBtn"><img class="google_icon"
+                src="../assets/google_logo1600.png">Sign in with Google</a>
     </div>
 </div>

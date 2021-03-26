@@ -3,6 +3,7 @@ import { AppComponent } from '../app.component';
 import { SocialAuthService } from "angularx-social-login";
 import { GoogleLoginProvider, SocialUser } from "angularx-social-login";
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 declare let window: any;
 
 @Component({
@@ -13,11 +14,13 @@ declare let window: any;
 export class SigninComponent implements OnInit {
   appName = '';
   user: SocialUser;
-  constructor(public appComponent: AppComponent, private authService: SocialAuthService, private router: Router) {
+  constructor(public appComponent: AppComponent, private activatedRoute: ActivatedRoute, private authService: SocialAuthService, private router: Router) {
     this.appComponent.showProfileImage = false;
     this.appName = this.appComponent.title;
+    this.appComponent.displayHeading = true;
+    this.appComponent.title = this.activatedRoute.snapshot.data[''];
     this.user = new SocialUser();
-    this.appComponent.setTitle('');
+    this.appComponent.setTitle(this.appComponent.title);
     this.appComponent.backButtonScreenName = 'signin';
   }
 

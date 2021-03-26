@@ -26,7 +26,6 @@ export class ProfileComponent {
     this.titleChange.showProfileImage = false;
     this.user = this.titleChange.loginCredentials;
   }
-
   public getjson(): Observable<any> {
     return this.http.get('assets/userList.json').pipe();
   }
@@ -47,15 +46,18 @@ export class ProfileComponent {
         androidDatabaseProvider: 'system'
       });*/
       this.titleChange.db.transaction((tx: any) => {
-        this.authService.signOut();
+        this.authService.signOut().then().catch(this.errorHandler);
         tx.executeSql('DROP TABLE IF EXISTS ' + this.titleChange.tableName);
         this.router.navigateByUrl('/signin');
         //signout code goes here
       });
     } else {
-      this.authService.signOut();
+      this.authService.signOut().then().catch(this.errorHandler);
       this.titleChange.loginStorage.removeItem(this.titleChange.tableName);
       this.router.navigateByUrl('/signin');
     }
+  }
+  errorHandler() {
+    console.log('User logged out successfully');
   }
 }

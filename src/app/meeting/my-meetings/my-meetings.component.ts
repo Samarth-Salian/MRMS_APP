@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
+import { MeetingService } from '../../services/meeting.service';
 
 @Component({
   selector: 'app-my-meetings',
@@ -9,7 +10,7 @@ import { AppComponent } from '../../app.component';
 })
 export class MyMeetingsComponent {
   userLoginData = history.state.data;
-  constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+  constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute, private MeetingService: MeetingService) {
     this.titleChange.roomListBackButton = true;
     this.titleChange.title = this.activatedRoute.snapshot.data[''];
     this.titleChange.showProfileImage = true;
@@ -17,6 +18,8 @@ export class MyMeetingsComponent {
     this.titleChange.setImage(this.userLoginData.profilePic);
     this.titleChange.showFabIcon = true;
     this.titleChange.backButtonScreenName = 'meeting';
-    this.titleChange.setImage
+    this.MeetingService.requestType = 'get';
+    this.MeetingService.getToken = 'j';
+    this.MeetingService.callApi();
   }
 }

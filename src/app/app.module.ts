@@ -34,6 +34,9 @@ import { LocationDetailsComponent } from './location/location-details/location-d
 import { MeetingDetailsComponent } from './meeting/meeting-details/meeting-details.component';
 import { RoomDetailsComponent } from './room/room-details/room-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SocialAuthServiceConfig } from 'angularx-social-login';
+import { SocialLoginModule, GoogleLoginProvider } from 'angularx-social-login';
+
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -90,6 +93,7 @@ export const MY_DATE_FORMATS = {
     MomentDateModule,
     MatSelectModule,
     MatSnackBarModule,
+    SocialLoginModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -100,6 +104,20 @@ export const MY_DATE_FORMATS = {
   ],
   providers: [HttpClientModule,
     DatePipe,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '838542139964-l99hn9rv55k2kdqmq6l87ckd910ktffq.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent],
 })

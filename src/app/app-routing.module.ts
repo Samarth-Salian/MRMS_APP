@@ -10,6 +10,7 @@ import { RoomSearchComponent } from './room/room-search/room-search.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
@@ -62,10 +63,15 @@ const routes: Routes = [
     data: { title: 'User Profile' },
   },
   {
-    path: '',
-    redirectTo: '/signin',
-    pathMatch: 'full',
+    path: 'app-launch',
+    component: AppComponent
   },
+  {
+    path: '',
+    redirectTo: '/app-launch',
+    pathMatch: 'full',
+  }
+
 ];
 
 @NgModule({

@@ -8,12 +8,15 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./my-meetings.component.css'],
 })
 export class MyMeetingsComponent {
+  userLoginData = history.state.data;
   constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.roomListBackButton = true;
     this.titleChange.title = this.activatedRoute.snapshot.data[''];
     this.titleChange.showProfileImage = true;
-    this.titleChange.setTitle('');
+    this.titleChange.setTitle(this.titleChange.title)
+    this.titleChange.setImage(this.userLoginData.profilePic);
     this.titleChange.showFabIcon = true;
     this.titleChange.backButtonScreenName = 'meeting';
+    this.titleChange.setImage
   }
 }

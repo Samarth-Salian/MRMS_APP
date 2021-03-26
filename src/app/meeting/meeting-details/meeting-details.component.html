@@ -20,11 +20,17 @@
       <input matInput disabled [value]="meetingSchedule">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Seats</mat-label>
-      <input matInput type="number" name="seats" #seats="ngModel" required [(ngModel)]="meeting.seats">
-    </mat-form-field>
-    <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
+    <div class="input-group">
+      <label>Seats</label>
+      <input id="minusBtn" [disabled]="this.titleChange.disabledMinus" type="button" value="-" class="button-minus"
+        (click)="this.titleChange.updateSeatValue($event);" data-field="seats">
+      <input type="number" id="mynum" min="1" max="20" #mynum="ngModel" value="1" [(ngModel)]="meeting.seats" name="mynum"
+        class="seats-field" required>
+      <input id="plusBtn" type="button" value="+" class="button-plus" (click)="this.titleChange.updateSeatValue($event);"
+        data-field="seats">
+    </div>
+    <span *ngIf="mynum.invalid && mynum.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
+
     <div class="center">
       <button [disabled]="!meetingForm.valid" mat-raised-button class="searchBtn" color="primary"
         (click)="getSubmitMsg()">Submit Meeting</button>

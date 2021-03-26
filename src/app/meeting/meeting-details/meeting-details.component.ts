@@ -22,13 +22,13 @@ export class MeetingDetailsComponent {
   submitMsg: string = 'Meeting details submitted successfully';
 
   constructor(public snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
-    private titleChange: AppComponent, private router: Router) {
+    public titleChange: AppComponent, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.meeting = new Meeting();
     this.selectedMeeting = new Meeting();
     this.selectedRoom = new Room();
-
+    this.meeting.seats = 1;
     if (typeof (history.state.data) !== 'undefined') {
       if (history.state.flow === 'createMeeting') {
         this.selectedRoom = history.state.data;

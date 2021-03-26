@@ -37,12 +37,16 @@
             <span *ngIf="toSlot.invalid && toSlot.touched" [ngStyle]="{'color':'red'}">Enter To Time</span>
         </div>
     </div>
-    <mat-form-field class="fromInputDiv">
-        <mat-label>Seats</mat-label>
-        <input matInput type="number" min="1" max="20" [(ngModel)]="roomSearch.seats" name="seats" #seats="ngModel"
-            required>
-    </mat-form-field>
-    <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
+<div class="input-group">
+    <label>Seats</label>
+    <input id="minusBtn" [disabled]="this.titleChange.disabledMinus" type="button" value="-" class="button-minus"
+        (click)="this.titleChange.updateSeatValue($event);" data-field="seats">
+    <input type="number" id="mynum" min="1" max="20" #mynum="ngModel" value="1" [(ngModel)]="roomSearch.seats"
+        name="mynum" class="seats-field" required>
+    <input id="plusBtn" type="button" value="+" class="button-plus" (click)="this.titleChange.updateSeatValue($event);"
+        data-field="seats">
+</div>
+<span *ngIf="mynum.invalid && mynum.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
     <div class="sliderContainer">
         <div>
             <label for="" class="labelCss">Select Features</label>

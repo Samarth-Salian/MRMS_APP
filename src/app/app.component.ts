@@ -78,4 +78,23 @@ export class AppComponent {
     this.showFabIcon = true;
     this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
   }
+
+  disabledMinus = false;
+
+  updateSeatValue(event: any) {
+    let count = Number((<HTMLInputElement>document.getElementById("mynum")).value);
+    if (count === 1 && event.target.id !== 'plusBtn') {
+      this.disabledMinus = true;
+    } else {
+      if (count >= 1) {
+        this.disabledMinus = false;
+      }
+      if (event.target.id === 'plusBtn') {
+        count++;
+      } else {
+        count--;
+      }
+      (<HTMLInputElement>document.getElementById("mynum")).value = String(count);
+    }
+  }
 }

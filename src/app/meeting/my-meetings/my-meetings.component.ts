@@ -4,8 +4,6 @@ import { AppComponent } from '../../app.component';
 import { Room } from 'src/app/models/room';
 import { FormControl } from '@angular/forms';
 
-
-
 @Component({
   selector: 'app-my-meetings',
   templateUrl: './my-meetings.component.html',
@@ -24,9 +22,8 @@ export class MyMeetingsComponent {
     this.titleChange.setTitle('');
     this.titleChange.showFabIcon = true;
     this.titleChange.backButtonScreenName = 'meeting';
-
-
   }
+
   onCalendarChange(pthis: any) {
     this.roomSearchs.date = pthis.targetElement.value;
   }

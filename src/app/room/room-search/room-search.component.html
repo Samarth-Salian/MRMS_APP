@@ -37,12 +37,8 @@
             <span *ngIf="toSlot.invalid && toSlot.touched" [ngStyle]="{'color':'red'}">Enter To Time</span>
         </div>
     </div>
-    <mat-form-field class="fromInputDiv">
-        <mat-label>Seats</mat-label>
-        <input matInput type="number" min="1" max="20" [(ngModel)]="roomSearch.seats" name="seats" #seats="ngModel"
-            required>
-    </mat-form-field>
-    <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>
+<app-input-stepper [seatsNo]="roomSearch.seats" (keyup)="titleChange.validateSeatNum($event)"></app-input-stepper>
+
     <div class="sliderContainer">
         <div>
             <label for="" class="labelCss">Select Features</label>
@@ -65,5 +61,6 @@
             </mat-slide-toggle>
         </div>
     </div>
-    <button [disabled]="!searchForm.valid" type="submit" mat-raised-button class="searchBtn" color="primary">Search</button>
+    <button [disabled]="!searchForm.valid" id='submitbtn' type="submit" mat-raised-button class="searchBtn"
+        color="primary">Search</button>
 </form>

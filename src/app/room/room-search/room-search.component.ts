@@ -29,7 +29,7 @@ export class RoomSearchComponent implements OnInit {
 
   todayDate = new FormControl(new Date());
 
-  constructor(private activatedRoute: ActivatedRoute, private titleChange: AppComponent,
+  constructor(private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
     private router: Router, private snackBar: SnackbarService) {
     this.titleChange.roomListBackButton = false;
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -38,6 +38,7 @@ export class RoomSearchComponent implements OnInit {
     this.roomSearch = new Room();
     this.formatDate();
     this.roomSearch.date = moment(new Date()).format('DD-MM-YYYY');
+    this.roomSearch.seats = 1;
   }
 
   ngOnInit(): void {
@@ -46,6 +47,7 @@ export class RoomSearchComponent implements OnInit {
   }
 
   public fnNavigateToRoomList() {
+    this.roomSearch.seats = Number((<HTMLInputElement>document.getElementById('mynum')).value);
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {

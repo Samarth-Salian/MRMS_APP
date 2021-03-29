@@ -1,0 +1,52 @@
+.button-minus, .button-plus, .seats-field {
+    border: 1px solid #eeeeee;
+    box-sizing: border-box;
+    margin: 0;
+    outline: none;
+    padding: 10px;
+  }
+  .button-plus {
+    -webkit-appearance: button;
+    cursor: pointer;
+  }
+  .input-group {
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .input-group label{
+    font: 500 17px/32px Roboto, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    width: 65px;
+    color: rgba(0,0,0,.38);
+  }
+  .input-group input[type='button'] {
+    background-color: #C0C0C0;
+    min-width: 50px;
+    width: 50px;
+    transition: all 300ms ease;
+    display: inline-block;
+  }
+  .input-group .button-minus,
+  .input-group .button-plus {
+    font-weight: bold;
+    height: 38px;
+    padding: 0;
+    width: 38px;
+    position: relative;
+  }
+  .input-group .seats-field {
+    position: relative;
+    height: 39px;
+    left: -6px;
+    text-align: center;
+    width: calc(80% - 50%);
+    display: inline-block;
+    font-size: 13px;
+    margin: 0 0 5px;
+    resize: vertical;
+  }
+  .button-plus {
+    left: -13px;
+  }

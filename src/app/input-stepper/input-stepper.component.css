@@ -8,6 +8,7 @@
   .button-plus {
     -webkit-appearance: button;
     cursor: pointer;
+    left: -13px;
   }
   .input-group {
     clear: both;
@@ -46,7 +47,4 @@
     font-size: 13px;
     margin: 0 0 5px;
     resize: vertical;
-  }
-  .button-plus {
-    left: -13px;
   }

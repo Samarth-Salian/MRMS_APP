@@ -1,18 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input-stepper',
   templateUrl: './input-stepper.component.html',
   styleUrls: ['./input-stepper.component.css'],
 })
-export class InputStepperComponent implements OnInit {
+export class InputStepperComponent {
   @Input() seatsNo: number;
 
   constructor() {
     this.seatsNo = 1;
-  }
-
-  ngOnInit(): void {
   }
 
   disabledMinus = false;

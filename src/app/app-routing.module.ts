@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'my-meetings',
     component: MyMeetingsComponent,
-    data: { title: 'Meetinglist' },
+    data: { title: 'Meeting List' },
   },
   {
     path: 'room-search',
@@ -29,7 +29,7 @@ const routes: Routes = [
   {
     path: 'room-list',
     component: RoomListComponent,
-    data: { title: 'Roomlist' },
+    data: { title: 'Room List' },
   },
   {
     path: 'meeting-details',
@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: 'location-list',
     component: LocationListComponent,
-    data: { title: 'Locationlist' },
+    data: { title: 'Location List' },
   },
   {
     path: 'location-details',
@@ -54,7 +54,7 @@ const routes: Routes = [
   {
     path: 'user-list',
     component: UserListComponent,
-    data: { title: 'Userslist' },
+    data: { title: 'Users List' },
   },
   {
     path: 'profile',

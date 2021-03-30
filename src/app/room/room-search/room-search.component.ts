@@ -88,8 +88,4 @@ export class RoomSearchComponent implements OnInit {
     const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
     return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
   }
-
-  updatedSeatVal(event: any) {
-    this.roomSearch.seats = event;
-  }
 }

@@ -34,6 +34,7 @@ import { LocationDetailsComponent } from './location/location-details/location-d
 import { MeetingDetailsComponent } from './meeting/meeting-details/meeting-details.component';
 import { RoomDetailsComponent } from './room/room-details/room-details.component';
 import { ProfileComponent } from './profile/profile.component';
+import { InputStepperComponent } from './input-stepper/input-stepper.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -66,6 +67,7 @@ export const MY_DATE_FORMATS = {
     MeetingDetailsComponent,
     RoomDetailsComponent,
     ProfileComponent,
+    InputStepperComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<div class="input-group">
+    <label>Seats</label>
+    <input id="minusBtn" [disabled]="disabledMinus" type="button" value="-" class="button-minus"
+        (click)="updateSeatValue($event);" data-field="seats">
+    <input type="number" id="mynum" min="1" max="20" #mynum="ngModel" value="1" [(ngModel)]="seatsNo" name="mynum"
+        class="seats-field" (keyup)="updatedSeatVal();">
+    <input id="plusBtn" type="button" value="+" class="button-plus" (click)="updateSeatValue($event);"
+        data-field="seats">
+</div>
+<span *ngIf="mynum.invalid && mynum.touched" [ngStyle]="{'color':'red'}">Enter Seats</span>

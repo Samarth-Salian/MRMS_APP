@@ -19,12 +19,11 @@ export class RoomDetailsComponent {
   roomLaunchFlag: string = 'Root Menu';
 
   constructor(private router: Router, private snackBar: SnackbarService,
-    public titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+    private titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     if (typeof (history.state.data) === 'undefined') {
       this.roomDetails = new Room();
-      this.roomDetails.seats = 1;
     }
   }
 
@@ -35,9 +34,5 @@ export class RoomDetailsComponent {
       this.snackBar.openSnackBar('Room details submitted successfully', '');
       this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
     }
-  }
-
-  updatedSeatVal(event: any) {
-    this.roomDetails.seats = event;
   }
 }

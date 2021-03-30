@@ -20,12 +20,12 @@ export class LocationDetailsComponent {
   constructor(private snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
     public appComponent: AppComponent) {
     if (typeof (history.state.data) !== 'undefined') {
+      this.appComponent.title = this.activatedRoute.snapshot.data.title;
+      this.appComponent.setTitle(this.appComponent.title);
       this.buildingName = this.selectedLocation.buildingName;
       this.city = this.selectedLocation.city;
       this.country = this.selectedLocation.country;
     }
-    this.appComponent.title = this.activatedRoute.snapshot.data.title;
-    this.appComponent.setTitle(this.appComponent.title);
   }
 
   getSubmitMsg() {

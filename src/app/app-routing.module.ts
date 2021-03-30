@@ -10,6 +10,7 @@ import { RoomSearchComponent } from './room/room-search/room-search.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
   {
     path: 'my-meetings',
     component: MyMeetingsComponent,
-    data: { title: 'Meeting List' },
+    data: { title: 'Meetinglist' },
   },
   {
     path: 'room-search',
@@ -29,7 +30,7 @@ const routes: Routes = [
   {
     path: 'room-list',
     component: RoomListComponent,
-    data: { title: 'Room List' },
+    data: { title: 'Roomlist' },
   },
   {
     path: 'meeting-details',
@@ -39,7 +40,7 @@ const routes: Routes = [
   {
     path: 'location-list',
     component: LocationListComponent,
-    data: { title: 'Location List' },
+    data: { title: 'Locationlist' },
   },
   {
     path: 'location-details',
@@ -54,7 +55,7 @@ const routes: Routes = [
   {
     path: 'user-list',
     component: UserListComponent,
-    data: { title: 'Users List' },
+    data: { title: 'Userslist' },
   },
   {
     path: 'profile',
@@ -62,10 +63,15 @@ const routes: Routes = [
     data: { title: 'User Profile' },
   },
   {
-    path: '',
-    redirectTo: '/signin',
-    pathMatch: 'full',
+    path: 'app-launch',
+    component: AppComponent
   },
+  {
+    path: '',
+    redirectTo: '/app-launch',
+    pathMatch: 'full',
+  }
+
 ];
 
 @NgModule({

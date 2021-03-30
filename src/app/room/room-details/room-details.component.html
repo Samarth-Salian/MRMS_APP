@@ -11,9 +11,13 @@
     </mat-form-field>
     <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
         Name</span>
-        <app-input-stepper [seatsNo]="roomDetails.seats" (keyup)="titleChange.validateSeatNum($event)"
-            (updateSeatNum)="updatedSeatVal($event)"></app-input-stepper>
-
+    <mat-form-field class="fromInputDiv">
+        <mat-label>Seats</mat-label>
+        <input matInput type="tel" min="1" max="20" name="seats" [(ngModel)]="roomDetails.seats" name="seats" #seats="ngModel"
+            required>
+    </mat-form-field>
+    <span *ngIf="seats.invalid && seats.touched" [ngStyle]="{'color':'red'}">Enter Seats
+    </span>
     <div class="sliderContainer">
         <div>
             <label for="" class="labelCss">Select Features</label>
@@ -40,6 +44,6 @@
         </div>
     </div>
 
-    <button [disabled]="!searchForm.valid" id='submitbtn' mat-raised-button class="searchBtn" color="primary"
+    <button [disabled]="!searchForm.valid" mat-raised-button class="searchBtn" color="primary"
         (click)="getSubmitMsg()">Submit</button>
 </form>

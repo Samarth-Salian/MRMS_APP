@@ -22,7 +22,7 @@ export class MeetingDetailsComponent {
   submitMsg: string = 'Meeting details submitted successfully';
 
   constructor(public snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
-    public titleChange: AppComponent, private router: Router) {
+    private titleChange: AppComponent, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.meeting = new Meeting();
@@ -64,9 +64,5 @@ export class MeetingDetailsComponent {
       this.snackBar.openSnackBar(this.submitMsg, '');
       this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
     }
-  }
-
-  updatedSeatVal(event: any) {
-    this.meeting.seats = event;
   }
 }

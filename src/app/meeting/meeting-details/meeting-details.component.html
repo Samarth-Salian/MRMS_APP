@@ -20,7 +20,9 @@
       <input matInput disabled [value]="meetingSchedule">
     </mat-form-field>
 
-    <app-input-stepper [seatsNo]="meeting.seats" (keyup)="titleChange.validateSeatNum($event)"></app-input-stepper>
+    <app-input-stepper [seatsNo]="meeting.seats" (keyup)="titleChange.validateSeatNum($event)"
+      (updateSeatNum)="updatedSeatVal($event)"></app-input-stepper>
+
     <div class="center">
       <button [disabled]="!meetingForm.valid" id='submitbtn' mat-raised-button class="searchBtn" color="primary"
         (click)="getSubmitMsg()">Submit Meeting</button>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input-stepper',
@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class InputStepperComponent {
   @Input() seatsNo: number;
+  @Output() updateSeatNum: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {
     this.seatsNo = 1;
@@ -15,19 +16,22 @@ export class InputStepperComponent {
   disabledMinus = false;
 
   updateSeatValue(event: any) {
-    let count = Number((<HTMLInputElement>document.getElementById('mynum')).value);
-    if (count === 1 && event.target.id !== 'plusBtn') {
+    if (this.seatsNo === 1 && event.target.id !== 'plusBtn') {
       this.disabledMinus = true;
     } else {
-      if (count >= 1) {
+      if (this.seatsNo >= 1) {
         this.disabledMinus = false;
       }
       if (event.target.id === 'plusBtn') {
-        count++;
+        this.seatsNo++;
       } else {
-        count--;
+        this.seatsNo--;
       }
-      (<HTMLInputElement>document.getElementById('mynum')).value = String(count);
+      this.updateSeatNum.emit(this.seatsNo);
     }
+  }
+
+  updatedSeatVal() {
+    this.updateSeatNum.emit(this.seatsNo);
   }
 }

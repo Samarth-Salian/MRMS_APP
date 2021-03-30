@@ -47,7 +47,6 @@ export class RoomSearchComponent implements OnInit {
   }
 
   public fnNavigateToRoomList() {
-    this.roomSearch.seats = Number((<HTMLInputElement>document.getElementById('mynum')).value);
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
@@ -88,5 +87,9 @@ export class RoomSearchComponent implements OnInit {
     const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
     const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
     return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
+  }
+
+  updatedSeatVal(event: any) {
+    this.roomSearch.seats = event;
   }
 }

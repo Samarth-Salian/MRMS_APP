@@ -36,4 +36,8 @@ export class RoomDetailsComponent {
       this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
     }
   }
+
+  updatedSeatVal(event: any) {
+    this.roomDetails.seats = event;
+  }
 }

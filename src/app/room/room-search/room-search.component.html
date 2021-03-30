@@ -37,7 +37,9 @@
             <span *ngIf="toSlot.invalid && toSlot.touched" [ngStyle]="{'color':'red'}">Enter To Time</span>
         </div>
     </div>
-<app-input-stepper [seatsNo]="roomSearch.seats" (keyup)="titleChange.validateSeatNum($event)"></app-input-stepper>
+<app-input-stepper [seatsNo]="roomSearch.seats" (updateSeatNum)="updatedSeatVal($event)"
+    (keyup)="titleChange.validateSeatNum($event)">
+</app-input-stepper>
 
     <div class="sliderContainer">
         <div>

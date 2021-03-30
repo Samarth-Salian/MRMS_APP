@@ -11,7 +11,8 @@
     </mat-form-field>
     <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
         Name</span>
-        <app-input-stepper [seatsNo]="roomDetails.seats" (keyup)="titleChange.validateSeatNum($event)"></app-input-stepper>
+        <app-input-stepper [seatsNo]="roomDetails.seats" (keyup)="titleChange.validateSeatNum($event)"
+            (updateSeatNum)="updatedSeatVal($event)"></app-input-stepper>
 
     <div class="sliderContainer">
         <div>

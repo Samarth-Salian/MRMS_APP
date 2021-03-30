@@ -65,4 +65,8 @@ export class MeetingDetailsComponent {
       this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
     }
   }
+
+  updatedSeatVal(event: any) {
+    this.meeting.seats = event;
+  }
 }

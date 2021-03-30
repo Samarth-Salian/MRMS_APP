@@ -21,6 +21,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { CalenderComponent } from './calender/calender.component';
@@ -92,6 +94,7 @@ export const MY_DATE_FORMATS = {
     MomentDateModule,
     MatSelectModule,
     MatSnackBarModule,
+    NgbModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -15,17 +15,17 @@
         </ul>
     </mat-card-content>
     <div class="featuresDiv">
-        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call" src="../assets/2052-512.png">
+        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call" src="assets/2052-512.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video" src="../assets/camcorder-512.png">
+        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video" src="assets/camcorder-512.png">
     </div>
     <div class="featuresDiv">
         <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
-            src="../assets/ethernet_on1600.png">
+            src="assets/ethernet_on1600.png">
     </div>
     <div class="featuresDiv">
-        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard" src="../assets/43338.png">
+        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard" src="assets/43338.png">
     </div>
 </mat-card>
 <button *ngIf = "conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-details" routerLinkActive="active" color="primary">
@@ -33,4 +33,3 @@
         <em class="material-icons md-48">add</em>
     </mat-icon>
 </button>
-

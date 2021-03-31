@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { Router } from '@angular/router';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 declare let window: any;
 
 @Component({
@@ -27,10 +30,6 @@ export class ProfileComponent {
     this.user = this.titleChange.loginCredentials;
   }
 
-  public getjson(): Observable<any> {
-    return this.http.get('assets/userList.json').pipe();
-  }
-
   public clickUpdate() {
     this.titleChange.goBack();
   }
@@ -41,18 +40,37 @@ export class ProfileComponent {
   //Delete scenario
   deleteLoginTable() {
     if (window.cordova && window.SQLitePlugin) {
-      this.authService.signOut();
-      this.titleChange.db.transaction((tx: any) => {
-        tx.executeSql('DELETE  FROM ' + this.titleChange.tableName);
-      }, function (error: any) {
-        console.log('Transaction ERROR: ' + error.message);
-      }, () => {
-        this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
-      });
+      if (window.cordova.platformId !== 'browser') {
+        window.plugins.googleplus.logout(
+          (msg: any) => {
+            this.clearTableContents();
+          }
+        );
+      } else {
+        firebase.auth().signOut()
+          .then(() => {
+            this.clearTableContents();
+          }, function (error) {
+            console.log('Signout Failed')
+          });
+      }
     } else {
-      this.authService.signOut();
-      this.titleChange.loginStorage.removeItem(this.titleChange.tableName);
-      this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+      firebase.auth().signOut()
+        .then(() => {
+          this.titleChange.loginStorage.removeItem(this.titleChange.tableName);
+          this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+        }, function (error) {
+          console.log('Signout Failed')
+        });
     }
+  }
+  clearTableContents() {
+    this.titleChange.db.transaction((tx: any) => {
+      tx.executeSql('DELETE  FROM ' + this.titleChange.tableName);
+    }, function (error: any) {
+      console.log('Transaction ERROR: ' + error.message);
+    }, () => {
+      this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+    });
   }
 }

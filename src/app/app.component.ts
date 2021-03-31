@@ -47,12 +47,12 @@ export class AppComponent {
           });
           this.retrieveLoginData('root');
           //To Create Table
-        } else {
-          //browser related goes here.
-          this.retriveBrowserData();
-        }
+        } 
       })
     }, false);
+    if (!window.cordova) {
+      this.retriveBrowserData();
+    }
     this.loginCredentials = {};
     this.tableName = 'login_table';
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
@@ -62,7 +62,7 @@ export class AppComponent {
   }
   setImage(param: string) {
     this.user = {};
-    this.user.image = param;
+    this.user.profilePic = param;
   }
   setTitle = (param: string) => {
     if (param === '') {
@@ -119,15 +119,16 @@ export class AppComponent {
   }
   createLoginTable(param: string) {
     this.db.transaction((tx: any) => {
-      tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this.tableName + ' (emailId text primary key, firstName text, lastName text, profilePic text,jwtToken text)');
+      tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this.tableName + ' (emailId text primary key, displayName text, profilePic text,jwtToken text)');
       this.router.navigateByUrl('/signin');
     });
   }
   //To Insert Data
   insertLoginData(param: any) {
+    this.setImage(param?.imageUrl);
     this.db.transaction((tx: any) => {
-      let loginArr = [param.email, param.firstName, param.lastName, param.photoUrl, ""];
-      tx.executeSql('INSERT INTO ' + this.tableName + '  VALUES (?,?,?,?,?)', loginArr);
+      let loginArr = [param.email, param.displayName, param.imageUrl, ""];
+      tx.executeSql('INSERT INTO ' + this.tableName + '  VALUES (?,?,?,?)', loginArr);
     }, function (error: any) {
       console.log('Transaction ERROR: ' + error.message);
     }, () => {

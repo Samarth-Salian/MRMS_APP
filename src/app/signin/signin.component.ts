@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/auth.service';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -19,8 +18,11 @@ export class SigninComponent implements OnInit {
   appName = '';
   user: any;
   navigationFlag: string | undefined;
-  constructor(private authServices: AuthService, public appComponent: AppComponent, private authService: SocialAuthService, private router: Router, private afAuth: AngularFireAuth) {
-    this.userDetail = this.afAuth.authState;
+  constructor(public appComponent: AppComponent, private authService: SocialAuthService, private router: Router, private afAuth: AngularFireAuth) {
+    this.afAuth.authState.subscribe(user => {
+      console.log(user);
+      this.userDetail = user;
+    })
     this.appComponent.showProfileImage = false;
     this.appName = this.appComponent.title;
     this.user = "";
@@ -49,28 +51,50 @@ export class SigninComponent implements OnInit {
       }
     });
   }
-  signInWithGoogle(): void {
-    // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
   loginWithGoogle() {
-    if (window.cordova.platformId !== 'browser') {
-      this.nativeGoogleLogin();
+    if (window.cordova) {
+      if (window.cordova.platformId !== 'browser') {
+        this.nativeGoogleLogin();
+      } else {
+        this.loginWithGoogle_Browser();
+      }
     } else {
-      this.authServices.loginWithGoogle();
+      this.loginWithGoogle_Browser();
     }
   }
 
   nativeGoogleLogin() {
     window.plugins.googleplus.login(
-      {
-        'webClientId': '522030334748-rg5qr895afi3pia92tclqh6h3d6c7348.apps.googleusercontent.com',// optional clientId of your Web application from Credentials settings of your project - On Android, this MUST be included to get an idToken. On iOS, it is not required.
-      },
-      function (obj: any) {
+      {},
+      (obj: any) => {
+        this.appComponent.insertLoginData(obj);
         console.log(obj);
       },
-      function (msg: any) {
+      (msg: any) => {
         console.log(msg);
       }
     );
+  }
+  async loginWithGoogle_Browser() {
+    await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
+      res => {
+        let userObj: any = {
+          'email': res.user?.email,
+          'displayName': res.user?.displayName,
+          'imageUrl': res.user?.photoURL,
+          'profilePic': res.user?.photoURL
+        }
+        if (window.cordova) {
+          this.appComponent.insertLoginData(userObj);
+        } else {
+          this.appComponent.setImage(userObj?.imageUrl);
+          this.appComponent.loginStorage.setItem(this.appComponent.tableName, JSON.stringify(userObj));
+          this.appComponent.loginCredentials = JSON.parse(this.appComponent.loginStorage.getItem(this.appComponent.tableName));
+          this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } });
+        }
+        console.log(res.user);
+      }).catch(err => {
+        console.log(err);
+      })
   }
 }

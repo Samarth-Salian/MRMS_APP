@@ -1,21 +1,21 @@
 <div class="container">
   <form #meetingForm="ngForm" novalidate>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formWidth">
       <mat-label>Meeting Title </mat-label>
       <input matInput name="title" #title="ngModel" required [(ngModel)]="meeting.name">
     </mat-form-field>
     <span *ngIf="title.invalid && title.touched" [ngStyle]="{'color':'red'}">Enter Meeting Detail</span>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formWidth">
       <mat-label>Location</mat-label>
       <input matInput disabled [value]="meeting.location">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formWidth">
       <mat-label>Room</mat-label>
       <input matInput disabled [value]="meeting.room">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="formWidth">
       <mat-label>Meeting Date & Time</mat-label>
       <input matInput disabled [value]="meetingSchedule">
     </mat-form-field>

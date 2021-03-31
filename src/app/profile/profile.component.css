@@ -1,19 +1,5 @@
-.google_icon {
-    width: 35px;
-    padding-right: 10px;
-}
-
-.mainContainer {
-    margin: 32% 0%;
-}
-
 .appName {
     text-align: center;
-}
-
-.googleBtn {
-    border-radius: 30px;
-    width: 80%;
 }
 
 .formFieldClass {

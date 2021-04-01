@@ -12,6 +12,8 @@ declare let window: any;
 export class AppComponent {
   showProfileImage: boolean = true;
 
+  showWelcomeMessage: boolean;
+
   user: any;
 
   backButtonScreenName: string = '';
@@ -36,6 +38,8 @@ export class AppComponent {
 
   constructor(private zone: NgZone, public http: HttpClient, private location: Location, private router: Router) {
     this.tableName = 'login_table';
+    this.loginCredentials = {};
+    this.showWelcomeMessage = true;
     document.addEventListener("deviceready", () => {
       this.zone.run(() => {
         if (window.cordova && window.cordova.platformId !== 'browser') {
@@ -45,14 +49,12 @@ export class AppComponent {
             androidDatabaseProvider: 'system'
           });
           this.retrieveLoginData('root');
-          //To Create Table
         } 
       })
     }, false);
     if (!window.cordova || window.cordova.platformId === 'browser') {
       this.retriveBrowserData();
     }
-    this.loginCredentials = {};
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
       this.displayHeading = 'hide';
       this.screenName = this.routerPath.replace('-', ' ');
@@ -86,24 +88,24 @@ export class AppComponent {
     const sidebarRequired = ['room-details', 'room-list'];
     if (sidebarRequired.includes(path) && this.roomListBackButton) {
       if (path === 'room-details') {
-        this.router.navigateByUrl('/room-list', { state: { data: 'Root Menu' } });
+        this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: 'Root Menu' } }) });
       } else {
         if (this.backButtonScreenName === 'signin') {
-          this.router.navigateByUrl('/signin');
+          this.zone.run(() => { this.router.navigateByUrl('/signin') });
         } else {
-          this.router.navigateByUrl('/my-meetings');
+          this.zone.run(() => { this.router.navigateByUrl('/my-meetings') });
         }
       }
     } else if (path === "location-list") {
-      this.router.navigateByUrl('/my-meetings');
+      this.zone.run(() => { this.router.navigateByUrl('/my-meetings') });
     } else {
-      this.location.back();
+      this.zone.run(() => this.location.back());
     }
   }
 
   fnNavigateRoomList(): void {
     this.showFabIcon = true;
-    this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
+    this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }) });
   }
 
   validateSeatNum(event: any) {
@@ -122,7 +124,7 @@ export class AppComponent {
   createLoginTable(param: string) {
     this.db.transaction((tx: any) => {
       tx.executeSql('CREATE TABLE IF NOT EXISTS ' + this.tableName + ' (emailId text primary key, displayName text, profilePic text,jwtToken text)');
-      this.router.navigateByUrl('/signin');
+      this.zone.run(() => { this.router.navigateByUrl('/signin') });
     });
   }
   //To Insert Data
@@ -144,10 +146,10 @@ export class AppComponent {
     this.db.transaction((fetchTx: any) => {
       fetchTx.executeSql('SELECT * FROM ' + this.tableName, [], (resTx: any, rs: any) => {
         if (rs.rows.length === 0) {
-          this.router.navigateByUrl('/signin');
+          this.zone.run(() => { this.router.navigateByUrl('/signin') });
         } else {
           this.loginCredentials = rs.rows.item(0);
-          this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } });
+          this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } }) });
         }
       }, (errorTx: any, error: any) => {
         if (error.message.split(':')[0] === "no such table" || error.message.split(':')[1].trim() === "no such table") {
@@ -159,11 +161,11 @@ export class AppComponent {
   retriveBrowserData() {
     this.loginStorage = window.localStorage;
     if (!this.loginStorage.getItem(this.tableName)) {
-      this.router.navigateByUrl('/signin');
+      this.zone.run(() => { this.router.navigateByUrl('/signin') });
     } else {
       this.loginCredentials = JSON.parse(this.loginStorage.getItem(this.tableName));
       this.setImage(this.loginCredentials?.imageUrl);
-      this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } });
+      this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } }) });
     }
   }
 }

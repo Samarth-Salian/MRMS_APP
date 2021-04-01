@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
@@ -21,7 +21,7 @@ export class MeetingDetailsComponent {
 
   submitMsg: string = 'Meeting details submitted successfully';
 
-  constructor(public snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
+  constructor(private zone: NgZone, public snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
     public titleChange: AppComponent, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -62,7 +62,7 @@ export class MeetingDetailsComponent {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
       this.snackBar.openSnackBar(this.submitMsg, '');
-      this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } });
+      this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } }); });
     }
   }
 

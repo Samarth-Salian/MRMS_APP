@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Room } from '../../models/room';
@@ -17,7 +17,7 @@ export class RoomListComponent {
 
   conditionalFabIcon: boolean;
 
-  constructor(private titleChange: AppComponent, private router: Router,
+  constructor(private zone: NgZone, private titleChange: AppComponent, private router: Router,
     private activatedRoute: ActivatedRoute, public http: HttpClient) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -33,7 +33,7 @@ export class RoomListComponent {
 
   public fnNavigateToMeetingDetails(selectedRoom: Room): void {
     if (history.state.data === 'Root Menu') {
-      this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } });
+      this.zone.run(() => { this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
     } else {
       Object.defineProperty(selectedRoom, 'roomCreationDetails', {
         value: this.roomDetails,
@@ -41,7 +41,7 @@ export class RoomListComponent {
         enumerable: true,
         configurable: true,
       });
-      this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } });
+      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
     }
   }
 }

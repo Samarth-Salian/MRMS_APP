@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
@@ -29,7 +29,7 @@ export class RoomSearchComponent implements OnInit {
 
   todayDate = new FormControl(new Date());
 
-  constructor(private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
+  constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
     private router: Router, private snackBar: SnackbarService) {
     this.titleChange.roomListBackButton = false;
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -50,7 +50,7 @@ export class RoomSearchComponent implements OnInit {
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
-      this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } });
+      this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
     }
   }
 

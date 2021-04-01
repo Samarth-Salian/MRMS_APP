@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Meeting } from '../../models/meeting';
 export class MeetingListComponent {
   meetings: Meeting[] = [];
 
-  constructor(public http: HttpClient, private router: Router) {
+  constructor(private zone: NgZone, public http: HttpClient, private router: Router) {
     this.getjson().subscribe((data) => {
       this.meetings = data;
       this.meetings.forEach((e: Meeting) => {
@@ -27,9 +27,6 @@ export class MeetingListComponent {
         e.fromTime = parseInt(fromSlot.split(':')[0]) <= 12 ? `${fromSlot} AM` : `${parseInt(fromSlot.split(':')[0]) - 12}:${fromSlot.split(':')[1]} PM`;
         e.toTime = parseInt(toSlot.split(':')[0]) <= 12 ? `${toSlot} AM` : `${parseInt(toSlot.split(':')[0]) - 12}:${toSlot.split(':')[1]} PM`;
       });
-      if (typeof (history.state.data) !== 'undefined') {
-        this.meetings.unshift(history.state.data);
-      }
     });
   }
 
@@ -38,7 +35,7 @@ export class MeetingListComponent {
   }
 
   public fnNavigateToMeeting(selectedMeeting: Meeting): any {
-    this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } });
+    this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } }); });
   }
 
   public fnTaskGlobalSearch(searchText: any, data: any) {

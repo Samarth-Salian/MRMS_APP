@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Room } from 'src/app/models/room';
@@ -18,7 +18,7 @@ export class RoomDetailsComponent {
 
   roomLaunchFlag: string = 'Root Menu';
 
-  constructor(private router: Router, private snackBar: SnackbarService,
+  constructor(private zone: NgZone, private router: Router, private snackBar: SnackbarService,
     public titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -33,7 +33,7 @@ export class RoomDetailsComponent {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
       this.snackBar.openSnackBar('Room details submitted successfully', '');
-      this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } });
+      this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }); });
     }
   }
 }

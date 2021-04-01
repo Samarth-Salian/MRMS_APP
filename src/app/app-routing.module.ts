@@ -10,7 +10,6 @@ import { RoomSearchComponent } from './room/room-search/room-search.component';
 import { SigninComponent } from './signin/signin.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {

@@ -109,9 +109,7 @@
   "cordova": {
     "plugins": {
       "cordova-sqlite-storage": {},
-      "cordova-plugin-googleplus": {
-        "WEB_APPLICATION_CLIENT_ID": "522030334748-rg5qr895afi3pia92tclqh6h3d6c7348.apps.googleusercontent.com"
-      }
+      "cordova-plugin-googleplus": {}
     },
     "platforms": [
       "android",

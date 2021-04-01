@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { SocialAuthService } from "angularx-social-login";
-import { GoogleLoginProvider, SocialUser } from "angularx-social-login";
+import { SnackbarService } from '../services/snackbar.service';
+import { environment } from 'src/environments/environment';
 declare let window: any;
 
 @Component({
@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
   appName = '';
   user: any;
   navigationFlag: string | undefined;
-  constructor(public appComponent: AppComponent, private authService: SocialAuthService, private router: Router, private afAuth: AngularFireAuth) {
+  constructor(public appComponent: AppComponent, private router: Router, private afAuth: AngularFireAuth, private snackBar: SnackbarService) {
     this.afAuth.authState.subscribe(user => {
       console.log(user);
       this.userDetail = user;
@@ -26,46 +26,30 @@ export class SigninComponent implements OnInit {
     this.appComponent.showProfileImage = false;
     this.appName = this.appComponent.title;
     this.user = "";
-    this.appComponent.setTitle('');
+    this.appComponent.setTitle('signin');
     this.appComponent.backButtonScreenName = 'signin';
     if (typeof (history.state.data) !== 'undefined') {
       this.navigationFlag = history.state.data;
     }
+    if (this.appComponent.loginCredentials === '') {
+      this.snackBar.openSnackBar('Signed out Successfully', '');
+    }
   }
 
-  ngOnInit(): void {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.navigationFlag === "SignOut" ? this.user = "" : "";
-      if (this.user) {
-        if (window.cordova && window.SQLitePlugin) {
-          this.appComponent.insertLoginData(this.user);
-        } else {
-          let signInObj = { 'email': this.user.email, 'profilePic': this.user.photoUrl, 'firstName': this.user.firstName, "lastName": this.user.lastName };
-          this.appComponent.loginStorage.setItem(this.appComponent.tableName, JSON.stringify(signInObj));
-          this.appComponent.loginCredentials = JSON.parse(this.appComponent.loginStorage.getItem(this.appComponent.tableName));
-          this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } });
-        }
-      } else {
-        this.navigationFlag = "";
-      }
-    });
-  }
+  ngOnInit(): void { }
   loginWithGoogle() {
-    if (window.cordova) {
-      if (window.cordova.platformId !== 'browser') {
-        this.nativeGoogleLogin();
-      } else {
-        this.loginWithGoogle_Browser();
-      }
-    } else {
+    if (window.cordova && window.cordova.platformId !== 'browser') {
+      this.nativeGoogleLogin();
+    } else if (!window.cordova || window.cordova.platformId === 'browser') {
       this.loginWithGoogle_Browser();
     }
   }
 
   nativeGoogleLogin() {
     window.plugins.googleplus.login(
-      {},
+      {
+        'webClientId': environment.WEB_APPLICATION_CLIENT_ID
+      },
       (obj: any) => {
         this.appComponent.insertLoginData(obj);
         console.log(obj);
@@ -84,14 +68,10 @@ export class SigninComponent implements OnInit {
           'imageUrl': res.user?.photoURL,
           'profilePic': res.user?.photoURL
         }
-        if (window.cordova) {
-          this.appComponent.insertLoginData(userObj);
-        } else {
-          this.appComponent.setImage(userObj?.imageUrl);
-          this.appComponent.loginStorage.setItem(this.appComponent.tableName, JSON.stringify(userObj));
-          this.appComponent.loginCredentials = JSON.parse(this.appComponent.loginStorage.getItem(this.appComponent.tableName));
-          this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } });
-        }
+        this.appComponent.setImage(userObj?.imageUrl);
+        this.appComponent.loginStorage.setItem(this.appComponent.tableName, JSON.stringify(userObj));
+        this.appComponent.loginCredentials = JSON.parse(this.appComponent.loginStorage.getItem(this.appComponent.tableName));
+        this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } });
         console.log(res.user);
       }).catch(err => {
         console.log(err);

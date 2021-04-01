@@ -1,10 +1,12 @@
 <div style="height: 80vh;">
   <mat-toolbar>
-    <button *ngIf="displayHeading ; else showBackButton" mat-icon-button (click)="sidenav.toggle()">
+    <button *ngIf="displayHeading === 'show' ; else showBackButton" mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <ng-template #showBackButton>
-      <mat-icon (click)="goBack()">arrow_back</mat-icon>
+      <mat-icon *ngIf="displayHeading === 'hide';else showAdminsOnly" (click)="goBack()">arrow_back</mat-icon>
+      </ng-template>
+      <ng-template #showAdminsOnly>
     </ng-template>
     <span [ngClass]="'textAlign'">{{ title }}</span>
     <span class="example-spacer"></span>

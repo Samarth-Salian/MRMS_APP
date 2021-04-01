@@ -21,7 +21,7 @@ export class AppComponent {
 
   title = 'Meeting-App';
 
-  displayHeading = true;
+  displayHeading = 'show';
 
   showFabIcon = true;
 
@@ -31,15 +31,15 @@ export class AppComponent {
 
   routerPath: string = window.location.href.split('/', 4)[3];
   tableName: string = '';
-  loginCredentials: Object;
+  loginCredentials: any;
   db: any;
   loginStorage: any;
 
   constructor(private zone: NgZone, public http: HttpClient, private location: Location, private router: Router) {
+    this.tableName = 'login_table';
     document.addEventListener("deviceready", () => {
-      debugger;
       this.zone.run(() => {
-        if (window.cordova && window.SQLitePlugin) {
+        if (window.cordova && window.cordova.platformId !== 'browser') {
           this.db = window.sqlitePlugin.openDatabase({
             name: 'my.db',
             location: 'default',
@@ -50,13 +50,12 @@ export class AppComponent {
         } 
       })
     }, false);
-    if (!window.cordova) {
+    if (!window.cordova || window.cordova.platformId === 'browser') {
       this.retriveBrowserData();
     }
     this.loginCredentials = {};
-    this.tableName = 'login_table';
     if (this.routerPath === 'meeting-details' || this.routerPath === 'room-list' || this.routerPath === 'room-search') {
-      this.displayHeading = false;
+      this.displayHeading = 'hide';
       this.screenName = this.routerPath.replace('-', ' ');
     }
   }
@@ -66,10 +65,14 @@ export class AppComponent {
   }
   setTitle = (param: string) => {
     if (param === '') {
-      this.displayHeading = true;
+      this.displayHeading = 'show';
+      this.title = 'Meeting-App';
+    }
+    else if (param === 'signin') {
+      this.displayHeading = '';
       this.title = 'Meeting-App';
     } else {
-      this.displayHeading = false;
+      this.displayHeading = 'hide';
       this.title = param;
     }
   }
@@ -80,9 +83,7 @@ export class AppComponent {
 
   goBack = () => {
     this.showProfileImage = true;
-
     const path = window.location.href.split('/', 4)[3];
-
     const sidebarRequired = ['room-details', 'room-list'];
     if (sidebarRequired.includes(path) && this.roomListBackButton) {
       if (path === 'room-details') {
@@ -94,6 +95,8 @@ export class AppComponent {
           this.router.navigateByUrl('/my-meetings');
         }
       }
+    } else if (path === "location-list") {
+      this.router.navigateByUrl('/my-meetings');
     } else {
       this.location.back();
     }
@@ -160,6 +163,7 @@ export class AppComponent {
       this.router.navigateByUrl('/signin');
     } else {
       this.loginCredentials = JSON.parse(this.loginStorage.getItem(this.tableName));
+      this.setImage(this.loginCredentials?.imageUrl);
       this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } });
     }
   }

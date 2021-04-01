@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
 declare let window: any;
 
 @Component({
@@ -39,22 +40,18 @@ export class ProfileComponent {
   }
   //Delete scenario
   deleteLoginTable() {
-    if (window.cordova && window.SQLitePlugin) {
-      if (window.cordova.platformId !== 'browser') {
+    if (window.cordova && window.cordova.platformId !== 'browser') {
         window.plugins.googleplus.logout(
           (msg: any) => {
             this.clearTableContents();
           }
         );
+      } else if (!window.cordova || window.cordova.platformId === 'browser') {
+        if (!firebase.apps.length) {
+          firebase.initializeApp(environment.firebaseConfig);
       } else {
-        firebase.auth().signOut()
-          .then(() => {
-            this.clearTableContents();
-          }, function (error) {
-            console.log('Signout Failed')
-          });
-      }
-    } else {
+          firebase.app(); // if already initialized, use that one
+        }
       firebase.auth().signOut()
         .then(() => {
           this.titleChange.loginStorage.removeItem(this.titleChange.tableName);

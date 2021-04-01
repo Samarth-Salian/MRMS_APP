@@ -20,6 +20,7 @@ export class MyMeetingsComponent {
     this.titleChange.title = this.activatedRoute.snapshot.data[''];
     this.titleChange.showProfileImage = true;
     this.titleChange.setTitle('');
+    this.titleChange.setImage(this.titleChange.loginCredentials.profilePic);
     this.titleChange.showFabIcon = true;
     this.titleChange.backButtonScreenName = 'meeting';
   }

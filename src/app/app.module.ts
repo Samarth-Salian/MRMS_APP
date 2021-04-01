@@ -40,8 +40,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
-import { SocialAuthServiceConfig } from 'angularx-social-login';
-import { SocialLoginModule, GoogleLoginProvider } from 'angularx-social-login';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -100,7 +98,6 @@ export const MY_DATE_FORMATS = {
     MatSelectModule,
     MatSnackBarModule,
     NgbModule,
-    SocialLoginModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -114,20 +111,6 @@ export const MY_DATE_FORMATS = {
   ],
   providers: [HttpClientModule,
     DatePipe,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '838542139964-l99hn9rv55k2kdqmq6l87ckd910ktffq.apps.googleusercontent.com'
-            )
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent],
 })

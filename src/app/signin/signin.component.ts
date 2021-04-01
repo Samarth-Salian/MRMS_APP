@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
@@ -13,7 +13,7 @@ declare let window: any;
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.css'],
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent{
   userDetail: any;
   appName = '';
   user: any;
@@ -36,7 +36,6 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void { }
   loginWithGoogle() {
     if (window.cordova && window.cordova.platformId !== 'browser') {
       this.nativeGoogleLogin();

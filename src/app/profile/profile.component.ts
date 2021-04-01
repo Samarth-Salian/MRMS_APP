@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppComponent } from '../app.component';
-import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 declare let window: any;
 

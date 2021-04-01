@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { NgZone } from '@angular/core';
 declare let window: any;
 @Component({
   selector: 'app-root',
@@ -142,15 +141,15 @@ export class AppComponent {
   //To Retreive Data
   retrieveLoginData(param: string) {
     let data = param;
-    this.db.transaction((tx: any) => {
-      tx.executeSql('SELECT * FROM ' + this.tableName, [], (tx: any, rs: any) => {
+    this.db.transaction((fetchTx: any) => {
+      fetchTx.executeSql('SELECT * FROM ' + this.tableName, [], (resTx: any, rs: any) => {
         if (rs.rows.length === 0) {
           this.router.navigateByUrl('/signin');
         } else {
           this.loginCredentials = rs.rows.item(0);
           this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } });
         }
-      }, (tx: any, error: any) => {
+      }, (errorTx: any, error: any) => {
         if (error.message.split(':')[0] === "no such table" || error.message.split(':')[1].trim() === "no such table") {
           this.createLoginTable(data);
         }

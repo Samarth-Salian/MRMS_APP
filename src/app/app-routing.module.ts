@@ -61,15 +61,6 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { title: 'User Profile' },
-  },
-  {
-    path: 'app-launch',
-    component: AppComponent
-  },
-  {
-    path: '',
-    redirectTo: '/app-launch',
-    pathMatch: 'full',
   }
 
 ];

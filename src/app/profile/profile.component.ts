@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../app.component';
-import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -24,7 +23,7 @@ export class ProfileComponent {
   locations = ['Select', 'Building A, Bangalore', 'Building B, Bangalore', 'Building C, Bangalore'];
 
   constructor(public http: HttpClient, private titleChange: AppComponent,
-    private activatedRoute: ActivatedRoute, private authService: SocialAuthService, private router: Router) {
+    private activatedRoute: ActivatedRoute, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showProfileImage = false;

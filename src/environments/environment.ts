@@ -4,6 +4,16 @@
 
 export const environment = {
   production: false,
+  firebaseConfig : {
+  apiKey: "xxxxxxxxxxxxxxxxxxxxxxxx",
+  authDomain: "xxxxxxxxxxxxxxxxxxxxxxx",
+  projectId: "xxxxxxxxxxxxxxx",
+  storageBucket: "xxxxxxxxxxxxxxxxxxxxxx",
+  messagingSenderId: "xxxxxxxxxxxxxx",
+  appId: "xxxxxxxxxxxxx",
+  measurementId: "xxxxxxxxxxxxxxxx"
+  },
+  "WEB_APPLICATION_CLIENT_ID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 };
 
 /*

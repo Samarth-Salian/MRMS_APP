@@ -36,6 +36,10 @@ import { MeetingDetailsComponent } from './meeting/meeting-details/meeting-detai
 import { RoomDetailsComponent } from './room/room-details/room-details.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InputStepperComponent } from './input-stepper/input-stepper.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -94,6 +98,9 @@ export const MY_DATE_FORMATS = {
     MatSelectModule,
     MatSnackBarModule,
     NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

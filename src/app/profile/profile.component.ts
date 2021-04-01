@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { environment } from 'src/environments/environment';
+declare let window: any;
 
 @Component({
   selector: 'app-profile',
@@ -17,20 +20,50 @@ export class ProfileComponent {
   locations = ['Select', 'Building A, Bangalore', 'Building B, Bangalore', 'Building C, Bangalore'];
 
   constructor(public http: HttpClient, private titleChange: AppComponent,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showProfileImage = false;
-    this.getjson().subscribe(data => {
-      this.user = data[0];
-    });
-  }
-
-  public getjson(): Observable<any> {
-    return this.http.get('assets/userList.json').pipe();
+    this.user = this.titleChange.loginCredentials;
   }
 
   public clickUpdate() {
     this.titleChange.goBack();
+  }
+  signOut(): void {
+    this.titleChange.loginCredentials = '';
+    this.deleteLoginTable();
+  }
+  //Delete scenario
+  deleteLoginTable() {
+    if (window.cordova && window.cordova.platformId !== 'browser') {
+        window.plugins.googleplus.logout(
+          (msg: any) => {
+            this.clearTableContents();
+          }
+        );
+      } else if (!window.cordova || window.cordova.platformId === 'browser') {
+        if (!firebase.apps.length) {
+          firebase.initializeApp(environment.firebaseConfig);
+      } else {
+          firebase.app(); // if already initialized, use that one
+        }
+      firebase.auth().signOut()
+        .then(() => {
+          this.titleChange.loginStorage.removeItem(this.titleChange.tableName);
+          this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+        }, function (error) {
+          console.log('Signout Failed')
+        });
+    }
+  }
+  clearTableContents() {
+    this.titleChange.db.transaction((tx: any) => {
+      tx.executeSql('DELETE  FROM ' + this.titleChange.tableName);
+    }, function (error: any) {
+      console.log('Transaction ERROR: ' + error.message);
+    }, () => {
+      this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+    });
   }
 }

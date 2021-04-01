@@ -1,12 +1,12 @@
 <div class="profileContainer">
     <form class="mainForm">
-        <p class="text-center"> {{user?.firstName}} {{user?.lastName}} </p>
+        <p class="text-center"> {{user?.displayName}} </p>
         <div class="formFieldClass text-center profileImageContainer">
-            <img class="profileImage" alt="profilePic" src='{{user?.image}}'>
+            <img class="profileImage" alt="profilePic" src='{{user?.profilePic}}'>
         </div>
         <mat-form-field class="formFieldClass">
             <mat-label>EmailId</mat-label>
-            <input matInput disabled value='{{user?.emailId}}'>
+            <input matInput disabled value='{{user?.email}}'>
         </mat-form-field>
         <mat-form-field class="formFieldClass">
             <mat-label>Phone </mat-label>
@@ -21,5 +21,6 @@
             </mat-select>
         </mat-form-field>
         <button mat-raised-button color="primary" class="submitButton" (click)="clickUpdate()">Update</button>
+        <button mat-raised-button class="signoutButton" (click)="signOut()">Sign out</button>
     </form>
 </div>

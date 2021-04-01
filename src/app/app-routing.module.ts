@@ -60,12 +60,8 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { title: 'User Profile' },
-  },
-  {
-    path: '',
-    redirectTo: '/signin',
-    pathMatch: 'full',
-  },
+  }
+
 ];
 
 @NgModule({

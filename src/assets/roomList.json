@@ -10,7 +10,10 @@
         "voipAvailable": true,
         "videoAvailable": true,
         "lanAvailable": true,
-        "whiteBoardAvailable": true
+        "whiteBoardAvailable": true,
+        "date": "05/04/2022",
+        "fromTime": "7:30 AM",
+        "toTime": "8:00 AM"
     },
     {
         "_id": "6051bbdc78b0bb34a04fd90c",
@@ -23,6 +26,9 @@
         "voipAvailable": true,
         "videoAvailable": false,
         "lanAvailable": true,
-        "whiteBoardAvailable": true
+        "whiteBoardAvailable": true,
+        "date": "05/04/2022",
+        "fromTime": "9:00 AM",
+        "toTime": "10:00 AM"
     }
 ]

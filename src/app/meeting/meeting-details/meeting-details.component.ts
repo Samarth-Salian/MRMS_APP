@@ -32,15 +32,19 @@ export class MeetingDetailsComponent {
     if (typeof (history.state.data) !== 'undefined') {
       if (history.state.flow === 'createMeeting') {
         this.selectedRoom = history.state.data;
-        if (typeof (history.state.data.roomCreationDetails._date) !== 'undefined') {
+        if (typeof (history.state.data.roomCreationDetails) !== 'undefined') {
           this.meetingSchedule = history.state.data.roomCreationDetails._date + ' ' + history.state.data.roomCreationDetails._fromTime + ' ' + history.state.data.roomCreationDetails._toTime;
+          this.meeting.location = history.state.data.roomCreationDetails._location;
+          this.meeting.seats = history.state.data.roomCreationDetails._seats;
+        } else {
+          this.meetingSchedule = history.state.data.date + ' ' + history.state.data.fromTime + ' ' + history.state.data.toTime;
+          this.meeting.location = history.state.data.location;
+          this.meeting.seats = history.state.data.seats;
         }
-        this.meeting.location = history.state.data.roomCreationDetails._location;
         this.meeting.room = this.selectedRoom.name;
         this.meeting.fromTime = this.selectedRoom.fromTime;
         this.meeting.toTime = this.selectedRoom.toTime;
         this.meeting.date = this.selectedRoom.date;
-        this.meeting.seats = history.state.data.roomCreationDetails._seats;
       } else if (history.state.flow === 'editMeeting') {
         this.selectedMeeting = history.state.data;
         if (typeof (this.selectedMeeting.date) !== 'undefined') {

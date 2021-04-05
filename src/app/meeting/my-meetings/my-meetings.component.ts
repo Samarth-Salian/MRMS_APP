@@ -28,4 +28,8 @@ export class MyMeetingsComponent {
   onCalendarChange(pthis: any) {
     this.roomSearchs.date = pthis.targetElement.value;
   }
+
+  fabIconValidation() {
+    this.titleChange.showFabIcon = false;
+  }
 }

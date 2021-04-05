@@ -56,8 +56,10 @@ export class RoomListComponent {
       width: '80%',
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.roomDetails = result.data;
-      this.subscribedRoomList();
+      if (typeof (result) !== 'undefined') {
+        this.roomDetails = result.data;
+        this.subscribedRoomList();
+      }
     });
   }
 }

@@ -30,6 +30,8 @@ export class InputStepperComponent {
       } else if (String(this.counter) === '' || this.counter === null) {
         this.counter = 1;
         this.counterChange.emit(this.counter);
+      } else {
+        this.counterChange.emit(this.counter);
       }
     }
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute,Router } from '@angular/router';
 import { AppComponent } from '../app.component';
@@ -19,7 +19,7 @@ export class ProfileComponent {
 
   locations = ['Select', 'Building A, Bangalore', 'Building B, Bangalore', 'Building C, Bangalore'];
 
-  constructor(public http: HttpClient, private titleChange: AppComponent,
+  constructor(private zone: NgZone, public http: HttpClient, private titleChange: AppComponent,
     private activatedRoute: ActivatedRoute, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -31,6 +31,7 @@ export class ProfileComponent {
     this.titleChange.goBack();
   }
   signOut(): void {
+    this.titleChange.showWelcomeMessage = false;
     this.titleChange.loginCredentials = '';
     this.deleteLoginTable();
   }
@@ -38,7 +39,11 @@ export class ProfileComponent {
   deleteLoginTable() {
     if (window.cordova && window.cordova.platformId !== 'browser') {
         window.plugins.googleplus.logout(
+          (obj: any) => {
+            this.clearTableContents();
+          },
           (msg: any) => {
+            console.log(msg);
             this.clearTableContents();
           }
         );
@@ -51,7 +56,7 @@ export class ProfileComponent {
       firebase.auth().signOut()
         .then(() => {
           this.titleChange.loginStorage.removeItem(this.titleChange.tableName);
-          this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+          this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: "SignOut" } }); });
         }, function (error) {
           console.log('Signout Failed')
         });
@@ -63,7 +68,7 @@ export class ProfileComponent {
     }, function (error: any) {
       console.log('Transaction ERROR: ' + error.message);
     }, () => {
-      this.router.navigateByUrl('/signin', { state: { data: "SignOut" } });
+      this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: "SignOut" } }); });
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
@@ -14,11 +14,13 @@ declare let window: any;
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent{
+  showMessage: boolean;
   userDetail: any;
   appName = '';
   user: any;
   navigationFlag: string | undefined;
-  constructor(public appComponent: AppComponent, private router: Router, private afAuth: AngularFireAuth, private snackBar: SnackbarService) {
+  constructor(private zone: NgZone, public appComponent: AppComponent, private router: Router, private afAuth: AngularFireAuth, private snackBar: SnackbarService) {
+    this.showMessage = this.appComponent.showWelcomeMessage;
     this.afAuth.authState.subscribe(user => {
       console.log(user);
       this.userDetail = user;
@@ -62,7 +64,7 @@ export class SigninComponent{
     await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
       res => {
         let userObj: any = {
-          'email': res.user?.email,
+          'emailId': res.user?.email,
           'displayName': res.user?.displayName,
           'imageUrl': res.user?.photoURL,
           'profilePic': res.user?.photoURL
@@ -70,7 +72,7 @@ export class SigninComponent{
         this.appComponent.setImage(userObj?.imageUrl);
         this.appComponent.loginStorage.setItem(this.appComponent.tableName, JSON.stringify(userObj));
         this.appComponent.loginCredentials = JSON.parse(this.appComponent.loginStorage.getItem(this.appComponent.tableName));
-        this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } });
+        this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } }); });
         console.log(res.user);
       }).catch(err => {
         console.log(err);

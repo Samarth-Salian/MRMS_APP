@@ -40,6 +40,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -101,6 +102,7 @@ export const MY_DATE_FORMATS = {
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    NgxSpinnerModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

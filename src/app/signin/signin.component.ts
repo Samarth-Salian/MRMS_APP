@@ -41,6 +41,7 @@ export class SigninComponent {
       this.navigationFlag = history.state.data;
     }
     if (this.appComponent.loginCredentials === '') {
+      this.appComponent.spinnerObj.hide();
       this.snackBar.openSnackBar('Signed out Successfully', '');
     }
   }
@@ -54,6 +55,7 @@ export class SigninComponent {
   }
 
   nativeGoogleLogin() {
+    this.appComponent.spinnerObj.show();
     window.plugins.googleplus.login(
       {
         'webClientId': environment.WEB_APPLICATION_CLIENT_ID,
@@ -64,11 +66,13 @@ export class SigninComponent {
       },
       (msg: any) => {
         console.log(msg);
+        this.appComponent.spinnerObj.hide();
       },
     );
   }
 
   async loginWithGoogle_Browser() {
+    this.appComponent.spinnerObj.show();
     await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).then(
       res => {
         let userObj: any = {
@@ -82,6 +86,7 @@ export class SigninComponent {
         this.appComponent.loginCredentials = JSON.parse(this.appComponent.loginStorage.getItem(this.appComponent.tableName));
         this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.appComponent.loginCredentials } }); });
         console.log(res.user);
+        this.appComponent.spinnerObj.hide();
       }).catch(err => {
         console.log(err);
       });

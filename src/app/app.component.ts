@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { NgxSpinnerService } from "ngx-spinner";
+
 declare let window: any;
 @Component({
   selector: 'app-root',
@@ -35,8 +37,10 @@ export class AppComponent {
   loginCredentials: any;
   db: any;
   loginStorage: any;
-
-  constructor(private zone: NgZone, public http: HttpClient, private location: Location, private router: Router) {
+  spinnerObj: any;
+  constructor(private zone: NgZone, public http: HttpClient, private location: Location,
+    private router: Router, private spinner: NgxSpinnerService) {
+    this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};
     this.showWelcomeMessage = true;
@@ -157,6 +161,7 @@ export class AppComponent {
         }
       });
     });
+    this.spinner.hide();
   }
   retriveBrowserData() {
     this.loginStorage = window.localStorage;

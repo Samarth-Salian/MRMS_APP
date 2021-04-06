@@ -50,6 +50,7 @@ export class ProfileComponent {
         },
       );
     } else if (!window.cordova || window.cordova.platformId === 'browser') {
+      this.titleChange.spinnerObj.show();
       if (!firebase.apps.length) {
         firebase.initializeApp(environment.firebaseConfig);
       } else {

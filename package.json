@@ -48,6 +48,7 @@
     "material-design-icons": "^3.0.1",
     "moment": "^2.29.1",
     "ngx-material-timepicker": "^5.5.3",
+    "ngx-spinner": "^11.0.1",
     "rxjs": "~6.6.0",
     "typeface-roboto": "^1.1.13",
     "zone.js": "~0.11.3"
@@ -108,11 +109,13 @@
   "cordova": {
     "plugins": {
       "cordova-sqlite-storage": {},
-      "cordova-plugin-googleplus": {}
+      "cordova-plugin-googleplus": {
+        "PLAY_SERVICES_VERSION": "15.0.1"
+      }
     },
     "platforms": [
-      "android",
-      "browser"
+      "browser",
+      "android"
     ]
   },
   "eslintIgnore": [

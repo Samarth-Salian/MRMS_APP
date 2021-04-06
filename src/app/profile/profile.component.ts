@@ -45,17 +45,30 @@ export class ProfileComponent {
           this.clearTableContents();
         },
         (msg: any) => {
-          console.log(msg);
-          this.clearTableContents();
-        },
+          window.plugins.googleplus.trySilentLogin(
+            {
+              'webClientId': environment.WEB_APPLICATION_CLIENT_ID
+            },
+            (success: any) => {
+              window.plugins.googleplus.logout(
+                (data: any) => {
+                  this.clearTableContents();
+                }
+              );
+            },
+            (err: any) => {
+              console.log(err);
+            }
+          );
+        }
       );
     } else if (!window.cordova || window.cordova.platformId === 'browser') {
       this.titleChange.spinnerObj.show();
       if (!firebase.apps.length) {
         firebase.initializeApp(environment.firebaseConfig);
       } else {
-        firebase.app(); // if already initialized, use that one
-      }
+          firebase.app();
+        }
       firebase.auth().signOut()
         .then(() => {
           this.titleChange.loginStorage.removeItem(this.titleChange.tableName);

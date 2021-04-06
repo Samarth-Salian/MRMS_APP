@@ -109,7 +109,7 @@ export const MY_DATE_FORMATS = {
       },
     }),
   ],
-  providers: [HttpClientModule,
+  providers: [HttpClientModule, AppComponent,
     DatePipe,
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent],

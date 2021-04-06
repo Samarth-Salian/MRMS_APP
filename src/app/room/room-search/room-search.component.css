@@ -20,7 +20,7 @@
 
 .fromTimeDiv, .toTimeDiv {
   display: inline-block;
-  width: 48%;
+  width: 45%;
 }
 
 .toTimeDiv {
@@ -46,9 +46,13 @@
 }
 
 .feature {
-  width: 83%;
+  width: 80%;
 }
 
 .fromInputDiv {
   width: 100%;
+}
+.close.mat-button {
+  line-height: 0px;
+  min-width: auto;
 }

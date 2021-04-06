@@ -5,7 +5,8 @@
     <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 <app-meeting-list></app-meeting-list>
-<button mat-fab class="fab-bottom-right" routerLink="/room-search" routerLinkActive="active" color="primary">
+<button mat-fab class="fab-bottom-right" routerLink="/room-list" (click)="fabIconValidation();"
+    routerLinkActive="active" color="primary">
     <mat-icon>
         <em class="material-icons md-48">add</em>
     </mat-icon>

@@ -4,6 +4,7 @@ import { ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
 import { Room } from 'src/app/models/room';
 import { FormControl } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { AppComponent } from '../../app.component';
 import { SnackbarService } from '../../services/snackbar.service';
 
@@ -30,7 +31,8 @@ export class RoomSearchComponent implements OnInit {
   todayDate = new FormControl(new Date());
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
-    private router: Router, private snackBar: SnackbarService) {
+    private router: Router, private snackBar: SnackbarService,
+    public dialogRef: MatDialogRef<RoomSearchComponent>) {
     this.titleChange.roomListBackButton = false;
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -50,6 +52,7 @@ export class RoomSearchComponent implements OnInit {
     if (this.roomSearch.seats <= 0) {
       this.snackBar.openSnackBar('Seats should be more than 0', '');
     } else {
+      this.dialogRef.close({ data: this.roomSearch });
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
     }
   }
@@ -87,5 +90,9 @@ export class RoomSearchComponent implements OnInit {
     const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
     const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
     return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
+  }
+
+  closeDialogBox() {
+    this.dialogRef.close();
   }
 }

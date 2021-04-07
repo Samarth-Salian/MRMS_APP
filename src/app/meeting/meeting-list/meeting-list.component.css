@@ -13,13 +13,11 @@
    overflow: hidden;
 }
 .swipe-box__scroller {
-   scroll-snap-type: x mandatory;
-}
-.swipe-box__scroller {
    display: grid;
    grid-template-columns: repeat(3, 100%);
    overflow-x: auto;
    overflow-y: hidden;
+   scroll-snap-type: x mandatory;
 }
 .swipe-box__item.observe-item {
    z-index: 100;
@@ -27,8 +25,6 @@
 .swipe-box__item {
    scroll-snap-stop: always;
    scroll-snap-align: center;
-}
-.swipe-box__item {
    height: var(--swipebox-height);
 }
 .mail-action--archive {

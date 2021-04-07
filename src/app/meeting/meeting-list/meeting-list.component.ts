@@ -67,8 +67,6 @@ export class MeetingListComponent {
   }
   public fnDetectSwipe(swipeBoxObj: any) {
     const gestureZone = swipeBoxObj;
-    gestureZone.addEventListener('touchstart', function (event: any) {
-    }, false);
     gestureZone.addEventListener('touchend', (event: any) => {
       clearInterval(this.scrollElement);
       this.handleGesture(event);

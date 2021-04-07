@@ -7,10 +7,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class SnackbarService {
   constructor(public snackBar: MatSnackBar) { }
-
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
+    let snackBarRef = this.snackBar.open(message, action, {
       duration: 2000,
+    });
+    snackBarRef.onAction().subscribe(() => {
+      console.log('undo');
     });
   }
 }

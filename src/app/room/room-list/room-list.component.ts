@@ -102,8 +102,6 @@ function fnDetectSwipe(swipeBoxObj: any) {
 }
 
 function handleGesture(event: any) {
-  const swipeBoxes = document.querySelectorAll('.swipe-box');
-
 }
 
 

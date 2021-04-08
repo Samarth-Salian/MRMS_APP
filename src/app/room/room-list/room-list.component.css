@@ -72,9 +72,6 @@
 
 .swipe-box__scroller {
     scroll-snap-type: x mandatory;
-}
-
-.swipe-box__scroller {
     display: grid;
     grid-template-columns: repeat(3, 100%);
     overflow-x: overlay;
@@ -90,9 +87,6 @@
 .swipe-box__item {
     scroll-snap-stop: always;
     scroll-snap-align: center;
-}
-
-.swipe-box__item {
     height: var(--swipebox-height);
 }
 
@@ -108,10 +102,6 @@
     height: 100%;
     padding: 24px;
     background-color: var(--mail-action-color);
-}
-
-.mat-card-header-text {
-    margin: 0px -63px;
 }
 
 .swipe-box__item.wrapped.animated {
@@ -130,6 +120,7 @@
 
 .swipe-box__scroller::-webkit-scrollbar-thumb {
     background: transparent !important;
+    -webkit-box-shadow: inset 0 0 6px transparent;
 }
 
 .swipe-box__scroller::-webkit-scrollbar-track {
@@ -138,10 +129,5 @@
 }
 
 .swipe-box__scroller::-webkit-scrollbar {
-    background-color: transparent;
-}
-
-.swipe-box__scroller::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px transparent;
     background-color: transparent;
 }

@@ -95,13 +95,6 @@ function fnDetectSwipe(swipeBoxObj: any) {
   }, false);
   gestureZone.addEventListener('touchend', function (event: any) {
     touchendX = event.changedTouches[0].screenX;
-    setTimeout(function () {
-      handleGesture(event);
-    }, 200);
   }, false);
 }
-
-function handleGesture(event: any) {
-}
-
 

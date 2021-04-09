@@ -124,3 +124,7 @@
 .swipe-box__scroller::-webkit-scrollbar {
     background-color: transparent;
 }
+
+.maticon {
+    margin-bottom: 100px;
+}

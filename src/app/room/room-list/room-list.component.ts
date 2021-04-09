@@ -14,9 +14,9 @@ import { RoomSearchComponent } from '../room-search/room-search.component';
   styleUrls: ['./room-list.component.css'],
 })
 export class RoomListComponent {
-  scrollElement: any;
-  deletedRecord: any;
-  deletedRow: number = 0;
+  scrollRoomListElement: any;
+  deletedRoomListRecord: any;
+  deletedRoomListRow: number = 0;
   roomDetails: Room = history.state.data;
 
   rooms: Room[] = [];
@@ -29,12 +29,12 @@ export class RoomListComponent {
     this.titleChange.setTitle(this.titleChange.title);
     this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.subscribedRoomList();
-    setTimeout(() => { this.fnInitializeSwipe() }, 500);
+    setTimeout(() => { this.fnInitializeRoomSwipes() }, 500);
 
   }
-  public fnInitializeSwipe = () => {
-    this.fnSwipeList();
-    this.restrictDelete();
+  public fnInitializeRoomSwipes = () => {
+    this.fnSwipeRoomList();
+    this.restrictRoomListDelete();
   }
   subscribedRoomList() {
     this.getjson().subscribe(data => {
@@ -47,25 +47,25 @@ export class RoomListComponent {
   }
 
   public fnDelete(event: any) {
-    this.deletedRecord = event.target.closest('.listContainer');
-    this.deletedRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
+    this.deletedRoomListRecord = event.target.closest('.listContainer');
+    this.deletedRoomListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
     event.target.closest('.listContainer').remove();
     let snackBarRef = this.snackBar.open('Deleted Successfully', 'Undo', {
       duration: 2000,
     });
     snackBarRef.onAction().subscribe(() => {
-      console.log(this.deletedRow);
-      console.log(this.deletedRecord);
-      let currentRecord: any;
+      console.log(this.deletedRoomListRow);
+      console.log(this.deletedRoomListRecord);
+      let currentRoomListRecord: any;
       let swipeList: any = document.getElementsByClassName('swipe-box');
-      if ((this.deletedRow - 1) === parseInt(swipeList[swipeList.length - 1].getAttribute('rowno'))) {
-        currentRecord = document.getElementById('swipeBoxId_' + (this.deletedRow - 1));
-        currentRecord.parentElement.after(this.deletedRecord);
+      if ((this.deletedRoomListRow - 1) === parseInt(swipeList[swipeList.length - 1].getAttribute('rowno'))) {
+        currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow - 1));
+        currentRoomListRecord.parentElement.after(this.deletedRoomListRecord);
       } else {
-        currentRecord = document.getElementById('swipeBoxId_' + (this.deletedRow + 1));
-        currentRecord.parentElement.before(this.deletedRecord);
+        currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow + 1));
+        currentRoomListRecord.parentElement.before(this.deletedRoomListRecord);
       }
-      this.fnSwipeList();
+      this.fnSwipeRoomList();
     });
 
   }
@@ -96,28 +96,28 @@ export class RoomListComponent {
     });
   }
 
-  public restrictDelete() {
-    let initialCard: any = document.getElementsByClassName('observe-item');
+  public restrictRoomListDelete() {
+    let initialRoomListCard: any = document.getElementsByClassName('observe-item');
     if (document.getElementsByClassName('listContainer ').length === 1) {
-      initialCard[0].style.display = 'none';
+      initialRoomListCard[0].style.display = 'none';
     } else {
-      initialCard[0].style.display = 'block';
+      initialRoomListCard[0].style.display = 'block';
     }
   }
 
 
-  public fnSwipeList() {
-    const swipeBoxes = document.querySelectorAll('.swipe-box');
-    swipeBoxes.forEach(swipeBox => {
+  public fnSwipeRoomList() {
+    const swipeRoomListBoxes = document.querySelectorAll('.swipe-box');
+    swipeRoomListBoxes.forEach(swipeBox => {
       const scroller = swipeBox.querySelector('.swipe-box__scroller');
       if (scroller) {
         scroller.scrollLeft += scroller.scrollWidth / 3;
       }
-      this.fnDetectSwipe(swipeBox);
+      this.fnDetectRoomListSwipe(swipeBox);
     });
   }
 
-  public fnDetectSwipe(swipeBoxObj: any) {
+  public fnDetectRoomListSwipe(swipeBoxObj: any) {
     let touchstartX = 0;
     let touchendX = 0;
     const gestureZone = swipeBoxObj;
@@ -128,5 +128,4 @@ export class RoomListComponent {
       touchendX = event.changedTouches[0].screenX;
     }, false);
   }
-
 }

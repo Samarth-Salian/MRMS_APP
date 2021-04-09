@@ -21,8 +21,13 @@
     document.removeEventListener = function () {
       (window.EventTarget || Document).prototype.removeEventListener.apply(this, arguments);
     };
-  </script>
-  <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+      if (window.cordova && window.cordova.platformId !== 'browser') {
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        script.setAttribute("src", "cordova.js")
+        document.head.appendChild(script);
+      }
+</script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 

@@ -1,60 +1,8 @@
-.listContainer{
-    width: 100%;
-    height: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-.swipe-box {
-   --swipebox-height: 75px;
-   height: var(--swipebox-height);
-   overflow: hidden;
-}
-.swipe-box__scroller {
-   display: grid;
-   grid-template-columns: repeat(3, 100%);
-   overflow-x: auto;
-   overflow-y: hidden;
-   scroll-snap-type: x mandatory;
-}
-.swipe-box__item.observe-item {
-   z-index: 100;
-}
-.swipe-box__item {
-   scroll-snap-stop: always;
-   scroll-snap-align: center;
-   height: var(--swipebox-height);
-}
-.mail-action--archive {
-   --mail-action-color: #eee;
-   margin-right: 2px;
-}
-.mail-action {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100%;
-   padding: 24px;
-   background-color: var(--mail-action-color);
-}
-
-.listContainer.swipeCls {
-   border-bottom: 1px solid #ccc;
-}
-.listContainer.ng-star-inserted * {
-   --swipebox-height: auto !important;
-}
-.listContainer .mat-card {
-  box-shadow: none !important;
-  background-color: transparent !important;
-  padding: 20px 15px;
-}
-.listContainer .swipe-box__scroller::-webkit-scrollbar {
-  height: 0 !important;
-}
-.listContainer .mat-card-header .mat-card-subtitle:last-child {
-  margin-bottom: 0;
+@import '../../shared/swipe-to-reveal.css';
+.maticon {
+  margin-right: 35px;
 }
 
 
-   
-   
+  
+  

@@ -1,10 +1,26 @@
-<mat-card (click)="fnNavigateToLocation(location)" class="listContainer" *ngFor="let location of locations">
-    <mat-card-header>
-        <mat-card-title>{{location.buildingName}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <span>{{location.city}},{{location.country}}</span>
-    </mat-card-content>
+<mat-card class="listContainer" *ngFor="let location of locations let i = index">
+    <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
+        <div class="swipe-box__scroller">
+            <div class="swipe-box__item observe-item" style="display: block;">
+                <div class="mail-action mail-action--archive">
+                    <div>
+                        <mat-icon class="maticon-Edit">
+                            <em class="material-icons md-48" (click)="NavigateToLocation(location)">edit</em>
+                        </mat-icon>
+                        <mat-icon>
+                            <em class="material-icons md-48" (click)="Delete($event)">delete</em>
+                        </mat-icon>
+                    </div>
+                </div>
+            </div>
+            <mat-card-header class="swipe-box__item wrapped animated">
+                <mat-card-title>{{location.buildingName}}</mat-card-title>
+                <mat-card-content>
+                    <span>{{location.city}},{{location.country}}</span>
+                </mat-card-content>
+            </mat-card-header>
+            </div>
+            </div>
 </mat-card>
 <button mat-fab class="fab-bottom-right" routerLink="/location-details" routerLinkActive="active" color="primary">
     <mat-icon>

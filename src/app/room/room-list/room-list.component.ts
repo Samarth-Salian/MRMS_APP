@@ -29,12 +29,12 @@ export class RoomListComponent {
     this.titleChange.setTitle(this.titleChange.title);
     this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.subscribedRoomList();
-    setTimeout(() => { this.fnInitializeRoomSwipes() }, 500);
+    setTimeout(() => { this.InitializeRoomSwipe() }, 0);
 
   }
-  public fnInitializeRoomSwipes = () => {
-    this.fnSwipeRoomList();
-    this.restrictRoomListDelete();
+
+  public InitializeRoomSwipe = () => {
+    this.titleChange.SwipeList();
   }
   subscribedRoomList() {
     this.getjson().subscribe(data => {
@@ -46,7 +46,7 @@ export class RoomListComponent {
     return this.http.get('assets/roomList.json').pipe();
   }
 
-  public fnDelete(event: any) {
+  public Delete(event: any) {
     this.deletedRoomListRecord = event.target.closest('.listContainer');
     this.deletedRoomListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
     event.target.closest('.listContainer').remove();
@@ -58,19 +58,22 @@ export class RoomListComponent {
       console.log(this.deletedRoomListRecord);
       let currentRoomListRecord: any;
       let swipeList: any = document.getElementsByClassName('swipe-box');
-      if ((this.deletedRoomListRow - 1) === parseInt(swipeList[swipeList.length - 1].getAttribute('rowno'))) {
+      if (!swipeList.length) {
+        document.getElementsByTagName('app-room-list')[0].append(this.deletedRoomListRecord);
+      }
+      else if ((this.deletedRoomListRow - 1) === parseInt(swipeList[swipeList.length - 1].getAttribute('rowno'))) {
         currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow - 1));
         currentRoomListRecord.parentElement.after(this.deletedRoomListRecord);
       } else {
         currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow + 1));
         currentRoomListRecord.parentElement.before(this.deletedRoomListRecord);
       }
-      this.fnSwipeRoomList();
+      this.titleChange.SwipeList();
     });
 
   }
 
-  public fnNavigateToMeetingDetails(selectedRoom: Room): void {
+  public NavigateToMeetingDetails(selectedRoom: Room): void {
     if (history.state.data === 'Root Menu') {
       this.zone.run(() => { this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
     } else {
@@ -94,38 +97,5 @@ export class RoomListComponent {
         this.subscribedRoomList();
       }
     });
-  }
-
-  public restrictRoomListDelete() {
-    let initialRoomListCard: any = document.getElementsByClassName('observe-item');
-    if (document.getElementsByClassName('listContainer ').length === 1) {
-      initialRoomListCard[0].style.display = 'none';
-    } else {
-      initialRoomListCard[0].style.display = 'block';
-    }
-  }
-
-
-  public fnSwipeRoomList() {
-    const swipeRoomListBoxes = document.querySelectorAll('.swipe-box');
-    swipeRoomListBoxes.forEach(swipeBox => {
-      const scroller = swipeBox.querySelector('.swipe-box__scroller');
-      if (scroller) {
-        scroller.scrollLeft += scroller.scrollWidth / 3;
-      }
-      this.fnDetectRoomListSwipe(swipeBox);
-    });
-  }
-
-  public fnDetectRoomListSwipe(swipeBoxObj: any) {
-    let touchstartX = 0;
-    let touchendX = 0;
-    const gestureZone = swipeBoxObj;
-    gestureZone.addEventListener('touchstart', function (event: any) {
-      touchstartX = event.changedTouches[0].screenX;
-    }, false);
-    gestureZone.addEventListener('touchend', (event: any) => {
-      touchendX = event.changedTouches[0].screenX;
-    }, false);
   }
 }

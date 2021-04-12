@@ -31,7 +31,7 @@ export class MeetingListComponent {
         e.fromTime = parseInt(fromSlot.split(':')[0]) <= 12 ? `${fromSlot} AM` : `${parseInt(fromSlot.split(':')[0]) - 12}:${fromSlot.split(':')[1]} PM`;
         e.toTime = parseInt(toSlot.split(':')[0]) <= 12 ? `${toSlot} AM` : `${parseInt(toSlot.split(':')[0]) - 12}:${toSlot.split(':')[1]} PM`;
       });
-      setTimeout(() => { this.InitializeSwipe() }, 0);
+      setTimeout(() => { this.initializeSwipe() }, 0);
     });
   }
 
@@ -39,7 +39,7 @@ export class MeetingListComponent {
     return this.http.get('assets/meetingList.json').pipe();
   }
 
-  public NavigateToMeeting(selectedMeeting: Meeting): any {
+  public navigateToMeeting(selectedMeeting: Meeting): any {
     this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } }); });
   }
 
@@ -55,10 +55,10 @@ export class MeetingListComponent {
       }
     }
   }
-  public InitializeSwipe = () => {
-    this.appComponent.SwipeList();
+  public initializeSwipe = () => {
+    this.appComponent.swipeList();
   }
-  public Delete(event: any) {
+  public delete(event: any) {
     this.deletedRecord = event.target.closest('.listContainer');
     this.deletedRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
     event.target.closest('.listContainer').remove();
@@ -78,7 +78,7 @@ export class MeetingListComponent {
         currentRecord = document.getElementById('swipeBoxId_' + (this.deletedRow + 1));
         currentRecord.parentElement.before(this.deletedRecord);
       }
-      this.appComponent.SwipeList();
+      this.appComponent.swipeList();
     });
   }
 }

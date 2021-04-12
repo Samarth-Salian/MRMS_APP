@@ -23,21 +23,21 @@ export class LocationListComponent {
     this.getjson().subscribe(data => {
       this.locations = data;
     });
-    setTimeout(() => { this.InitializeSwipe() }, 0);
+    setTimeout(() => { this.initializeSwipe() }, 0);
   }
-  public InitializeSwipe = () => {
-    this.titleChange.SwipeList();
+  public initializeSwipe = () => {
+    this.titleChange.swipeList();
   }
 
   public getjson(): Observable<any> {
     return this.http.get('assets/locationList.json').pipe();
   }
 
-  public NavigateToLocation(selectedLocation: any): any {
+  public navigateToLocation(selectedLocation: any): any {
     this.zone.run(() => { this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } }); });
   }
 
-  public Delete(event: any) {
+  public delete(event: any) {
     this.deletedLocationListRecord = event.target.closest('.listContainer');
     this.deletedLocationListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
     event.target.closest('.listContainer').remove();
@@ -59,7 +59,7 @@ export class LocationListComponent {
         currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedLocationListRow + 1));
         currentRoomListRecord.parentElement.before(this.deletedLocationListRecord);
       }
-      this.titleChange.SwipeList();
+      this.titleChange.swipeList();
     });
 
   }

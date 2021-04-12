@@ -29,12 +29,12 @@ export class RoomListComponent {
     this.titleChange.setTitle(this.titleChange.title);
     this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.subscribedRoomList();
-    setTimeout(() => { this.InitializeRoomSwipe() }, 0);
+    setTimeout(() => { this.initializeRoomSwipe() }, 0);
 
   }
 
-  public InitializeRoomSwipe = () => {
-    this.titleChange.SwipeList();
+  public initializeRoomSwipe = () => {
+    this.titleChange.swipeList();
   }
   subscribedRoomList() {
     this.getjson().subscribe(data => {
@@ -46,7 +46,7 @@ export class RoomListComponent {
     return this.http.get('assets/roomList.json').pipe();
   }
 
-  public Delete(event: any) {
+  public delete(event: any) {
     this.deletedRoomListRecord = event.target.closest('.listContainer');
     this.deletedRoomListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
     event.target.closest('.listContainer').remove();
@@ -68,12 +68,12 @@ export class RoomListComponent {
         currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow + 1));
         currentRoomListRecord.parentElement.before(this.deletedRoomListRecord);
       }
-      this.titleChange.SwipeList();
+      this.titleChange.swipeList();
     });
 
   }
 
-  public NavigateToMeetingDetails(selectedRoom: Room): void {
+  public navigateToMeetingDetails(selectedRoom: Room): void {
     if (history.state.data === 'Root Menu') {
       this.zone.run(() => { this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
     } else {

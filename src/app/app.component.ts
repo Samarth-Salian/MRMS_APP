@@ -180,18 +180,6 @@ export class AppComponent {
       if (scroller) {
         scroller.scrollLeft += scroller.scrollWidth / 3;
       }
-      this.DetectListSwipe(swipeBox);
     });
-  }
-  public DetectListSwipe(swipeBoxObj: any) {
-    let touchstartX = 0;
-    let touchendX = 0;
-    const gestureZone = swipeBoxObj;
-    gestureZone.addEventListener('touchstart', function (event: any) {
-      touchstartX = event.changedTouches[0].screenX;
-    }, false);
-    gestureZone.addEventListener('touchend', (event: any) => {
-      touchendX = event.changedTouches[0].screenX;
-    }, false);
   }
 }

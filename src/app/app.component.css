@@ -28,6 +28,3 @@ mat-sidenav-container {
     flex: 1 1 auto;
 }
 
-.scroll {
-    overflow: hidden;
-}

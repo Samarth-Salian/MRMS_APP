@@ -1,113 +1,145 @@
 export class Meeting {
-    public _id: string = '';
+  public _id: string = '';
 
-    private _name: string = '';
+  private _name: string = '';
 
-    private _date: string = '';
+  private _date: string = '';
 
-    private _location: string = '';
+  private _location: string = '';
 
-    private _slotFrom: number = -1;
+  private _slotFrom: number = -1;
 
-    private _slotTo: number = -1;
+  private _slotTo: number = -1;
 
-    private _fromTime: string = '';
+  private _fromTime: string = '';
 
-    private _toTime: string = '';
+  private _toTime: string = '';
 
-    private _roomId: string = '';
+  private _roomId: string = '';
 
-    private _userId: string = '';
+  private _userId: string = '';
 
-    private _seats: number = 0;
+  private _seats: number = 0;
 
-    private _room: string = '';
+  private _room: string = '';
 
-    public get name(): string {
-      return this._name;
-    }
+  private _roomName: string = '';
 
-    public set name(name: string) {
-      this._name = name;
-    }
+  private _meetingRoomAvatar: string = '';
 
-    public get date(): string {
-      return this._date;
-    }
+  private _roomfloor: string = '';
 
-    public set date(date: string) {
-      this._date = date;
-    }
+  public get name(): string {
+    return this._name;
+  }
 
-    public get location(): string {
-      return this._location;
-    }
+  public set name(name: string) {
+    this._name = name;
+  }
 
-    public set location(location: string) {
-      this._location = location;
-    }
+  public get date(): string {
+    return this._date;
+  }
 
-    public get slotFrom(): number {
-      return this._slotFrom;
-    }
+  public set date(date: string) {
+    this._date = date;
+  }
 
-    public set slotFrom(slotFrom: number) {
-      this._slotFrom = slotFrom;
-    }
+  public get location(): string {
+    return this._location;
+  }
 
-    public get slotTo(): number {
-      return this._slotTo;
-    }
+  public set location(location: string) {
+    this._location = location;
+  }
 
-    public set slotTo(slotTo: number) {
-      this._slotTo = slotTo;
-    }
+  public get slotFrom(): number {
+    return this._slotFrom;
+  }
 
-    public get fromTime(): string {
-      return this._fromTime;
-    }
+  public set slotFrom(slotFrom: number) {
+    this._slotFrom = slotFrom;
+  }
 
-    public set fromTime(fromTime: string) {
-      this._fromTime = fromTime;
-    }
+  public get slotTo(): number {
+    return this._slotTo;
+  }
 
-    public get toTime(): string {
-      return this._toTime;
-    }
+  public set slotTo(slotTo: number) {
+    this._slotTo = slotTo;
+  }
 
-    public set toTime(toTime: string) {
-      this._toTime = toTime;
-    }
+  public get fromTime(): string {
+    return this._fromTime;
+  }
 
-    public get roomId(): string {
-      return this._roomId;
-    }
+  public set fromTime(fromTime: string) {
+    this._fromTime = fromTime;
+  }
 
-    public set roomId(roomId: string) {
-      this._roomId = roomId;
-    }
+  public get toTime(): string {
+    return this._toTime;
+  }
 
-    public get userId(): string {
-      return this._userId;
-    }
+  public set toTime(toTime: string) {
+    this._toTime = toTime;
+  }
 
-    public set userId(userId: string) {
-      this._userId = userId;
-    }
+  public get roomId(): string {
+    return this._roomId;
+  }
 
-    public get seats(): number {
-      return this._seats;
-    }
+  public set roomId(roomId: string) {
+    this._roomId = roomId;
+  }
 
-    public set seats(seats: number) {
-      this._seats = seats;
-    }
+  public get userId(): string {
+    return this._userId;
+  }
 
-    public get room(): string {
-      return this._room;
-    }
+  public set userId(userId: string) {
+    this._userId = userId;
+  }
 
-    public set room(room: string) {
-      this._room = room;
-    }
+  public get seats(): number {
+    return this._seats;
+  }
+
+  public set seats(seats: number) {
+    this._seats = seats;
+  }
+
+  public get room(): string {
+    return this._room;
+  }
+
+  public set room(room: string) {
+    this._room = room;
+  }
+
+  public get roomName(): string {
+    return this._roomName;
+  }
+
+  public set roomName(roomName: string) {
+    this._roomName = roomName;
+  }
+
+
+  public get meetingRoomAvatar(): string {
+    return this._meetingRoomAvatar;
+  }
+
+  public set meetingRoomAvatar(meetingRoomAvatar: string) {
+    this._meetingRoomAvatar = meetingRoomAvatar;
+  }
+
+  public get roomfloor(): string {
+    return this._roomfloor;
+  }
+
+  public set roomfloor(roomfloor: string) {
+    this._roomfloor = roomfloor;
+  }
+
 }

@@ -1,22 +1,31 @@
-<mat-card class="listContainer" *ngFor="let meeting of meetings let i = index">
-    <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
-        <div class="swipe-box__scroller">
-            <div class="swipe-box__item observe-item" style="display: block;">
-                <div class="mail-action mail-action--archive">
-                    <div>
-                        <mat-icon class="maticon">
-                            <em class="material-icons md-48" (click)="navigateToMeeting(meeting)">edit</em>
-                        </mat-icon>
-                        <mat-icon>
-                            <em class="material-icons md-48" (click)="delete($event)">delete</em>
-                        </mat-icon>
+<div class="listHeader">
+    <mat-card class="listContainer" *ngFor="let meeting of meetings let i = index">
+        <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
+            <div class="swipe-box__scroller">
+                <div class="swipe-box__item observe-item" style="display: block;">
+                    <div class="mail-action mail-action--archive">
+                        <div>
+                            <mat-icon class="maticon">
+                                <em class="material-icons md-48" (click)="navigateToMeeting(meeting)">edit</em>
+                            </mat-icon>
+                            <mat-icon>
+                                <em class="material-icons md-48" (click)="delete($event)">delete</em>
+                            </mat-icon>
+                        </div>
                     </div>
                 </div>
+                <mat-card-header class="swipe-box__item wrapped animated">
+                    <div class="section1">
+                        <img mat-card-avatar alt="RoomImage" src="assets/{{meeting.meetingRoomAvatar}}">
+                    </div>
+                    <div class="section2">
+                        <mat-card-title>{{meeting.name}} </mat-card-title>
+                        <mat-card-subtitle>{{meeting.roomName}} - {{meeting.roomfloor}} - {{meeting.location}}
+                        </mat-card-subtitle>
+                        <mat-card-subtitle>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-subtitle>
+                    </div>
+                </mat-card-header>
             </div>
-            <mat-card-header class="swipe-box__item wrapped animated">
-                <mat-card-title>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-title>
-                <mat-card-subtitle>{{meeting.name}} </mat-card-subtitle>
-            </mat-card-header>
         </div>
-    </div>
-</mat-card>
+    </mat-card>
+</div>

@@ -14,6 +14,7 @@ import { RoomSearchComponent } from '../room-search/room-search.component';
   styleUrls: ['./room-list.component.css'],
 })
 export class RoomListComponent {
+  scrollElement: any;
   scrollRoomListElement: any;
   deletedRoomListRecord: any;
   deletedRoomListRow: number = 0;
@@ -29,8 +30,12 @@ export class RoomListComponent {
     this.titleChange.setTitle(this.titleChange.title);
     this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.subscribedRoomList();
-    setTimeout(() => { this.initializeRoomSwipe() }, 0);
-
+    this.scrollElement = setInterval(() => {
+      if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
+        this.initializeRoomSwipe();
+        clearInterval(this.scrollElement);
+      }
+    }, 100);
   }
 
   public initializeRoomSwipe = () => {

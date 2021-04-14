@@ -1,11 +1,11 @@
 [
     {
         "_id": "6051bbae78b0bb34a04fd90b",
-        "name": "Room D",
+        "name": "Room A",
         "location":"Building B",
         "seats": 3,
         "phoneNo": "+919012788889",
-        "floor": "2",
+        "floor": "1",
         "buildingId": "7878",
         "voipAvailable": true,
         "videoAvailable": true,
@@ -13,15 +13,16 @@
         "whiteBoardAvailable": true,
         "date": "05/04/2022",
         "fromTime": "7:30 AM",
-        "toTime": "8:00 AM"
+        "toTime": "8:00 AM",
+        "image": "Room1.jpg"
     },
     {
         "_id": "6051bbdc78b0bb34a04fd90c",
-        "name": "Room A",
+        "name": "Room B",
         "location":"Building C",
         "seats": 12,
         "phoneNo": "+919012781224",
-        "floor": "1",
+        "floor": "2",
         "buildingId": "7878",
         "voipAvailable": true,
         "videoAvailable": false,
@@ -29,6 +30,41 @@
         "whiteBoardAvailable": true,
         "date": "05/04/2022",
         "fromTime": "9:00 AM",
-        "toTime": "10:00 AM"
+        "toTime": "10:00 AM",
+        "image": "Room2.jpg"
+    },
+    {
+        "_id": "6051bbae78b0bb34a04fd90b",
+        "name": "Room C",
+        "location": "Building B",
+        "seats": 6,
+        "phoneNo": "+919012472889",
+        "floor": "1",
+        "buildingId": "9357",
+        "voipAvailable": true,
+        "videoAvailable": true,
+        "lanAvailable": true,
+        "whiteBoardAvailable": true,
+        "date": "05/04/2022",
+        "fromTime": "7:30 AM",
+        "toTime": "8:00 AM",
+        "image": "Room3.jpg"
+    },
+    {
+        "_id": "6051bbdc78b0bb34a04fd90c",
+        "name": "Room D",
+        "location": "Building B",
+        "seats": 8,
+        "phoneNo": "+919012785894",
+        "floor": "2",
+        "buildingId": "7654",
+        "voipAvailable": true,
+        "videoAvailable": false,
+        "lanAvailable": true,
+        "whiteBoardAvailable": true,
+        "date": "05/04/2022",
+        "fromTime": "9:00 AM",
+        "toTime": "10:00 AM",
+        "image": "Room4.jpg"
     }
 ]

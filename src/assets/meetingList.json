@@ -12,6 +12,8 @@
         "createdAt": "2021-03-12T06:08:34.086Z",
         "updatedAt": "2021-03-13T06:12:04.212Z",
         "attendees":5,
+        "meetingRoomAvatar": "Room1.jpg",
+        "roomfloor": "Floor 1",
         "__v": 0
     },
     {
@@ -22,9 +24,11 @@
         "attendees":7,
         "slotFrom": 22,
         "slotTo": 25,
-        "roomName": "Room D",
+        "roomName": "Room B",
         "createdAt": "2021-03-12T06:10:37.313Z",
         "updatedAt": "2021-03-12T16:19:33.177Z",
+        "meetingRoomAvatar": "Room2.jpg",
+        "roomfloor": "Floor 2",
         "__v": 0
     },
     {
@@ -38,6 +42,8 @@
         "roomName": "Room C",
         "createdAt": "2021-03-12T13:46:55.204Z",
         "updatedAt": "2021-03-12T13:46:55.204Z",
+        "meetingRoomAvatar": "Room3.jpg",
+        "roomfloor": "Floor 1",
         "__v": 0
     },
     {
@@ -48,55 +54,63 @@
         "attendees":4,
         "slotFrom": 65,
         "slotTo": 71,
-        "roomName": "Room B",
+        "roomName": "Room D",
         "createdAt": "2021-03-12T13:57:27.192Z",
         "updatedAt": "2021-03-12T13:57:27.192Z",
+        "meetingRoomAvatar": "Room4.jpg",
+        "roomfloor": "Floor 2",
         "__v": 0
     },
     {
         "_id": "604b774691d6632bfc8f6833",
         "name": "BB finance",
         "date": "13/03/2021",
-        "location":"Building C",
+        "location": "Building A",
         "attendees":2,
         "slotFrom": 1,
         "slotTo": 10,
         "roomName": "Room A",
         "createdAt": "2021-03-12T14:14:30.859Z",
         "updatedAt": "2021-03-12T14:14:30.859Z",
+        "meetingRoomAvatar": "Room1.jpg",
+        "roomfloor": "Floor 1",
         "__v": 0
     },
     {
         "_id": "604b808456127a5f741b5fdd",
         "name": "Apple fintech",
         "date": "14/03/2021",
-        "location":"Building C",
+        "location": "Building A",
         "attendees":6,
         "slotFrom": 1,
         "slotTo": 4,
-        "roomName": "Room D",
+        "roomName": "Room B",
         "createdAt": "2021-03-12T14:53:56.340Z",
         "updatedAt": "2021-03-12T14:53:56.340Z",
+        "meetingRoomAvatar": "Room2.jpg",
+        "roomfloor": "Floor 2",
         "__v": 0
     },
     {
         "_id": "604b8b398348b25ce8b97345",
         "name": "Apple fintech follow up call",
         "date": "14/03/2021",
-        "location":"Building C",
+        "location": "Building B",
         "attendees":5,
         "slotFrom": 7,
         "slotTo": 11,
-        "roomName": "Room B",
+        "roomName": "Room D",
         "createdAt": "2021-03-12T15:39:37.648Z",
         "updatedAt": "2021-03-12T15:39:37.648Z",
+        "meetingRoomAvatar": "Room4.jpg",
+        "roomfloor": "Floor 2",
         "__v": 0
     },
     {
         "_id": "605199a43d32714d88c1ee51",
         "name": "Apple fintech follow up call new 11:22",
         "date": "14/03/2021",
-        "location":"Building C",
+        "location": "Building B",
         "attendees":5,
         "slotFrom": 7,
         "slotTo": 11,
@@ -105,6 +119,8 @@
         "userId": "604b4a6369c9234c7c66f147",
         "createdAt": "2021-03-17T05:54:44.291Z",
         "updatedAt": "2021-03-17T05:54:44.291Z",
+        "meetingRoomAvatar": "Room3.jpg",
+        "roomfloor": "Floor 1",
         "__v": 0
     }
 ]

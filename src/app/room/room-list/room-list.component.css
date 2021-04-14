@@ -46,11 +46,26 @@
 }
 
 .swipe-box {
-    --swipebox-height: 207px;
+    --swipebox-height: 445px;
 }
 .mat-card-header {
     display: block;
 }
 .maticon {
     margin-right: 35px;
+}
+img.mat-card-image.roomImageCls {
+    width: 105%;
+    padding-top: 10px;
+}
+.listHeader {
+    display: block;
+    overflow-y: auto;
+    max-height: 85vh;
+    padding-bottom: 20px;
+}
+@media(max-width: 320px) {
+  .listHeader {
+   padding-bottom: 50px;
+  }
 }

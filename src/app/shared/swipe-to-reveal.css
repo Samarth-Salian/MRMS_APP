@@ -40,11 +40,11 @@
 }
 
 .mail-action {
+    padding: 15px !important;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
-    padding: 24px;
     background-color: var(--mail-action-color);
 }
 

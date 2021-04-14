@@ -1,54 +1,59 @@
 <div class="filterIcon">
     <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
 </div>
-<mat-card class="listContainer" *ngFor="let room of rooms let i = index">
-    <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
-        <div class="swipe-box__scroller">
-            <div class="swipe-box__item observe-item" style="display: block;">
-                <div class="mail-action mail-action--archive">
+<div class="listHeader">
+    <mat-card class="listContainer" *ngFor="let room of rooms let i = index">
+        <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
+            <div class="swipe-box__scroller">
+                <div class="swipe-box__item observe-item" style="display: block;">
+                    <div class="mail-action mail-action--archive">
 
-                    <div>
-                        <mat-icon class="maticon">
-                            <em class="material-icons md-48" (click)="navigateToMeetingDetails(room)">edit</em>
-                        </mat-icon>
-                        <mat-icon>
-                            <em class="material-icons md-48" (click)="delete($event)">delete</em>
-                        </mat-icon>
+                        <div>
+                            <mat-icon class="maticon">
+                                <em class="material-icons md-48" (click)="navigateToMeetingDetails(room)">edit</em>
+                            </mat-icon>
+                            <mat-icon>
+                                <em class="material-icons md-48" (click)="delete($event)">delete</em>
+                            </mat-icon>
+                        </div>
+
                     </div>
-
                 </div>
+                <mat-card-header class="swipe-box__item wrapped animated">
+                    <mat-card-title>{{room.name}}</mat-card-title>
+                    <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
+                    <div class="imageSection">
+                        <img mat-card-image class="roomImageCls" alt="RoomImage" src="assets/{{room.image}}">
+                    </div>
+                    <div>
+                        <span>Room Details</span>
+                    </div>
+                    <ul class="featureList">
+                        <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
+                        <li>Floor: {{room.floor}}</li>
+                        <li>Building Id: {{room.buildingId}}</li>
+                    </ul>
+                    <div class="featuresDiv">
+                        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
+                            src="assets/2052-512.png">
+                    </div>
+                    <div class="featuresDiv">
+                        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
+                            src="assets/camcorder-512.png">
+                    </div>
+                    <div class="featuresDiv">
+                        <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
+                            src="assets/ethernet_on1600.png">
+                    </div>
+                    <div class="featuresDiv">
+                        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
+                            src="assets/43338.png">
+                    </div>
+                </mat-card-header>
             </div>
-            <mat-card-header class="swipe-box__item wrapped animated">
-                <mat-card-title>{{room.name}}</mat-card-title>
-                <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
-                <div>
-                    <span>Room Details</span>
-                </div>
-                <ul class="featureList">
-                    <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
-                    <li>Floor: {{room.floor}}</li>
-                    <li>Building Id: {{room.buildingId}}</li>
-                </ul>
-                <div class="featuresDiv">
-                    <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
-                        src="assets/2052-512.png">
-                </div>
-                <div class="featuresDiv">
-                    <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
-                        src="assets/camcorder-512.png">
-                </div>
-                <div class="featuresDiv">
-                    <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
-                        src="assets/ethernet_on1600.png">
-                </div>
-                <div class="featuresDiv">
-                    <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
-                        src="assets/43338.png">
-                </div>
-            </mat-card-header>
         </div>
-    </div>
-</mat-card>
+    </mat-card>
+</div>
 <button *ngIf="conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-details" routerLinkActive="active"
     color="primary">
     <mat-icon>

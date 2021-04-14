@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./location-list.component.css'],
 })
 export class LocationListComponent {
+  scrollElement: any;
   deletedLocationListRecord: any;
   deletedLocationListRow: number = 0;
   locations: any;
@@ -23,7 +24,12 @@ export class LocationListComponent {
     this.getjson().subscribe(data => {
       this.locations = data;
     });
-    setTimeout(() => { this.initializeSwipe() }, 0);
+    this.scrollElement = setInterval(() => {
+      if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
+        this.initializeSwipe();
+        clearInterval(this.scrollElement);
+      }
+    }, 100);
   }
   public initializeSwipe = () => {
     this.titleChange.swipeList();

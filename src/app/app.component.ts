@@ -1,4 +1,4 @@
-import { Component,NgZone } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -53,7 +53,7 @@ export class AppComponent {
             androidDatabaseProvider: 'system'
           });
           this.retrieveLoginData('root');
-        } 
+        }
       })
     }, false);
     if (!window.cordova || window.cordova.platformId === 'browser') {
@@ -181,5 +181,32 @@ export class AppComponent {
         scroller.scrollLeft += scroller.scrollWidth / 3;
       }
     });
+    this.detectSwipe();
+  }
+  public detectSwipe() {
+    let touchstartX: number = 0;
+    let touchendX: number = 0;
+    const gestureZone = document.getElementsByClassName('listHeader')[0];
+    gestureZone.addEventListener('touchstart', (event: any) => {
+      touchstartX = event.changedTouches[0].screenX;
+    }, false);
+    gestureZone.addEventListener('touchend', (event: any) => {
+      touchendX = event.changedTouches[0].screenX;
+      this.handleGesture(touchstartX, touchendX, event);
+    }, false);
+  }
+  public handleGesture(startGesture: number, endGesture: number, event: any) {
+    if (endGesture > startGesture) {
+      const scrollerRowNo: number = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
+      const swipeBoxScroller: any = document.getElementsByClassName('swipe-box__scroller');
+      for (let i = 0; i < swipeBoxScroller.length; i++) {
+        if (i !== scrollerRowNo) {
+          swipeBoxScroller[i].scrollTo({
+            left: swipeBoxScroller[i].scrollWidth / 3,
+            behavior: 'smooth'
+          });
+        }
+      }
+    }
   }
 }

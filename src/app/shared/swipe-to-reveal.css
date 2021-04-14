@@ -1,0 +1,72 @@
+.listContainer {
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 10px;
+    padding: 10px 10px;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 2px 3px 3px #ddd;
+}
+
+.swipe-box {
+    --swipebox-height: 75px;
+    height: var(--swipebox-height);
+    overflow: hidden;
+}
+
+.swipe-box__scroller {
+    scroll-snap-type: x mandatory;
+    display: grid;
+    grid-template-columns: repeat(3, 100%);
+    overflow-x: overlay;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.swipe-box__item.observe-item {
+    z-index: 100;
+    width: 45%;
+}
+
+.swipe-box__item {
+    scroll-snap-stop: always;
+    scroll-snap-align: center;
+    height: var(--swipebox-height);
+}
+
+.mail-action--archive {
+    --mail-action-color: #eee;
+    margin-right: 2px;
+}
+
+.mail-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 24px;
+    background-color: var(--mail-action-color);
+}
+
+.swipe-box__item.wrapped.animated {
+    position: absolute;
+    left: 45%;
+    padding: 5px 0 0 5px;
+    height: 100%;
+    margin-left: 12px;
+    width: 100%
+}
+
+.swipe-box__scroller::-webkit-scrollbar-thumb {
+    background: transparent !important;
+    -webkit-box-shadow: inset 0 0 6px transparent;
+}
+
+.swipe-box__scroller::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px transparent;
+    background-color: transparent;
+}
+
+.swipe-box__scroller::-webkit-scrollbar {
+    background-color: transparent;
+}

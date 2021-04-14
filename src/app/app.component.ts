@@ -173,4 +173,13 @@ export class AppComponent {
       this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } }) });
     }
   }
+  public swipeList() {
+    const swipeRoomListBoxes = document.querySelectorAll('.swipe-box');
+    swipeRoomListBoxes.forEach(swipeBox => {
+      const scroller = swipeBox.querySelector('.swipe-box__scroller');
+      if (scroller) {
+        scroller.scrollLeft += scroller.scrollWidth / 3;
+      }
+    });
+  }
 }

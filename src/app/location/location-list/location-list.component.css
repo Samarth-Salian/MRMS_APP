@@ -1,16 +1,20 @@
-.listContainer {
-  width: 90%;
-  margin: 0px auto;
-  margin-top: 10px;
-  padding: 10px 10px;
-  border: 1px solid #eee;
-  border-bottom: 1px solid #aaa;
-  box-shadow: 2px 3px 3px #ddd;
-}
+@import '../../shared/swipe-to-reveal.css';
 
 .fab-bottom-right {
   position: fixed;
   left: auto;
   bottom: 5%;
   right: 10%;
+}
+.swipe-box {
+  --swipebox-height: 70px;
+}
+.mat-card-header {
+  display: block;
+}
+.maticon-Edit {
+  margin-right: 35px;
+}
+.mat-card-content {
+margin-left: 16px;
 }

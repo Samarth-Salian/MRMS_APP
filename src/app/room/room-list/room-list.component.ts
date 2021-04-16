@@ -107,7 +107,7 @@ export class RoomListComponent {
       let mailBox: any = e.querySelectorAll('.observe-item');
       let listCard: any = e.querySelectorAll('.mat-card-header');
       listCard[0].classList.add('restrictSwipeCls');
-      mailBox.length ? mailBox[0].remove() : '';
+      mailBox[0].remove();
     });
   }
 

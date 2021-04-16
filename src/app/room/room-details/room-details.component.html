@@ -1,10 +1,17 @@
 <form #searchForm="ngForm" class="roomSearchContainer" novalidate>
     <mat-form-field class="fromInputDiv">
+        <div class="">
+            <label class="feature labelCss">Add a photo</label>
+            <button class='cameraButton' (click)='openBottomSheet()'>
+                <mat-icon>camera_enhance</mat-icon>
+            </button>
+        </div>
         <mat-label>Room</mat-label>
         <input matInput type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required>
     </mat-form-field>
     <span *ngIf="name.invalid && name.touched" [ngStyle]="{'color':'red'}">Enter Room
     </span>
+    <div class="alert alert-light" role="alert">{{ message }}</div>
     <mat-form-field class="fromInputDiv">
         <mat-label>Choose a Location</mat-label>
         <input matInput type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
@@ -36,8 +43,5 @@
             <mat-slide-toggle [color]="color" name="whiteboard" [checked]="roomDetails.whiteBoardAvailable">
             </mat-slide-toggle>
         </div>
+        
     </div>
-
-    <button [disabled]="!searchForm.valid" id='submitbtn' mat-raised-button class="searchBtn" color="primary"
-        (click)="getSubmitMsg()">Submit</button>
-</form>

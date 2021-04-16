@@ -27,3 +27,8 @@
 .fromInputDiv {
   width: 100%;
 }
+.cameraButton{
+  border-style: dotted;
+  width: 100%;
+  padding: 26px;
+}

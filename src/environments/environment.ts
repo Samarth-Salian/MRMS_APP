@@ -5,15 +5,16 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-  apiKey: "xxxxxxxxxxxxxxxxxxxxxxxx",
-  authDomain: "xxxxxxxxxxxxxxxxxxxxxxx",
-  projectId: "xxxxxxxxxxxxxxx",
-  storageBucket: "xxxxxxxxxxxxxxxxxxxxxx",
-  messagingSenderId: "xxxxxxxxxxxxxx",
-  appId: "xxxxxxxxxxxxx",
-  measurementId: "xxxxxxxxxxxxxxxx"
+    apiKey: "AIzaSyCd3fH2wRdGF8F7efxbe_-HPPFxTvbZkxc",
+    authDomain: "meetingangularapp.firebaseapp.com",
+    projectId: "meetingangularapp",
+    storageBucket: "meetingangularapp.appspot.com",
+    messagingSenderId: "522030334748",
+    appId: "1:522030334748:web:8aaa0d34793c6beea930d9",
+    measurementId: "G-GCYFFX67EE"
   },
-  "WEB_APPLICATION_CLIENT_ID": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  "WEB_APPLICATION_CLIENT_ID": "522030334748-rg5qr895afi3pia92tclqh6h3d6c7348.apps.googleusercontent.com"
+
 };
 
 /*

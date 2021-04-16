@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
+declare var foo: any;
 
 declare let window: any;
 @Component({
@@ -12,6 +13,7 @@ declare let window: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  //name = foo;
   showProfileImage: boolean = true;
 
   showWelcomeMessage: boolean;
@@ -74,7 +76,7 @@ export class AppComponent {
       this.title = 'Meeting-App';
     }
     else if (param === 'signin') {
-      this.displayHeading = '';
+      this.displayHeading = 'show';
       this.title = 'Meeting-App';
     } else {
       this.displayHeading = 'hide';
@@ -84,6 +86,8 @@ export class AppComponent {
 
   public getjson(): Observable<any> {
     return this.http.get('assets/userList.json').pipe();
+  }
+  ngAfterViewInit() {
   }
 
   goBack = () => {

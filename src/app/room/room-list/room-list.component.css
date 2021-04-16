@@ -69,3 +69,8 @@ img.mat-card-image.roomImageCls {
    padding-bottom: 50px;
   }
 }
+.restrictSwipeCls {
+    position: relative !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+}

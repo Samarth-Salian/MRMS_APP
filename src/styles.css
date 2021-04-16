@@ -24,3 +24,6 @@ body {
 .timepicker-overlay, .timepicker-backdrop-overlay {
     z-index: 10000000 !important;
 }
+.cdk-overlay-pane {
+    max-width: 100% !important;
+}

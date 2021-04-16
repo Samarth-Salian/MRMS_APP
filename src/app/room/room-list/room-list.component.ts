@@ -19,6 +19,7 @@ export class RoomListComponent {
   deletedRoomListRecord: any;
   deletedRoomListRow: number = 0;
   roomDetails: Room = history.state.data;
+  conditionalFilter: boolean;
 
   rooms: Room[] = [];
 
@@ -29,10 +30,18 @@ export class RoomListComponent {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.conditionalFabIcon = this.titleChange.showFabIcon;
+    this.conditionalFilter = this.titleChange.showFilterIcon;
     this.subscribedRoomList();
     this.scrollElement = setInterval(() => {
-      if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
+      if (document.getElementsByClassName('swipe-box__scroller').length && !document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
         this.initializeRoomSwipe();
+        if (!this.conditionalFilter) {
+          const filterObj: any = document.getElementsByClassName('listHeader');
+          filterObj[0].style.marginTop = '30px';
+        }
+        if (!history.state.data || document.getElementsByClassName('filterIcon').length) {
+          this.hideEditSection();
+        }
         clearInterval(this.scrollElement);
       }
     }, 100);
@@ -92,14 +101,23 @@ export class RoomListComponent {
     }
   }
 
+  public hideEditSection() {
+    let observeItem = document.querySelectorAll('.swipe-box__scroller');
+    observeItem.forEach(e => {
+      let mailBox: any = e.querySelectorAll('.observe-item');
+      let listCard: any = e.querySelectorAll('.mat-card-header');
+      listCard[0].classList.add('restrictSwipeCls');
+      mailBox[0].remove();
+    });
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(RoomSearchComponent, {
-      width: '80%',
+      width: '100%',
     });
     dialogRef.afterClosed().subscribe(result => {
       if (typeof (result) !== 'undefined') {
         this.roomDetails = result.data;
-        this.subscribedRoomList();
       }
     });
   }

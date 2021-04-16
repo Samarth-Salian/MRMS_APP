@@ -31,5 +31,6 @@ export class MyMeetingsComponent {
 
   fabIconValidation() {
     this.titleChange.showFabIcon = false;
+    this.titleChange.showFilterIcon = true;
   }
 }

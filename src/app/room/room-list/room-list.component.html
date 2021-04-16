@@ -1,4 +1,4 @@
-<div class="filterIcon">
+<div *ngIf="conditionalFilter" class="filterIcon">
     <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
 </div>
 <div class="listHeader">
@@ -7,7 +7,6 @@
             <div class="swipe-box__scroller">
                 <div class="swipe-box__item observe-item" style="display: block;">
                     <div class="mail-action mail-action--archive">
-
                         <div>
                             <mat-icon class="maticon">
                                 <em class="material-icons md-48" (click)="navigateToMeetingDetails(room)">edit</em>
@@ -16,10 +15,9 @@
                                 <em class="material-icons md-48" (click)="delete($event)">delete</em>
                             </mat-icon>
                         </div>
-
                     </div>
                 </div>
-                <mat-card-header class="swipe-box__item wrapped animated">
+                <mat-card-header (click)="navigateToMeetingDetails(room)" class="swipe-box__item wrapped animated">
                     <mat-card-title>{{room.name}}</mat-card-title>
                     <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
                     <div class="imageSection">

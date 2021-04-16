@@ -28,6 +28,8 @@ export class AppComponent {
 
   showFabIcon = true;
 
+  showFilterIcon = true;
+
   screenName;
 
   roomLaunchFlag = 'Root Menu';
@@ -109,6 +111,7 @@ export class AppComponent {
 
   fnNavigateRoomList(): void {
     this.showFabIcon = true;
+    this.showFilterIcon = false;
     this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }) });
   }
 

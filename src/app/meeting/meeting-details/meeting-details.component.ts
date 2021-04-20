@@ -31,6 +31,7 @@ export class MeetingDetailsComponent {
 
     if (typeof (history.state.data) !== 'undefined') {
       if (history.state.flow === 'createMeeting') {
+        this.titleChange.setTitle("Create Meeting");
         this.selectedRoom = history.state.data;
         if (typeof (history.state.data.roomCreationDetails) !== 'undefined') {
           this.meetingSchedule = history.state.data.roomCreationDetails._date + ' ' + history.state.data.roomCreationDetails._fromTime + ' ' + history.state.data.roomCreationDetails._toTime;

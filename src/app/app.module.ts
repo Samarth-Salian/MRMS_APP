@@ -41,6 +41,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { IonicModule } from '@ionic/angular';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -110,6 +111,7 @@ export const MY_DATE_FORMATS = {
         disallowedRoutes: ['http://localhost:3000/auth/login'],
       },
     }),
+    IonicModule.forRoot(),
   ],
   providers: [HttpClientModule, AppComponent,
     DatePipe,

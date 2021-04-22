@@ -103,7 +103,8 @@
       "cordova-plugin-googleplus": {
         "PLAY_SERVICES_VERSION": "15.0.1"
       },
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "browser",

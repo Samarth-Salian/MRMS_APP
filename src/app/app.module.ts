@@ -41,6 +41,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -74,6 +76,7 @@ export const MY_DATE_FORMATS = {
     RoomDetailsComponent,
     ProfileComponent,
     InputStepperComponent,
+    BottomSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +106,7 @@ export const MY_DATE_FORMATS = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     NgxSpinnerModule,
+    MatBottomSheetModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

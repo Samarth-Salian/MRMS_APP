@@ -27,3 +27,34 @@
 .fromInputDiv {
   width: 100%;
 }
+.cameraButton{
+  border-style: dotted;
+  width: 100%;
+  padding: 26px 0 56px;
+  margin-bottom: 40px;
+}
+.cameraIcon{
+  position: absolute;
+  left: 157px;
+  bottom: 77px;
+}
+.imageDiv{
+  position: relative;
+}
+.progress {
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+  display: flex;
+  font-size: 1.2rem;
+  height: 2rem;
+  margin-top:1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}

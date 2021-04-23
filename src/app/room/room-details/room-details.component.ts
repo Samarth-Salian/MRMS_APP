@@ -3,8 +3,17 @@ import { ThemePalette } from '@angular/material/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Room } from 'src/app/models/room';
 import { AppComponent } from '../../app.component';
-
+import { BottomSheetComponent } from '../../bottom-sheet/bottom-sheet.component'
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { SnackbarService } from '../../services/snackbar.service';
+import {
+  HttpClient,
+  HttpEventType
+} from "@angular/common/http";
+import { map, catchError } from "rxjs/operators";
+import { throwError } from "rxjs";
+
 
 @Component({
   selector: 'app-room-details',
@@ -15,17 +24,36 @@ export class RoomDetailsComponent {
   roomDetails: Room = history.state.data;
 
   color: ThemePalette = 'primary';
+  uploadImage: string;
+  base64Img: string;
+  progress: any;
 
   roomLaunchFlag: string = 'Root Menu';
 
   constructor(private zone: NgZone, private router: Router, private snackBar: SnackbarService,
-    public titleChange: AppComponent, private activatedRoute: ActivatedRoute) {
+    public titleChange: AppComponent, private activatedRoute: ActivatedRoute, private http: HttpClient, private camera: Camera, private _bottomSheet: MatBottomSheet) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
+    this.uploadImage = '';
+    this.progress = 0;
+    this.base64Img = '';
     if (typeof (history.state.data) === 'undefined') {
       this.roomDetails = new Room();
       this.roomDetails.seats = 1;
     }
+  }
+  cameraOptions: CameraOptions = {
+    quality: 100,
+    sourceType: this.camera.PictureSourceType.CAMERA,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    allowEdit: true
+  }
+  gelleryOptions: CameraOptions = {
+    quality: 100,
+    sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    allowEdit: true
   }
 
   getSubmitMsg() {
@@ -35,5 +63,62 @@ export class RoomDetailsComponent {
       this.snackBar.openSnackBar('Room details submitted successfully', '');
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }); });
     }
+  }
+  openBottomSheet() {
+    this.progress = null;
+    let sheetRef = this._bottomSheet.open(BottomSheetComponent)
+    sheetRef.afterDismissed().subscribe(data => {
+      //this.openCamera(data);
+      if (data.data === 'gallery') {
+        this.openGallery();
+      } else {
+        this.openCamera();
+      }
+    });
+  }
+  openCamera() {
+    this.camera.getPicture(this.cameraOptions).then((imgData) => {
+      console.log('image data =>  ', imgData);
+      this.base64Img = 'data:image/jpeg;base64,' + imgData;
+      this.uploadImage = this.base64Img;
+      this.upload(this.uploadImage);
+    }, (err) => {
+      console.log(err);
+    })
+  }
+  openGallery() {
+    this.camera.getPicture(this.gelleryOptions).then((imgData) => {
+      console.log('image data =>  ', imgData);
+      this.base64Img = 'data:image/jpeg;base64,' + imgData;
+      this.uploadImage = this.base64Img;
+      this.upload(this.uploadImage);
+    }, (err) => {
+      console.log(err);
+    })
+  }
+  upload(file: any) {
+    this.progress = 1;
+    const formData = new FormData();
+    formData.append("file", file);
+
+    this.http
+      .post("yout-url-here", formData, {
+        reportProgress: true,
+        observe: "events"
+      })
+      .pipe(
+        map((event: any) => {
+          if (event.type == HttpEventType.UploadProgress) {
+            this.progress = Math.round((100 / event.total) * event.loaded);
+          } else if (event.type == HttpEventType.Response) {
+            this.progress = null;
+          }
+        }),
+        catchError((err: any) => {
+          this.progress = 100;
+          return throwError(err.message);
+        })
+      )
+      .toPromise();
   }
 }

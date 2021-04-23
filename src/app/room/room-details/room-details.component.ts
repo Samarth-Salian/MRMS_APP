@@ -68,16 +68,15 @@ export class RoomDetailsComponent {
     this.progress = null;
     let sheetRef = this._bottomSheet.open(BottomSheetComponent)
     sheetRef.afterDismissed().subscribe(data => {
-      //this.openCamera(data);
       if (data.data === 'gallery') {
-        this.openGallery();
+        this.openCamera(this.gelleryOptions);
       } else {
-        this.openCamera();
+        this.openCamera(this.cameraOptions);
       }
     });
   }
-  openCamera() {
-    this.camera.getPicture(this.cameraOptions).then((imgData) => {
+  openCamera(options: any) {
+    this.camera.getPicture(options).then((imgData) => {
       console.log('image data =>  ', imgData);
       this.base64Img = 'data:image/jpeg;base64,' + imgData;
       this.uploadImage = this.base64Img;

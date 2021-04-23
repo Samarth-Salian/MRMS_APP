@@ -11,7 +11,7 @@
     </mat-form-field>
     <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
         Name</span>
-        <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
+    <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
     <div class="sliderContainer">
         <div>
             <label for="" class="labelCss">Select Features</label>
@@ -35,6 +35,15 @@
             <label class="feature labelCss">White Board</label>
             <mat-slide-toggle [color]="color" name="whiteboard" [checked]="roomDetails.whiteBoardAvailable">
             </mat-slide-toggle>
+        </div>
+        <ion-progress-bar value="0.5"></ion-progress-bar>
+        <div class="progress" *ngIf="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+        </div>
+        <div (click)='openBottomSheet()' class='imageDiv'>
+            <label class="feature labelCss">Add a photo</label>
+            <input class='cameraButton' type='image' [src]='uploadImage' alt='uploadImage'>
+            <mat-icon class='cameraIcon'>camera_enhance</mat-icon>
         </div>
     </div>
 

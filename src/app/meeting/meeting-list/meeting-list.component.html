@@ -1,4 +1,4 @@
-<div class="listHeader">
+<div *ngIf='showSkeletion else shimmer' class="listHeader">
     <mat-card class="listContainer" *ngFor="let meeting of meetings let i = index">
         <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
             <div class="swipe-box__scroller">
@@ -19,9 +19,7 @@
                         <img mat-card-avatar alt="RoomImage" src="assets/{{meeting.meetingRoomAvatar}}">
                     </div>
                     <div class="section2">
-                        <mat-card-title>{{meeting.name}} </mat-card-title>
-                        <mat-card-subtitle>{{meeting.roomName}} - {{meeting.roomfloor}} - {{meeting.location}}
-                        </mat-card-subtitle>
+                        
                         <mat-card-subtitle>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-subtitle>
                     </div>
                 </mat-card-header>
@@ -29,3 +27,32 @@
         </div>
     </mat-card>
 </div>
+<ng-template #shimmer>
+    <div class="listHeader">
+        <ion-card class="listContainer" *ngFor="let meeting of meetings let i = index">
+            <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
+                <div class="swipe-box__scroller">
+                    <div class="swipe-box__item observe-item" style="display: block;">
+                        <div class="mail-action mail-action--archive">
+                        </div>
+                    </div>
+                    <ion-card-header class="swipe-box__item wrapped animated" (click)="navigateToMeeting(meeting)">
+                        <div class="section1">
+                        </div>
+                        <div class="section2">
+                            <ion-card-title>
+                                <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-card-title>
+                            <ion-card-subtitle>
+                                <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-card-subtitle>
+                            <ion-card-subtitle>
+                                <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-card-subtitle>
+                        </div>
+                    </ion-card-header>
+                </div>
+            </div>
+        </ion-card>
+    </div>
+</ng-template>

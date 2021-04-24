@@ -71,6 +71,10 @@ export class RoomDetailsComponent {
     let sheetRef = this._bottomSheet.open(BottomSheetComponent)
     sheetRef.afterDismissed().subscribe(data => {
       this.uploadImage = '';
+      if (!data) {
+        this.showCameraIconDiv = true;
+        this.showUploadImageIcon = false;
+      }
       if (data.data === 'gallery') {
         this.openCamera(this.gelleryOptions);
       } else {

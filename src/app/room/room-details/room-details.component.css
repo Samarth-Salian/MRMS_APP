@@ -63,3 +63,6 @@
   display: flex;
   justify-content: center;
 }
+.uploadImage {
+  width: 100%;
+}

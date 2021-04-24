@@ -11,7 +11,8 @@
     <span [ngClass]="'textAlign'">{{ title }}</span>
     <span class="example-spacer"></span>
     <div *ngIf="showProfileImage" mat-card-avatar>
-      <img [routerLink]="['/profile']" alt="profilePic" class="UserImage" src='{{user?.profilePic}}'>
+      <img *ngIf='showProfileImageIcon' [routerLink]="['/profile']" alt="profilePic" class="UserImage"
+        (error)="imageOnError($event)" src='{{user?.profilePic}}'>
     </div>
   </mat-toolbar>
   <mat-sidenav-container>

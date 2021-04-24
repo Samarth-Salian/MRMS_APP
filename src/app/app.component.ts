@@ -40,6 +40,7 @@ export class AppComponent {
   db: any;
   loginStorage: any;
   spinnerObj: any;
+  showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
     private router: Router, private spinner: NgxSpinnerService) {
     this.spinnerObj = spinner;
@@ -211,5 +212,8 @@ export class AppComponent {
         }
       }
     }
+  }
+  imageOnError(event: any) {
+    //this.showProfileImageIcon = false;
   }
 }

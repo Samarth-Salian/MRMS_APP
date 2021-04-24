@@ -27,6 +27,8 @@ export class RoomDetailsComponent {
   uploadImage: string;
   base64Img: string;
   progress: any;
+  showUploadImageIcon: boolean = false;
+  showCameraIconDiv: boolean = true;
 
   roomLaunchFlag: string = 'Root Menu';
 
@@ -68,6 +70,7 @@ export class RoomDetailsComponent {
     this.progress = null;
     let sheetRef = this._bottomSheet.open(BottomSheetComponent)
     sheetRef.afterDismissed().subscribe(data => {
+      this.uploadImage = '';
       if (data.data === 'gallery') {
         this.openCamera(this.gelleryOptions);
       } else {
@@ -81,7 +84,11 @@ export class RoomDetailsComponent {
       this.base64Img = 'data:image/jpeg;base64,' + imgData;
       this.uploadImage = this.base64Img;
       this.upload(this.uploadImage);
+      this.showUploadImageIcon = true;
+      this.showCameraIconDiv = false;
     }, (err) => {
+      this.showCameraIconDiv = true;
+      this.showUploadImageIcon = false;
       console.log(err);
     })
   }
@@ -91,7 +98,11 @@ export class RoomDetailsComponent {
       this.base64Img = 'data:image/jpeg;base64,' + imgData;
       this.uploadImage = this.base64Img;
       this.upload(this.uploadImage);
+      this.showUploadImageIcon = true;
+      this.showCameraIconDiv = false;
     }, (err) => {
+      this.showCameraIconDiv = true;
+      this.showUploadImageIcon = false;
       console.log(err);
     })
   }

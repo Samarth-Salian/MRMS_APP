@@ -8,14 +8,29 @@
 .swipe-box__item.wrapped.animated {
   padding: 0 0 0 5px;
 }
-.section1 {
+.avatarSection {
   margin-left: -35px;
   padding-right: 25px;
 }
-.section1 .mat-card-avatar {
+.avatarSection .mat-card-avatar {
   border-radius: 0%;
   height: 74px;
   width: 74px;
 }
-  
+.shimmerContents{
+  padding-left: 20px;
+  width: 100%;
+}
+.shimmerAvatar{
+  /* margin-right: 80%; */
+  height: 52px;
+  width: 52px;
+}
+.shimmerHeader {
+  display: flex !important;
+}  
+.hydrated {
+  visibility: inherit;
+  padding-bottom: 1px;
+}
   

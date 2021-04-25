@@ -33,7 +33,7 @@ export class AppComponent {
   screenName;
 
   roomLaunchFlag = 'Root Menu';
-
+  firstLoad: boolean = true;
   routerPath: string = window.location.href.split('/', 4)[3];
   tableName: string = '';
   loginCredentials: any;

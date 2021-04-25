@@ -45,6 +45,7 @@ import { IonicModule } from '@ionic/angular';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { Camera } from '@ionic-native/camera/ngx';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx'
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -121,6 +122,7 @@ export const MY_DATE_FORMATS = {
   providers: [HttpClientModule, AppComponent,
     DatePipe,
     Camera,
+    FingerprintAIO,
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent],
 })

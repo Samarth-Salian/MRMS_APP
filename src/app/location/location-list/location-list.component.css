@@ -18,3 +18,7 @@
 .mat-card-content {
 margin-left: 16px;
 }
+.hydrated {
+  visibility: inherit;
+  margin-bottom: 27px;
+}

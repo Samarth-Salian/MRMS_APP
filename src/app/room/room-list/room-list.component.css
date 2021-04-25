@@ -83,3 +83,19 @@ img.mat-card-image.roomImageCls {
 .mail-action {
     display: grid;
 }
+.shimmerAvatar{
+    height: 244px;
+    width: 105%;
+    padding-bottom: 10px;
+  }
+  .shimmerContent{
+    padding: 8px;
+    margin-bottom: -13px;
+  }
+  .shimmerImage{
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  .shimmerIcons{
+      padding-top: 10px;
+  }

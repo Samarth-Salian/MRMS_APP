@@ -15,13 +15,16 @@ export class LocationListComponent {
   deletedLocationListRecord: any;
   deletedLocationListRow: number = 0;
   locations: any;
-
+  showSkeletion: boolean = false;
   constructor(private zone: NgZone, private titleChange: AppComponent, private activatedRoute: ActivatedRoute,
     public http: HttpClient, private router: Router, public snackBar: MatSnackBar) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
     this.getjson().subscribe(data => {
+      setTimeout(() => {
+        this.showSkeletion = true;
+      }, 3000)
       this.locations = data;
     });
     this.scrollElement = setInterval(() => {

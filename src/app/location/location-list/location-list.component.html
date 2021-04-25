@@ -14,14 +14,24 @@
                         </div>
                     </div>
                 </div>
-                <mat-card-header class="swipe-box__item wrapped animated">
+                <mat-card-header *ngIf='showSkeletion else hideSkeletion' class="swipe-box__item wrapped animated">
                     <mat-card-title>{{location.buildingName}}</mat-card-title>
                     <mat-card-content>
                         <span>{{location.city}},{{location.country}}</span>
                     </mat-card-content>
                 </mat-card-header>
+                <ng-template #hideSkeletion>
+                    <ion-card-header class="swipe-box__item wrapped animated shimmerHeader">
+                        <ion-card-title>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-title>
+                        <ion-card-title>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-title>
+                    </ion-card-header>
+                </ng-template>
+                    </div>
             </div>
-        </div>
     </mat-card>
 </div>
 <button mat-fab class="fab-bottom-right" routerLink="/location-details" routerLinkActive="active" color="primary">

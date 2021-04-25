@@ -24,7 +24,7 @@ export class RoomListComponent {
   rooms: Room[] = [];
 
   conditionalFabIcon: boolean;
-
+  showSkeletion: boolean = false;
   constructor(private zone: NgZone, private titleChange: AppComponent, private router: Router,
     private activatedRoute: ActivatedRoute, public http: HttpClient, private dialog: MatDialog, public snackBar: MatSnackBar) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -32,6 +32,9 @@ export class RoomListComponent {
     this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.conditionalFilter = this.titleChange.showFilterIcon;
     this.subscribedRoomList();
+    setTimeout(() => {
+      this.showSkeletion = true;
+    }, 3000)
     this.scrollElement = setInterval(() => {
       if (document.getElementsByClassName('swipe-box__scroller').length && !document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
         this.initializeRoomSwipe();

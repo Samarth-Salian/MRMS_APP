@@ -19,7 +19,8 @@
                         </div>
                     </div>
                 </div>
-                <mat-card-header (click)="navigateToMeetingDetails(room)" class="swipe-box__item wrapped animated">
+                <mat-card-header *ngIf='showSkeletion else hideSkeletion' (click)="navigateToMeetingDetails(room)"
+                    class="swipe-box__item wrapped animated">
                     <mat-card-title>{{room.name}}</mat-card-title>
                     <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
                     <div class="imageSection">
@@ -50,6 +51,34 @@
                             src="assets/43338.png">
                     </div>
                 </mat-card-header>
+                <ng-template #hideSkeletion>
+                    <ion-card-header class="swipe-box__item wrapped animated shimmerHeader">
+                        <ion-card-title>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-title>
+                        <ion-card-subtitle>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-subtitle>
+                        <ion-card-title class='shimmerImage'>
+                            <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
+                        </ion-card-title>
+                        <div>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </div>
+                        <ion-card-content class='shimmerContent'>
+                            <ion-skeleton-text animated style='width:60%'></ion-skeleton-text>
+                        </ion-card-content>
+                        <ion-card-content class='shimmerContent'>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-content>
+                        <ion-card-content class='shimmerContent'>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-content>
+                        <ion-card-title class='shimmerIcons'>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                        </ion-card-title>
+                    </ion-card-header>
+                </ng-template>
             </div>
         </div>
     </mat-card>

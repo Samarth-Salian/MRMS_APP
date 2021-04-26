@@ -16,7 +16,7 @@ export class UserListComponent {
   adminMsg: string = 'This  user updated to Admin role';
 
   userMsg: string = 'This user updated to User role';
-
+  showSkeletion: boolean = false;
   constructor(public http: HttpClient, public snackBar: SnackbarService,
     private activatedRoute: ActivatedRoute, private titleChange: AppComponent) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -25,6 +25,9 @@ export class UserListComponent {
     this.getjson().subscribe(data => {
       this.users = data;
     });
+    setTimeout(() => {
+      this.showSkeletion = true;
+    }, 3000);
   }
 
   public getjson(): Observable<any> {

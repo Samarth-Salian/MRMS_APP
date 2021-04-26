@@ -5,9 +5,9 @@
     <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 <app-meeting-list class="appMeetingList"></app-meeting-list>
-<button mat-fab class="fab-bottom-right" routerLink="/room-list" (click)="fabIconValidation();"
-    routerLinkActive="active" color="primary">
-    <mat-icon>
-        <em class="material-icons md-48">add</em>
-    </mat-icon>
-</button>
+<ion-fab class="fab-bottom-right" vertical="bottom" horizontal="end" routerLink="/room-list"
+    (click)="fabIconValidation();" routerLinkActive="active">
+    <ion-fab-button>
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

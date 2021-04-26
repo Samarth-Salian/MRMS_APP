@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AppComponent } from '../../app.component';
 import { SnackbarService } from '../../services/snackbar.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-room-search',
@@ -26,14 +27,15 @@ export class RoomSearchComponent implements OnInit {
 
   toTime = '';
 
-  minDate = new Date();
+  minDate: any = '';
 
-  todayDate = new FormControl(new Date());
+  //todayDate = new FormControl(new Date());
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
-    private router: Router, private snackBar: SnackbarService,
+    private router: Router, private snackBar: SnackbarService, public datepipe: DatePipe,
     public dialogRef: MatDialogRef<RoomSearchComponent>) {
     this.titleChange.roomListBackButton = false;
+    this.minDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
@@ -46,6 +48,8 @@ export class RoomSearchComponent implements OnInit {
   ngOnInit(): void {
     this.roomSearch.fromTime = this.fromTime;
     this.roomSearch.toTime = this.toTime;
+  }
+  setDate() {
   }
 
   public fnNavigateToRoomList() {

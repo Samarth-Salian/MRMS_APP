@@ -9,14 +9,12 @@
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field class="datePickerDiv">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" [min]="minDate" name="meetingDate"
-            (dateChange)="onCalendarChange($event)" [formControl]="todayDate" />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
+    <ion-item>
+        <ion-label position="floating" color="primary">Choose a date</ion-label>
+        <ion-datetime displayFormat="MM-DD-YYYY" [min]=minDate max="2050-31-31" [value]=minDate [(ngModel)]="minDate"
+            name='chooseDate'>
+        </ion-datetime>
+    </ion-item>
     <div class="form-outline">
         <div class="fromTimeDiv">
             <mat-form-field class="fromInputDiv">
@@ -62,6 +60,8 @@
             </mat-slide-toggle>
         </div>
     </div>
-    <button [disabled]="!searchForm.valid" id='submitbtn' type="submit" mat-raised-button class="searchBtn"
-        color="primary">Search</button>
+    <section>
+        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' expand="block">Search
+        </ion-button>
+    </section>
 </form>

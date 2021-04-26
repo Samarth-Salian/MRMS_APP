@@ -49,7 +49,9 @@
             <mat-icon (click)='openBottomSheet()' class='cameraIcon'>camera_enhance</mat-icon>
         </div>
     </div>
-
-    <button [disabled]="!searchForm.valid" id='submitbtn' mat-raised-button class="searchBtn" color="primary"
-        (click)="getSubmitMsg()">Submit</button>
+        <section>
+            <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()" expand="block">
+                Submit
+            </ion-button>
+        </section>
 </form>

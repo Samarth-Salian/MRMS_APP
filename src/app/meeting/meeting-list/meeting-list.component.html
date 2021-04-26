@@ -1,4 +1,4 @@
-<div *ngIf='showSkeletion else shimmer' class="listHeader">
+<div class="listHeader">
     <mat-card class="listContainer" *ngFor="let meeting of meetings let i = index">
         <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
             <div class="swipe-box__scroller">
@@ -14,32 +14,24 @@
                         </div>
                     </div>
                 </div>
-                <mat-card-header class="swipe-box__item wrapped animated" (click)="navigateToMeeting(meeting)">
-                    <div class="section1">
+                <mat-card-header *ngIf='showSkeletion else hideSkeletion' class="swipe-box__item wrapped animated"
+                    (click)="navigateToMeeting(meeting)">
+                    <div *ngIf='showSkeletion else hideSkeletion' class="avatarSection">
                         <img mat-card-avatar alt="RoomImage" src="assets/{{meeting.meetingRoomAvatar}}">
                     </div>
                     <div class="section2">
-                        
+                        <mat-card-title>{{meeting.name}} </mat-card-title>
+                        <mat-card-subtitle>{{meeting.roomName}} - {{meeting.roomfloor}} - {{meeting.location}}
+                        </mat-card-subtitle>
                         <mat-card-subtitle>{{meeting.fromTime}} - {{meeting.toTime}}</mat-card-subtitle>
                     </div>
                 </mat-card-header>
-            </div>
-        </div>
-    </mat-card>
-</div>
-<ng-template #shimmer>
-    <div class="listHeader">
-        <ion-card class="listContainer" *ngFor="let meeting of meetings let i = index">
-            <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
-                <div class="swipe-box__scroller">
-                    <div class="swipe-box__item observe-item" style="display: block;">
-                        <div class="mail-action mail-action--archive">
+                <ng-template #hideSkeletion>
+                    <ion-card-header class="swipe-box__item wrapped animated shimmerHeader" (click)="navigateToMeeting(meeting)">
+                        <div class='sec'>
+                            <ion-skeleton-text class='shimmerAvatar'></ion-skeleton-text>
                         </div>
-                    </div>
-                    <ion-card-header class="swipe-box__item wrapped animated" (click)="navigateToMeeting(meeting)">
-                        <div class="section1">
-                        </div>
-                        <div class="section2">
+                        <div class="shimmerContents">
                             <ion-card-title>
                                 <ion-skeleton-text animated></ion-skeleton-text>
                             </ion-card-title>
@@ -51,8 +43,8 @@
                             </ion-card-subtitle>
                         </div>
                     </ion-card-header>
-                </div>
+                </ng-template>
             </div>
-        </ion-card>
-    </div>
-</ng-template>
+        </div>
+    </mat-card>
+</div>

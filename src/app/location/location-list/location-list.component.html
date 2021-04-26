@@ -22,10 +22,10 @@
                 </mat-card-header>
                 <ng-template #hideSkeletion>
                     <ion-card-header class="swipe-box__item wrapped animated shimmerHeader">
-                        <ion-card-title>
+                        <ion-card-title class='shimmerTitle'>
                             <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
                         </ion-card-title>
-                        <ion-card-title>
+                        <ion-card-title class='shimmerTitle'>
                             <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
                         </ion-card-title>
                     </ion-card-header>
@@ -34,8 +34,9 @@
             </div>
     </mat-card>
 </div>
-<button mat-fab class="fab-bottom-right" routerLink="/location-details" routerLinkActive="active" color="primary">
-    <mat-icon>
-        <em class="material-icons md-48">add</em>
-    </mat-icon>
-</button>
+<ion-fab class="fab-bottom-right" vertical="bottom" horizontal="end" routerLink="/location-details"
+    routerLinkActive="active">
+    <ion-fab-button>
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

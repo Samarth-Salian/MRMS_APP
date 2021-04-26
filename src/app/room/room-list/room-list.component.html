@@ -83,10 +83,9 @@
         </div>
     </mat-card>
 </div>
-<button *ngIf="conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-details" routerLinkActive="active"
-    color="primary">
-    <mat-icon>
-        <em class="material-icons md-48">add</em>
-    </mat-icon>
-
-</button>
+<ion-fab *ngIf="conditionalFabIcon" class="fab-bottom-right" vertical="bottom" horizontal="end"
+    routerLink="/room-details" routerLinkActive="active">
+    <ion-fab-button>
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

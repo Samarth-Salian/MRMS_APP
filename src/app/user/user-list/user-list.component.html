@@ -1,4 +1,5 @@
-<mat-card class="listContainer" *ngFor="let user of users">
+<div *ngIf='showSkeletion else hideSkeletion'>
+    <mat-card class="listContainer" *ngFor="let user of users">
     <mat-card-header>
         <div mat-card-avatar>
             <img class="avatarImage" alt="" src="{{user.image}}">
@@ -17,4 +18,27 @@
         </div>
       </mat-card-actions>
 </mat-card>
+</div>
+<ng-template #hideSkeletion>
+    <ion-card *ngFor="let user of users">
+        <ion-card-header class="shimmerHeader">
+            <div>
+                <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
+            </div>
+            <ion-card-title class='shimmerTitle'>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-header class='shimmerHeader'>
+            <ion-card-title style='width: 70%;'>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-header>
+            <ion-card-title>
+                <ion-skeleton-text animated style='width: 50%;'></ion-skeleton-text>
+            </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+</ng-template>
 

@@ -21,11 +21,10 @@
     </mat-form-field>
 
     <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
-
-    <div class="center">
-      <button [disabled]="!meetingForm.valid" id='submitbtn' mat-raised-button class="searchBtn" color="primary"
-        (click)="getSubmitMsg()">Submit Meeting</button>
-    </div>
+    <section>
+      <ion-button [disabled]="!meetingForm.valid" id='submitbtn' expand="block" (click)="getSubmitMsg()">Submit Meeting
+      </ion-button>
+    </section>
   </form>
 
 </div>

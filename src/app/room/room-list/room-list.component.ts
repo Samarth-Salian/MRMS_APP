@@ -101,6 +101,7 @@ export class RoomListComponent {
         configurable: true,
       });
       this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+
     }
   }
 
@@ -108,9 +109,12 @@ export class RoomListComponent {
     let observeItem = document.querySelectorAll('.swipe-box__scroller');
     observeItem.forEach(e => {
       let mailBox: any = e.querySelectorAll('.observe-item');
+      let ioncard = e.querySelectorAll('.shimmerHeader');
+      if (ioncard.length === 0) {
       let listCard: any = e.querySelectorAll('.mat-card-header');
       listCard[0].classList.add('restrictSwipeCls');
       mailBox[0].remove();
+      }
     });
   }
 

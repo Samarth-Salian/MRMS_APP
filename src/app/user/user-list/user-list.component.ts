@@ -12,7 +12,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 })
 export class UserListComponent {
   users: any;
-
+  image: any;
   adminMsg: string = 'This  user updated to Admin role';
 
   userMsg: string = 'This user updated to User role';
@@ -22,6 +22,7 @@ export class UserListComponent {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
+    this.image = this.titleChange.user.profilePic;
     this.getjson().subscribe(data => {
       this.users = data;
     });

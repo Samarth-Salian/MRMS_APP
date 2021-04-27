@@ -1,3 +1,11 @@
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/my-meetings"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Room List</ion-title>
+    </ion-toolbar>
+</ion-header>
 <div *ngIf="conditionalFilter" class="filterIcon">
     <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
 </div>

@@ -1,4 +1,4 @@
-<div style="height: 80vh;">
+<!--<div style="height: 80vh;">
   <mat-toolbar>
     <button *ngIf="displayHeading === 'show' ; else showBackButton" mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
@@ -27,7 +27,53 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-</div>
+</div>-->
+<ion-app [class.dark-theme]="dark">
+  <ion-split-pane contentId="main-content">
+
+    <ion-menu contentId="main-content">
+      <ion-content>
+        <ion-list lines="none">
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/location-list" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="location-outline"></ion-icon>
+              <ion-label>
+                Locations
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item (click)="fnNavigateRoomList();" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="location-outline"></ion-icon>
+              <ion-label>
+                Meeting Rooms
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/user-list" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="people-outline"></ion-icon>
+              <ion-label>
+                Users
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-item>
+            <ion-icon slot="start" name="moon-outline"></ion-icon>
+            <ion-label>
+              Dark Mode
+            </ion-label>
+            <ion-toggle [(ngModel)]="dark"></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+
+</ion-app>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
   <p style="color: white">Please Wait. </p>
 </ngx-spinner>

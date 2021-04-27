@@ -45,7 +45,7 @@ import { IonicModule } from '@ionic/angular';
 import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { Camera } from '@ionic-native/camera/ngx';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx'
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -79,7 +79,7 @@ export const MY_DATE_FORMATS = {
     RoomDetailsComponent,
     ProfileComponent,
     InputStepperComponent,
-    BottomSheetComponent,
+    BottomSheetComponent
   ],
   imports: [
     BrowserModule,

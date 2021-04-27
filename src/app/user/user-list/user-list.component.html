@@ -1,3 +1,11 @@
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/my-meetings"></ion-back-button>
+        </ion-buttons>
+        <ion-title>User List</ion-title>
+    </ion-toolbar>
+</ion-header>
 <div *ngIf='showSkeletion else hideSkeletion'>
     <mat-card class="listContainer" *ngFor="let user of users">
     <mat-card-header>

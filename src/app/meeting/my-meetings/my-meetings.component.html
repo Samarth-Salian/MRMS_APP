@@ -1,3 +1,11 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>My Meetings</ion-title>
+    </ion-toolbar>
+</ion-header>
 <mat-form-field appearance="fill" class="datePickerDiv">
     <mat-label>Choose a date</mat-label>
     <input matInput [matDatepicker]="picker" (dateChange)="onCalendarChange($event)" [formControl]="todayDate" />
@@ -5,8 +13,8 @@
     <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 <app-meeting-list class="appMeetingList"></app-meeting-list>
-<ion-fab class="fab-bottom-right" vertical="bottom" horizontal="end" routerLink="/room-list"
-    (click)="fabIconValidation();" routerLinkActive="active">
+<ion-fab class="fab-bottom-right" vertical="bottom" horizontal="end" routerLink="/room-list" routerLinkActive="active"
+    routerDirection="root" detail="false" (click)="fabIconValidation();">
     <ion-fab-button>
         <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>

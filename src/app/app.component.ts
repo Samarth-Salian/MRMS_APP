@@ -13,6 +13,7 @@ declare let window: any;
 })
 export class AppComponent {
   showProfileImage: boolean = true;
+  dark = false;
 
   showWelcomeMessage: boolean;
 
@@ -215,5 +216,6 @@ export class AppComponent {
   }
   imageOnError(event: any) {
     this.showProfileImageIcon = true;
+    this.showProfileImage = false;
   }
 }

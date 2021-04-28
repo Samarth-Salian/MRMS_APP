@@ -38,6 +38,9 @@
 .sliderContainer {
   margin-bottom: 40px;
 }
+.item{
+  margin-left: -23px;
+}
 
 .searchBtn {
   width: 100%;

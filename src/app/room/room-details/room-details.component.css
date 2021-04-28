@@ -66,3 +66,6 @@
 .uploadImage {
   width: 100%;
 }
+.item {
+  margin-left: -18px;
+}

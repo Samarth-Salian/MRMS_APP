@@ -1,17 +1,15 @@
 <button class="close" mat-button (click)="closeDialogBox();">X</button>
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
-    <mat-form-field class="fromInputDiv">
-        <mat-label>Choose a Locaton</mat-label>
-        <mat-select [(ngModel)]="roomSearch.location" name="locations">
-            <mat-option *ngFor="let location of locations" [value]="location">
-                {{location}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <ion-item>
+        <ion-label position="floating">Choose a Locaton</ion-label>
+        <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">
+            <ion-select-option *ngFor="let location of locations" [value]="location">{{location}}</ion-select-option>
+        </ion-select>
+    </ion-item>
 
     <ion-item>
-        <ion-label position="floating" color="primary">Choose a date</ion-label>
-        <ion-datetime displayFormat="MM-DD-YYYY" [min]=minDate max="2050-31-31" [value]=minDate [(ngModel)]="minDate"
+        <ion-label position="floating">Choose a date</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" [min]=minDate max="2050-31-31" [value]=minDate [(ngModel)]="minDate"
             name='chooseDate'>
         </ion-datetime>
     </ion-item>
@@ -37,28 +35,35 @@
         </div>
     </div>
     <app-input-stepper [(counter)]="roomSearch.seats"></app-input-stepper>
+    
 
     <div class="sliderContainer">
-        <div>
-            <label for="" class="labelCss">Select Features</label>
-        </div>
-        <div class="sliderBtn">
-            <label class="feature labelCss">LAN</label>
-            <mat-slide-toggle [color]="color" [(ngModel)]="roomSearch.lanAvailable" name="lan"></mat-slide-toggle>
-        </div>
-        <div class="sliderBtn">
-            <label class="feature labelCss">Conference Phone</label>
-            <mat-slide-toggle [color]="color" [(ngModel)]="roomSearch.voipAvailable" name="voip"></mat-slide-toggle>
-        </div>
-        <div class="sliderBtn">
-            <label class="feature labelCss">Video</label>
-            <mat-slide-toggle [color]="color" [(ngModel)]="roomSearch.videoAvailable" name="video"></mat-slide-toggle>
-        </div>
-        <div class="sliderBtn">
-            <label class="feature labelCss">White Board</label>
-            <mat-slide-toggle [color]="color" [(ngModel)]="roomSearch.whiteBoardAvailable" name="whiteboard">
-            </mat-slide-toggle>
-        </div>
+        <ion-item>
+            <ion-label class="labelCss">Select Features</ion-label>
+        </ion-item>
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">LAN</ion-label>
+            <ion-toggle [(ngModel)]="roomSearch.lanAvailable" name="lan" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
+        
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">Conference Phone</ion-label>
+            <ion-toggle [(ngModel)]="roomSearch.voipAvailable" name="voip" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
+        
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">Video</ion-label>
+            <ion-toggle [(ngModel)]="roomSearch.videoAvailable" name="video" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
+        
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">White Board</ion-label>
+            <ion-toggle [(ngModel)]="roomSearch.whiteBoardAvailable" name="whiteboard" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
     </div>
     <section>
         <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' expand="block">Search

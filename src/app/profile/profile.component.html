@@ -12,14 +12,12 @@
             <mat-label>Phone </mat-label>
             <input matInput value='{{user?.phoneNum}}'>
         </mat-form-field>
-        <mat-form-field class="formFieldClass">
-            <mat-label>Choose a Locaton</mat-label>
-            <mat-select [value]='user?.location'>
-                <mat-option *ngFor="let location of locations" [value]="location">
-                    {{location}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <ion-item>
+            <ion-label position="floating">Choose a Locaton</ion-label>
+            <ion-select interface="action-sheet" [value]='user?.location'>
+                <ion-select-option *ngFor="let location of locations" [value]="location">{{location}}</ion-select-option>
+            </ion-select>
+        </ion-item>
         <button mat-raised-button color="primary" class="submitButton" (click)="clickUpdate()">Update</button>
         <button mat-raised-button class="signoutButton" (click)="signOut()">Sign out</button>
     </form>

@@ -215,5 +215,6 @@ export class AppComponent {
   }
   imageOnError(event: any) {
     this.showProfileImageIcon = true;
+    this.showProfileImage = false;
   }
 }

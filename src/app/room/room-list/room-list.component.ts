@@ -108,9 +108,12 @@ export class RoomListComponent {
     let observeItem = document.querySelectorAll('.swipe-box__scroller');
     observeItem.forEach(e => {
       let mailBox: any = e.querySelectorAll('.observe-item');
-      let listCard: any = e.querySelectorAll('.mat-card-header');
-      listCard[0].classList.add('restrictSwipeCls');
-      mailBox[0].remove();
+      let ionCard: any = e.querySelector('.shimmerHeader ')
+      if (ionCard.length === 0) {
+        let listCard: any = e.querySelectorAll('.mat-card-header');
+        listCard[0].classList.add('restrictSwipeCls');
+        mailBox[0].remove();
+      }
     });
   }
 

@@ -1,41 +1,44 @@
 <form #searchForm="ngForm" class="roomSearchContainer" novalidate>
-    <mat-form-field class="fromInputDiv">
-        <mat-label>Room</mat-label>
-        <input matInput type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required>
-    </mat-form-field>
+    <ion-item class="fromInputDiv">
+        <ion-label position='floating'>Room</ion-label>
+        <ion-input type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required></ion-input>
+    </ion-item>
     <span *ngIf="name.invalid && name.touched" [ngStyle]="{'color':'red'}">Enter Room
     </span>
-    <mat-form-field class="fromInputDiv">
-        <mat-label>Choose a Location</mat-label>
-        <input matInput type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
-    </mat-form-field>
+    <ion-item class="fromInputDiv">
+        <ion-label position='floating'>Choose a Location</ion-label>
+        <ion-input type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required></ion-input>
+    </ion-item>
     <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
         Name</span>
     <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
     <div class="sliderContainer">
-        <div>
-            <label for="" class="labelCss">Select Features</label>
-        </div>
-        <div class="sliderBtn">
-            <label class="feature labelCss">LAN</label>
-            <mat-slide-toggle [color]="color" name="lan" [checked]="roomDetails.lanAvailable"></mat-slide-toggle>
-        </div>
-
-        <div class="sliderBtn">
-            <label class="feature labelCss">Conference Phone</label>
-            <mat-slide-toggle [color]="color" name="phone" [checked]="roomDetails.voipAvailable"></mat-slide-toggle>
-        </div>
-
-        <div class="sliderBtn">
-            <label class="feature labelCss">Video</label>
-            <mat-slide-toggle [color]="color" name="video" [checked]="roomDetails.videoAvailable"></mat-slide-toggle>
-        </div>
-
-        <div class="sliderBtn">
-            <label class="feature labelCss">White Board</label>
-            <mat-slide-toggle [color]="color" name="whiteboard" [checked]="roomDetails.whiteBoardAvailable">
-            </mat-slide-toggle>
-        </div>
+        <ion-item>
+            <ion-label class="labelCss">Select Features</ion-label>
+        </ion-item>
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">LAN</ion-label>
+            <ion-toggle [(ngModel)]="roomDetails.lanAvailable" name="lan" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
+        
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">Conference Phone</ion-label>
+            <ion-toggle [(ngModel)]="roomDetails.voipAvailable" name="voip" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
+        
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">Video</ion-label>
+            <ion-toggle [(ngModel)]="roomDetails.videoAvailable" name="video" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
+        
+        <ion-item class="sliderBtn">
+            <ion-label class="feature labelCss">White Board</ion-label>
+            <ion-toggle [(ngModel)]="roomDetails.whiteBoardAvailable" name="whiteboard" color="medium" checked>
+            </ion-toggle>
+        </ion-item>
         <div class="progress" *ngIf="progress">
             <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
         </div>

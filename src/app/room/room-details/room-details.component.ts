@@ -47,8 +47,7 @@ export class RoomDetailsComponent {
   cameraOptions: CameraOptions = {
     quality: 100,
     sourceType: this.camera.PictureSourceType.CAMERA,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    allowEdit: true
+    destinationType: this.camera.DestinationType.DATA_URL
   }
   gelleryOptions: CameraOptions = {
     quality: 100,
@@ -84,20 +83,6 @@ export class RoomDetailsComponent {
   }
   openCamera(options: any) {
     this.camera.getPicture(options).then((imgData) => {
-      console.log('image data =>  ', imgData);
-      this.base64Img = 'data:image/jpeg;base64,' + imgData;
-      this.uploadImage = this.base64Img;
-      this.upload(this.uploadImage);
-      this.showUploadImageIcon = true;
-      this.showCameraIconDiv = false;
-    }, (err) => {
-      this.showCameraIconDiv = true;
-      this.showUploadImageIcon = false;
-      console.log(err);
-    })
-  }
-  openGallery() {
-    this.camera.getPicture(this.gelleryOptions).then((imgData) => {
       console.log('image data =>  ', imgData);
       this.base64Img = 'data:image/jpeg;base64,' + imgData;
       this.uploadImage = this.base64Img;

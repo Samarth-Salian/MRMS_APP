@@ -61,7 +61,6 @@ export class MyMeetingsComponent {
 
     })
       .catch((error: any) => {
-        console.log(error)
       });
   }
 }

@@ -16,7 +16,7 @@
                 </div>
                 <mat-card-header *ngIf='showSkeletion else hideSkeletion' class="swipe-box__item wrapped animated"
                     (click)="navigateToMeeting(meeting)">
-                    <div *ngIf='showSkeletion else hideSkeletion' class="avatarSection">
+                    <div class="avatarSection">
                         <img mat-card-avatar alt="RoomImage" src="assets/{{meeting.meetingRoomAvatar}}">
                     </div>
                     <div class="section2">

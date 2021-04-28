@@ -1,27 +1,27 @@
 <div class="wrapper">
     <form class="locationDetailsForm" #LocationDetailsForm="ngForm" novalidate>
-        <mat-form-field class="detailsDiv">
-            <mat-label>Building Name :</mat-label>
-            <input matInput name="BuildingName" #BuildingName="ngModel" required [(ngModel)]="buildingName">
-        </mat-form-field>
+        <ion-item class="detailsDiv">
+            <ion-label position='floating'>Building Name :</ion-label>
+            <ion-input type="text" [(ngModel)]="buildingName" name="BuildingName" #BuildingName="ngModel" required></ion-input>
+        </ion-item>
         <span *ngIf="BuildingName.invalid && BuildingName.touched" [ngStyle]="{'color':'red'}">Enter Building
             Name</span>
-
-        <mat-form-field class="detailsDiv">
-            <mat-label>City </mat-label>
-            <input matInput name="CityName" #CityName="ngModel" required [(ngModel)]="city">
-        </mat-form-field>
+        <ion-item class="detailsDiv">
+            <ion-label position='floating'>City </ion-label>
+            <ion-input type="text" [(ngModel)]="city" name="CityName" #CityName="ngModel" required></ion-input>
+        </ion-item>
         <span *ngIf="CityName.invalid && CityName.touched" [ngStyle]="{'color':'red'}">Enter City Name</span>
-
-        <mat-form-field class="detailsDiv">
-            <mat-label>Country </mat-label>
-            <input matInput name="CountryName" #CountryName="ngModel" required [(ngModel)]="country">
-        </mat-form-field>
+        <ion-item class="detailsDiv">
+            <ion-label position='floating'>Country </ion-label>
+            <ion-input type="text" [(ngModel)]="country" name="CountryName" #CountryName="ngModel" required></ion-input>
+        </ion-item>
         <span *ngIf="CountryName.invalid && CountryName.touched" [ngStyle]="{'color':'red'}">Enter Country Name</span>
-
-        <div class="center">
-            <button [disabled]="!LocationDetailsForm.valid" mat-raised-button class="searchBtn" color="primary"
-                routerLink="/location-list" (click)="getSubmitMsg()">Submit</button>
-        </div>
+        
+        <section class='submitButton'>
+            <ion-button [disabled]="!LocationDetailsForm.valid" routerLink="/location-list" type="submit" id='submitbtn'
+                (click)="getSubmitMsg()" expand="block">
+                Submit
+            </ion-button>
+        </section>
     </form>
 </div>

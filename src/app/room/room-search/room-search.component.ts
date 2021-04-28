@@ -91,9 +91,10 @@ export class RoomSearchComponent implements OnInit {
   }
 
   formatDateAndTime(updatedMinutes: Date) {
-    const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
-    const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
-    return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
+    // const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
+    //const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
+    //return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime : normalizeHour + ':' + finalTime;
+    return updatedMinutes.getHours() + ':' + ('0' + updatedMinutes.getMinutes()).slice(-2);
   }
 
   closeDialogBox() {

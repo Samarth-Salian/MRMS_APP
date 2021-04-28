@@ -1,3 +1,50 @@
+<ion-list>
+    <ion-item-sliding *ngFor="let room of rooms let i = index">
+        <ion-item>
+            <ion-label class='ionLabel'>
+                <div class="">
+                    <img mat-card-avatar alt="RoomImage" src="assets/{{room.image}}">
+                </div>
+                <div class='imageColumn'>
+                    <ion-card-subtitle>{{room.name}}</ion-card-subtitle>
+                    <ion-card-subtitle>Seats: {{room.seats}}</ion-card-subtitle>
+                </div>
+                <span>Room Details</span>
+                <ul class="featureList">
+                    <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
+                    <li>Floor: {{room.floor}}</li>
+                    <li>Building Id: {{room.buildingId}}</li>
+                </ul>
+                <div class="featuresDiv">
+                    <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
+                        src="assets/2052-512.png">
+                </div>
+                <div class="featuresDiv">
+                    <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
+                        src="assets/camcorder-512.png">
+                </div>
+                <div class="featuresDiv">
+                    <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
+                        src="assets/ethernet_on1600.png">
+                </div>
+                <div class="featuresDiv">
+                    <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
+                        src="assets/43338.png">
+                </div>
+            </ion-label>
+        </ion-item>
+        <ion-item-options side="end" (click)="navigateToMeetingDetails(room)">
+            <ion-item-option color="primary">
+                <ion-icon name="pencil-outline"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+        <ion-item-options side="start" (click)="delete($event)">
+            <ion-item-option color="danger">
+                <ion-icon name="trash-outline"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
 <div *ngIf="conditionalFilter" class="filterIcon">
     <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
 </div>
@@ -21,10 +68,12 @@
                 </div>
                 <mat-card-header *ngIf='showSkeletion else hideSkeletion' (click)="navigateToMeetingDetails(room)"
                     class="swipe-box__item wrapped animated">
-                    <mat-card-title>{{room.name}}</mat-card-title>
-                    <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
-                    <div class="imageSection">
-                        <img mat-card-image class="roomImageCls" alt="RoomImage" src="assets/{{room.image}}">
+                    <div class="avatarSection">
+                        <img mat-card-avatar alt="RoomImage" src="assets/{{room.image}}">
+                    </div>
+                    <div class='imageColumn'>
+                        <mat-card-title>{{room.name}}</mat-card-title>
+                        <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
                     </div>
                     <div>
                         <span>Room Details</span>
@@ -53,26 +102,30 @@
                 </mat-card-header>
                 <ng-template #hideSkeletion>
                     <ion-card-header class="swipe-box__item wrapped animated shimmerHeader">
-                        <ion-card-title>
-                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
-                        </ion-card-title>
-                        <ion-card-subtitle>
-                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
-                        </ion-card-subtitle>
-                        <ion-card-title class='shimmerImage'>
-                            <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
-                        </ion-card-title>
-                        <div>
-                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        <div class="avatarSection">
+                            <ion-card-title>
+                                <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
+                                </ion-card-title>
+                                </div>
+                                <div class='shimmerContents'>
+                                    <ion-card-title>
+                                        <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-card-title>
+                            <ion-card-subtitle>
+                                <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-card-subtitle>
                         </div>
-                        <ion-card-content class='shimmerContent'>
-                            <ion-skeleton-text animated style='width:60%'></ion-skeleton-text>
+                        <div>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                        </div>
+                        <ion-card-content class='shimmerCon'>
+                            <ion-skeleton-text animated></ion-skeleton-text>
                         </ion-card-content>
-                        <ion-card-content class='shimmerContent'>
-                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        <ion-card-content class='shimmerCon'>
+                            <ion-skeleton-text animated></ion-skeleton-text>
                         </ion-card-content>
-                        <ion-card-content class='shimmerContent'>
-                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        <ion-card-content class='shimmerCon'>
+                            <ion-skeleton-text animated></ion-skeleton-text>
                         </ion-card-content>
                         <ion-card-title class='shimmerIcons'>
                             <ion-skeleton-text animated></ion-skeleton-text>

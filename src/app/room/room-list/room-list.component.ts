@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, NgZone } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Room } from '../../models/room';
@@ -100,8 +100,15 @@ export class RoomListComponent {
         enumerable: true,
         configurable: true,
       });
-      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+      let navigationExtras: NavigationExtras = {
+        state: {
+          data: selectedRoom,
+          flow: 'createMeeting'
+        }
+      };
+      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', navigationExtras); });
     }
+      //this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
   }
 
   public hideEditSection() {
@@ -109,7 +116,7 @@ export class RoomListComponent {
     observeItem.forEach(e => {
       let mailBox: any = e.querySelectorAll('.observe-item');
       let ionCard: any = e.querySelector('.shimmerHeader ')
-      if (ionCard.length === 0) {
+      if (ionCard !== null && ionCard.length === 0) {
         let listCard: any = e.querySelectorAll('.mat-card-header');
         listCard[0].classList.add('restrictSwipeCls');
         mailBox[0].remove();

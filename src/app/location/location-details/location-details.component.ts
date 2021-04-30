@@ -32,7 +32,8 @@ export class LocationDetailsComponent {
   async getSubmitMsg() {
     const toast = await this.toastController.create({
       message: 'Your settings have been saved.',
-      duration: 2000
+      duration: 2000,
+      color: 'primary'
     });
     toast.present();
   }

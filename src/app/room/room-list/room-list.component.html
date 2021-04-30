@@ -1,5 +1,14 @@
-<ion-list>
-    <ion-item-sliding *ngFor="let room of rooms let i = index" (click)="navigateToMeetingDetails(room)">
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Room List</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-list class='addScroll'>
+    <ion-item-sliding *ngFor="let room of rooms let i = index" (click)="navigateToMeetingDetails(room)"
+        routerDirection="forward">
         <ion-item>
             <ion-label class='ionLabel'>
                 <div class="avatarSection">
@@ -46,7 +55,7 @@
             </ion-item-option>
         </ion-item-options>
     </ion-item-sliding>
-</ion-list>
+
 <div *ngIf="conditionalFilter" class="filterIcon">
     <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
 </div>
@@ -138,6 +147,7 @@
         </div>
     </mat-card>
 </div>
+</ion-list>
 <ion-fab *ngIf="conditionalFabIcon" class="fab-bottom-right" vertical="bottom" horizontal="end"
     routerLink="/room-details" routerLinkActive="active">
     <ion-fab-button>

@@ -43,6 +43,7 @@ export class UserListComponent {
   async getUserMsg() {
     const toast = await this.toastController.create({
       message: this.userMsg,
+      color: 'primary',
       duration: 2000
     });
     toast.present();

@@ -50,6 +50,7 @@ export class SigninComponent {
   async openToast(message: any) {
     const toast = await this.toastController.create({
       message: message,
+      color: 'primary',
       duration: 2000
     });
     toast.present();

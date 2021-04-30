@@ -122,3 +122,8 @@ img.mat-card-image.roomImageCls {
   .detailsClass{
       margin-top: 18px;
   }
+  .addScroll{
+    overflow-y: auto;
+      display: block;
+      max-height: 100vh;
+  }

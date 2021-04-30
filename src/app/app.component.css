@@ -15,6 +15,9 @@ mat-sidenav-container {
     text-align: center;
     margin-left: 10px;
 }
+.ng-star-inserted{
+  display: block;
+}
 
 .UserImage {
     width: 40px;

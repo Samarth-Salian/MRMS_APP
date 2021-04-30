@@ -1,3 +1,11 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Meeting Details</ion-title>
+  </ion-toolbar>
+</ion-header>
 <div class="container">
   <form #meetingForm="ngForm" novalidate>
     <ion-item class="formWidth">
@@ -22,7 +30,8 @@
 
     <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
     <section>
-      <ion-button [disabled]="!meetingForm.valid" id='submitbtn' expand="block" (click)="getSubmitMsg()">Submit Meeting
+      <ion-button [disabled]="!meetingForm.valid" id='submitbtn' expand="block" (click)="getSubmitMsg()"
+        routerDirection="backward">Submit Meeting
       </ion-button>
     </section>
   </form>

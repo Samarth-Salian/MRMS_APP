@@ -110,7 +110,7 @@ img.mat-card-image.roomImageCls {
     margin-left: 91px;
   }
   .ionLabel{
-    height: 196px;
+    height: 243px;
     padding-top: 23px;
   }
   .ion-color-danger{
@@ -118,4 +118,7 @@ img.mat-card-image.roomImageCls {
   }
   .ion-color-primary{
     background: #3880ff
+  }
+  .detailsClass{
+      margin-top: 18px;
   }

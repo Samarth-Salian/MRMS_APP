@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
 import { Meeting } from '../../models/meeting';
-import { SnackbarService } from '../../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-meeting-details',
@@ -21,7 +21,7 @@ export class MeetingDetailsComponent {
 
   submitMsg: string = 'Meeting details submitted successfully';
 
-  constructor(private zone: NgZone, public snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
+  constructor(private zone: NgZone, public toastController: ToastController, private activatedRoute: ActivatedRoute,
     public titleChange: AppComponent, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -64,9 +64,9 @@ export class MeetingDetailsComponent {
 
   getSubmitMsg() {
     if (this.meeting.seats <= 0) {
-      this.snackBar.openSnackBar('Seats should be more than 0', '');
+      this.presentToast('Seats should be more than 0');
     } else {
-      this.snackBar.openSnackBar(this.submitMsg, '');
+      this.presentToast(this.submitMsg);
       this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } }); });
     }
   }
@@ -74,4 +74,13 @@ export class MeetingDetailsComponent {
   updatedSeatVal(event: any) {
     this.meeting.seats = event;
   }
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      color: 'primary',
+      duration: 2000
+    });
+    toast.present();
+  }
+
 }

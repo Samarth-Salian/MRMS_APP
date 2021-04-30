@@ -1,15 +1,17 @@
 <ion-list>
-    <ion-item-sliding *ngFor="let room of rooms let i = index">
+    <ion-item-sliding *ngFor="let room of rooms let i = index" (click)="navigateToMeetingDetails(room)">
         <ion-item>
             <ion-label class='ionLabel'>
-                <div class="">
+                <div class="avatarSection">
                     <img mat-card-avatar alt="RoomImage" src="assets/{{room.image}}">
                 </div>
                 <div class='imageColumn'>
                     <ion-card-subtitle>{{room.name}}</ion-card-subtitle>
                     <ion-card-subtitle>Seats: {{room.seats}}</ion-card-subtitle>
                 </div>
-                <span>Room Details</span>
+                <div class='detailsClass'>
+                    <span>Room Details</span>
+                </div>
                 <ul class="featureList">
                     <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
                     <li>Floor: {{room.floor}}</li>
@@ -105,11 +107,11 @@
                         <div class="avatarSection">
                             <ion-card-title>
                                 <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
-                                </ion-card-title>
-                                </div>
-                                <div class='shimmerContents'>
-                                    <ion-card-title>
-                                        <ion-skeleton-text animated></ion-skeleton-text>
+                            </ion-card-title>
+                        </div>
+                        <div class='shimmerContents'>
+                            <ion-card-title>
+                                <ion-skeleton-text animated></ion-skeleton-text>
                             </ion-card-title>
                             <ion-card-subtitle>
                                 <ion-skeleton-text animated></ion-skeleton-text>

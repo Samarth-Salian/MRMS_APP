@@ -40,6 +40,7 @@ export class AppComponent {
   db: any;
   loginStorage: any;
   spinnerObj: any;
+  dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
     private router: Router, private spinner: NgxSpinnerService) {

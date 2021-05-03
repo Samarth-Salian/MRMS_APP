@@ -1,3 +1,11 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Location List</ion-title>
+    </ion-toolbar>
+</ion-header>
 <div class="listHeader">
     <mat-card class="listContainer" *ngFor="let location of locations let i = index">
         <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
@@ -14,18 +22,29 @@
                         </div>
                     </div>
                 </div>
-                <mat-card-header class="swipe-box__item wrapped animated">
+                <mat-card-header *ngIf='showSkeletion else hideSkeletion' class="swipe-box__item wrapped animated">
                     <mat-card-title>{{location.buildingName}}</mat-card-title>
                     <mat-card-content>
                         <span>{{location.city}},{{location.country}}</span>
                     </mat-card-content>
                 </mat-card-header>
+                <ng-template #hideSkeletion>
+                    <ion-card-header class="swipe-box__item wrapped animated shimmerHeader">
+                        <ion-card-title class='shimmerTitle'>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-title>
+                        <ion-card-title class='shimmerTitle'>
+                            <ion-skeleton-text animated style='width:40%'></ion-skeleton-text>
+                        </ion-card-title>
+                    </ion-card-header>
+                </ng-template>
+                    </div>
             </div>
-        </div>
     </mat-card>
 </div>
-<button mat-fab class="fab-bottom-right" routerLink="/location-details" routerLinkActive="active" color="primary">
-    <mat-icon>
-        <em class="material-icons md-48">add</em>
-    </mat-icon>
-</button>
+<ion-fab class="fab-bottom-right" vertical="bottom" horizontal="end" routerLink="/location-details"
+    routerLinkActive="active">
+    <ion-fab-button>
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

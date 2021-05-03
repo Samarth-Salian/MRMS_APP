@@ -1,5 +1,5 @@
 .roomSearchContainer {
-  padding: 5%;
+  padding-top: 5%;
 }
 
 .datePickerDiv {
@@ -37,6 +37,9 @@
 
 .sliderContainer {
   margin-bottom: 40px;
+}
+.item{
+  margin-left: -23px;
 }
 
 .searchBtn {

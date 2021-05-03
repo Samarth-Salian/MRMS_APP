@@ -49,7 +49,7 @@
 }
 
 .swipe-box {
-    --swipebox-height: 445px;
+    --swipebox-height:223px;
 }
 
 .mat-card-header {
@@ -83,3 +83,47 @@ img.mat-card-image.roomImageCls {
 .mail-action {
     display: grid;
 }
+.shimmerContents{
+    padding-left: 72px;
+    width: 100%;
+    margin-top: -40px;
+    padding-bottom: 20px;
+  }
+  .shimmerAvatar{
+    height: 52px;
+    width: 52px;
+  }
+  .shimmerCon{
+    padding: 1px;
+  }
+  
+  .avatarSection {
+    padding-right: 25px;
+  }
+  .avatarSection .mat-card-avatar {
+    border-radius: 0%;
+    height: 74px;
+    width: 74px;
+  }
+  .imageColumn{
+    margin-top: -50px;
+    margin-left: 91px;
+  }
+  .ionLabel{
+    height: 243px;
+    padding-top: 23px;
+  }
+  .ion-color-danger{
+    background: #eb445a;
+  }
+  .ion-color-primary{
+    background: #3880ff
+  }
+  .detailsClass{
+      margin-top: 18px;
+  }
+  .addScroll{
+    overflow-y: auto;
+      display: block;
+      max-height: 100vh;
+  }

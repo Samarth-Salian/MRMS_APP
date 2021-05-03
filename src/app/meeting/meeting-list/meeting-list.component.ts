@@ -15,13 +15,11 @@ export class MeetingListComponent {
   scrollElement: any;
   deletedRecord: any;
   deletedRow: number = 0;
-  showSkeletion = false;
+  showSkeletion: any;
   constructor(private zone: NgZone, public http: HttpClient, private router: Router, public snackBar: MatSnackBar, private appComponent: AppComponent) {
     this.getjson().subscribe((data) => {
+      this.showSkeletion = false;
       this.meetings = data;
-      setTimeout(() => {
-          this.showSkeletion = true;
-      }, 3000);
       this.meetings.forEach((e: Meeting) => {
         let fromSlot: any = e.slotFrom / 4 < 1 ? 12 + e.slotFrom / 4 : e.slotFrom / 4;
         let toSlot: any = e.slotTo / 4 < 1 ? 12 + e.slotTo / 4 : e.slotTo / 4;
@@ -36,6 +34,10 @@ export class MeetingListComponent {
         e.toTime = parseInt(toSlot.split(':')[0]) <= 12 ? `${toSlot} AM` : `${parseInt(toSlot.split(':')[0]) - 12}:${toSlot.split(':')[1]} PM`;
       });
       setTimeout(() => { this.initializeSwipe() }, 0);
+      setTimeout(() => {
+        this.showSkeletion = true;
+        this.appComponent.swipeList();
+      }, 3000);
     });
   }
   public getjson(): Observable<any> {

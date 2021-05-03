@@ -16,7 +16,7 @@
                 </div>
                 <mat-card-header *ngIf='showSkeletion else hideSkeletion' class="swipe-box__item wrapped animated"
                     (click)="navigateToMeeting(meeting)">
-                    <div *ngIf='showSkeletion else hideSkeletion' class="avatarSection">
+                    <div class="avatarSection">
                         <img mat-card-avatar alt="RoomImage" src="assets/{{meeting.meetingRoomAvatar}}">
                     </div>
                     <div class="section2">
@@ -29,7 +29,7 @@
                 <ng-template #hideSkeletion>
                     <ion-card-header class="swipe-box__item wrapped animated shimmerHeader" (click)="navigateToMeeting(meeting)">
                         <div class='sec'>
-                            <ion-skeleton-text class='shimmerAvatar'></ion-skeleton-text>
+                            <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
                         </div>
                         <div class="shimmerContents">
                             <ion-card-title>

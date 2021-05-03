@@ -31,15 +31,38 @@ export class AppComponent {
   showFilterIcon = true;
 
   screenName;
+  appPages = [
+    {
+      title: 'Schedule',
+      url: '/app/tabs/schedule',
+      icon: 'calendar'
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'people'
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map'
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle'
+    }
+  ];
 
   roomLaunchFlag = 'Root Menu';
-
+  firstLoad: boolean = true;
   routerPath: string = window.location.href.split('/', 4)[3];
   tableName: string = '';
   loginCredentials: any;
   db: any;
   loginStorage: any;
   spinnerObj: any;
+  dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
     private router: Router, private spinner: NgxSpinnerService) {
@@ -215,5 +238,6 @@ export class AppComponent {
   }
   imageOnError(event: any) {
     this.showProfileImageIcon = true;
+    this.showProfileImage = false;
   }
 }

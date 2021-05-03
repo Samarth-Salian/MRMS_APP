@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
-import { SnackbarService } from '../../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-user-list',
@@ -16,8 +16,8 @@ export class UserListComponent {
   adminMsg: string = 'This  user updated to Admin role';
 
   userMsg: string = 'This user updated to User role';
-
-  constructor(public http: HttpClient, public snackBar: SnackbarService,
+  showSkeletion: boolean = false;
+  constructor(public http: HttpClient, public toastController: ToastController,
     private activatedRoute: ActivatedRoute, private titleChange: AppComponent) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -25,17 +25,27 @@ export class UserListComponent {
     this.getjson().subscribe(data => {
       this.users = data;
     });
+    setTimeout(() => {
+      this.showSkeletion = true;
+    }, 3000);
   }
 
   public getjson(): Observable<any> {
     return this.http.get('assets/userList.json').pipe();
   }
-
-  getAdminMsg() {
-    this.snackBar.openSnackBar(this.adminMsg, '');
+  async getAdminMsg() {
+    const toast = await this.toastController.create({
+      message: this.adminMsg,
+      duration: 2000
+    });
+    toast.present();
   }
-
-  getUserMsg() {
-    this.snackBar.openSnackBar(this.userMsg, '');
+  async getUserMsg() {
+    const toast = await this.toastController.create({
+      message: this.userMsg,
+      color: 'primary',
+      duration: 2000
+    });
+    toast.present();
   }
 }

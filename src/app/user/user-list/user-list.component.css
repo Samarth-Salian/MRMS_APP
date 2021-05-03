@@ -15,3 +15,18 @@
     position: relative;
     top: 9px;
 }
+.shimmerAvatar{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  .shimmerHeader {
+    display: flex !important;
+    padding: 7px;
+    padding-bottom: 0px;
+  }
+  .shimmerTitle {
+    width: 100%;
+    margin-top: 19px;
+    padding-left: 8px;
+  }

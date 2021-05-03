@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, NgZone } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Room } from '../../models/room';
@@ -24,7 +24,7 @@ export class RoomListComponent {
   rooms: Room[] = [];
 
   conditionalFabIcon: boolean;
-
+  showSkeletion: boolean = false;
   constructor(private zone: NgZone, private titleChange: AppComponent, private router: Router,
     private activatedRoute: ActivatedRoute, public http: HttpClient, private dialog: MatDialog, public snackBar: MatSnackBar) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -32,6 +32,9 @@ export class RoomListComponent {
     this.conditionalFabIcon = this.titleChange.showFabIcon;
     this.conditionalFilter = this.titleChange.showFilterIcon;
     this.subscribedRoomList();
+    setTimeout(() => {
+      this.showSkeletion = true;
+    }, 3000)
     this.scrollElement = setInterval(() => {
       if (document.getElementsByClassName('swipe-box__scroller').length && !document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
         this.initializeRoomSwipe();
@@ -97,17 +100,27 @@ export class RoomListComponent {
         enumerable: true,
         configurable: true,
       });
-      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+      let navigationExtras: NavigationExtras = {
+        state: {
+          data: selectedRoom,
+          flow: 'createMeeting'
+        }
+      };
+      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', navigationExtras); });
     }
+      //this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
   }
 
   public hideEditSection() {
     let observeItem = document.querySelectorAll('.swipe-box__scroller');
     observeItem.forEach(e => {
       let mailBox: any = e.querySelectorAll('.observe-item');
-      let listCard: any = e.querySelectorAll('.mat-card-header');
-      listCard[0].classList.add('restrictSwipeCls');
-      mailBox[0].remove();
+      let ionCard: any = e.querySelector('.shimmerHeader ')
+      if (ionCard !== null && ionCard.length === 0) {
+        let listCard: any = e.querySelectorAll('.mat-card-header');
+        listCard[0].classList.add('restrictSwipeCls');
+        mailBox[0].remove();
+      }
     });
   }
 

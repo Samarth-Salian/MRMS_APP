@@ -63,6 +63,7 @@ export class MyMeetingsComponent {
         })
         .catch((error: any) => {
           console.log(error)
+          document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
           this.presentToastWithOptions();
         });
 

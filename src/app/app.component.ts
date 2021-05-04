@@ -78,6 +78,7 @@ export class AppComponent {
             location: 'default',
             androidDatabaseProvider: 'system'
           });
+          this.firstLoad = true;
           this.retrieveLoginData('root');
         }
       })
@@ -167,6 +168,7 @@ export class AppComponent {
     }, function (error: any) {
       console.log('Transaction ERROR: ' + error.message);
     }, () => {
+      this.firstLoad = false;
       this.retrieveLoginData('root');
       console.log('Populated database OK');
     });
@@ -177,10 +179,8 @@ export class AppComponent {
     this.db.transaction((fetchTx: any) => {
       fetchTx.executeSql('SELECT * FROM ' + this.tableName, [], (resTx: any, rs: any) => {
         if (rs.rows.length === 0) {
-          this.firstLoad = false;
           this.zone.run(() => { this.router.navigateByUrl('/signin') });
         } else {
-          this.firstLoad = true;
           this.loginCredentials = rs.rows.item(0);
           this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } }) });
         }

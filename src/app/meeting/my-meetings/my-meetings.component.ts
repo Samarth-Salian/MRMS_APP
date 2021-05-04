@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Room } from 'src/app/models/room';
 import { AppComponent } from '../../app.component';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+declare let window: any;
 
 @Component({
   selector: 'app-my-meetings',
@@ -12,6 +13,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 })
 export class MyMeetingsComponent {
   roomSearchs: Room;
+  
 
   todayDate = new FormControl(new Date());
   constructor(private titleChange: AppComponent, private activatedRoute: ActivatedRoute, private fio: FingerprintAIO) {
@@ -37,6 +39,9 @@ export class MyMeetingsComponent {
     this.titleChange.showFilterIcon = true;
   }
   login() {
+    if (window.cordova && window.cordova.platformId !== 'browser') {
+      document.getElementsByTagName('body')[0].classList.add('backgroundFade');
+    }
     this.fio.isAvailable().then((result: any) => {
       console.log(result)
 
@@ -49,6 +54,7 @@ export class MyMeetingsComponent {
         subtitle: 'This SubTitle'
       })
         .then((result: any) => {
+          document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
           this.titleChange.firstLoad = false;
           console.log(result)
           alert("Successfully Authenticated!")
@@ -61,6 +67,7 @@ export class MyMeetingsComponent {
 
     })
       .catch((error: any) => {
+        document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
       });
   }
 }

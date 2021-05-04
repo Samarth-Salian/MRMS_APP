@@ -8,7 +8,7 @@
 </ion-header>
 <ion-list class='addScroll'>
     <ion-item-sliding *ngFor="let room of rooms let i = index" (click)="navigateToMeetingDetails(room)"
-        routerDirection="forward">
+        routerDirection="forward" class="ionicListContainer">
         <ion-item>
             <ion-label class='ionLabel'>
                 <div class="avatarSection">

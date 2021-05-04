@@ -42,8 +42,6 @@ export class SigninComponent {
     }
     if (this.appComponent.loginCredentials === '') {
       this.appComponent.spinnerObj.hide();
-
-      this.toastController.create
       this.openToast('Signed out Successfully');
     }
   }

@@ -7,6 +7,7 @@ import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+declare let window: any;
 
 @Component({
   selector: 'app-my-meetings',
@@ -15,6 +16,7 @@ import { DatePipe } from '@angular/common';
 })
 export class MyMeetingsComponent {
   roomSearchs: Room;
+  
 
   todayDate: any;
   constructor(private titleChange: AppComponent, public datepipe: DatePipe, public toastController: ToastController, private navCtlr: NavController, private activatedRoute: ActivatedRoute, private fio: FingerprintAIO) {
@@ -41,6 +43,9 @@ export class MyMeetingsComponent {
     this.navCtlr.navigateForward('/room-list');
   }
   login() {
+    if (window.cordova && window.cordova.platformId !== 'browser') {
+      document.getElementsByTagName('body')[0].classList.add('backgroundFade');
+    }
     this.fio.isAvailable().then((result: any) => {
       console.log(result)
 
@@ -52,6 +57,7 @@ export class MyMeetingsComponent {
         subtitle: 'Please tap on the fingerprint scanner of your device to login'
       })
         .then((result: any) => {
+          document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
           this.titleChange.firstLoad = false;
           console.log(result)
         })
@@ -62,6 +68,7 @@ export class MyMeetingsComponent {
 
     })
       .catch((error: any) => {
+        document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
       });
   }
   async presentToastWithOptions() {

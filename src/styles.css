@@ -30,3 +30,6 @@ body {
 .ion-page {
     display: block !important; 
   }
+.backgroundFade {
+    opacity: 0;
+}

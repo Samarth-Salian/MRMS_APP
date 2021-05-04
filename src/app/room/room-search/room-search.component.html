@@ -1,5 +1,14 @@
-<button class="close" mat-button (click)="closeDialogBox();">X</button>
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-title>Room Search</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
+    <ion-content fullscreen>
+        <ion-list class='roomSearchList'>
     <ion-item>
         <ion-label position="floating">Choose a Locaton</ion-label>
         <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">
@@ -62,7 +71,9 @@
         </ion-item>
     </div>
     <section>
-        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' expand="block">Search
+        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="dismissModal()" expand="block">Search
         </ion-button>
     </section>
+    </ion-list>
+    </ion-content>
 </form>

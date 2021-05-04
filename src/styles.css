@@ -27,6 +27,9 @@ body {
 .cdk-overlay-pane {
     max-width: 100% !important;
 }
+.ion-page {
+    display: block !important; 
+  }
 .backgroundFade {
     opacity: 0;
 }

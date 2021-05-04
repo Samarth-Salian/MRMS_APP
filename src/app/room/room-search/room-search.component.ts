@@ -8,6 +8,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AppComponent } from '../../app.component';
 import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-room-search',
@@ -32,8 +33,7 @@ export class RoomSearchComponent implements OnInit {
   //todayDate = new FormControl(new Date());
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
-    private router: Router, public toastController: ToastController, public datepipe: DatePipe,
-    public dialogRef: MatDialogRef<RoomSearchComponent>) {
+    private router: Router, public modalController: ModalController, public toastController: ToastController, public datepipe: DatePipe) {
     this.titleChange.roomListBackButton = false;
     this.minDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -56,7 +56,7 @@ export class RoomSearchComponent implements OnInit {
     if (this.roomSearch.seats <= 0) {
       this.presentToast('Seats should be more than 0');
     } else {
-      this.dialogRef.close({ data: this.roomSearch });
+      //this.dialogRef.close({ data: this.roomSearch });
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
     }
   }
@@ -106,6 +106,11 @@ export class RoomSearchComponent implements OnInit {
   }
 
   closeDialogBox() {
-    this.dialogRef.close();
+    //this.dialogRef.close();
+  }
+  dismissModal() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 }

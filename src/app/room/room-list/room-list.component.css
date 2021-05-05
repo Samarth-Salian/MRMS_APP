@@ -126,17 +126,8 @@ img.mat-card-image.roomImageCls {
     display: block;
     max-height: 100vh;
 }
-.item-options-start ion-item-option:first-child, .item-options-end ion-item-option:last-child {
-  width:75px !important;
-}
-.item-options-start , .item-options-end {
-  padding: 12px 10px;
-}
-.item-options-start ion-icon.hydrated, .item-options-end ion-icon.hydrated {
-  font-size: 24px;
-}
 
-ion-item-sliding.ng-star-inserted.hydrated.ionicListContainer {
+.ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
     width: 90%;
     height: 274px;
     margin: 0px auto;
@@ -145,9 +136,4 @@ ion-item-sliding.ng-star-inserted.hydrated.ionicListContainer {
     border: 1px solid #eee;
     border-bottom: 1px solid #aaa;
     box-shadow: 2px 3px 3px #ddd;
-}
-ion-item.item.in-list.ion-focusable.hydrated.item-label {
-  left: -18px;
-  height: 250px;
-  top: 1px;
 }

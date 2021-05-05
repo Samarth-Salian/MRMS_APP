@@ -6,27 +6,27 @@
         <ion-title>User List</ion-title>
     </ion-toolbar>
 </ion-header>
-<div *ngIf='showSkeletion else hideSkeletion'>
-    <mat-card class="listContainer" *ngFor="let user of users">
-    <mat-card-header>
-        <div mat-card-avatar>
-            <img class="avatarImage" alt="" src="{{user.image}}">
-        </div>
-        <mat-card-title class="avatarName">{{user.firstName}} {{user.lastName}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <span>{{user.emailId}}</span>
-    </mat-card-content>
-    <mat-card-actions>
-        <div *ngIf="user.adminRole">
-            <button mat-button (click)="getUserMsg()">Downgrade to User</button>
-        </div>
-        <div *ngIf="!user.adminRole">
-            <button mat-button (click)="getAdminMsg()">Upgrade to Admin</button>
-        </div>
-      </mat-card-actions>
-</mat-card>
-</div>
+<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
+    <ion-item class='ionItem' *ngFor="let user of users" class = 'ionicListContainer'>
+        <ion-label class='ionLabel'>
+            <div ion-card-avatar>
+                <img class="avatarImage" alt="" src="{{user.image}}">
+            </div>
+            <ion-card-title class="avatarName">{{user.firstName}} {{user.lastName}}</ion-card-title>
+            <ion-card-content class = 'ionContent'>
+                <span>{{user.emailId}}</span>
+            </ion-card-content>
+            <ion-button>
+                <div *ngIf="user.adminRole">
+                    <button mat-button (click)="getUserMsg()">Downgrade to User</button>
+                </div>
+                <div *ngIf="!user.adminRole">
+                    <button mat-button (click)="getAdminMsg()">Upgrade to Admin</button>
+                </div>
+            </ion-button>
+        </ion-label>
+    </ion-item>
+</ion-list>
 <ng-template #hideSkeletion>
     <ion-card *ngFor="let user of users">
         <ion-card-header class="shimmerHeader">
@@ -49,4 +49,3 @@
         </ion-card-header>
     </ion-card>
 </ng-template>
-

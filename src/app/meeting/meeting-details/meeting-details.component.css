@@ -18,3 +18,8 @@ label {
 .formWidth {
     width: 100%;
 }
+
+.seatsMeeting {
+    margin-left: 1px;
+    padding-top: 6px
+}

@@ -62,7 +62,7 @@ export class RoomDetailsComponent {
       this.presentToast('Seats should be more than 0');
     } else {
       this.presentToast('Room details submitted successfully');
-      this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }); });
+      this.zone.run(() => { this.titleChange.navCtlr.navigateBack('/room-list', { state: { data: this.roomLaunchFlag } }); });
     }
   }
   openBottomSheet() {

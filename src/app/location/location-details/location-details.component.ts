@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { ToastController } from '@ionic/angular';
@@ -19,7 +19,7 @@ export class LocationDetailsComponent {
   selectedLocation: any = history.state.data;
 
   constructor(public toastController: ToastController, private activatedRoute: ActivatedRoute,
-    public appComponent: AppComponent) {
+    public appComponent: AppComponent, private zone: NgZone) {
     if (typeof (history.state.data) !== 'undefined') {
       this.buildingName = this.selectedLocation.buildingName;
       this.city = this.selectedLocation.city;
@@ -35,6 +35,7 @@ export class LocationDetailsComponent {
       duration: 2000,
       color: 'primary'
     });
+    this.zone.run(() => { this.appComponent.navCtlr.navigateBack(['/location-list'], { state: { data: this.selectedLocation } }); });
     toast.present();
   }
 }

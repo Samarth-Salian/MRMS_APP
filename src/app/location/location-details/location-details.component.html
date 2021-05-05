@@ -10,7 +10,8 @@
     <form class="locationDetailsForm" #LocationDetailsForm="ngForm" novalidate>
         <ion-item class="detailsDiv">
             <ion-label position='floating'>Building Name :</ion-label>
-            <ion-input type="text" [(ngModel)]="buildingName" name="BuildingName" #BuildingName="ngModel" required></ion-input>
+            <ion-input type="text" [(ngModel)]="buildingName" name="BuildingName" #BuildingName="ngModel" required>
+            </ion-input>
         </ion-item>
         <span *ngIf="BuildingName.invalid && BuildingName.touched" [ngStyle]="{'color':'red'}">Enter Building
             Name</span>
@@ -24,10 +25,10 @@
             <ion-input type="text" [(ngModel)]="country" name="CountryName" #CountryName="ngModel" required></ion-input>
         </ion-item>
         <span *ngIf="CountryName.invalid && CountryName.touched" [ngStyle]="{'color':'red'}">Enter Country Name</span>
-        
+
         <section class='submitButton'>
-            <ion-button [disabled]="!LocationDetailsForm.valid" routerLink="/location-list" type="submit" id='submitbtn'
-                (click)="getSubmitMsg()" expand="block">
+            <ion-button [disabled]="!LocationDetailsForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()"
+                expand="block">
                 Submit
             </ion-button>
         </section>

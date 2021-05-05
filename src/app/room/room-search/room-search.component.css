@@ -38,7 +38,8 @@
 .sliderContainer {
   margin-bottom: 40px;
 }
-.item{
+
+.item {
   margin-left: -23px;
 }
 
@@ -55,11 +56,17 @@
 .fromInputDiv {
   width: 100%;
 }
+
 .close.mat-button {
   line-height: 0px;
   min-width: auto;
 }
-.roomSearchList{
+
+.roomSearchList {
   padding-left: 8%;
   padding-right: 8%;
+}
+
+.seatsLabel {
+  margin-left: -22px;
 }

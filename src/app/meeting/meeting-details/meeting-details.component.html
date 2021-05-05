@@ -27,8 +27,9 @@
       <ion-label position='floating'>Meeting Date & Time</ion-label>
       <ion-input [value]="meetingSchedule" disabled></ion-input>
     </ion-item>
-
-    <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
+    <div class="seatsMeeting">
+      <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
+    </div>
     <section>
       <ion-button [disabled]="!meetingForm.valid" id='submitbtn' expand="block" (click)="getSubmitMsg()"
         routerDirection="backward">Submit Meeting

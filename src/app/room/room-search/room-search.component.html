@@ -9,71 +9,75 @@
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
     <ion-content fullscreen>
         <ion-list class='roomSearchList'>
-    <ion-item>
-        <ion-label position="floating">Choose a Locaton</ion-label>
-        <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">
-            <ion-select-option *ngFor="let location of locations" [value]="location">{{location}}</ion-select-option>
-        </ion-select>
-    </ion-item>
-
-    <ion-item>
-        <ion-label position="floating">Choose a date</ion-label>
-        <ion-datetime displayFormat="DD-MM-YYYY" [min]=minDate max="2050-31-31" [value]=minDate [(ngModel)]="minDate"
-            name='chooseDate'>
-        </ion-datetime>
-    </ion-item>
-    <div class="form-outline">
-        <div class="fromTimeDiv">
             <ion-item>
-                <ion-label position="floating">From</ion-label>
-                <ion-datetime displayFormat="hh:mm A" pickerFormat="HH:mm A" [min]=roomSearch.fromTime [value]=fromTime
-                    name='chooseDate'>
+                <ion-label position="floating">Choose a Locaton</ion-label>
+                <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">
+                    <ion-select-option *ngFor="let location of locations" [value]="location">{{location}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Choose a date</ion-label>
+                <ion-datetime displayFormat="DD-MM-YYYY" [min]=minDate max="2050-31-31" [value]=minDate
+                    [(ngModel)]="minDate" name='chooseDate'>
                 </ion-datetime>
             </ion-item>
-        </div>
-        <div class="toTimeDiv">
-            <ion-item>
-                <ion-label position="floating">To</ion-label>
-                <ion-datetime displayFormat="hh:mm A" pickerFormat="HH:mm A" [min]=roomSearch.toTime [value]=toTime name='toSlot'>
-                </ion-datetime>
-            </ion-item>
-        </div>
-    </div>
-    <app-input-stepper [(counter)]="roomSearch.seats"></app-input-stepper>
+            <div class="form-outline">
+                <div class="fromTimeDiv">
+                    <ion-item>
+                        <ion-label position="floating">From</ion-label>
+                        <ion-datetime displayFormat="hh:mm A" pickerFormat="HH:mm A" [min]=roomSearch.fromTime
+                            [value]=fromTime name='chooseDate'>
+                        </ion-datetime>
+                    </ion-item>
+                </div>
+                <div class="toTimeDiv">
+                    <ion-item>
+                        <ion-label position="floating">To</ion-label>
+                        <ion-datetime displayFormat="hh:mm A" pickerFormat="HH:mm A" [min]=roomSearch.toTime
+                            [value]=toTime name='toSlot'>
+                        </ion-datetime>
+                    </ion-item>
+                </div>
+            </div>
+            <div class="seatsLabel">
+                <app-input-stepper [(counter)]="roomSearch.seats"></app-input-stepper>
+            </div>
 
+            <div class="sliderContainer">
+                <ion-item>
+                    <ion-label class="labelCss">Select Features</ion-label>
+                </ion-item>
+                <ion-item class="sliderBtn">
+                    <ion-label class="feature labelCss">LAN</ion-label>
+                    <ion-toggle [(ngModel)]="roomSearch.lanAvailable" name="lan" color="medium" checked>
+                    </ion-toggle>
+                </ion-item>
 
-    <div class="sliderContainer">
-        <ion-item>
-            <ion-label class="labelCss">Select Features</ion-label>
-        </ion-item>
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">LAN</ion-label>
-            <ion-toggle [(ngModel)]="roomSearch.lanAvailable" name="lan" color="medium" checked>
-            </ion-toggle>
-        </ion-item>
+                <ion-item class="sliderBtn">
+                    <ion-label class="feature labelCss">Conference Phone</ion-label>
+                    <ion-toggle [(ngModel)]="roomSearch.voipAvailable" name="voip" color="medium" checked>
+                    </ion-toggle>
+                </ion-item>
 
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">Conference Phone</ion-label>
-            <ion-toggle [(ngModel)]="roomSearch.voipAvailable" name="voip" color="medium" checked>
-            </ion-toggle>
-        </ion-item>
+                <ion-item class="sliderBtn">
+                    <ion-label class="feature labelCss">Video</ion-label>
+                    <ion-toggle [(ngModel)]="roomSearch.videoAvailable" name="video" color="medium" checked>
+                    </ion-toggle>
+                </ion-item>
 
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">Video</ion-label>
-            <ion-toggle [(ngModel)]="roomSearch.videoAvailable" name="video" color="medium" checked>
-            </ion-toggle>
-        </ion-item>
-
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">White Board</ion-label>
-            <ion-toggle [(ngModel)]="roomSearch.whiteBoardAvailable" name="whiteboard" color="medium" checked>
-            </ion-toggle>
-        </ion-item>
-    </div>
-    <section>
-        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="dismissModal()" expand="block">Search
-        </ion-button>
-    </section>
-    </ion-list>
+                <ion-item class="sliderBtn">
+                    <ion-label class="feature labelCss">White Board</ion-label>
+                    <ion-toggle [(ngModel)]="roomSearch.whiteBoardAvailable" name="whiteboard" color="medium" checked>
+                    </ion-toggle>
+                </ion-item>
+            </div>
+            <section>
+                <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="dismissModal()"
+                    expand="block">Search
+                </ion-button>
+            </section>
+        </ion-list>
     </ion-content>
 </form>

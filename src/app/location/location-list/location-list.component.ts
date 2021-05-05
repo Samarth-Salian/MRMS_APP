@@ -18,6 +18,7 @@ export class LocationListComponent {
   showSkeletion: boolean = false;
   constructor(private zone: NgZone, private titleChange: AppComponent, private activatedRoute: ActivatedRoute,
     public http: HttpClient, private router: Router, public snackBar: MatSnackBar) {
+    this.titleChange = titleChange;
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
@@ -44,7 +45,7 @@ export class LocationListComponent {
 
   public navigateToLocation(selectedLocation: any): any {
     this.titleChange.swipeList();
-    this.zone.run(() => { this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } }); });
+    this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/location-details', { state: { data: selectedLocation } }); });
   }
 
   public delete(event: any) {
@@ -72,6 +73,12 @@ export class LocationListComponent {
       this.titleChange.swipeList();
     });
 
+  }
+
+  fabIconValidation() {
+    this.titleChange.showFabIcon = false;
+    this.titleChange.showFilterIcon = true;
+    this.titleChange.navCtlr.navigateForward('/location-details');
   }
 
 }

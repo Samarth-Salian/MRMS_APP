@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
+import { NavController } from '@ionic/angular';
+
 
 declare let window: any;
 @Component({
@@ -31,28 +33,7 @@ export class AppComponent {
   showFilterIcon = true;
 
   screenName;
-  appPages = [
-    {
-      title: 'Schedule',
-      url: '/app/tabs/schedule',
-      icon: 'calendar'
-    },
-    {
-      title: 'Speakers',
-      url: '/app/tabs/speakers',
-      icon: 'people'
-    },
-    {
-      title: 'Map',
-      url: '/app/tabs/map',
-      icon: 'map'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
-    }
-  ];
+
 
   roomLaunchFlag = 'Root Menu';
   firstLoad: boolean = true;
@@ -65,7 +46,7 @@ export class AppComponent {
   dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
-    private router: Router, private spinner: NgxSpinnerService) {
+    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};

@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Room } from 'src/app/models/room';
 import { AppComponent } from '../../app.component';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
-import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 declare let window: any;
@@ -16,10 +15,10 @@ declare let window: any;
 })
 export class MyMeetingsComponent {
   roomSearchs: Room;
-  
+
 
   todayDate: any;
-  constructor(private titleChange: AppComponent, public datepipe: DatePipe, public toastController: ToastController, private navCtlr: NavController, private activatedRoute: ActivatedRoute, private fio: FingerprintAIO) {
+  constructor(private titleChange: AppComponent, public datepipe: DatePipe, public toastController: ToastController, private activatedRoute: ActivatedRoute, private fio: FingerprintAIO) {
     if (this.titleChange.firstLoad) {
       this.login();
     }
@@ -40,7 +39,7 @@ export class MyMeetingsComponent {
   fabIconValidation() {
     this.titleChange.showFabIcon = false;
     this.titleChange.showFilterIcon = true;
-    this.navCtlr.navigateForward('/room-list');
+    this.titleChange.navCtlr.navigateForward('/room-list');
   }
   login() {
     if (window.cordova && window.cordova.platformId !== 'browser') {
@@ -87,8 +86,5 @@ export class MyMeetingsComponent {
       ]
     });
     await toast.present();
-  }
-  navigateForward() {
-    this.navCtlr.navigateForward('/room-list');
   }
 }

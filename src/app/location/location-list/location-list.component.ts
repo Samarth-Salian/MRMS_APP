@@ -27,15 +27,15 @@ export class LocationListComponent {
       }, 3000)
       this.locations = data;
     });
-    this.scrollElement = setInterval(() => {
+   /* this.scrollElement = setInterval(() => {
       if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
         this.initializeSwipe();
         clearInterval(this.scrollElement);
       }
-    }, 100);
+    }, 100);*/
   }
   public initializeSwipe = () => {
-    this.titleChange.swipeList();
+    //this.titleChange.swipeList();
   }
 
   public getjson(): Observable<any> {
@@ -43,14 +43,14 @@ export class LocationListComponent {
   }
 
   public navigateToLocation(selectedLocation: any): any {
-    this.titleChange.swipeList();
+    //this.titleChange.swipeList();
     this.zone.run(() => { this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } }); });
   }
 
   public delete(event: any) {
-    this.deletedLocationListRecord = event.target.closest('.listContainer');
-    this.deletedLocationListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
-    event.target.closest('.listContainer').remove();
+    this.deletedLocationListRecord = event.target.closest('.ionicListContainer');
+    this.deletedLocationListRow = parseInt(event.target.closest('.ionicListContainer').getAttribute('rowno'));
+    event.target.closest('.ionicListContainer').remove();
     let snackBarRef = this.snackBar.open('Deleted Successfully', 'Undo', {
       duration: 2000,
     });
@@ -58,7 +58,7 @@ export class LocationListComponent {
       console.log(this.deletedLocationListRow);
       console.log(this.deletedLocationListRecord);
       let currentRoomListRecord: any;
-      let swipeList: any = document.getElementsByClassName('swipe-box');
+      let swipeList: any = document.getElementsByClassName('ionicListContainer');
       if (!swipeList.length) {
         document.getElementsByTagName('app-location-list')[0].append(this.deletedLocationListRecord);
       }

@@ -8,12 +8,14 @@
     box-shadow: 2px 3px 3px #ddd;
 }
 .avatarImage{
-    width: 100%;
-    border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 .avatarName{
     position: relative;
-    top: 9px;
+    top: -41px;
+    margin-left: 61px;
 }
 .shimmerAvatar{
     height: 40px;
@@ -29,4 +31,18 @@
     width: 100%;
     margin-top: 19px;
     padding-left: 8px;
+  }
+  .ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
+    width: 90%;
+    height: 163px;
+    margin: 0px auto;
+    margin-top: 10px;
+    padding: 4px 4px;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 2px 3px 3px #ddd;
+  }
+  .ionContent{
+    padding: 0;
+    top: -23px;
   }

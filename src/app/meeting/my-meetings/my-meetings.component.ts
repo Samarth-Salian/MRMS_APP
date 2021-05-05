@@ -19,12 +19,14 @@ export class MyMeetingsComponent {
   
 
   todayDate: any;
+  currentDate: any;
   constructor(private titleChange: AppComponent, public datepipe: DatePipe, public toastController: ToastController, private navCtlr: NavController, private activatedRoute: ActivatedRoute, private fio: FingerprintAIO) {
     if (this.titleChange.firstLoad) {
       this.login();
     }
     this.roomSearchs = new Room();
     this.todayDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    this.currentDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.titleChange.roomListBackButton = true;
     this.titleChange.title = this.activatedRoute.snapshot.data[''];
     this.titleChange.showProfileImage = true;

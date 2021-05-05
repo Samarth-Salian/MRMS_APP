@@ -126,16 +126,6 @@ img.mat-card-image.roomImageCls {
     display: block;
     max-height: 100vh;
 }
-.item-options-start .ionOption:first-child, .item-options-end .ionOption:last-child {
-  width:75px !important;
-}
-.item-options-start , .item-options-end {
-  padding: 12px 10px;
-}
-.item-options-start .ionIcon.hydrated, .item-options-end .ionIcon.hydrated {
-  font-size: 24px;
-}
-
 .ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
     width: 90%;
     height: 274px;
@@ -145,9 +135,4 @@ img.mat-card-image.roomImageCls {
     border: 1px solid #eee;
     border-bottom: 1px solid #aaa;
     box-shadow: 2px 3px 3px #ddd;
-}
-.ionItem.item.in-list.ion-focusable.hydrated.item-label {
-  left: -18px;
-  height: 250px;
-  top: 1px;
 }

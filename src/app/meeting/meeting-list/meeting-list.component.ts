@@ -36,7 +36,6 @@ export class MeetingListComponent {
       setTimeout(() => { this.initializeSwipe() }, 0);
       setTimeout(() => {
         this.showSkeletion = true;
-        this.appComponent.swipeList();
       }, 3000);
     });
   }
@@ -60,18 +59,18 @@ export class MeetingListComponent {
     }
   }
   public initializeSwipe = () => {
-    this.appComponent.swipeList();
+    //this.appComponent.swipeList();
   }
   public delete(event: any) {
-    this.deletedRecord = event.target.closest('.listContainer');
-    this.deletedRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
-    event.target.closest('.listContainer').remove();
+    this.deletedRecord = event.target.closest('.ionicListContainer');
+    this.deletedRow = parseInt(event.target.closest('.ionicListContainer').getAttribute('rowno'));
+    event.target.closest('.ionicListContainer').remove();
     let snackBarRef = this.snackBar.open('Deleted Successfully', 'Undo', {
       duration: 2000,
     });
     snackBarRef.onAction().subscribe(() => {
       let currentRecord: any;
-      let swipeList: any = document.getElementsByClassName('swipe-box');
+      let swipeList: any = document.getElementsByClassName('ionicListContainer');
       if (!swipeList.length) {
         document.getElementsByClassName('appMeetingList')[0].append(this.deletedRecord);
       }

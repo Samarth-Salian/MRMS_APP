@@ -9,6 +9,21 @@
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
     <ion-content fullscreen>
         <ion-list class='roomSearchList'>
+    <ion-item>
+        <ion-label position="floating">Choose a Locaton</ion-label>
+        <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">
+            <ion-select-option *ngFor="let location of locations" [value]="location">{{location}}</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Choose a date</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" [min]=todayDate max="2050-31-31" [value]=minDate [(ngModel)]="minDate"
+            name='chooseDate'>
+        </ion-datetime>
+    </ion-item>
+    <div class="form-outline">
+        <div class="fromTimeDiv">
             <ion-item>
                 <ion-label position="floating">Choose a Locaton</ion-label>
                 <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">

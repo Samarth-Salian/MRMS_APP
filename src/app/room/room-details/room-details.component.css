@@ -32,27 +32,31 @@
 .fromInputDiv {
   width: 100%;
 }
-.cameraButton{
+
+.cameraButton {
   border-style: dotted;
   width: 100%;
   padding: 26px 0 56px;
   margin-bottom: 20px;
 }
-.cameraIcon{
+
+.cameraIcon {
   position: relative;
   left: 157px;
   bottom: 75px;
 }
-.imageDiv{
+
+.imageDiv {
   position: relative;
 }
+
 .progress {
   background-color: #e9ecef;
   border-radius: 0.25rem;
   display: flex;
   font-size: 1.2rem;
   height: 2rem;
-  margin-top:1rem;
+  margin-top: 1rem;
   overflow: hidden;
 }
 
@@ -63,9 +67,16 @@
   display: flex;
   justify-content: center;
 }
+
 .uploadImage {
   width: 100%;
 }
+
 .item {
   margin-left: -18px;
+}
+
+.roomSeatsLabel {
+  margin-left: -16px;
+  padding-top: 6px
 }

@@ -15,11 +15,14 @@
     </span>
     <ion-item class="fromInputDiv">
         <ion-label position='floating'>Choose a Location</ion-label>
-        <ion-input type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required></ion-input>
+        <ion-input type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
+        </ion-input>
     </ion-item>
     <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
         Name</span>
-    <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
+    <div class="roomSeatsLabel">
+        <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
+    </div>
     <div class="sliderContainer">
         <ion-item>
             <ion-label class="labelCss">Select Features</ion-label>
@@ -29,19 +32,19 @@
             <ion-toggle [(ngModel)]="roomDetails.lanAvailable" name="lan" color="medium" checked>
             </ion-toggle>
         </ion-item>
-        
+
         <ion-item class="sliderBtn">
             <ion-label class="feature labelCss">Conference Phone</ion-label>
             <ion-toggle [(ngModel)]="roomDetails.voipAvailable" name="voip" color="medium" checked>
             </ion-toggle>
         </ion-item>
-        
+
         <ion-item class="sliderBtn">
             <ion-label class="feature labelCss">Video</ion-label>
             <ion-toggle [(ngModel)]="roomDetails.videoAvailable" name="video" color="medium" checked>
             </ion-toggle>
         </ion-item>
-        
+
         <ion-item class="sliderBtn">
             <ion-label class="feature labelCss">White Board</ion-label>
             <ion-toggle [(ngModel)]="roomDetails.whiteBoardAvailable" name="whiteboard" color="medium" checked>
@@ -60,9 +63,9 @@
             <mat-icon (click)='openBottomSheet()' class='cameraIcon'>camera_enhance</mat-icon>
         </div>
     </div>
-        <section>
-            <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()" expand="block">
-                Submit
-            </ion-button>
-        </section>
+    <section>
+        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()" expand="block">
+            Submit
+        </ion-button>
+    </section>
 </form>

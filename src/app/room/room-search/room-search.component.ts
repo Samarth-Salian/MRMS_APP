@@ -3,8 +3,6 @@ import { Router, ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
 import { Room } from 'src/app/models/room';
-import { FormControl } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 import { AppComponent } from '../../app.component';
 import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
@@ -30,12 +28,13 @@ export class RoomSearchComponent implements OnInit {
 
   minDate: any = '';
 
-  //todayDate = new FormControl(new Date());
+  todayDate: any;
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
     private router: Router, public modalController: ModalController, public toastController: ToastController, public datepipe: DatePipe) {
     this.titleChange.roomListBackButton = false;
     this.minDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    this.todayDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;

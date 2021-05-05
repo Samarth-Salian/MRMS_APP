@@ -33,3 +33,17 @@ body {
 .backgroundFade {
     opacity: 0;
 }
+.item-options-start .ionOption:first-child, .item-options-end .ionOption:last-child {
+    width:75px !important;
+  }
+  .item-options-start , .item-options-end {
+    padding: 12px 10px;
+  }
+  .item-options-start .ionIcon.hydrated, .item-options-end .ionIcon.hydrated {
+    font-size: 24px;
+  }
+  .ionItem.item.in-list.ion-focusable.hydrated.item-label {
+    left: -18px;
+    height: 250px;
+    top: 1px;
+  }

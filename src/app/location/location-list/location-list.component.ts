@@ -43,6 +43,7 @@ export class LocationListComponent {
   }
 
   public navigateToLocation(selectedLocation: any): any {
+    this.titleChange.swipeList();
     this.zone.run(() => { this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } }); });
   }
 

@@ -1,5 +1,14 @@
-<button class="close" mat-button (click)="closeDialogBox();">X</button>
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-title>Room Search</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismissModal()">Close</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
 <form #searchForm="ngForm" (ngSubmit)="fnNavigateToRoomList()" class="roomSearchContainer" novalidate>
+    <ion-content fullscreen>
+        <ion-list class='roomSearchList'>
     <ion-item>
         <ion-label position="floating">Choose a Locaton</ion-label>
         <ion-select interface="action-sheet" [(ngModel)]="roomSearch.location" name="locations">
@@ -15,27 +24,23 @@
     </ion-item>
     <div class="form-outline">
         <div class="fromTimeDiv">
-            <mat-form-field class="fromInputDiv">
-                <mat-label>From</mat-label>
-                <input matInput [ngxTimepicker]="fromtime" [(ngModel)]="roomSearch.fromTime" name="fromSlot"
-                    [min]="roomSearch.fromTime" #fromSlot="ngModel" required>
-                <ngx-material-timepicker #fromtime></ngx-material-timepicker>
-            </mat-form-field>
-            <span *ngIf="fromSlot.invalid && fromSlot.touched" [ngStyle]="{'color':'red'}">Enter From Time</span>
+            <ion-item>
+                <ion-label position="floating">From</ion-label>
+                <ion-datetime displayFormat="hh:mm A" pickerFormat="HH:mm A" [min]=roomSearch.fromTime [value]=fromTime
+                    name='chooseDate'>
+                </ion-datetime>
+            </ion-item>
         </div>
         <div class="toTimeDiv">
-            <mat-form-field class="fromInputDiv">
-                <mat-label>To</mat-label>
-                <input matInput [ngxTimepicker]="totime" [(ngModel)]="roomSearch.toTime" name="toSlot"
-                    [min]="roomSearch.toTime" #toSlot="ngModel" required>
-                <ngx-material-timepicker #totime></ngx-material-timepicker>
-
-            </mat-form-field>
-            <span *ngIf="toSlot.invalid && toSlot.touched" [ngStyle]="{'color':'red'}">Enter To Time</span>
+            <ion-item>
+                <ion-label position="floating">To</ion-label>
+                <ion-datetime displayFormat="hh:mm A" pickerFormat="HH:mm A" [min]=roomSearch.toTime [value]=toTime name='toSlot'>
+                </ion-datetime>
+            </ion-item>
         </div>
     </div>
     <app-input-stepper [(counter)]="roomSearch.seats"></app-input-stepper>
-    
+
 
     <div class="sliderContainer">
         <ion-item>
@@ -46,19 +51,19 @@
             <ion-toggle [(ngModel)]="roomSearch.lanAvailable" name="lan" color="medium" checked>
             </ion-toggle>
         </ion-item>
-        
+
         <ion-item class="sliderBtn">
             <ion-label class="feature labelCss">Conference Phone</ion-label>
             <ion-toggle [(ngModel)]="roomSearch.voipAvailable" name="voip" color="medium" checked>
             </ion-toggle>
         </ion-item>
-        
+
         <ion-item class="sliderBtn">
             <ion-label class="feature labelCss">Video</ion-label>
             <ion-toggle [(ngModel)]="roomSearch.videoAvailable" name="video" color="medium" checked>
             </ion-toggle>
         </ion-item>
-        
+
         <ion-item class="sliderBtn">
             <ion-label class="feature labelCss">White Board</ion-label>
             <ion-toggle [(ngModel)]="roomSearch.whiteBoardAvailable" name="whiteboard" color="medium" checked>
@@ -66,7 +71,9 @@
         </ion-item>
     </div>
     <section>
-        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' expand="block">Search
+        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="dismissModal()" expand="block">Search
         </ion-button>
     </section>
+    </ion-list>
+    </ion-content>
 </form>

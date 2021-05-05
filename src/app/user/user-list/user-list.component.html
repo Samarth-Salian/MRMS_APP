@@ -1,3 +1,11 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>User List</ion-title>
+    </ion-toolbar>
+</ion-header>
 <div *ngIf='showSkeletion else hideSkeletion'>
     <mat-card class="listContainer" *ngFor="let user of users">
     <mat-card-header>

@@ -49,7 +49,7 @@
 }
 
 .swipe-box {
-    --swipebox-height: 445px;
+    --swipebox-height:223px;
 }
 
 .mat-card-header {
@@ -83,19 +83,71 @@ img.mat-card-image.roomImageCls {
 .mail-action {
     display: grid;
 }
+.shimmerContents{
+    padding-left: 72px;
+    width: 100%;
+    margin-top: -40px;
+    padding-bottom: 20px;
+}
 .shimmerAvatar{
-    height: 244px;
-    width: 105%;
-    padding-bottom: 10px;
-  }
-  .shimmerContent{
-    padding: 8px;
-    margin-bottom: -13px;
-  }
-  .shimmerImage{
-    padding-bottom: 10px;
-    padding-top: 10px;
-  }
-  .shimmerIcons{
-      padding-top: 10px;
-  }
+  height: 52px;
+  width: 52px;
+}
+.shimmerCon{
+  padding: 1px;
+}
+
+.avatarSection {
+  padding-right: 25px;
+}
+.avatarSection .mat-card-avatar {
+  border-radius: 0%;
+  height: 74px;
+  width: 74px;
+}
+.imageColumn{
+  margin-top: -50px;
+  margin-left: 91px;
+}
+.ionLabel{
+  height: 243px;
+}
+.ion-color-danger{
+  background: #eb445a;
+}
+.ion-color-primary{
+  background: #3880ff
+}
+.detailsClass{
+    margin-top: 18px;
+}
+.addScroll{
+  overflow-y: auto;
+    display: block;
+    max-height: 100vh;
+}
+.item-options-start .ionOption:first-child, .item-options-end .ionOption:last-child {
+  width:75px !important;
+}
+.item-options-start , .item-options-end {
+  padding: 12px 10px;
+}
+.item-options-start .ionIcon.hydrated, .item-options-end .ionIcon.hydrated {
+  font-size: 24px;
+}
+
+.ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
+    width: 90%;
+    height: 274px;
+    margin: 0px auto;
+    margin-top: 10px;
+    padding: 10px 10px;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #aaa;
+    box-shadow: 2px 3px 3px #ddd;
+}
+.ionItem.item.in-list.ion-focusable.hydrated.item-label {
+  left: -18px;
+  height: 250px;
+  top: 1px;
+}

@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, NgZone } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Room } from '../../models/room';
 import { AppComponent } from '../../app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomSearchComponent } from '../room-search/room-search.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-room-list',
@@ -26,7 +27,7 @@ export class RoomListComponent {
   conditionalFabIcon: boolean;
   showSkeletion: boolean = false;
   constructor(private zone: NgZone, private titleChange: AppComponent, private router: Router,
-    private activatedRoute: ActivatedRoute, public http: HttpClient, private dialog: MatDialog, public snackBar: MatSnackBar) {
+    private activatedRoute: ActivatedRoute, public modalController: ModalController, public http: HttpClient, private dialog: MatDialog, public snackBar: MatSnackBar) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.conditionalFabIcon = this.titleChange.showFabIcon;
@@ -100,8 +101,15 @@ export class RoomListComponent {
         enumerable: true,
         configurable: true,
       });
-      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+      let navigationExtras: NavigationExtras = {
+        state: {
+          data: selectedRoom,
+          flow: 'createMeeting'
+        }
+      };
+      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', navigationExtras); });
     }
+      //this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
   }
 
   public hideEditSection() {
@@ -109,7 +117,7 @@ export class RoomListComponent {
     observeItem.forEach(e => {
       let mailBox: any = e.querySelectorAll('.observe-item');
       let ionCard: any = e.querySelector('.shimmerHeader ')
-      if (ionCard.length === 0) {
+      if (ionCard !== null && ionCard.length === 0) {
         let listCard: any = e.querySelectorAll('.mat-card-header');
         listCard[0].classList.add('restrictSwipeCls');
         mailBox[0].remove();
@@ -118,13 +126,18 @@ export class RoomListComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(RoomSearchComponent, {
-      width: '100%',
+    this.presentModal();
+  }
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: RoomSearchComponent,
+      cssClass: 'my-custom-class'
     });
-    dialogRef.afterClosed().subscribe(result => {
-      if (typeof (result) !== 'undefined') {
-        this.roomDetails = result.data;
-      }
+    return await modal.present();
+  }
+  dismissModal() {
+    this.modalController.dismiss({
+      'dismissed': true
     });
   }
 }

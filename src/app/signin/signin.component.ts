@@ -4,7 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AppComponent } from '../app.component';
-import { SnackbarService } from '../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 
 declare let window: any;
@@ -26,7 +26,7 @@ export class SigninComponent {
   navigationFlag: string | undefined;
 
   constructor(private zone: NgZone, public appComponent: AppComponent, private router: Router,
-    private afAuth: AngularFireAuth, private snackBar: SnackbarService) {
+    private afAuth: AngularFireAuth, public toastController: ToastController) {
     this.showMessage = this.appComponent.showWelcomeMessage;
     this.afAuth.authState.subscribe(user => {
       console.log(user);
@@ -42,8 +42,16 @@ export class SigninComponent {
     }
     if (this.appComponent.loginCredentials === '') {
       this.appComponent.spinnerObj.hide();
-      this.snackBar.openSnackBar('Signed out Successfully', '');
+      this.openToast('Signed out Successfully');
     }
+  }
+  async openToast(message: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      color: 'primary',
+      duration: 2000
+    });
+    toast.present();
   }
 
   loginWithGoogle() {

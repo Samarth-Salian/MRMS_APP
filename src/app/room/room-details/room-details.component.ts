@@ -6,7 +6,7 @@ import { AppComponent } from '../../app.component';
 import { BottomSheetComponent } from '../../bottom-sheet/bottom-sheet.component'
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { SnackbarService } from '../../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
 import {
   HttpClient,
   HttpEventType
@@ -32,7 +32,7 @@ export class RoomDetailsComponent {
 
   roomLaunchFlag: string = 'Root Menu';
 
-  constructor(private zone: NgZone, private router: Router, private snackBar: SnackbarService,
+  constructor(private zone: NgZone, private router: Router, public toastController: ToastController,
     public titleChange: AppComponent, private activatedRoute: ActivatedRoute, private http: HttpClient, private camera: Camera, private _bottomSheet: MatBottomSheet) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -59,9 +59,9 @@ export class RoomDetailsComponent {
 
   getSubmitMsg() {
     if (this.roomDetails.seats <= 0) {
-      this.snackBar.openSnackBar('Seats should be more than 0', '');
+      this.presentToast('Seats should be more than 0');
     } else {
-      this.snackBar.openSnackBar('Room details submitted successfully', '');
+      this.presentToast('Room details submitted successfully');
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }); });
     }
   }
@@ -119,5 +119,13 @@ export class RoomDetailsComponent {
         })
       )
       .toPromise();
+  }
+  async presentToast(message: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      color: 'primary',
+      duration: 2000
+    });
+    toast.present();
   }
 }

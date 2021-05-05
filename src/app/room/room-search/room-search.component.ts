@@ -1,13 +1,14 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
 import { Room } from 'src/app/models/room';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AppComponent } from '../../app.component';
-import { SnackbarService } from '../../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-room-search',
@@ -32,8 +33,7 @@ export class RoomSearchComponent implements OnInit {
   //todayDate = new FormControl(new Date());
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
-    private router: Router, private snackBar: SnackbarService, public datepipe: DatePipe,
-    public dialogRef: MatDialogRef<RoomSearchComponent>) {
+    private router: Router, public modalController: ModalController, public toastController: ToastController, public datepipe: DatePipe) {
     this.titleChange.roomListBackButton = false;
     this.minDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
@@ -54,11 +54,19 @@ export class RoomSearchComponent implements OnInit {
 
   public fnNavigateToRoomList() {
     if (this.roomSearch.seats <= 0) {
-      this.snackBar.openSnackBar('Seats should be more than 0', '');
+      this.presentToast('Seats should be more than 0');
     } else {
-      this.dialogRef.close({ data: this.roomSearch });
+      //this.dialogRef.close({ data: this.roomSearch });
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
     }
+  }
+  async presentToast(message: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      color: 'primary',
+      duration: 2000
+    });
+    toast.present();
   }
 
   onCalendarChange(pthis: any) {
@@ -91,12 +99,18 @@ export class RoomSearchComponent implements OnInit {
   }
 
   formatDateAndTime(updatedMinutes: Date) {
-    const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
-    const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
-    return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
+    // const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
+    //const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
+    //return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime : normalizeHour + ':' + finalTime;
+    return updatedMinutes.getHours() + ':' + ('0' + updatedMinutes.getMinutes()).slice(-2);
   }
 
   closeDialogBox() {
-    this.dialogRef.close();
+    //this.dialogRef.close();
+  }
+  dismissModal() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 }

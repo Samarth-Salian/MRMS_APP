@@ -1,5 +1,5 @@
 .roomSearchContainer {
-  padding: 5%;
+  padding-top: 5%;
 }
 
 .datePickerDiv {
@@ -58,4 +58,8 @@
 .close.mat-button {
   line-height: 0px;
   min-width: auto;
+}
+.roomSearchList{
+  padding-left: 8%;
+  padding-right: 8%;
 }

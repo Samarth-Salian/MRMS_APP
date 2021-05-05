@@ -31,6 +31,28 @@ export class AppComponent {
   showFilterIcon = true;
 
   screenName;
+  appPages = [
+    {
+      title: 'Schedule',
+      url: '/app/tabs/schedule',
+      icon: 'calendar'
+    },
+    {
+      title: 'Speakers',
+      url: '/app/tabs/speakers',
+      icon: 'people'
+    },
+    {
+      title: 'Map',
+      url: '/app/tabs/map',
+      icon: 'map'
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle'
+    }
+  ];
 
   roomLaunchFlag = 'Root Menu';
   firstLoad: boolean = true;
@@ -40,6 +62,7 @@ export class AppComponent {
   db: any;
   loginStorage: any;
   spinnerObj: any;
+  dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
     private router: Router, private spinner: NgxSpinnerService) {
@@ -55,6 +78,7 @@ export class AppComponent {
             location: 'default',
             androidDatabaseProvider: 'system'
           });
+          this.firstLoad = true;
           this.retrieveLoginData('root');
         }
       })
@@ -144,6 +168,7 @@ export class AppComponent {
     }, function (error: any) {
       console.log('Transaction ERROR: ' + error.message);
     }, () => {
+      this.firstLoad = false;
       this.retrieveLoginData('root');
       console.log('Populated database OK');
     });

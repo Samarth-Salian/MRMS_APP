@@ -10,12 +10,21 @@
   -webkit-appearance: button;
   cursor: pointer;
   left: 2px;
+  background: var(--ion-color-primary, #4c8dff);
 }
 
 .button-minus {
   -webkit-appearance: button;
   cursor: pointer;
   right: -2px;
+  background: var(--ion-color-primary, #4c8dff);
+}
+
+.button-minus[attr-disabled] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  right: -2px;
+  background-color: rgb(187, 184, 184);
 }
 
 .input-group {
@@ -42,7 +51,7 @@
   display: inline-block;
 }
 
-.input-group input[type='button']:disabled {
+.disabled {
   background: #c0c0c0;
   cursor: not-allowed;
   opacity: 0.7;
@@ -58,18 +67,22 @@
 
 .input-group .seats-field {
   position: relative;
-  height: 30px;
+  height: 32px;
+  width: 15%;
   text-align: center;
   display: inline-block;
   font-size: 13px;
   margin: 0 0 5px;
   resize: vertical;
+  margin-left: 2px;
+  margin-right: -2px;
 }
 
 .seatsSectionCls {
   width: 84px;
   left: -2%;
 }
+
 .stepperSectionCls {
   width: 88px;
 }
@@ -83,3 +96,8 @@
     width: 38px;
   }
 }
+
+/* .seats-field {
+  margin-left: 2px;
+  margin-right: -2px;
+} */

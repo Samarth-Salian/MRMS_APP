@@ -29,6 +29,7 @@ export class LocationDetailsComponent {
     this.appComponent.setTitle(this.appComponent.title);
   }
   getSubmitMsg() {
-    this.appComponent.presentToast('Seats should be more than 0');
+    this.appComponent.navCtlr.navigateBack('/location-list');
+    this.appComponent.presentToast('Location details saved successfully');
   }
 }

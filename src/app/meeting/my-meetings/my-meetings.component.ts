@@ -77,7 +77,7 @@ export class MyMeetingsComponent {
     const toast = await this.toastController.create({
       message: 'Match not found!',
       position: 'bottom',
-      color: 'primary',
+      color: 'dark',
       buttons: [{
         text: 'Done',
         role: 'cancel',

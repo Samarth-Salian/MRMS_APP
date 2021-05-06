@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
 import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
+import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
-
 
 declare let window: any;
 @Component({
@@ -35,28 +35,6 @@ export class AppComponent {
   showFilterIcon = true;
 
   screenName;
-  appPages = [
-    {
-      title: 'Schedule',
-      url: '/app/tabs/schedule',
-      icon: 'calendar'
-    },
-    {
-      title: 'Speakers',
-      url: '/app/tabs/speakers',
-      icon: 'people'
-    },
-    {
-      title: 'Map',
-      url: '/app/tabs/map',
-      icon: 'map'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
-    }
-  ];
 
   roomLaunchFlag = 'Root Menu';
   firstLoad: boolean = true;
@@ -69,7 +47,7 @@ export class AppComponent {
   dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
-    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController) {
+    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};
@@ -300,5 +278,13 @@ export class AppComponent {
     }, () => {
       this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: 'SignOut' } }); });
     });
+  }
+  async presentToast(message: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      color: 'dark',
+      duration: 2000
+    });
+    toast.present();
   }
 }

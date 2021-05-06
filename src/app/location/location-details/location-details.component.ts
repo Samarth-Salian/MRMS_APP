@@ -28,14 +28,7 @@ export class LocationDetailsComponent {
     this.appComponent.title = this.activatedRoute.snapshot.data.title;
     this.appComponent.setTitle(this.appComponent.title);
   }
-
-  async getSubmitMsg() {
-    const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
-      duration: 2000,
-      color: 'primary'
-    });
-    this.zone.run(() => { this.appComponent.navCtlr.navigateBack(['/location-list'], { state: { data: this.selectedLocation } }); });
-    toast.present();
+  getSubmitMsg() {
+    this.appComponent.presentToast('Seats should be more than 0');
   }
 }

@@ -33,20 +33,11 @@ export class UserListComponent {
   public getjson(): Observable<any> {
     return this.http.get('assets/userList.json').pipe();
   }
-  async getAdminMsg() {
-    const toast = await this.toastController.create({
-      message: this.adminMsg,
-      color: 'primary',
-      duration: 2000
-    });
-    toast.present();
+  getAdminMsg() {
+    this.titleChange.presentToast(this.adminMsg);
   }
-  async getUserMsg() {
-    const toast = await this.toastController.create({
-      message: this.userMsg,
-      color: 'primary',
-      duration: 2000
-    });
-    toast.present();
+
+  getUserMsg() {
+    this.titleChange.presentToast(this.userMsg);
   }
 }

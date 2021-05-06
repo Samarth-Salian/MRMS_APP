@@ -6,10 +6,10 @@
         <ion-title>Room List</ion-title>
     </ion-toolbar>
 </ion-header>
-<div *ngIf="conditionalFilter" class="filterIcon">
-    <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
-</div>
-<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
+    <div *ngIf="conditionalFilter" class="filterIcon">
+        <ion-icon name="filter-circle-outline" class = 'filter' (click)="openDialog();"></ion-icon>
+    </div>
+    <ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
     <ion-item-sliding *ngFor="let room of rooms let i = index" (click)="navigateToMeetingDetails(room)"
         routerDirection="forward" class="ionicListContainer">
         <ion-item class='ionItem'>

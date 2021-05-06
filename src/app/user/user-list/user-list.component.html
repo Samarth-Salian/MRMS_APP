@@ -12,7 +12,7 @@
             <div ion-card-avatar>
                 <img class="avatarImage" alt="" src="{{user.image}}">
             </div>
-            <ion-card-title class="avatarName">{{user.firstName}} {{user.lastName}}</ion-card-title>
+            <ion-card-subtitle class="avatarName">{{user.firstName}} {{user.lastName}}</ion-card-subtitle>
             <ion-card-content class = 'ionContent'>
                 <span>{{user.emailId}}</span>
             </ion-card-content>
@@ -38,13 +38,13 @@
             </ion-card-title>
         </ion-card-header>
         <ion-card-header class='shimmerHeader'>
-            <ion-card-title style='width: 70%;'>
+            <ion-card-title style = 'width:100%'>
                 <ion-skeleton-text animated></ion-skeleton-text>
             </ion-card-title>
         </ion-card-header>
         <ion-card-header>
             <ion-card-title>
-                <ion-skeleton-text animated style='width: 50%;'></ion-skeleton-text>
+                <ion-skeleton-text animated></ion-skeleton-text>
             </ion-card-title>
         </ion-card-header>
     </ion-card>

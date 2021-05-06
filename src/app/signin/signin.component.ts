@@ -42,16 +42,8 @@ export class SigninComponent {
     }
     if (this.appComponent.loginCredentials === '') {
       this.appComponent.spinnerObj.hide();
-      this.openToast('Signed out Successfully');
+      this.appComponent.presentToast('Signed out Successfully');
     }
-  }
-  async openToast(message: any) {
-    const toast = await this.toastController.create({
-      message: message,
-      color: 'primary',
-      duration: 2000
-    });
-    toast.present();
   }
 
   loginWithGoogle() {

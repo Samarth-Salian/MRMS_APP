@@ -59,9 +59,9 @@ export class RoomDetailsComponent {
 
   getSubmitMsg() {
     if (this.roomDetails.seats <= 0) {
-      this.presentToast('Seats should be more than 0');
+      this.titleChange.presentToast('Seats should be more than 0');
     } else {
-      this.presentToast('Room details submitted successfully');
+      this.titleChange.presentToast('Room details submitted successfully');
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomLaunchFlag } }); });
     }
   }
@@ -119,13 +119,5 @@ export class RoomDetailsComponent {
         })
       )
       .toPromise();
-  }
-  async presentToast(message: any) {
-    const toast = await this.toastController.create({
-      message: message,
-      color: 'primary',
-      duration: 2000
-    });
-    toast.present();
   }
 }

@@ -64,23 +64,15 @@ export class MeetingDetailsComponent {
 
   getSubmitMsg() {
     if (this.meeting.seats <= 0) {
-      this.presentToast('Seats should be more than 0');
+      this.titleChange.presentToast('Seats should be more than 0');
     } else {
-      this.presentToast(this.submitMsg);
+      this.titleChange.presentToast(this.submitMsg);
       this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } }); });
     }
   }
 
   updatedSeatVal(event: any) {
     this.meeting.seats = event;
-  }
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      color: 'primary',
-      duration: 2000
-    });
-    toast.present();
   }
 
 }

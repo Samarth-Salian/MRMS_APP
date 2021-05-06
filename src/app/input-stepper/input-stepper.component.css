@@ -9,13 +9,13 @@
 .button-plus {
   -webkit-appearance: button;
   cursor: pointer;
-  left: -13px;
+  left: 2px;
 }
 
 .button-minus {
   -webkit-appearance: button;
   cursor: pointer;
-  right: 5px;
+  right: -2px;
 }
 
 .input-group {
@@ -50,22 +50,28 @@
 
 .input-group .button-minus, .input-group .button-plus {
   font-weight: bold;
-  height: 38px;
+  height: 30px;
   padding: 0;
-  width: 38px;
+  width: 54px;
   position: relative;
 }
 
 .input-group .seats-field {
   position: relative;
-  height: 39px;
-  left: -6px;
+  height: 30px;
   text-align: center;
-  width: calc(80% - 50%);
   display: inline-block;
   font-size: 13px;
   margin: 0 0 5px;
   resize: vertical;
+}
+
+.seatsSectionCls {
+  width: 84px;
+  left: -2%;
+}
+.stepperSectionCls {
+  width: 88px;
 }
 
 @media(max-width: 500px) {

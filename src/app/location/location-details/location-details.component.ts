@@ -29,12 +29,7 @@ export class LocationDetailsComponent {
     this.appComponent.setTitle(this.appComponent.title);
   }
 
-  async getSubmitMsg() {
-    const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
-      duration: 2000,
-      color: 'primary'
-    });
-    toast.present();
+  getSubmitMsg() {
+    this.appComponent.presentToast('Seats should be more than 0');
   }
 }

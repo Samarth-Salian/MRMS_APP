@@ -4,7 +4,6 @@ import { ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
 import { Room } from 'src/app/models/room';
 import { AppComponent } from '../../app.component';
-import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { ModalController } from '@ionic/angular';
 
@@ -31,7 +30,7 @@ export class RoomSearchComponent implements OnInit {
   todayDate: any;
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
-    private router: Router, public modalController: ModalController, public toastController: ToastController, public datepipe: DatePipe) {
+    private router: Router, public modalController: ModalController, public datepipe: DatePipe) {
     this.titleChange.roomListBackButton = false;
     this.minDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.todayDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
@@ -53,19 +52,11 @@ export class RoomSearchComponent implements OnInit {
 
   public fnNavigateToRoomList() {
     if (this.roomSearch.seats <= 0) {
-      this.presentToast('Seats should be more than 0');
+      this.titleChange.presentToast('Seats should be more than 0');
     } else {
       //this.dialogRef.close({ data: this.roomSearch });
       this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
     }
-  }
-  async presentToast(message: any) {
-    const toast = await this.toastController.create({
-      message: message,
-      color: 'primary',
-      duration: 2000
-    });
-    toast.present();
   }
 
   onCalendarChange(pthis: any) {

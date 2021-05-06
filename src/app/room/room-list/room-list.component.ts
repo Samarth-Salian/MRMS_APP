@@ -65,9 +65,9 @@ export class RoomListComponent {
   }
 
   public delete(event: any) {
-    this.deletedRoomListRecord = event.target.closest('.listContainer');
-    this.deletedRoomListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
-    event.target.closest('.listContainer').remove();
+    this.deletedRoomListRecord = event.target.closest('.ionicListContainer');
+    this.deletedRoomListRow = parseInt(event.target.closest('.ionicListContainer').getAttribute('rowno'));
+    event.target.closest('.ionicListContainer').remove();
     let snackBarRef = this.snackBar.open('Deleted Successfully', 'Undo', {
       duration: 2000,
     });
@@ -75,41 +75,23 @@ export class RoomListComponent {
       console.log(this.deletedRoomListRow);
       console.log(this.deletedRoomListRecord);
       let currentRoomListRecord: any;
-      let swipeList: any = document.getElementsByClassName('swipe-box');
+      let swipeList: any = document.getElementsByClassName('ionicListContainer');
       if (!swipeList.length) {
         document.getElementsByTagName('app-room-list')[0].append(this.deletedRoomListRecord);
       }
       else if ((this.deletedRoomListRow - 1) === parseInt(swipeList[swipeList.length - 1].getAttribute('rowno'))) {
-        currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow - 1));
+        currentRoomListRecord = document.getElementById('listSwipeBoxId_' + (this.deletedRoomListRow - 1));
         currentRoomListRecord.parentElement.after(this.deletedRoomListRecord);
       } else {
-        currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedRoomListRow + 1));
+        currentRoomListRecord = document.getElementById('listSwipeBoxId_' + (this.deletedRoomListRow + 1));
         currentRoomListRecord.parentElement.before(this.deletedRoomListRecord);
       }
-      this.titleChange.swipeList();
     });
 
   }
 
-  public navigateToMeetingDetails(selectedRoom: Room): void {
-    if (history.state.data === 'Root Menu') {
-      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
-    } else {
-      Object.defineProperty(selectedRoom, 'roomCreationDetails', {
-        value: this.roomDetails,
-        writable: false,
-        enumerable: true,
-        configurable: true,
-      });
-      let navigationExtras: NavigationExtras = {
-        state: {
-          data: selectedRoom,
-          flow: 'createMeeting'
-        }
-      };
-      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/meeting-details', navigationExtras); });
-    }
-    //this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+  public navigateToMeetingDetails(selectedRoom: Room, event:any): void {
+    this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
   }
 
   public hideEditSection() {

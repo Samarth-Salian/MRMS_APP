@@ -69,7 +69,6 @@ export class LocationListComponent {
         currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedLocationListRow + 1));
         currentRoomListRecord.parentElement.before(this.deletedLocationListRecord);
       }
-      this.titleChange.swipeList();
     });
 
   }

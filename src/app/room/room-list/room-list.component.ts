@@ -90,8 +90,18 @@ export class RoomListComponent {
 
   }
 
-  public navigateToMeetingDetails(selectedRoom: Room, event:any): void {
-    this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
+  public navigateToMeetingDetails(selectedRoom: Room, event: any): void {
+    if (!this.titleChange.showFabIcon) {
+      Object.defineProperty(selectedRoom, 'roomCreationDetails', {
+        value: this.roomDetails,
+        writable: false,
+        enumerable: true,
+        configurable: true,
+      });
+      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+    } else {
+      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
+    }
   }
 
   public hideEditSection() {

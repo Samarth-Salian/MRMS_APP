@@ -7,6 +7,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
 import { ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 declare let window: any;
 @Component({
@@ -46,7 +47,7 @@ export class AppComponent {
   dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
-    private router: Router, private spinner: NgxSpinnerService, public toastController: ToastController) {
+    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};
@@ -258,14 +259,14 @@ export class AppComponent {
       if (!firebase.apps.length) {
         firebase.initializeApp(environment.firebaseConfig);
       } else {
-          firebase.app();
-        }
+        firebase.app();
+      }
       firebase.auth().signOut()
         .then(() => {
           this.loginStorage.removeItem(this.tableName);
           this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: 'SignOut' } }); });
         }, function (error) {
-            console.log('Signout Failed');
+          console.log('Signout Failed');
         });
     }
   }

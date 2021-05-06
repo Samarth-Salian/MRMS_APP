@@ -92,11 +92,11 @@
                     <ion-skeleton-text animated></ion-skeleton-text>
                 </ion-card-title>
             </ion-label>
-            </ion-item>
-            </ion-item-sliding>
+        </ion-item>
+    </ion-item-sliding>
 </ng-template>
 <ion-fab *ngIf="conditionalFabIcon" class="fab-bottom-right" vertical="bottom" horizontal="end"
-    routerLink="/room-details" routerLinkActive="active">
+    (click)="fabIconValidation()" routerLinkActive="active">
     <ion-fab-button>
         <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>

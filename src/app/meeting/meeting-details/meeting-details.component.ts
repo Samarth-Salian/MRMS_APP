@@ -67,7 +67,7 @@ export class MeetingDetailsComponent {
       this.titleChange.presentToast('Seats should be more than 0');
     } else {
       this.titleChange.presentToast(this.submitMsg);
-      this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } }); });
+      this.zone.run(() => { this.titleChange.navCtlr.navigateBack('/my-meetings', { state: { data: this.meeting } }); });
     }
   }
 

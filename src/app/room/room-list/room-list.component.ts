@@ -93,7 +93,7 @@ export class RoomListComponent {
 
   public navigateToMeetingDetails(selectedRoom: Room): void {
     if (history.state.data === 'Root Menu') {
-      this.zone.run(() => { this.router.navigateByUrl('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
+      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
     } else {
       Object.defineProperty(selectedRoom, 'roomCreationDetails', {
         value: this.roomDetails,
@@ -107,9 +107,9 @@ export class RoomListComponent {
           flow: 'createMeeting'
         }
       };
-      this.zone.run(() => { this.router.navigateByUrl('/meeting-details', navigationExtras); });
+      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/meeting-details', navigationExtras); });
     }
-      //this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
+    //this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedRoom, flow: 'createMeeting' } }); });
   }
 
   public hideEditSection() {
@@ -139,5 +139,11 @@ export class RoomListComponent {
     this.modalController.dismiss({
       'dismissed': true
     });
+  }
+
+  fabIconValidation() {
+    this.titleChange.showFabIcon = false;
+    this.titleChange.showFilterIcon = true;
+    this.titleChange.navCtlr.navigateForward('/room-details');
   }
 }

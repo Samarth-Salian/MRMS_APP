@@ -27,12 +27,12 @@ export class LocationListComponent {
       }, 3000)
       this.locations = data;
     });
-   /* this.scrollElement = setInterval(() => {
-      if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
-        this.initializeSwipe();
-        clearInterval(this.scrollElement);
-      }
-    }, 100);*/
+    /* this.scrollElement = setInterval(() => {
+       if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
+         this.initializeSwipe();
+         clearInterval(this.scrollElement);
+       }
+     }, 100);*/
   }
   public initializeSwipe = () => {
     //this.titleChange.swipeList();
@@ -44,7 +44,7 @@ export class LocationListComponent {
 
   public navigateToLocation(selectedLocation: any): any {
     //this.titleChange.swipeList();
-    this.zone.run(() => { this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } }); });
+    this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/location-details', { state: { data: selectedLocation } }); });
   }
 
   public delete(event: any) {
@@ -72,6 +72,12 @@ export class LocationListComponent {
       this.titleChange.swipeList();
     });
 
+  }
+
+  fabIconValidation() {
+    this.titleChange.showFabIcon = false;
+    this.titleChange.showFilterIcon = true;
+    this.titleChange.navCtlr.navigateForward('/location-details');
   }
 
 }

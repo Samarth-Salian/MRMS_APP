@@ -55,7 +55,7 @@ export class RoomSearchComponent implements OnInit {
       this.titleChange.presentToast('Seats should be more than 0');
     } else {
       //this.dialogRef.close({ data: this.roomSearch });
-      this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
+      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-list', { state: { data: this.roomSearch } }); });
     }
   }
 

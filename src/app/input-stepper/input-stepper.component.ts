@@ -19,9 +19,11 @@ export class InputStepperComponent {
   updateSeatValue(event: any) {
     if (this.counter === 1 && event.target.id !== 'plusBtn') {
       this.disabledMinus = true;
+      event.target.classList.add("disabled")
     } else {
       if (this.counter >= 1) {
         this.disabledMinus = false;
+        event.target.parentElement.children[1].classList.remove('disabled')
       }
       if (event.target.id === 'plusBtn') {
         this.counterChange.emit(++this.counter);

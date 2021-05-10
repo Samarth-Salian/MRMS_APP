@@ -46,6 +46,8 @@ import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
+import { enterAnimation } from './animations/nav-amimate';
+import { from } from 'rxjs';
 
 
 export function tokenGetter() {
@@ -118,7 +120,9 @@ export const MY_DATE_FORMATS = {
         disallowedRoutes: ['http://localhost:3000/auth/login'],
       },
     }),
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      navAnimation: enterAnimation
+    }),
   ],
   providers: [HttpClientModule, AppComponent,
     DatePipe,

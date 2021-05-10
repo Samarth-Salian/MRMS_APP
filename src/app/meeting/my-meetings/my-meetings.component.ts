@@ -6,12 +6,22 @@ import { AppComponent } from '../../app.component';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { ToastController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 declare let window: any;
 
 @Component({
   selector: 'app-my-meetings',
   templateUrl: './my-meetings.component.html',
   styleUrls: ['./my-meetings.component.css'],
+  animations: [
+    trigger('slidelefttitle', [
+      transition('void=>*', [
+        style({ opacity: 1, transform: 'translateX(150%)' }),
+        animate('900ms 300ms ease-out', style({ transform: 'translateX(0%)', opacity: 0 },))
+      ])
+    ])
+  ]
 })
 export class MyMeetingsComponent {
   roomSearchs: Room;

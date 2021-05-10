@@ -4,11 +4,21 @@ import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-location-list',
   templateUrl: './location-list.component.html',
   styleUrls: ['./location-list.component.css'],
+  animations: [
+    trigger('slidelefttitle', [
+      transition('void=>*', [
+        style({ opacity: 0, transform: 'translateX(150%)' }),
+        animate('900ms 300ms ease-out', style({ transform: 'translateX(0%)', opacity: 1 },))
+      ])
+    ])
+  ]
 })
 export class LocationListComponent {
   scrollElement: any;

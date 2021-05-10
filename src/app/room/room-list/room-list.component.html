@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header @slidelefttitle>
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button [defaultHref]=""></ion-back-button>
@@ -6,59 +6,62 @@
         <ion-title>Room List</ion-title>
     </ion-toolbar>
 </ion-header>
+<div @slidelefttitle>
     <div *ngIf="conditionalFilter" class="filterIcon">
-        <ion-icon name="filter-circle-outline" class = 'filter' (click)="openDialog();"></ion-icon>
+        <ion-icon name="filter-circle-outline" class='filter' (click)="openDialog();"></ion-icon>
     </div>
     <ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
-    <ion-item-sliding *ngFor="let room of rooms let i = index" 
-        routerDirection="forward" id="{{'listSwipeBoxId_' +i}}" [attr.rowNo]="i"  class="ionicListContainer">
-        <ion-item class='ionItem' (click)="navigateToMeetingDetails(room, $event)" >
-            <ion-label class='ionLabel'>
-                <div class="avatarSection">
-                    <img mat-card-avatar alt="RoomImage" src="assets/{{room.image}}">
-                </div>
-                <div class='imageColumn'>
-                    <ion-card-subtitle>{{room.name}}</ion-card-subtitle>
-                    <ion-card-subtitle>Seats: {{room.seats}}</ion-card-subtitle>
-                </div>
-                <div class='detailsClass'>
-                    <span>Room Details</span>
-                </div>
-                <ul class="featureList">
-                    <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
-                    <li>Floor: {{room.floor}}</li>
-                    <li>Building Id: {{room.buildingId}}</li>
-                </ul>
-                <div class="featuresDiv">
-                    <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
-                        src="assets/2052-512.png">
-                </div>
-                <div class="featuresDiv">
-                    <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
-                        src="assets/camcorder-512.png">
-                </div>
-                <div class="featuresDiv">
-                    <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
-                        src="assets/ethernet_on1600.png">
-                </div>
-                <div class="featuresDiv">
-                    <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
-                        src="assets/43338.png">
-                </div>
-            </ion-label>
-        </ion-item>
-        <ion-item-options #edit  *ngIf="!conditionalFilter" side="end" (click)="navigateToMeetingDetails(room, $event)">
-            <ion-item-option color="primary" class='ionOption'>
-                <ion-icon name="pencil-outline" class='ionIcon'></ion-icon>
-            </ion-item-option>
-        </ion-item-options>
-        <ion-item-options *ngIf="!conditionalFilter" side="start" (click)="delete($event)">
-            <ion-item-option color="danger" class='ionOption'>
-                <ion-icon name="trash-outline"></ion-icon>
-            </ion-item-option>
-        </ion-item-options>
-    </ion-item-sliding>
-</ion-list>
+        <ion-item-sliding *ngFor="let room of rooms let i = index" routerDirection="forward"
+            id="{{'listSwipeBoxId_' +i}}" [attr.rowNo]="i" class="ionicListContainer">
+            <ion-item class='ionItem' (click)="navigateToMeetingDetails(room, $event)">
+                <ion-label class='ionLabel'>
+                    <div class="avatarSection">
+                        <img mat-card-avatar alt="RoomImage" src="assets/{{room.image}}">
+                    </div>
+                    <div class='imageColumn'>
+                        <ion-card-subtitle>{{room.name}}</ion-card-subtitle>
+                        <ion-card-subtitle>Seats: {{room.seats}}</ion-card-subtitle>
+                    </div>
+                    <div class='detailsClass'>
+                        <span>Room Details</span>
+                    </div>
+                    <ul class="featureList">
+                        <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
+                        <li>Floor: {{room.floor}}</li>
+                        <li>Building Id: {{room.buildingId}}</li>
+                    </ul>
+                    <div class="featuresDiv">
+                        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
+                            src="assets/2052-512.png">
+                    </div>
+                    <div class="featuresDiv">
+                        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
+                            src="assets/camcorder-512.png">
+                    </div>
+                    <div class="featuresDiv">
+                        <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
+                            src="assets/ethernet_on1600.png">
+                    </div>
+                    <div class="featuresDiv">
+                        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
+                            src="assets/43338.png">
+                    </div>
+                </ion-label>
+            </ion-item>
+            <ion-item-options #edit *ngIf="!conditionalFilter" side="end"
+                (click)="navigateToMeetingDetails(room, $event)">
+                <ion-item-option color="primary" class='ionOption'>
+                    <ion-icon name="pencil-outline" class='ionIcon'></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+            <ion-item-options *ngIf="!conditionalFilter" side="start" (click)="delete($event)">
+                <ion-item-option color="danger" class='ionOption'>
+                    <ion-icon name="trash-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</div>
 <ng-template #hideSkeletion>
     <ion-item-sliding *ngFor="let room of rooms let i = index" routerDirection="forward" class="ionicListContainer">
         <ion-item class='ionItem'>

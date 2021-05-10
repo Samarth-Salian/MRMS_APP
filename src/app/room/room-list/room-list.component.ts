@@ -8,11 +8,22 @@ import { AppComponent } from '../../app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RoomSearchComponent } from '../room-search/room-search.component';
 import { ModalController } from '@ionic/angular';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-room-list',
   templateUrl: './room-list.component.html',
   styleUrls: ['./room-list.component.css'],
+  animations: [
+    trigger('slidelefttitle', [
+      transition('void=>*', [
+        style({ opacity: 0, transform: 'translateX(150%)' }),
+        animate('900ms 300ms ease-out', style({ transform: 'translateX(0%)', opacity: 1 },))
+      ])
+    ])
+
+  ]
 })
 export class RoomListComponent {
   scrollElement: any;

@@ -1,4 +1,6 @@
-<ion-header>
+<!-- <ion-app @slidelefttitle> -->
+
+<ion-header @slidelefttitle>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]=""></ion-back-button>
@@ -6,7 +8,7 @@
     <ion-title>Meeting Details</ion-title>
   </ion-toolbar>
 </ion-header>
-<div class="container">
+<div class="container" @slidelefttitle>
   <form #meetingForm="ngForm" novalidate>
     <ion-item class="formWidth">
       <ion-label position='floating'>Meeting Title</ion-label>
@@ -38,3 +40,4 @@
   </form>
 
 </div>
+<!-- </ion-app> -->

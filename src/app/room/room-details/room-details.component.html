@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header @slidelefttitle>
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button [defaultHref]=""></ion-back-button>
@@ -6,7 +6,7 @@
         <ion-title>Add Room</ion-title>
     </ion-toolbar>
 </ion-header>
-<form #searchForm="ngForm" class="roomSearchContainer" novalidate>
+<form #searchForm="ngForm" class="roomSearchContainer" novalidate @slidelefttitle>
     <ion-item class="fromInputDiv">
         <ion-label position='floating'>Room</ion-label>
         <ion-input type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required></ion-input>

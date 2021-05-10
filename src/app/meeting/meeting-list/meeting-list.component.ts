@@ -5,10 +5,20 @@ import { Router } from '@angular/router';
 import { Meeting } from '../../models/meeting';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppComponent } from 'src/app/app.component';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 @Component({
   selector: 'app-meeting-list',
   templateUrl: './meeting-list.component.html',
   styleUrls: ['./meeting-list.component.css'],
+  animations: [
+    trigger('slidelefttitle', [
+      transition('void=>*', [
+        style({ opacity: 0, transform: 'translateX(150%)' }),
+        animate('900ms 300ms ease-out', style({ transform: 'translateX(0%)', opacity: 1 },))
+      ])
+    ])
+  ]
 })
 export class MeetingListComponent {
   meetings: Meeting[] = [];
@@ -42,7 +52,7 @@ export class MeetingListComponent {
   public getjson(): Observable<any> {
     return this.http.get('assets/meetingList.json').pipe();
   }
-  
+
   public navigateToMeeting(selectedMeeting: Meeting): any {
     this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } }); });
   }

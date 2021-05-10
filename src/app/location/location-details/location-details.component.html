@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header @slidelefttitle>
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button [defaultHref]=""></ion-back-button>
@@ -6,7 +6,7 @@
         <ion-title>Location Details</ion-title>
     </ion-toolbar>
 </ion-header>
-<div class="wrapper">
+<div class="wrapper" @slidelefttitle>
     <form class="locationDetailsForm" #LocationDetailsForm="ngForm" novalidate>
         <ion-item class="detailsDiv">
             <ion-label position='floating'>Building Name :</ion-label>

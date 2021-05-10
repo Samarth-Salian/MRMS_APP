@@ -1,4 +1,4 @@
-<ion-header translucent="true">
+<ion-header translucent="true" @slidelefttitle>
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
@@ -6,15 +6,15 @@
         <ion-title>My Meetings</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-item>
+<ion-item @slidelefttitle>
     <ion-label position="floating">Choose a date</ion-label>
-    <ion-datetime displayFormat="DD-MM-YYYY" [min]=todayDate max="2050-31-31" [value]=todayDate [(ngModel)]="currentDate"
-        name='chooseDate'>
+    <ion-datetime displayFormat="DD-MM-YYYY" [min]=todayDate max="2050-31-31" [value]=todayDate
+        [(ngModel)]="currentDate" name='chooseDate'>
     </ion-datetime>
 </ion-item>
-<app-meeting-list class="appMeetingList"></app-meeting-list>
-<ion-fab class="fab-bottom-right" vertical="bottom" horizontal="end"
-    (click)="fabIconValidation();" routerLinkActive="active" routerDirection="forward" detail="false">
+<app-meeting-list @slidelefttitle class="appMeetingList"></app-meeting-list>
+<ion-fab @slidelefttitle class="fab-bottom-right" vertical="bottom" horizontal="end" (click)="fabIconValidation();"
+    routerLinkActive="active" routerDirection="forward" detail="false">
     <ion-fab-button>
         <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>

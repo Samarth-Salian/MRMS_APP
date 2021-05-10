@@ -4,11 +4,21 @@ import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
 import { Meeting } from '../../models/meeting';
 import { ToastController } from '@ionic/angular';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 
 @Component({
   selector: 'app-meeting-details',
   templateUrl: './meeting-details.component.html',
   styleUrls: ['./meeting-details.component.css'],
+  animations: [
+    trigger('slidelefttitle', [
+      transition('void=>*', [
+        style({ opacity: 0, transform: 'translateX(150%)' }),
+        animate('900ms 300ms ease-out', style({ transform: 'translateX(0%)', opacity: 1 },))
+      ])
+    ])
+  ]
 })
 export class MeetingDetailsComponent {
   meetingSchedule: string = '';
@@ -38,9 +48,9 @@ export class MeetingDetailsComponent {
           this.meeting.location = history.state.data.roomCreationDetails._location;
           this.meeting.seats = history.state.data.roomCreationDetails._seats;
         } else {*/
-          this.meetingSchedule = history.state.data.date + ' ' + history.state.data.fromTime + ' ' + history.state.data.toTime;
-          this.meeting.location = history.state.data.location;
-          this.meeting.seats = history.state.data.seats;
+        this.meetingSchedule = history.state.data.date + ' ' + history.state.data.fromTime + ' ' + history.state.data.toTime;
+        this.meeting.location = history.state.data.location;
+        this.meeting.seats = history.state.data.seats;
         //}
         this.meeting.room = this.selectedRoom.name;
         this.meeting.fromTime = this.selectedRoom.fromTime;

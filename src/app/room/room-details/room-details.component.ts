@@ -7,6 +7,8 @@ import { BottomSheetComponent } from '../../bottom-sheet/bottom-sheet.component'
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ToastController } from '@ionic/angular';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+
 import {
   HttpClient,
   HttpEventType
@@ -19,6 +21,14 @@ import { throwError } from "rxjs";
   selector: 'app-room-details',
   templateUrl: './room-details.component.html',
   styleUrls: ['./room-details.component.css'],
+  animations: [
+    trigger('slidelefttitle', [
+      transition('void=>*', [
+        style({ opacity: 0, transform: 'translateX(150%)' }),
+        animate('900ms 300ms ease-out', style({ transform: 'translateX(0%)', opacity: 1 },))
+      ])
+    ])
+  ]
 })
 export class RoomDetailsComponent {
   roomDetails: Room = history.state.data;

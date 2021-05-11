@@ -279,6 +279,13 @@ export class AppComponent {
       this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: 'SignOut' } }); });
     });
   }
+  changeMode(event: any) {
+    if (event.target.ariaChecked === "false") {
+      document.getElementsByTagName('body')[0].classList.add('darkMode');
+    } else {
+      document.getElementsByTagName('body')[0].classList.remove('darkMode');
+    }
+  }
   async presentToast(message: any) {
     const toast = await this.toastController.create({
       message: message,

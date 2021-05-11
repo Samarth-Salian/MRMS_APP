@@ -9,12 +9,25 @@
 
 .appName, .googleButtonDiv {
     text-align: center;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .googleBtn {
     border-radius: 30px;
-    width: 80%;
+    width: 100%;
 }
+
 .scroll {
     overflow: hidden;
+}
+
+.googleButtonDiv {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -64px;
 }

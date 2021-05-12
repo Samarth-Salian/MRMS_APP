@@ -4,6 +4,7 @@
   margin: 0;
   outline: none;
   padding: 10px;
+  color: black;
 }
 
 .button-plus {
@@ -38,7 +39,7 @@
   font: 500 17px/32px Roboto, "Helvetica Neue", sans-serif;
   font-size: 15px;
   width: 65px;
-  color: rgba(0, 0, 0, .38);
+  /* color: rgba(0, 0, 0, .38); */
 }
 
 .input-group input[type='button'] {

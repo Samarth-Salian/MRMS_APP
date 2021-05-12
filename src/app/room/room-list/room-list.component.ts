@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,6 +15,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./room-list.component.css'],
 })
 export class RoomListComponent {
+  @ViewChild('slidingList') slidingList: any;
   scrollElement: any;
   scrollRoomListElement: any;
   deletedRoomListRecord: any;
@@ -102,6 +103,7 @@ export class RoomListComponent {
     } else {
       this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-details', { state: { data: selectedRoom, flow: 'creatRoom' } }); });
     }
+    this.slidingList.closeSlidingItems();
   }
 
   public hideEditSection() {

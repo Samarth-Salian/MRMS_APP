@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./location-list.component.css'],
 })
 export class LocationListComponent {
+  @ViewChild('slidingList') slidingList: any;
   scrollElement: any;
   deletedLocationListRecord: any;
   deletedLocationListRow: number = 0;
@@ -45,6 +46,7 @@ export class LocationListComponent {
   public navigateToLocation(selectedLocation: any): any {
     //this.titleChange.swipeList();
     this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/location-details', { state: { data: selectedLocation } }); });
+    this.slidingList.closeSlidingItems();
   }
 
   public delete(event: any) {

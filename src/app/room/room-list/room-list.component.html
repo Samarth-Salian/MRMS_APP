@@ -9,7 +9,7 @@
         </div>
     </ion-toolbar>
 </ion-header>
-<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
+<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion' #slidingList>
     <ion-item-sliding *ngFor="let room of rooms let i = index" routerDirection="forward" id="{{'listSwipeBoxId_' +i}}"
         [attr.rowNo]="i" class="ionicListContainer">
         <ion-item class='ionItem' (click)="navigateToMeetingDetails(room, $event)">

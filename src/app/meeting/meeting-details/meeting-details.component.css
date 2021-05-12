@@ -31,3 +31,7 @@ label {
     margin-right: auto;
     margin-left: auto;
 }
+
+.submitBtn {
+    margin: 16px;
+}

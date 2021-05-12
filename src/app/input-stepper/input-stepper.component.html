@@ -1,5 +1,5 @@
 <div class="input-group">
-    <label>Seats</label>
+    <ion-label>Seats</ion-label>
     <ion-icon id="minusBtn" [attr.disabled]="disabledMinus" class="button-minus" (click)="updateSeatValue($event);"
         data-field="seats" name="remove-circle-outline"></ion-icon>
     <input type="number" id="mynum" min="1" max="20" #mynum="ngModel" value="1" [(ngModel)]="counter" name="mynum"

@@ -30,7 +30,7 @@
     <div class="seatsMeeting">
       <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
     </div>
-    <section>
+    <section class="submitBtn">
       <ion-button [disabled]="!meetingForm.valid" id='submitbtn' expand="block" (click)="getSubmitMsg()"
         routerDirection="backward">Submit Meeting
       </ion-button>

@@ -6,7 +6,7 @@
         <ion-title>Location List</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
+<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion' #slidingList>
     <ion-item-sliding *ngFor="let location of locations let i = index" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i"
         routerDirection="forward" class="ionicListContainer locationListContainer">
         <ion-item class='ionItem locationListItem' (click)="navigateToLocation(location)">
@@ -36,10 +36,10 @@
         <ion-item class='ionItem'>
             <ion-label class='ionLabel'>
                 <ion-card-title class='shimmerTitle'>
-                    <ion-skeleton-text animated ></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
                 </ion-card-title>
                 <ion-card-title class='shimmerTitle'>
-                    <ion-skeleton-text animated ></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
                 </ion-card-title>
             </ion-label>
         </ion-item>

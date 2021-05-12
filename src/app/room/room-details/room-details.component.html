@@ -50,20 +50,21 @@
             <ion-toggle [(ngModel)]="roomDetails.whiteBoardAvailable" name="whiteboard" checked>
             </ion-toggle>
         </ion-item>
-        <div class="progress" *ngIf="progress">
-            <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
-        </div>
-        <div>
-            <label class="feature labelCss">Add a photo</label>
-        </div>
-        <div (click)='openBottomSheet()' class='imageDiv cameraButton'>
-            <input *ngIf='showUploadImageIcon' class='uploadImage' type='image' [src]='uploadImage' alt='uploadImage'>
-        </div>
-        <div *ngIf='showCameraIconDiv' class="cameraIconDiv">
-            <mat-icon (click)='openBottomSheet()' class='cameraIcon'>camera_enhance</mat-icon>
-        </div>
     </div>
-    <section>
+    <!-- <div class="progress" *ngIf="progress">
+        <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+    </div> -->
+    <div>
+        <label class="feature labelCss">Add a photo</label>
+    </div>
+    <div (click)='openBottomSheet()' class='imageDiv cameraButton'>
+        <input *ngIf='showUploadImageIcon' class='uploadImage' type='image' [src]='uploadImage' alt='uploadImage'>
+    </div>
+    <div *ngIf='showCameraIconDiv' class="cameraIconDiv">
+        <mat-icon (click)='openBottomSheet()' class='cameraIcon'>camera_enhance</mat-icon>
+    </div>
+
+    <section class=submitBtn>
         <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()" expand="block">
             Submit
         </ion-button>

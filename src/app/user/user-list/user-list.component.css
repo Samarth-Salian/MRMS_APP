@@ -1,48 +1,55 @@
-.listContainer{
-    width: 90%;
-    margin: 0px auto;
-    margin-top: 10px;
-    padding: 10px 10px;
-    border: 1px solid #eee;
-    border-bottom: 1px solid #aaa;
-    box-shadow: 2px 3px 3px #ddd;
+.listContainer {
+  width: 90%;
+  margin: 0px auto;
+  margin-top: 10px;
+  padding: 10px 10px;
+  border: 1px solid #eee;
+  border-bottom: 1px solid #aaa;
+  box-shadow: 2px 3px 3px #ddd;
 }
-.avatarImage{
+
+.avatarImage {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
-.avatarName{
-    position: relative;
-    top: -36px;
-    margin-left: 61px;
+
+.avatarName {
+  position: relative;
+  top: -36px;
+  margin-left: 61px;
 }
-.shimmerAvatar{
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-  }
-  .shimmerHeader {
-    display: flex !important;
-    padding: 7px;
-    padding-bottom: 0px;
-  }
-  .shimmerTitle {
-    width: 100%;
-    margin-top: 19px;
-    padding-left: 8px;
-  }
-  .ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
-    width: 90%;
-    height: 157px;
-    margin: 0px auto;
-    margin-top: 10px;
-    padding: 4px 4px;
-    border: 1px solid #eee;
-    border-bottom: 1px solid #aaa;
-    box-shadow: 2px 3px 3px #ddd;
-  }
-  .ionContent{
-    padding: 0;
-    top: -23px;
-  }
+
+.shimmerAvatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.shimmerHeader {
+  display: flex !important;
+  padding: 7px;
+  padding-bottom: 0px;
+}
+
+.shimmerTitle {
+  width: 100%;
+  margin-top: 19px;
+  padding-left: 8px;
+}
+
+.ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
+  width: 90%;
+  height: 150px;
+  margin: 0px auto;
+  margin-top: 10px;
+  padding: 4px 4px;
+  border: 1px solid #eee;
+  border-bottom: 1px solid #aaa;
+  box-shadow: 2px 3px 3px #ddd;
+}
+
+.ionContent {
+  padding: 0;
+  top: -23px;
+}

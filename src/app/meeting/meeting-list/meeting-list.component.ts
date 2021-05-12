@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./meeting-list.component.css'],
 })
 export class MeetingListComponent {
+  @ViewChild('slidingList') slidingList: any;
   meetings: Meeting[] = [];
   scrollElement: any;
   deletedRecord: any;
@@ -42,9 +43,10 @@ export class MeetingListComponent {
   public getjson(): Observable<any> {
     return this.http.get('assets/meetingList.json').pipe();
   }
-  
+
   public navigateToMeeting(selectedMeeting: Meeting): any {
     this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } }); });
+    this.slidingList.closeSlidingItems();
   }
   public fnTaskGlobalSearch(searchText: any, data: any) {
     let results = [];

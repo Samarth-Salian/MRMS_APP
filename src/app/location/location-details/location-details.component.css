@@ -29,6 +29,8 @@
   height: 51px;
   border-radius: 100px;
 }
-.submitButton{
+
+.submitButton {
   padding-top: 20px;
+  margin: 10px;
 }

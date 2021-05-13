@@ -24,14 +24,6 @@ label {
     padding-top: 6px
 }
 
-.container {
-    width: 104%;
-    padding-right: 15px;
-    padding-left: 0px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
 .submitBtn {
     margin: 16px;
 }

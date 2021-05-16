@@ -7,12 +7,10 @@
     </ion-toolbar>
 </ion-header>
 <ion-list class="ionList">
-    <ion-header>
-        <p class="text-center"> {{user?.displayName}} </p>
-        <div class="formFieldClass text-center profileImageContainer">
-            <img class="profileImage" alt="profilePic" src='{{user?.profilePic}}'>
-        </div>
-    </ion-header>
+    <p class="text-center"> {{user?.displayName}} </p>
+    <div class="formFieldClass text-center profileImageContainer">
+        <img class="profileImage" alt="profilePic" src='{{user?.profilePic}}'>
+    </div>
     <ion-item class="formFieldClass">
         <ion-label position='floating'>EmailId</ion-label>
         <ion-input disabled value='{{user?.emailId}}'></ion-input>

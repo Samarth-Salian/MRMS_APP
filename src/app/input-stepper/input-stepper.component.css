@@ -60,14 +60,14 @@
   font-weight: bold;
   height: 30px;
   padding: 0;
-  width: 54px;
+  width: 65px;
   position: relative;
 }
 
 .input-group .seats-field {
   position: relative;
   height: 28px;
-  width: 15%;
+  width: 10%;
   text-align: center;
   display: inline-block;
   font-size: 13px;

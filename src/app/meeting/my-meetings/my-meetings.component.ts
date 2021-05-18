@@ -54,8 +54,7 @@ export class MyMeetingsComponent {
         cancelButtonTitle: 'Cancel',
         disableBackup: true,
         title: 'Login using Fingerprint',
-        fallbackButtonTitle: 'FB Back Button',
-        subtitle: 'Please tap on the fingerprint scanner of your device to login'
+        fallbackButtonTitle: 'FB Back Button'
       })
         .then((result: any) => {
           document.getElementsByTagName('body')[0].classList.remove('backgroundFade');

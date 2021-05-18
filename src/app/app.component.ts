@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
 import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 declare let window: any;
 @Component({
@@ -46,7 +47,7 @@ export class AppComponent {
   spinnerObj: any;
   dark = false;
   showProfileImageIcon: boolean = true;
-  constructor(private zone: NgZone, public http: HttpClient, private location: Location,
+  constructor(private fcm: FCM, private zone: NgZone, public http: HttpClient, private location: Location,
     private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
@@ -54,6 +55,22 @@ export class AppComponent {
     this.showWelcomeMessage = true;
     document.addEventListener("deviceready", () => {
       this.zone.run(() => {
+        this.fcm.getToken().then(token => {
+          console.log(token);
+        });
+        this.fcm.onTokenRefresh().subscribe(token => {
+          console.log(token);
+        });
+        this.fcm.onNotification().subscribe(data => {
+          console.log(data);
+          if (data.wasTapped) {
+            console.log('Received in background');
+            //this.router.navigate([data.landing_page, data.price]);
+          } else {
+            console.log('Received in foreground');
+            //this.router.navigate([data.landing_page, data.price]);
+          }
+        });
         if (window.cordova && window.cordova.platformId !== 'browser') {
           this.db = window.sqlitePlugin.openDatabase({
             name: 'my.db',
@@ -90,6 +107,7 @@ export class AppComponent {
       this.title = param;
     }
   }
+
 
   public getjson(): Observable<any> {
     return this.http.get('assets/userList.json').pipe();

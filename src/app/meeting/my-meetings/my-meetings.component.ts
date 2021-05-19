@@ -53,11 +53,13 @@ export class MyMeetingsComponent {
       this.fio.show({
         cancelButtonTitle: 'Cancel',
         disableBackup: true,
-        title: 'Login using Fingerprint',
+        title: '      Login using Fingerprint',
         fallbackButtonTitle: 'FB Back Button'
       })
         .then((result: any) => {
           document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
+          let toastDiv: any = document.getElementsByClassName('split-pane-md')[0];
+          toastDiv.style.opacity = 1;
           this.titleChange.firstLoad = false;
           console.log(result)
         })
@@ -65,6 +67,8 @@ export class MyMeetingsComponent {
           console.log(error)
           document.getElementsByTagName('body')[0].classList.remove('backgroundFade');
           this.presentToastWithOptions();
+          let toastDiv: any = document.getElementsByClassName('split-pane-md')[0];
+          toastDiv.style.opacity = 0;
         });
 
     })

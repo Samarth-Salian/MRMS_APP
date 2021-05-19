@@ -27,9 +27,11 @@ export class InputStepperComponent {
       }
       if (event.target.id === 'plusBtn') {
         this.counterChange.emit(++this.counter);
-      } else if (event.target.id === 'minusBtn') {
+      } if (event.target.id === 'minusBtn') {
         this.counterChange.emit(--this.counter);
-      } else if (String(this.counter) === '' || this.counter === null) {
+      } if (this.counter === 1) {
+        event.target.classList.add("disabled")
+      } if (String(this.counter) === '' || this.counter === null) {
         this.counter = 1;
         this.counterChange.emit(this.counter);
       } else {

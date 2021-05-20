@@ -16,14 +16,12 @@
             <ion-card-content class='ionContent'>
                 <span>{{user.emailId}}</span>
             </ion-card-content>
-            <!-- <ion-button> -->
             <div *ngIf="user.adminRole">
                 <ion-button color="primary" (click)="getUserMsg()">Downgrade to User</ion-button>
             </div>
             <div *ngIf="!user.adminRole">
                 <ion-button color="primary" (click)="getAdminMsg()">Upgrade to Admin</ion-button>
             </div>
-            <!-- </ion-button> -->
         </ion-label>
     </ion-item>
 </ion-list>

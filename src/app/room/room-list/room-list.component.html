@@ -4,9 +4,8 @@
             <ion-back-button class="backBtn" [defaultHref]=""></ion-back-button>
         </ion-buttons>
         <ion-title class="roomTitle">Room List</ion-title>
-        <div *ngIf="conditionalFilter" class="filterIcon">
-            <ion-icon name="filter-circle-outline" class='filter' (click)="openDialog();"></ion-icon>
-        </div>
+        <ion-icon *ngIf="conditionalFilter" slot="end" name="filter-circle-outline" class='filter'
+            (click)="openDialog();"></ion-icon>
     </ion-toolbar>
 </ion-header>
 <ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion' #slidingList>

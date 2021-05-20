@@ -154,10 +154,11 @@ img.mat-card-image.roomImageCls {
     height: 39px;
     width: 35px;
     margin-bottom: -7px;
+    margin-right: 15px;
 }
 
 .roomTitle {
-    margin-bottom: -35px;
+    margin-bottom: -4px;
 }
 
 .backBtn {

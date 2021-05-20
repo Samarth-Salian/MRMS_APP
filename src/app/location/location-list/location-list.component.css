@@ -56,3 +56,9 @@
   max-height: 91vh;
   padding-bottom: 20px;
 }
+
+.ionItem {
+  left: -18px;
+  height: 250px;
+  top: 1px;
+}

@@ -19,6 +19,11 @@ label {
     width: 100%;
 }
 
-.container {
-    padding: 5%;
+.seatsMeeting {
+    margin-left: 1px;
+    padding-top: 6px
+}
+
+.submitBtn {
+    margin: 16px;
 }

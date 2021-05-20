@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
 import { Room } from '../../models/room';
 import { Meeting } from '../../models/meeting';
-import { SnackbarService } from '../../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-meeting-details',
@@ -21,7 +21,7 @@ export class MeetingDetailsComponent {
 
   submitMsg: string = 'Meeting details submitted successfully';
 
-  constructor(private zone: NgZone, public snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
+  constructor(private zone: NgZone, public toastController: ToastController, private activatedRoute: ActivatedRoute,
     public titleChange: AppComponent, private router: Router) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
@@ -33,15 +33,15 @@ export class MeetingDetailsComponent {
       if (history.state.flow === 'createMeeting') {
         this.titleChange.setTitle("Create Meeting");
         this.selectedRoom = history.state.data;
-        if (typeof (history.state.data.roomCreationDetails) !== 'undefined') {
+        /*if (typeof (history.state.data.roomCreationDetails) !== 'undefined') {
           this.meetingSchedule = history.state.data.roomCreationDetails._date + ' ' + history.state.data.roomCreationDetails._fromTime + ' ' + history.state.data.roomCreationDetails._toTime;
           this.meeting.location = history.state.data.roomCreationDetails._location;
           this.meeting.seats = history.state.data.roomCreationDetails._seats;
-        } else {
+        } else {*/
           this.meetingSchedule = history.state.data.date + ' ' + history.state.data.fromTime + ' ' + history.state.data.toTime;
           this.meeting.location = history.state.data.location;
           this.meeting.seats = history.state.data.seats;
-        }
+        //}
         this.meeting.room = this.selectedRoom.name;
         this.meeting.fromTime = this.selectedRoom.fromTime;
         this.meeting.toTime = this.selectedRoom.toTime;
@@ -64,14 +64,15 @@ export class MeetingDetailsComponent {
 
   getSubmitMsg() {
     if (this.meeting.seats <= 0) {
-      this.snackBar.openSnackBar('Seats should be more than 0', '');
+      this.titleChange.presentToast('Seats should be more than 0');
     } else {
-      this.snackBar.openSnackBar(this.submitMsg, '');
-      this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.meeting } }); });
+      this.titleChange.presentToast(this.submitMsg);
+      this.zone.run(() => { this.titleChange.navCtlr.navigateBack('/my-meetings', { state: { data: this.meeting } }); });
     }
   }
 
   updatedSeatVal(event: any) {
     this.meeting.seats = event;
   }
+
 }

@@ -1,63 +1,102 @@
-<div *ngIf="conditionalFilter" class="filterIcon">
-    <img alt="Filter" src="assets/filter_alt-24px.svg" (click)="openDialog();">
-</div>
-<div class="listHeader">
-    <mat-card class="listContainer" *ngFor="let room of rooms let i = index">
-        <div class="swipe-box" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i">
-            <div class="swipe-box__scroller">
-                <div class="swipe-box__item observe-item" style="display: block;">
-                    <div class="mail-action mail-action--archive">
-                        <div>
-                            <mat-icon class="maticon">
-                                <em class="material-icons md-48" (click)="navigateToMeetingDetails(room)">edit</em>
-                            </mat-icon>
-                        </div>
-                        <div>
-                            <mat-icon>
-                                <em class="material-icons md-48" (click)="delete($event)">delete</em>
-                            </mat-icon>
-                        </div>
-                    </div>
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button class="backBtn" [defaultHref]=""></ion-back-button>
+        </ion-buttons>
+        <ion-title class="roomTitle">Room List</ion-title>
+        <ion-icon *ngIf="conditionalFilter" slot="end" name="filter-circle-outline" class='filter'
+            (click)="openDialog();"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion' #slidingList>
+    <ion-item-sliding *ngFor="let room of rooms let i = index" routerDirection="forward" id="{{'listSwipeBoxId_' +i}}"
+        [attr.rowNo]="i" class="ionicListContainer">
+        <ion-item class='ionItem' (click)="navigateToMeetingDetails(room, $event)">
+            <ion-label class='ionLabel'>
+                <div class="avatarSection">
+                    <img mat-card-avatar alt="RoomImage" src="assets/{{room.image}}">
                 </div>
-                <mat-card-header (click)="navigateToMeetingDetails(room)" class="swipe-box__item wrapped animated">
-                    <mat-card-title>{{room.name}}</mat-card-title>
-                    <mat-card-subtitle>Seats: {{room.seats}}</mat-card-subtitle>
-                    <div class="imageSection">
-                        <img mat-card-image class="roomImageCls" alt="RoomImage" src="assets/{{room.image}}">
-                    </div>
-                    <div>
-                        <span>Room Details</span>
-                    </div>
-                    <ul class="featureList">
-                        <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
-                        <li>Floor: {{room.floor}}</li>
-                        <li>Building Id: {{room.buildingId}}</li>
-                    </ul>
-                    <div class="featuresDiv">
-                        <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
-                            src="assets/2052-512.png">
-                    </div>
-                    <div class="featuresDiv">
-                        <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
-                            src="assets/camcorder-512.png">
-                    </div>
-                    <div class="featuresDiv">
-                        <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
-                            src="assets/ethernet_on1600.png">
-                    </div>
-                    <div class="featuresDiv">
-                        <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
-                            src="assets/43338.png">
-                    </div>
-                </mat-card-header>
-            </div>
-        </div>
-    </mat-card>
-</div>
-<button *ngIf="conditionalFabIcon" mat-fab class="fab-bottom-right" routerLink="/room-details" routerLinkActive="active"
-    color="primary">
-    <mat-icon>
-        <em class="material-icons md-48">add</em>
-    </mat-icon>
-
-</button>
+                <div class='imageColumn'>
+                    <ion-card-subtitle>{{room.name}}</ion-card-subtitle>
+                    <ion-card-subtitle>Seats: {{room.seats}}</ion-card-subtitle>
+                </div>
+                <div class='detailsClass'>
+                    <span>Room Details</span>
+                </div>
+                <ul class="featureList">
+                    <li>Phone No: <a href="tel:{{room.phoneNo}}">{{room.phoneNo}}</a></li>
+                    <li>Floor: {{room.floor}}</li>
+                    <li>Building Id: {{room.buildingId}}</li>
+                </ul>
+                <div class="featuresDiv">
+                    <img class="features {{room.voipAvailable ? '' : 'disableFeature'}}" alt="Call"
+                        src="assets/2052-512.png">
+                </div>
+                <div class="featuresDiv">
+                    <img class="features {{room.videoAvailable ? '' : 'disableFeature'}}" alt="Video"
+                        src="assets/camcorder-512.png">
+                </div>
+                <div class="featuresDiv">
+                    <img class="features {{room.lanAvailable ? '' : 'disableFeature'}}" alt="Ethernet"
+                        src="assets/ethernet_on1600.png">
+                </div>
+                <div class="featuresDiv">
+                    <img class="features {{room.whiteBoardAvailable ? '' : 'disableFeature'}}" alt="WhiteBoard"
+                        src="assets/43338.png">
+                </div>
+            </ion-label>
+        </ion-item>
+        <ion-item-options #edit *ngIf="!conditionalFilter" side="end" (click)="navigateToMeetingDetails(room, $event)">
+            <ion-item-option color="primary" class='ionOption'>
+                <ion-icon name="pencil-outline" class='ionIcon'></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+        <ion-item-options *ngIf="!conditionalFilter" side="start" (click)="delete($event)">
+            <ion-item-option color="danger" class='ionOption'>
+                <ion-icon class="deleteOption" name="trash-outline"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
+<ng-template #hideSkeletion>
+    <ion-item-sliding *ngFor="let room of rooms let i = index" routerDirection="forward" class="ionicListContainer">
+        <ion-item class='ionItem'>
+            <ion-label class='ionLabel'>
+                <div class="avatarSection">
+                    <ion-card-title>
+                        <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
+                    </ion-card-title>
+                </div>
+                <div class='shimmerContents'>
+                    <ion-card-title>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-card-title>
+                    <ion-card-subtitle>
+                        <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-card-subtitle>
+                </div>
+                <div>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <ion-card-content class='shimmerCon'>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card-content>
+                <ion-card-content class='shimmerCon'>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card-content>
+                <ion-card-content class='shimmerCon'>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card-content>
+                <ion-card-title class='shimmerIcons'>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-card-title>
+            </ion-label>
+        </ion-item>
+    </ion-item-sliding>
+</ng-template>
+<ion-fab *ngIf="conditionalFabIcon" class="fab-bottom-right" vertical="bottom" horizontal="end"
+    (click)="fabIconValidation()" routerLinkActive="active">
+    <ion-fab-button>
+        <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

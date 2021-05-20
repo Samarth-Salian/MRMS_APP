@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,12 +11,15 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./meeting-list.component.css'],
 })
 export class MeetingListComponent {
+  @ViewChild('slidingList') slidingList: any;
   meetings: Meeting[] = [];
   scrollElement: any;
   deletedRecord: any;
   deletedRow: number = 0;
+  showSkeletion: any;
   constructor(private zone: NgZone, public http: HttpClient, private router: Router, public snackBar: MatSnackBar, private appComponent: AppComponent) {
     this.getjson().subscribe((data) => {
+      this.showSkeletion = false;
       this.meetings = data;
       this.meetings.forEach((e: Meeting) => {
         let fromSlot: any = e.slotFrom / 4 < 1 ? 12 + e.slotFrom / 4 : e.slotFrom / 4;
@@ -32,17 +35,19 @@ export class MeetingListComponent {
         e.toTime = parseInt(toSlot.split(':')[0]) <= 12 ? `${toSlot} AM` : `${parseInt(toSlot.split(':')[0]) - 12}:${toSlot.split(':')[1]} PM`;
       });
       setTimeout(() => { this.initializeSwipe() }, 0);
+      setTimeout(() => {
+        this.showSkeletion = true;
+      }, 3000);
     });
   }
-
   public getjson(): Observable<any> {
     return this.http.get('assets/meetingList.json').pipe();
   }
 
   public navigateToMeeting(selectedMeeting: Meeting): any {
     this.zone.run(() => { this.router.navigateByUrl('/meeting-details', { state: { data: selectedMeeting, flow: 'editMeeting' } }); });
+    this.slidingList.closeSlidingItems();
   }
-
   public fnTaskGlobalSearch(searchText: any, data: any) {
     let results = [];
     const toSearch = searchText;
@@ -56,18 +61,18 @@ export class MeetingListComponent {
     }
   }
   public initializeSwipe = () => {
-    this.appComponent.swipeList();
+    //this.appComponent.swipeList();
   }
   public delete(event: any) {
-    this.deletedRecord = event.target.closest('.listContainer');
-    this.deletedRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
-    event.target.closest('.listContainer').remove();
+    this.deletedRecord = event.target.closest('.ionicListContainer');
+    this.deletedRow = parseInt(event.target.closest('.ionicListContainer').getAttribute('rowno'));
+    event.target.closest('.ionicListContainer').remove();
     let snackBarRef = this.snackBar.open('Deleted Successfully', 'Undo', {
       duration: 2000,
     });
     snackBarRef.onAction().subscribe(() => {
       let currentRecord: any;
-      let swipeList: any = document.getElementsByClassName('swipe-box');
+      let swipeList: any = document.getElementsByClassName('ionicListContainer');
       if (!swipeList.length) {
         document.getElementsByClassName('appMeetingList')[0].append(this.deletedRecord);
       }

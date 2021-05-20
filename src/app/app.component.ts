@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { NgxSpinnerService } from "ngx-spinner";
+import firebase from 'firebase/app';
+import { environment } from 'src/environments/environment';
+import { ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 declare let window: any;
 @Component({
@@ -33,15 +37,17 @@ export class AppComponent {
   screenName;
 
   roomLaunchFlag = 'Root Menu';
-
+  firstLoad: boolean = true;
   routerPath: string = window.location.href.split('/', 4)[3];
   tableName: string = '';
   loginCredentials: any;
   db: any;
   loginStorage: any;
   spinnerObj: any;
+  dark = false;
+  showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
-    private router: Router, private spinner: NgxSpinnerService) {
+    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};
@@ -54,6 +60,7 @@ export class AppComponent {
             location: 'default',
             androidDatabaseProvider: 'system'
           });
+          this.firstLoad = true;
           this.retrieveLoginData('root');
         }
       })
@@ -143,6 +150,7 @@ export class AppComponent {
     }, function (error: any) {
       console.log('Transaction ERROR: ' + error.message);
     }, () => {
+      this.firstLoad = false;
       this.retrieveLoginData('root');
       console.log('Populated database OK');
     });
@@ -211,5 +219,79 @@ export class AppComponent {
         }
       }
     }
+  }
+  imageOnError(event: any) {
+    this.showProfileImageIcon = true;
+    this.showProfileImage = false;
+  }
+  signOut(): void {
+    this.showWelcomeMessage = false;
+    this.loginCredentials = '';
+    this.deleteLoginTable();
+  }
+  //Delete scenario
+  deleteLoginTable() {
+    if (window.cordova && window.cordova.platformId !== 'browser') {
+      window.plugins.googleplus.logout(
+        (obj: any) => {
+          this.clearTableContents();
+        },
+        (msg: any) => {
+          window.plugins.googleplus.trySilentLogin(
+            {
+              'webClientId': environment.WEB_APPLICATION_CLIENT_ID
+            },
+            (success: any) => {
+              window.plugins.googleplus.logout(
+                (data: any) => {
+                  this.clearTableContents();
+                }
+              );
+            },
+            (err: any) => {
+              console.log(err);
+            }
+          );
+        }
+      );
+    } else if (!window.cordova || window.cordova.platformId === 'browser') {
+      this.spinnerObj.show();
+      if (!firebase.apps.length) {
+        firebase.initializeApp(environment.firebaseConfig);
+      } else {
+        firebase.app();
+      }
+      firebase.auth().signOut()
+        .then(() => {
+          this.loginStorage.removeItem(this.tableName);
+          this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: 'SignOut' } }); });
+        }, function (error) {
+          console.log('Signout Failed');
+        });
+    }
+  }
+  clearTableContents() {
+    this.db.transaction((tx: any) => {
+      tx.executeSql('DELETE  FROM ' + this.tableName);
+    }, function (error: any) {
+      console.log('Transaction ERROR: ' + error.message);
+    }, () => {
+      this.zone.run(() => { this.router.navigateByUrl('/signin', { state: { data: 'SignOut' } }); });
+    });
+  }
+  changeMode(event: any) {
+    if (event.target.ariaChecked === "false") {
+      document.getElementsByTagName('body')[0].classList.add('darkMode');
+    } else {
+      document.getElementsByTagName('body')[0].classList.remove('darkMode');
+    }
+  }
+  async presentToast(message: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      color: 'dark',
+      duration: 2000
+    });
+    toast.present();
   }
 }

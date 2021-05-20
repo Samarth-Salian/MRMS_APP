@@ -2,20 +2,65 @@
 .maticon {
   margin-right: 35px;
 }
+
 .mat-card-header-text {
   margin: 0 !important;
 }
+
 .swipe-box__item.wrapped.animated {
   padding: 0 0 0 5px;
 }
-.section1 {
-  margin-left: -35px;
-  padding-right: 25px;
-}
-.section1 .mat-card-avatar {
+
+.avatarSection .imageSrc {
   border-radius: 0%;
-  height: 74px;
+  height: 68px;
   width: 74px;
 }
-  
-  
+
+.ionSection {
+  margin-left: 91px;
+  margin-top: -68px;
+}
+
+.shimmerContents {
+  padding-left: 86px;
+  width: 100%;
+  margin-top: -58px;
+}
+
+.shimmerAvatar {
+  /* margin-right: 80%; */
+  height: 68px;
+  width: 72px;
+}
+
+.shimmerHeader {
+  display: flex !important;
+}
+
+.hydrated {
+  visibility: inherit;
+}
+
+.ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
+  width: 90%;
+  height: 98px;
+  margin: 0px auto;
+  margin-top: 10px;
+  padding: 4px 4px;
+  border: 1px solid #eee;
+  border-bottom: 1px solid #aaa;
+  box-shadow: 2px 3px 3px #ddd;
+}
+
+.ionLabel {
+  height: 98px;
+}
+
+.addScroll {
+  padding-top: 0px;
+}
+
+.ionOption {
+  margin-top: 3px;
+}

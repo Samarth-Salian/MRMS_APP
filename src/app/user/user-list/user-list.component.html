@@ -1,20 +1,49 @@
-<mat-card class="listContainer" *ngFor="let user of users">
-    <mat-card-header>
-        <div mat-card-avatar>
-            <img class="avatarImage" alt="" src="{{user.image}}">
-        </div>
-        <mat-card-title class="avatarName">{{user.firstName}} {{user.lastName}}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <span>{{user.emailId}}</span>
-    </mat-card-content>
-    <mat-card-actions>
-        <div *ngIf="user.adminRole">
-            <button mat-button (click)="getUserMsg()">Downgrade to User</button>
-        </div>
-        <div *ngIf="!user.adminRole">
-            <button mat-button (click)="getAdminMsg()">Upgrade to Admin</button>
-        </div>
-      </mat-card-actions>
-</mat-card>
-
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>User List</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
+    <ion-item class='ionItem' *ngFor="let user of users" class='ionicListContainer'>
+        <ion-label class='ionLabel'>
+            <div ion-card-avatar>
+                <img class="avatarImage" alt="" src="{{user.image}}">
+            </div>
+            <ion-card-subtitle class="avatarName">{{user.firstName}} {{user.lastName}}</ion-card-subtitle>
+            <ion-card-content class='ionContent'>
+                <span>{{user.emailId}}</span>
+            </ion-card-content>
+            <div *ngIf="user.adminRole">
+                <ion-button color="primary" (click)="getUserMsg()">Downgrade to User</ion-button>
+            </div>
+            <div *ngIf="!user.adminRole">
+                <ion-button color="primary" (click)="getAdminMsg()">Upgrade to Admin</ion-button>
+            </div>
+        </ion-label>
+    </ion-item>
+</ion-list>
+<ng-template #hideSkeletion>
+    <ion-card *ngFor="let user of users">
+        <ion-card-header class="shimmerHeader">
+            <div>
+                <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>
+            </div>
+            <ion-card-title class='shimmerTitle'>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-header class='shimmerHeader'>
+            <ion-card-title style='width:100%'>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-title>
+        </ion-card-header>
+        <ion-card-header>
+            <ion-card-title>
+                <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+</ng-template>

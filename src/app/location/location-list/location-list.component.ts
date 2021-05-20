@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,28 +11,32 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./location-list.component.css'],
 })
 export class LocationListComponent {
+  @ViewChild('slidingList') slidingList: any;
   scrollElement: any;
   deletedLocationListRecord: any;
   deletedLocationListRow: number = 0;
   locations: any;
-
+  showSkeletion: boolean = false;
   constructor(private zone: NgZone, private titleChange: AppComponent, private activatedRoute: ActivatedRoute,
     public http: HttpClient, private router: Router, public snackBar: MatSnackBar) {
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
     this.getjson().subscribe(data => {
+      setTimeout(() => {
+        this.showSkeletion = true;
+      }, 3000)
       this.locations = data;
     });
-    this.scrollElement = setInterval(() => {
-      if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
-        this.initializeSwipe();
-        clearInterval(this.scrollElement);
-      }
-    }, 100);
+    /* this.scrollElement = setInterval(() => {
+       if (!document.getElementsByClassName('swipe-box__scroller')[0].scrollLeft) {
+         this.initializeSwipe();
+         clearInterval(this.scrollElement);
+       }
+     }, 100);*/
   }
   public initializeSwipe = () => {
-    this.titleChange.swipeList();
+    //this.titleChange.swipeList();
   }
 
   public getjson(): Observable<any> {
@@ -40,13 +44,15 @@ export class LocationListComponent {
   }
 
   public navigateToLocation(selectedLocation: any): any {
-    this.zone.run(() => { this.router.navigateByUrl('/location-details', { state: { data: selectedLocation } }); });
+    //this.titleChange.swipeList();
+    this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/location-details', { state: { data: selectedLocation } }); });
+    this.slidingList.closeSlidingItems();
   }
 
   public delete(event: any) {
-    this.deletedLocationListRecord = event.target.closest('.listContainer');
-    this.deletedLocationListRow = parseInt(event.target.closest('.swipe-box').getAttribute('rowno'));
-    event.target.closest('.listContainer').remove();
+    this.deletedLocationListRecord = event.target.closest('.ionicListContainer');
+    this.deletedLocationListRow = parseInt(event.target.closest('.ionicListContainer').getAttribute('rowno'));
+    event.target.closest('.ionicListContainer').remove();
     let snackBarRef = this.snackBar.open('Deleted Successfully', 'Undo', {
       duration: 2000,
     });
@@ -54,7 +60,7 @@ export class LocationListComponent {
       console.log(this.deletedLocationListRow);
       console.log(this.deletedLocationListRecord);
       let currentRoomListRecord: any;
-      let swipeList: any = document.getElementsByClassName('swipe-box');
+      let swipeList: any = document.getElementsByClassName('ionicListContainer');
       if (!swipeList.length) {
         document.getElementsByTagName('app-location-list')[0].append(this.deletedLocationListRecord);
       }
@@ -65,9 +71,14 @@ export class LocationListComponent {
         currentRoomListRecord = document.getElementById('swipeBoxId_' + (this.deletedLocationListRow + 1));
         currentRoomListRecord.parentElement.before(this.deletedLocationListRecord);
       }
-      this.titleChange.swipeList();
     });
 
+  }
+
+  fabIconValidation() {
+    this.titleChange.showFabIcon = false;
+    this.titleChange.showFilterIcon = true;
+    this.titleChange.navCtlr.navigateForward('/location-details');
   }
 
 }

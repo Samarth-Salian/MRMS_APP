@@ -41,6 +41,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { IonicModule } from '@ionic/angular';
+import { BottomSheetComponent } from './bottom-sheet/bottom-sheet.component';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx'
+import { enterAnimation } from './animations/nav-animate';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -74,6 +80,7 @@ export const MY_DATE_FORMATS = {
     RoomDetailsComponent,
     ProfileComponent,
     InputStepperComponent,
+    BottomSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +110,7 @@ export const MY_DATE_FORMATS = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     NgxSpinnerModule,
+    MatBottomSheetModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -110,9 +118,14 @@ export const MY_DATE_FORMATS = {
         disallowedRoutes: ['http://localhost:3000/auth/login'],
       },
     }),
+    IonicModule.forRoot({
+      navAnimation: enterAnimation
+    }),
   ],
   providers: [HttpClientModule, AppComponent,
     DatePipe,
+    Camera,
+    FingerprintAIO,
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent],
 })

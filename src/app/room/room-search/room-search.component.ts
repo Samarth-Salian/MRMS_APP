@@ -1,12 +1,11 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, PRIMARY_OUTLET } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import * as moment from 'moment';
 import { Room } from 'src/app/models/room';
-import { FormControl } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 import { AppComponent } from '../../app.component';
-import { SnackbarService } from '../../services/snackbar.service';
+import { DatePipe } from '@angular/common';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-room-search',
@@ -26,14 +25,15 @@ export class RoomSearchComponent implements OnInit {
 
   toTime = '';
 
-  minDate = new Date();
+  minDate: any = '';
 
-  todayDate = new FormControl(new Date());
+  todayDate: any;
 
   constructor(private zone: NgZone, private activatedRoute: ActivatedRoute, public titleChange: AppComponent,
-    private router: Router, private snackBar: SnackbarService,
-    public dialogRef: MatDialogRef<RoomSearchComponent>) {
+    private router: Router, public modalController: ModalController, public datepipe: DatePipe) {
     this.titleChange.roomListBackButton = false;
+    this.minDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
+    this.todayDate = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
     this.titleChange.title = this.activatedRoute.snapshot.data.title;
     this.titleChange.setTitle(this.titleChange.title);
     this.titleChange.showFabIcon = false;
@@ -47,13 +47,15 @@ export class RoomSearchComponent implements OnInit {
     this.roomSearch.fromTime = this.fromTime;
     this.roomSearch.toTime = this.toTime;
   }
+  setDate() {
+  }
 
   public fnNavigateToRoomList() {
     if (this.roomSearch.seats <= 0) {
-      this.snackBar.openSnackBar('Seats should be more than 0', '');
+      this.titleChange.presentToast('Seats should be more than 0');
     } else {
-      this.dialogRef.close({ data: this.roomSearch });
-      this.zone.run(() => { this.router.navigateByUrl('/room-list', { state: { data: this.roomSearch } }); });
+      //this.dialogRef.close({ data: this.roomSearch });
+      this.zone.run(() => { this.titleChange.navCtlr.navigateForward('/room-list', { state: { data: this.roomSearch } }); });
     }
   }
 
@@ -87,12 +89,18 @@ export class RoomSearchComponent implements OnInit {
   }
 
   formatDateAndTime(updatedMinutes: Date) {
-    const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
-    const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
-    return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime + ' pm' : normalizeHour + ':' + finalTime + ' aM';
+    // const normalizeHour = updatedMinutes.getHours() >= 12 ? updatedMinutes.getHours() - 12 : updatedMinutes.getHours();
+    //const finalTime = ('0' + updatedMinutes.getMinutes()).slice(-2);
+    //return updatedMinutes.getHours() >= 12 ? normalizeHour + ':' + finalTime : normalizeHour + ':' + finalTime;
+    return updatedMinutes.getHours() + ':' + ('0' + updatedMinutes.getMinutes()).slice(-2);
   }
 
   closeDialogBox() {
-    this.dialogRef.close();
+    //this.dialogRef.close();
+  }
+  dismissModal() {
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 }

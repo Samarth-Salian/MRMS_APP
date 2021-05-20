@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppComponent } from '../../app.component';
-import { SnackbarService } from '../../services/snackbar.service';
+import { ToastController } from '@ionic/angular';
+import { async } from 'rxjs';
 
 @Component({
   selector: 'app-location-details',
@@ -17,8 +18,8 @@ export class LocationDetailsComponent {
 
   selectedLocation: any = history.state.data;
 
-  constructor(private snackBar: SnackbarService, private activatedRoute: ActivatedRoute,
-    public appComponent: AppComponent) {
+  constructor(public toastController: ToastController, private activatedRoute: ActivatedRoute,
+    public appComponent: AppComponent, private zone: NgZone) {
     if (typeof (history.state.data) !== 'undefined') {
       this.buildingName = this.selectedLocation.buildingName;
       this.city = this.selectedLocation.city;
@@ -27,8 +28,8 @@ export class LocationDetailsComponent {
     this.appComponent.title = this.activatedRoute.snapshot.data.title;
     this.appComponent.setTitle(this.appComponent.title);
   }
-
   getSubmitMsg() {
-    this.snackBar.openSnackBar('Location details submitted successfully', '');
+    this.appComponent.navCtlr.navigateBack('/location-list');
+    this.appComponent.presentToast('Location details saved successfully');
   }
 }

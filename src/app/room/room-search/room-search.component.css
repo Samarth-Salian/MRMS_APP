@@ -1,5 +1,5 @@
 .roomSearchContainer {
-  padding: 5%;
+  padding-top: 5%;
 }
 
 .datePickerDiv {
@@ -18,11 +18,6 @@
   padding-bottom: 18px;
 }
 
-.fromTimeDiv, .toTimeDiv {
-  display: inline-block;
-  width: 45%;
-}
-
 .toTimeDiv {
   margin-left: 10px;
 }
@@ -39,6 +34,10 @@
   margin-bottom: 40px;
 }
 
+.item {
+  margin-left: -23px;
+}
+
 .searchBtn {
   width: 100%;
   height: 51px;
@@ -52,7 +51,43 @@
 .fromInputDiv {
   width: 100%;
 }
+
 .close.mat-button {
   line-height: 0px;
   min-width: auto;
+}
+
+.roomSearchList {
+  padding-left: 8%;
+  padding-right: 8%;
+  position: fixed;
+  width: 100%;
+  height: 88%;
+  overflow-y: auto;
+  display: block;
+}
+
+.seatsLabel {
+  margin-left: -16px;
+}
+
+.fromtoTimeDiv {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  padding-top: 2px;
+  height: 91px;
+}
+
+.timeDiv {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -9px;
+}
+
+.closeIcon {
+  height: 40px;
+  width: 37px;
+  margin-right: 10px;
 }

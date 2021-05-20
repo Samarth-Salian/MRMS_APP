@@ -1,0 +1,18 @@
+.imageWidth {
+    height: 50px;
+    width: 50px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 15px 56px;
+    margin-bottom: 0px;
+}
+
+.imageLabel {
+    display: block;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: -3px;
+}

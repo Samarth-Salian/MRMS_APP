@@ -1,31 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Meeting Details</ion-title>
+  </ion-toolbar>
+</ion-header>
 <div class="container">
   <form #meetingForm="ngForm" novalidate>
-    <mat-form-field class="formWidth">
-      <mat-label>Meeting Title </mat-label>
-      <input matInput name="title" #title="ngModel" required [(ngModel)]="meeting.name">
-    </mat-form-field>
+    <ion-item class="formWidth">
+      <ion-label position='floating'>Meeting Title</ion-label>
+      <ion-input [(ngModel)]="meeting.name" name="title" #title="ngModel" required></ion-input>
+    </ion-item>
     <span *ngIf="title.invalid && title.touched" [ngStyle]="{'color':'red'}">Enter Meeting Detail</span>
-    <mat-form-field class="formWidth">
-      <mat-label>Location</mat-label>
-      <input matInput disabled [value]="meeting.location">
-    </mat-form-field>
+    <ion-item class="formWidth">
+      <ion-label position='floating'>Location</ion-label>
+      <ion-input [value]="meeting.location" disabled></ion-input>
+    </ion-item>
 
-    <mat-form-field class="formWidth">
-      <mat-label>Room</mat-label>
-      <input matInput disabled [value]="meeting.room">
-    </mat-form-field>
+    <ion-item class="formWidth">
+      <ion-label position='floating'>Room</ion-label>
+      <ion-input [value]="meeting.room" disabled></ion-input>
+    </ion-item>
 
-    <mat-form-field class="formWidth">
-      <mat-label>Meeting Date & Time</mat-label>
-      <input matInput disabled [value]="meetingSchedule">
-    </mat-form-field>
-
-    <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
-
-    <div class="center">
-      <button [disabled]="!meetingForm.valid" id='submitbtn' mat-raised-button class="searchBtn" color="primary"
-        (click)="getSubmitMsg()">Submit Meeting</button>
+    <ion-item class="formWidth">
+      <ion-label position='floating'>Meeting Date & Time</ion-label>
+      <ion-input [value]="meetingSchedule" disabled></ion-input>
+    </ion-item>
+    <div class="seatsMeeting">
+      <app-input-stepper [(counter)]="meeting.seats"></app-input-stepper>
     </div>
+    <section class="submitBtn">
+      <ion-button [disabled]="!meetingForm.valid" id='submitbtn' expand="block" (click)="getSubmitMsg()"
+        routerDirection="backward">Submit Meeting
+      </ion-button>
+    </section>
   </form>
 
 </div>

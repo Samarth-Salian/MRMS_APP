@@ -9,14 +9,21 @@
   bottom: 5%;
   right: 10%;
 }
+
 .appMeetingList {
   display: block;
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 85vh;
   padding-bottom: 20px;
 }
+
 @media(max-width: 320px) {
-.appMeetingList {
- padding-bottom: 50px;
+  .appMeetingList {
+    padding-bottom: 50px;
+  }
 }
+
+.dateCSS {
+  margin-left: 20px;
+  margin-right: 19px;
 }

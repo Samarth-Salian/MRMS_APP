@@ -64,3 +64,9 @@
 .ionOption {
   margin-top: 3px;
 }
+
+.ionItem {
+  left: -18px;
+  height: 250px;
+  top: 1px;
+}

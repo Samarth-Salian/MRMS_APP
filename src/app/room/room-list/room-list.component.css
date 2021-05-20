@@ -96,11 +96,12 @@ img.mat-card-image.roomImageCls {
 .shimmerAvatar {
     height: 82px;
     width: 82px;
+    margin-left: 0px;
 }
 
 .shimmerCon {
     padding: 1px;
-    padding-left: 1px;
+    padding-right: -20px;
 }
 
 .avatarSection {
@@ -137,7 +138,7 @@ img.mat-card-image.roomImageCls {
 .addScroll {
     overflow: scroll;
     display: block;
-    max-height: 91vh;
+    max-height: 94vh;
     padding-top: 0px;
 }
 
@@ -165,4 +166,10 @@ img.mat-card-image.roomImageCls {
 
 .backBtn {
     margin-bottom: -5px;
+}
+
+.ionItem {
+    left: -18px;
+    height: 250px;
+    top: 1px;
 }

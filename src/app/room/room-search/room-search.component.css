@@ -85,3 +85,9 @@
   margin-right: -15px;
   margin-left: -9px;
 }
+
+.closeIcon {
+  height: 40px;
+  width: 37px;
+  margin-right: 10px;
+}

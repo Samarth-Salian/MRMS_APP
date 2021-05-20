@@ -21,14 +21,14 @@
 }
 
 .shimmerAvatar {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
 .shimmerHeader {
   display: flex !important;
-  padding: 7px;
+  padding-right: 20px;
   padding-bottom: 0px;
 }
 
@@ -52,4 +52,13 @@
 .ionContent {
   padding: 0;
   top: -17px;
+  margin-left: 8px;
+}
+
+.addScroll {
+  display: block;
+  overflow-y: auto;
+  max-height: 94vh;
+  padding-bottom: 20px;
+  padding-top: 0px;
 }

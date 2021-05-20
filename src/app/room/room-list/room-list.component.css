@@ -87,19 +87,20 @@ img.mat-card-image.roomImageCls {
 }
 
 .shimmerContents {
-    padding-left: 72px;
+    padding-left: 92px;
     width: 100%;
     margin-top: -40px;
     padding-bottom: 20px;
 }
 
 .shimmerAvatar {
-    height: 52px;
-    width: 52px;
+    height: 82px;
+    width: 82px;
 }
 
 .shimmerCon {
     padding: 1px;
+    padding-left: 1px;
 }
 
 .avatarSection {
@@ -136,7 +137,8 @@ img.mat-card-image.roomImageCls {
 .addScroll {
     overflow: scroll;
     display: block;
-    max-height: 85vh;
+    max-height: 91vh;
+    padding-top: 0px;
 }
 
 .ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {

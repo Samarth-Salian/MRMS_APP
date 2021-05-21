@@ -26,7 +26,7 @@
     </ion-item>
 </ion-list>
 <ng-template #hideSkeletion>
-    <ion-card *ngFor="let user of users">
+    <ion-card *ngFor="let user of users" class = 'shimmerCard'>
         <ion-card-header class="shimmerHeader">
             <div>
                 <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>

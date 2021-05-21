@@ -30,6 +30,7 @@
   display: flex !important;
   padding-right: 20px;
   padding-bottom: 0px;
+  padding-top: 6px;
 }
 
 .shimmerTitle {
@@ -61,4 +62,9 @@
   max-height: 94vh;
   padding-bottom: 20px;
   padding-top: 0px;
+}
+.shimmerCard{
+  height:150px;
+  margin-top: 10px;
+  margin-bottom: 2px;
 }

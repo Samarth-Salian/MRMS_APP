@@ -23,12 +23,12 @@
 }
 
 .shimmerTitle {
-  margin-bottom: 27px;
+  margin-bottom: 31px;
 }
 
 .ionicListContainer.ng-star-inserted.hydrated.ionicListContainer {
   width: 90%;
-  height: 80px;
+  height: 89px;
   margin: 0px auto;
   margin-top: 10px;
   padding: 4px 9px;
@@ -57,8 +57,6 @@
   padding-bottom: 20px;
 }
 
-.ionItem {
-  left: -18px;
-  height: 250px;
-  top: 1px;
+.ionTitle {
+  margin-bottom: 13px;
 }

@@ -1,7 +1,7 @@
 <ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion' #slidingList>
     <ion-item-sliding *ngFor="let meeting of meetings let i = index" id="{{'swipeBoxId_' +i}}" [attr.rowNo]="i"
         routerDirection="forward" class="ionicListContainer">
-        <ion-item class='ionItem' (click)="navigateToMeeting(meeting)">
+        <ion-item (click)="navigateToMeeting(meeting)">
             <ion-label class='ionLabel'>
                 <div class="avatarSection">
                     <img class='imageSrc' alt="RoomImage" src="assets/{{meeting.meetingRoomAvatar}}">

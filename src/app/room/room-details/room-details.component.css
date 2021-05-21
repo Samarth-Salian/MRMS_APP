@@ -1,5 +1,4 @@
 .roomSearchContainer {
-  padding: 5%;
   display: block;
   overflow-y: auto;
   max-height: 93vh;
@@ -15,8 +14,7 @@
 }
 
 .sliderContainer {
-  margin-bottom: 40px;
-  width: 105%;
+  margin-bottom: 8px;
 }
 
 .searchBtn {
@@ -71,11 +69,6 @@
 
 .uploadImage {
   width: 100%;
-}
-
-.item {
-  margin-left: -18px;
-  padding-right: 8%;
 }
 
 .roomSeatsLabel {

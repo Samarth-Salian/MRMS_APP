@@ -60,3 +60,6 @@ body.darkMode {
 .mat-button-wrapper {
   color: #4c8dff;
 }
+.ionicEditableItem::part(native) {
+  padding-left: 0px !important;
+}

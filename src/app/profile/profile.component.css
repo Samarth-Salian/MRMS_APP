@@ -4,7 +4,6 @@
 
 .formFieldClass {
     width: 100%;
-    padding-right: 8%;
 }
 
 .profileContainer {
@@ -57,8 +56,6 @@
 }
 .ionSection{
     padding-top: 19px;
-    width: 90%;
-    margin-left: 18px;
 }
 .ionList{
     padding-top: 30px;

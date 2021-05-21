@@ -7,66 +7,69 @@
     </ion-toolbar>
 </ion-header>
 <form #searchForm="ngForm" class="roomSearchContainer" novalidate>
-    <ion-item class="fromInputDiv">
-        <ion-label position='floating'>Room</ion-label>
-        <ion-input type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required></ion-input>
-    </ion-item>
-    <span *ngIf="name.invalid && name.touched" [ngStyle]="{'color':'red'}">Enter Room
-    </span>
-    <ion-item class="fromInputDiv">
-        <ion-label position='floating'>Choose a Location</ion-label>
-        <ion-input type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
-        </ion-input>
-    </ion-item>
-    <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
-        Name</span>
-    <div class="roomSeatsLabel">
-        <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
-    </div>
-    <div class="sliderContainer">
-        <ion-item>
-            <ion-label class="labelCss">Select Features</ion-label>
+    <ion-list>
+        <ion-item class="fromInputDiv">
+            <ion-label position='floating'>Room</ion-label>
+            <ion-input type="text" [(ngModel)]="roomDetails.name" name="name" #name="ngModel" required></ion-input>
         </ion-item>
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">LAN</ion-label>
-            <ion-toggle [(ngModel)]="roomDetails.lanAvailable" name="lan" checked>
-            </ion-toggle>
+        <span *ngIf="name.invalid && name.touched" [ngStyle]="{'color':'red'}">Enter Room
+        </span>
+        <ion-item class="fromInputDiv">
+            <ion-label position='floating'>Choose a Location</ion-label>
+            <ion-input type="text" [(ngModel)]="roomDetails.location" name="location" #location="ngModel" required>
+            </ion-input>
         </ion-item>
+        <span *ngIf="location.invalid && location.touched" [ngStyle]="{'color':'red'}">Enter Location
+            Name</span>
+        <div class="roomSeatsLabel">
+            <app-input-stepper [(counter)]="roomDetails.seats"></app-input-stepper>
+        </div>
+        <div class="sliderContainer">
+            <ion-item>
+                <ion-label class="labelCss">Select Features</ion-label>
+            </ion-item>
+            <ion-item class="sliderBtn">
+                <ion-label class="feature labelCss">LAN</ion-label>
+                <ion-toggle [(ngModel)]="roomDetails.lanAvailable" name="lan" checked>
+                </ion-toggle>
+            </ion-item>
 
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">Conference Phone</ion-label>
-            <ion-toggle [(ngModel)]="roomDetails.voipAvailable" name="voip" checked>
-            </ion-toggle>
-        </ion-item>
+            <ion-item class="sliderBtn">
+                <ion-label class="feature labelCss">Conference Phone</ion-label>
+                <ion-toggle [(ngModel)]="roomDetails.voipAvailable" name="voip" checked>
+                </ion-toggle>
+            </ion-item>
 
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">Video</ion-label>
-            <ion-toggle [(ngModel)]="roomDetails.videoAvailable" name="video" checked>
-            </ion-toggle>
-        </ion-item>
+            <ion-item class="sliderBtn">
+                <ion-label class="feature labelCss">Video</ion-label>
+                <ion-toggle [(ngModel)]="roomDetails.videoAvailable" name="video" checked>
+                </ion-toggle>
+            </ion-item>
 
-        <ion-item class="sliderBtn">
-            <ion-label class="feature labelCss">White Board</ion-label>
-            <ion-toggle [(ngModel)]="roomDetails.whiteBoardAvailable" name="whiteboard" checked>
-            </ion-toggle>
-        </ion-item>
-    </div>
-    <!-- <div class="progress" *ngIf="progress">
+            <ion-item class="sliderBtn">
+                <ion-label class="feature labelCss">White Board</ion-label>
+                <ion-toggle [(ngModel)]="roomDetails.whiteBoardAvailable" name="whiteboard" checked>
+                </ion-toggle>
+            </ion-item>
+        </div>
+        <!-- <div class="progress" *ngIf="progress">
         <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
     </div> -->
-    <div>
-        <label class="feature labelCss">Add a photo</label>
-    </div>
-    <div (click)='openBottomSheet()' class='imageDiv cameraButton'>
-        <input *ngIf='showUploadImageIcon' class='uploadImage' type='image' [src]='uploadImage' alt='uploadImage'>
-    </div>
-    <div *ngIf='showCameraIconDiv' class="cameraIconDiv">
-        <mat-icon (click)='openBottomSheet()' class='cameraIcon'>camera_enhance</mat-icon>
-    </div>
+        <div>
+            <label class="feature labelCss">Add a photo</label>
+        </div>
+        <div (click)='openBottomSheet()' class='imageDiv cameraButton'>
+            <input *ngIf='showUploadImageIcon' class='uploadImage' type='image' [src]='uploadImage' alt='uploadImage'>
+        </div>
+        <div *ngIf='showCameraIconDiv' class="cameraIconDiv">
+            <mat-icon (click)='openBottomSheet()' class='cameraIcon'>camera_enhance</mat-icon>
+        </div>
 
-    <section class=submitBtn>
-        <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()" expand="block">
-            Submit
-        </ion-button>
-    </section>
+        <section class=submitBtn>
+            <ion-button [disabled]="!searchForm.valid" type="submit" id='submitbtn' (click)="getSubmitMsg()"
+                expand="block">
+                Submit
+            </ion-button>
+        </section>
+    </ion-list>
 </form>

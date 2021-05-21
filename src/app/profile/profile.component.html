@@ -19,7 +19,7 @@
         <ion-label position='floating'>Phone</ion-label>
         <ion-input type='number' value='{{user?.phoneNum}}'></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class = "formFieldClass">
         <ion-label position="floating">Choose a Locaton</ion-label>
         <ion-select interface="action-sheet" [value]='user?.location'>
             <ion-select-option *ngFor="let location of locations" [value]="location">{{location}}

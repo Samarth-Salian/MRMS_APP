@@ -6,27 +6,29 @@
         <ion-title>User List</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
-    <ion-item class='ionItem' *ngFor="let user of users" class='ionicListContainer'>
-        <ion-label class='ionLabel'>
-            <div ion-card-avatar>
-                <img class="avatarImage" alt="" src="{{user.image}}">
-            </div>
-            <ion-card-subtitle class="avatarName">{{user.firstName}} {{user.lastName}}</ion-card-subtitle>
-            <ion-card-content class='ionContent'>
-                <span>{{user.emailId}}</span>
-            </ion-card-content>
-            <div *ngIf="user.adminRole">
-                <ion-button color="primary" (click)="getUserMsg()">Downgrade to User</ion-button>
-            </div>
-            <div *ngIf="!user.adminRole">
-                <ion-button color="primary" (click)="getAdminMsg()">Upgrade to Admin</ion-button>
-            </div>
-        </ion-label>
-    </ion-item>
-</ion-list>
+<div class='container'>
+    <ion-list class='addScroll' *ngIf='showSkeletion; else hideSkeletion'>
+        <ion-item class='ionItem' *ngFor="let user of users" class='ionicListContainer'>
+            <ion-label class='ionLabel'>
+                <div ion-card-avatar>
+                    <img class="avatarImage" alt="" src="{{user.image}}">
+                </div>
+                <ion-card-subtitle class="avatarName">{{user.firstName}} {{user.lastName}}</ion-card-subtitle>
+                <ion-card-content class='ionContent'>
+                    <span>{{user.emailId}}</span>
+                </ion-card-content>
+                <div *ngIf="user.adminRole">
+                    <ion-button color="primary" (click)="getUserMsg()">Downgrade to User</ion-button>
+                </div>
+                <div *ngIf="!user.adminRole">
+                    <ion-button color="primary" (click)="getAdminMsg()">Upgrade to Admin</ion-button>
+                </div>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</div>
 <ng-template #hideSkeletion>
-    <ion-card *ngFor="let user of users" class = 'shimmerCard'>
+    <ion-card *ngFor="let user of users" class='shimmerCard'>
         <ion-card-header class="shimmerHeader">
             <div>
                 <ion-skeleton-text animated class='shimmerAvatar'></ion-skeleton-text>

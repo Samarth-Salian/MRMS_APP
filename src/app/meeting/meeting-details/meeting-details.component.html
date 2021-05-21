@@ -8,22 +8,22 @@
 </ion-header>
 <div class="container">
   <form #meetingForm="ngForm" novalidate>
-    <ion-item class="formWidth">
+    <ion-item class="formWidth"  class = 'ionicEditableItem'>
       <ion-label position='floating'>Meeting Title</ion-label>
       <ion-input [(ngModel)]="meeting.name" name="title" #title="ngModel" required></ion-input>
     </ion-item>
     <span *ngIf="title.invalid && title.touched" [ngStyle]="{'color':'red'}">Enter Meeting Detail</span>
-    <ion-item class="formWidth">
+    <ion-item class="formWidth" class = 'ionicEditableItem'>
       <ion-label position='floating'>Location</ion-label>
       <ion-input [value]="meeting.location" disabled></ion-input>
     </ion-item>
 
-    <ion-item class="formWidth">
+    <ion-item class="formWidth"  class = 'ionicEditableItem'>
       <ion-label position='floating'>Room</ion-label>
       <ion-input [value]="meeting.room" disabled></ion-input>
     </ion-item>
 
-    <ion-item class="formWidth">
+    <ion-item class="formWidth"  class = 'ionicEditableItem'>
       <ion-label position='floating'>Meeting Date & Time</ion-label>
       <ion-input [value]="meetingSchedule" disabled></ion-input>
     </ion-item>

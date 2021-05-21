@@ -6,21 +6,21 @@
         <ion-title>Location Details</ion-title>
     </ion-toolbar>
 </ion-header>
-<div class="wrapper">
+<div class="container">
     <form class="locationDetailsForm" #LocationDetailsForm="ngForm" novalidate>
-        <ion-item class="detailsDiv">
+        <ion-item class="detailsDiv" class = 'ionicEditableItem'>
             <ion-label position='floating'>Building Name</ion-label>
             <ion-input type="text" [(ngModel)]="buildingName" name="BuildingName" #BuildingName="ngModel" required>
             </ion-input>
         </ion-item>
         <span *ngIf="BuildingName.invalid && BuildingName.touched" [ngStyle]="{'color':'red'}">Enter Building
             Name</span>
-        <ion-item class="detailsDiv">
+        <ion-item class="detailsDiv" class = 'ionicEditableItem'> 
             <ion-label position='floating'>City </ion-label>
             <ion-input type="text" [(ngModel)]="city" name="CityName" #CityName="ngModel" required></ion-input>
         </ion-item>
         <span *ngIf="CityName.invalid && CityName.touched" [ngStyle]="{'color':'red'}">Enter City Name</span>
-        <ion-item class="detailsDiv">
+        <ion-item class="detailsDiv" class = 'ionicEditableItem'>
             <ion-label position='floating'>Country </ion-label>
             <ion-input type="text" [(ngModel)]="country" name="CountryName" #CountryName="ngModel" required></ion-input>
         </ion-item>

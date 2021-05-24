@@ -47,6 +47,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx'
 import { enterAnimation } from './animations/nav-animate';
+import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -126,6 +127,7 @@ export const MY_DATE_FORMATS = {
     DatePipe,
     Camera,
     FingerprintAIO,
+    FCM,
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
   bootstrap: [AppComponent],
 })

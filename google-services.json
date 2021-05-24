@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "xxxxxxxxxxxxx",
+    "project_id": "xxxxxxxxxxxxxxxxxx",
+    "storage_bucket": "xxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "xxxxxxxxxxxxxxxxxxx",
+        "android_client_info": {
+          "package_name": "xxxxxxxxxxxxxxx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xxxxxxxxxxx",
+            "certificate_hash": "xxxxxxxxxxxxxxxxxxxxxx"
+          }
+        },
+        {
+          "client_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "client_type": x
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "client_type": x
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "x"
+}

@@ -7,7 +7,6 @@ import { NgxSpinnerService } from "ngx-spinner";
 import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
 import { ToastController } from '@ionic/angular';
-import { NavController } from '@ionic/angular';
 import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
 
 
@@ -49,7 +48,7 @@ export class AppComponent {
   dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
-    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController, private fcm: FCM) {
+    private router: Router, private spinner: NgxSpinnerService, public toastController: ToastController, private fcm: FCM) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};

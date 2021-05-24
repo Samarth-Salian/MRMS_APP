@@ -135,7 +135,7 @@
       },
       "cordova-plugin-fingerprint-aio": {},
       "cordova-support-google-services": {},
-      "cordova-plugin-fcm-with-dependecy-updated": {},
+      "cordova-plugin-fcm-with-dependecy-updated": {}
     },
     "platforms": [
       "browser",

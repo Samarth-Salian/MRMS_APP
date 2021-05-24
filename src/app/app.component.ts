@@ -8,6 +8,8 @@ import firebase from 'firebase/app';
 import { environment } from 'src/environments/environment';
 import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { FCM } from "cordova-plugin-fcm-with-dependecy-updated/ionic/ngx";
+
 
 declare let window: any;
 @Component({
@@ -47,12 +49,29 @@ export class AppComponent {
   dark = false;
   showProfileImageIcon: boolean = true;
   constructor(private zone: NgZone, public http: HttpClient, private location: Location,
-    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController) {
+    private router: Router, private spinner: NgxSpinnerService, public navCtlr: NavController, public toastController: ToastController, private fcm: FCM) {
     this.spinnerObj = spinner;
     this.tableName = 'login_table';
     this.loginCredentials = {};
     this.showWelcomeMessage = true;
     document.addEventListener("deviceready", () => {
+      this.fcm.getToken().then(token => {
+        console.log(token);
+      });
+      this.fcm.onTokenRefresh().subscribe(token => {
+        console.log(token);
+      });
+      this.fcm.onNotification().subscribe(data => {
+        console.log(data);
+        if (data.wasTapped) {
+          console.log('Received in background');
+        } else {
+          if (Object.keys(this.loginCredentials).length) {
+            this.presentToastWithOptions(data.body);
+          }
+          console.log('Received in foreground');
+        }
+      });
       this.zone.run(() => {
         if (window.cordova && window.cordova.platformId !== 'browser') {
           this.db = window.sqlitePlugin.openDatabase({
@@ -293,5 +312,22 @@ export class AppComponent {
       duration: 2000
     });
     toast.present();
+  }
+  async presentToastWithOptions(message: any) {
+    const toast = await this.toastController.create({
+      message: message,
+      position: 'bottom',
+      color: 'dark',
+      duration: 3000,
+      buttons: [{
+        text: 'Reload',
+        role: 'cancel',
+        handler: () => {
+          this.zone.run(() => { this.router.navigateByUrl('/my-meetings', { state: { data: this.loginCredentials } }) });
+        }
+      }
+      ]
+    });
+    await toast.present();
   }
 }

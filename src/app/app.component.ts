@@ -65,10 +65,8 @@ export class AppComponent {
         console.log(data);
         if (data.wasTapped) {
           console.log('Received in background');
-        } else {
-          if (Object.keys(this.loginCredentials).length) {
+        } else if(!data.wasTapped && Object.keys(this.loginCredentials).length) {
             this.presentToastWithOptions(data.body);
-          }
           console.log('Received in foreground');
         }
       });
